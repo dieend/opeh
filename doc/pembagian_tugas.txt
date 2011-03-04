@@ -1,0 +1,6 @@
+adin : world,area
+prama : game
+novan : kurcaci,time
+septu : player
+onta : grid,plant
+nugraha :toko,item,inventory
