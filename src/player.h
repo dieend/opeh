@@ -12,7 +12,7 @@ class Player {
 	Player();
 	Player(Inventory,int);
 	
-	cctor
+	//cctor
 	Player(const & Player);
 	
 	//dtor
