@@ -2,8 +2,11 @@
 #define RUMAH 0
 #define LAHAN 1
 #define TOKO 2
+#define HARVEST 0
+#define WATER 1
+#define SLASH 2
 
-// volatile unsigned long ReadTSC()
+// volatile unsigned long randomizer()
 // {
 	// unsigned long tsc;
 	// asm("rdtsc":"=A"(tsc));
@@ -13,17 +16,22 @@
 World::World(){
 	// ctor
 	weather = 0;
-	area[RUMAH] = Area::factory(RUMAH);
-	area[LAHAN] = Area::factory(LAHAN);
-	area[TOKO ] = Area::factory(TOKO );
+	area[RUMAH] = new Area(RUMAH);
+	area[LAHAN] = new Area(LAHAN);
+	area[TOKO ] = new Area(TOKO );
+	player = new Player();
+	kurcaci[HARVEST] = new Kurcaci(HARVEST);
+	kurcaci[WATER] = new Kurcaci(WATER);
+	kurcaci[SLASH] = new Kurcaci(SLASH);
+	time = new Time();
 }
 
 World::World(World& world) {
 	// cctor
-	time = world.time;
-	player = world.player;
-	area[RUMAH] = world.area[RUMAH];
-	area[LAHAN] = world.area[LAHAN];
+	time = new Time(world->time);
+	player = new Player(world->player);
+	area[RUMAH] = new Area(world->area[RUMAH];
+	area[LAHAN] = new world.area[LAHAN];
 	area[TOKO ] = world.area[TOKO ];
 	weather = world.weather;
 }
