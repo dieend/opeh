@@ -15,38 +15,51 @@
 
 World::World(){
 	// ctor
-	weather = 0;
-	area[RUMAH] = new Area(RUMAH);
-	area[LAHAN] = new Area(LAHAN);
-	area[TOKO ] = new Area(TOKO );
-	player = new Player();
-	kurcaci[HARVEST] = new Kurcaci(HARVEST);
-	kurcaci[WATER] = new Kurcaci(WATER);
-	kurcaci[SLASH] = new Kurcaci(SLASH);
-	time = new Time();
+	weather 		= 0;
+	area[RUMAH] 	= new Area(RUMAH);
+	area[LAHAN] 	= new Area(LAHAN);
+	area[TOKO ] 	= new Area(TOKO );
+	player 			= new Player();
+	kurcaci[HARVEST]= new Kurcaci(HARVEST);
+	kurcaci[WATER] 	= new Kurcaci(WATER);
+	kurcaci[SLASH]	= new Kurcaci(SLASH);
+	time 			= new Time();
 }
 
 World::World(World& world) {
 	// cctor
-	time = new Time(world->time);
-	player = new Player(world->player);
-	area[RUMAH] = new Area(world->area[RUMAH];
-	area[LAHAN] = new world.area[LAHAN];
-	area[TOKO ] = world.area[TOKO ];
-	weather = world.weather;
+	weather 	= world.weather;
+	time 		= new Time(*(world.time));
+	player 		= new Player(*(world.player));
+	area[RUMAH] = new Area(*(world.area[RUMAH]));
+	area[LAHAN] = new Area(*(world.area[LAHAN]));
+	area[TOKO ] = new Area(*(world.area[TOKO ]));
+	kurcaci[HARVEST]= new Kurcaci(HARVEST);
+	kurcaci[WATER] 	= new Kurcaci(WATER);
+	kurcaci[SLASH]	= new Kurcaci(SLASH);
 }
 
 World::~World() {
+	delete time;
+	delete player;
+	delete area[RUMAH];
+	delete area[LAHAN];
+	delete area[TOKO];
+	delete kurcaci[HARVEST];
+	delete kurcaci[WATER];
+	delete kurcaci[SLASH];
 	// dtor
-	cout << "Terima Kasih telah bermain bersama kami ^^\n";
 }
 World& World::operator=(const World& world) {
-	time = world.time;
-	player = world.player;
-	area[RUMAH] = world.area[RUMAH];
-	area[LAHAN] = world.area[LAHAN];
-	area[TOKO ] = world.area[TOKO ];
-	weather = world.weather;
+	weather 	= world.weather;
+	time 		= new Time(*(world.time));
+	player 		= new Player(*(world.player));
+	area[RUMAH] = new Area(*(world.area[RUMAH]));
+	area[LAHAN] = new Area(*(world.area[LAHAN]));
+	area[TOKO ] = new Area(*(world.area[TOKO ]));
+	kurcaci[HARVEST]= new Kurcaci(HARVEST);
+	kurcaci[WATER] 	= new Kurcaci(WATER);
+	kurcaci[SLASH]	= new Kurcaci(SLASH);
 	return (*this);
 }
 
@@ -54,6 +67,7 @@ void World::save(const string& pathFile,const World& world){
 	// menulis kondisi world ke file
 	ofstream fout(pathFile.c_str(), ios::out | ios::binary);
 	fout.seekp(0);
+	// masih salah
 	fout.write((char*)(&world),sizeof(World));
 	fout.close();
 }
@@ -61,11 +75,13 @@ void World::save(const string& pathFile,const World& world){
 void World::load(const string& pathFile, World& world){
 	ifstream fin (pathFile.c_str(), ios::in | ios::binary);
 	fin.seekg(0);
+	// masih salah
 	fin.read((char*)(&world), sizeof(World));
 	fin.close();
 }
 
 void World::doWeather() {
+	// belum diimplementasi
 	if (weather < 9000) {
 		cout << "normal\n";
 	}else 
@@ -82,13 +98,30 @@ void World::setWeather() {
 	doWeather();
 }
 
-ostream& operator<<(ostream& c,const World& world){
-	c << world.area[2].typeArea<< endl;
-	for (int i=0; i<10; i++) {
-		for (int j=0; j<10; j++) {
-			c<< world.area[2].grid[i][j];
-		}
-		c<< endl;
+ostream& operator<<(ostream& c,const World* world){
+	// belum diimplementasi
+	if (world != NULL) {
+		char tmp[100];
+		sprintf(tmp,"%10sDesa Opeh%10s\n","s","s");
+		c << judul << tmp << white;
+		if (world->player->getCurArea()->typeArea == 0) c << "Rumah:\n";
+		if (world->player->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n";
+		c << *(world->player->getCurArea());
+	} else {
+		c << "> New Game\n\n";
+		c << "> Load Game\n\n\n\n\n\n";
 	}
+	c << "Perintah:\n";
 	return c;
+}
+
+Area* getArea(int n) {
+	return (area[n]);
+}
+
+Kurcaci* getKurcaci(int n) {
+	return kurcaci[n];
+}
+
+void kurcaciWork(){
 }
