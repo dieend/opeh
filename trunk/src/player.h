@@ -10,18 +10,19 @@ class Player {
 	
 	//ctor
 	Player();
-	Player(Inventory,int);
+	Player(Inventory,int,string);
 	
 	//cctor
-	Player(const & Player);
+	Player(const Player &);
 	
 	//dtor
 	virtual ~Player();
 	
 	//operator=
+	Player& operator= (const Player&);
 	
 	//metode get dan set
-	void setMoney();
+	void setMoney(int);
 	/*
 	Mengisi uang untuk player
 	*/
@@ -96,11 +97,12 @@ class Player {
 	item akan hilang sesuai jumlah
 	*/
 	
-	void move(int,int);
+	void move(int);
 	/*
 	Prosedur untuk pergerakan dari player dimana jika sedang menghadap atas dan ke kiri,
-	maka prosedur akan membuat arah menjadi ke kiri dulu dengan mengurangi gerakan, baru
-	bergerak ke kiri
+	maka prosedur akan membuat arah menjadi ke kiri dulu , baru bergerak ke kiri, dan jika
+	sudah pada arah yang benar, maka player akan bergerak ke grid di depannya dengan pengecekan
+	apakah grid bisa dilalui.
 	*/
 	
 	void harvest();
@@ -137,7 +139,6 @@ class Player {
 	Area * curArea; //area player berada
 	Inventory inventory; //inventory dari player
 	int money; //jumlah uang
-	Player player; //
 	int arahHadap; //arah hadap player, 1 = atas, 2 = kanan, 3 = bawah, 4 = kiri
 	int status; //status player akibat makanan yang dimakan
 	string nama; //nama dari player
