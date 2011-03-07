@@ -35,21 +35,21 @@ Grid * Player::getFrontGrid() {
 	(*p) = curGrid->getPosisi();
 	
 	if (arahHadap == 1) {
-		temp = p.getY();
+		temp = (*p).getY();
 		temp++;
-		p.setY(temp);
+		(*p).setY(temp);
 	} else if (arahHadap == 2) {
-		temp = p.getX();
+		temp = (*p).getX();
 		temp++;
-		p.setX(temp);
+		(*p).setX(temp);
 	} else if (arahHadap == 3) {
-		temp = p.getY();
+		temp = (*p).getY();
 		temp--;
-		p.setY(temp);
+		(*p).setY(temp);
 	} else {
-		temp = p.getX();
+		temp = (*p).getX();
 		temp--;
-		p.setX(temp);
+		(*p).setX(temp);
 	}
 	
 	front = curArea->getGrid(*p);
