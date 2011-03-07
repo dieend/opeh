@@ -2,7 +2,7 @@
 #define item
 
 class item{
-//desktripsi umum kelas item: kelas item digunakan untuk memberikan harga dari item dan tipe dari item.
+//deskripsi umum kelas item: kelas item digunakan untuk memberikan harga dari item dan tipe dari item.
 	//Kamus Global
 	private:
 		int efekbuah;//efek dari buah yang dimakan player

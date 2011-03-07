@@ -2,10 +2,11 @@
 #define inventory
 #include "item.h"
 
-class inventory//untuk player saja
+class inventory{
+//untuk player saja
 //deskripsi umum kelas inventory: kelas inventory digunakan untuk melakukan penambahan item, penghapusan item, dan pengecekan isi slot.
 
-	//Kamus Global
+
 	private:
 		int maxslot = 3;//maksimum slot yang dimiliki oleh player
 		int slot[];//array berisi jenis item berukuran maksimum 3
