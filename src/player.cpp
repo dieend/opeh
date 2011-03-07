@@ -32,13 +32,14 @@ static Player* Player::getInstances() {
 
 Grid * Player::getFrontGrid() {
 /*
-	maksud lu kyk gini Din??
+	Maksud lu gini y din??
 */
+	Grid* front = curGrid;
 	Point* p = new Point();
 	int temp;
 	
 	
-	p = front.getPosisi();
+	p = curGrid.getPosisi();
 	
 	if (arahHadap == 1) {
 		temp = p.getY();
@@ -58,7 +59,7 @@ Grid * Player::getFrontGrid() {
 		p.setX(temp);
 	}
 	
-	Grid* front = curArea->getGrid(p);
+	front = curArea->getGrid(p);
 	return front;
 }
 
