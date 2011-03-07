@@ -6,9 +6,9 @@ class inventory//untuk player saja
 	friend class item;
 	//Kamus Global
 	private:
-		int maxslot;//maksimum slot yang bisa diisi oleh player
-		vector<int> jumlah;//vector yang berisi list jumlah item yang berada di inventory
-		vector<item> slot;//vector yang berisi list jenis item yang berada di inventory
+		int maxslot = 3;//maksimum slot yang dimiliki oleh player
+		int slot[];//array berisi jenis item berukuran maksimum 3
+		int total[];//array berisi jumlah item berukuran maksimum 3
 	
 	public:
 		inventory();//konstruktor
