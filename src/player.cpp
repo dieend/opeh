@@ -1,13 +1,43 @@
 #include "player.h"
+#include <string.h>
 
 Player::Player () {
 }
 
-Player::Player (Inventory i, int uang) {
+Player::Player (Inventory i, int uang, string name) {
+	inventory = i;
+	money = uang;
+	nama = name;
+	
+}
+
+//cctor
+Player::Player(const Player & chara) {
+	nama = chara.nama;
+	money = chara.money;
+	inventory = chara.inventory;
+	curGrid = chara.curGrid;
+	curArea = chara.curArea;
+	status = chara.status;
+	arahHadap = chara.arahHadap;
 }
 
 Player::~Player () {
 }
+
+//operator=
+Player& Player::operator= (const Player& chara) {
+	nama = chara.nama;
+	money = chara.money;
+	inventory = chara.inventory;
+	curGrid = chara.curGrid;
+	curArea = chara.curArea;
+	status = chara.status;
+	arahHadap = chara.arahHadap;
+	
+	return (*this);
+}
+	
 
 void Player::setMoney(int x)	{
 	/*
@@ -60,7 +90,7 @@ void Player::setStatus(Item a) {
 /*
 
 */
-	status = a;
+	//status = a;
 }
 
 int Player::getStatus() {
@@ -70,6 +100,20 @@ int Player::getStatus() {
 	return status;
 }
 
+void Player::setName(string as) {
+/*
+Mengisi nama dari player
+*/
+	nama = as;
+}
+	
+string Player::getName() {
+/*
+Mengambil nama dari player
+*/
+	return nama;
+}
+
 //metode umum untuk Player
 void Player::plow() {
 /*
@@ -77,14 +121,16 @@ void Player::plow() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
+	Plant* tanaman;
 	
-	tipe = front.getType();
+	tipe = front->getType();
 	if (tipe == 0) {
-		front.setFase(1);
+		front->setFase(1);
 	} else if (tipe == 5) {
-		if (front.getFase() == 2) {
-			front.setType(0);
-			front.setFase(1);
+		tanaman = (Plant*)front;
+		if (tanaman->getFase() == 2) {
+			tanaman->setType(0);
+			tanaman->setFase(1);
 		}
 	}
 }
@@ -95,12 +141,14 @@ void Player::slash() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
+	Plant* tanaman;
 	
-	tipe = front.getType();
+	tipe = front->getType();
 	if (tipe == 5) {
-		if (front.getFase() == 3) {
-			front.setFase(0);
-			front.setType(0);
+		tanaman = (Plant*)front;
+		if (tanaman->getFase() == 3) {
+			tanaman->setFase(0);
+			tanaman->setType(0);
 		}
 	}
 }
@@ -112,11 +160,13 @@ void Player::water() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
+	Plant* tanaman;
 	
-	tipe = front.getType();
+	tipe = front->getType();
 	if (tipe == 5) {
-		if (front.isWatered() == 0) {
-			front.setSiram();
+		tanaman = (Plant*)front;
+		if (tanaman->isWatered() == 0) {
+			tanaman->setSiram();
 		}
 	}
 }
@@ -144,13 +194,15 @@ void Player::put(int noSlot,int jumlah) {
 	int tipe;
 	int fase;
 	Grid* front = getFrontGrid();
+	Plant* tanaman;
 	Item item;
 	
-	tipe = front.getTipe();
-	if (tipe == 0) {
-		fase = front.getFase();
-		front.setTipe(5);
-		front.setFase(fase);
+	tipe = front->getTipe();
+	fase = front->getFase();
+	if ((tipe == 0) && (fase == 1)) {
+		front->setTipe(5);
+		tanaman = (Plant*)front;
+		tanaman->setFase(0);
 		inventory.deleteItem(noSlot,jumlah);
 	} else if (tipe == 8) {
 		item = inventory.slot[noSlot];
@@ -161,28 +213,60 @@ void Player::put(int noSlot,int jumlah) {
 	}
 }
 
-void Player::move(int arah,int jumlahStep) {
+void Player::move(int arah) {
 /*
 
 */
+	int tipe;
+	Grid* front = getFrontGrid();
+	Plant* tanaman;
 	
+	tipe = front->getType();
+	if (arahHadap == arah) {
+		if ((tipe == 0) || (tipe == 3)) {
+			curGrid = front;
+		} else //throw "Tidak bisa dilalui";
+	} else {
+		arahHadap = arah;
+	}
+}
 
-void harvest();
+void Player::harvest() {
 /*
 
 */
+	int tipe;
+	int fase;
+	Grid* front = getFrontGrid();
+	Plant* tanaman;
+	
+	tipe = front->getType();
+	if (tipe == 5) {
+		tanaman = (Plant*)front;
+		fase = tanaman->getFase();
+		if ((fase == 4) || (fase == 5)) {
+			tanaman->setPanen();
+		}
+	}
+}
 
-void sellItem(Item);
+void Player::sellItem(Item i) {
 /*
 
 */
+	money = money + i.getCost();
+}
 
-void buyItem(Item);
+void Player::buyItem(Item i) {
 /*
 
 */
+	money = money - i.getCost();
+}
 
-void teleport(Area);
+void Player::teleport(Area destination) {
 /*
 
 */
+	(*curArea) = destination; //masih belum lengkap
+}
