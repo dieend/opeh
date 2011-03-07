@@ -1,0 +1,20 @@
+Septu:
+•getFrontGrid:
+gridnya masih nunjuk ke curgrid, yang dilakukan hanya mengubah isi curgrid. harusnya mengubah pointernya untuk menunjuk grid yang didepannya. harusnya digunakan method get grid yang dimiliki oleh CurArea. Kan curArea tipenya pointer ke sebuah objek area. Jadi lu harusnya curGrid = curArea->getGrid(p). getGrid kan returnnya Grid *? getFrontGrid returnya juga Grid* kan? Jadinya sama kan?. Sip. Kalau ga ngerti tanya lagi.
+•Plow:
+Grid* front = *this.getFrontGrid(); nya ga perlu pake this. Langsung aja Grid* front = getFrontGrid() bisa kok. Trus daripada make *this.getFrontGrid() mending make this->getFrontGrid() biar lebih keliatan. Biar ga ambigu apakah * nya untuk this atau untuk this.getFrontGrid().
+
+Nugraha:
+•Inventory
+Kenapa ada friend class item dari inventory??? Ga perlu lho. Diinclude aja header itemnya. Trus ya udah deklarasikan sebagai objek dari inventory. Trus define header antara item dan inventory jangan lupa dibedakan.
+•Item
+Untuk item, kayanya perlu copy construktor dengan parameter 4 int yang nge assign ke atributnya.  Atau ada method set set untuk yang lainnya juga.
+
+
+Onta:
+•Punya mu kok get set semua ya?
+•Oh iya! Ini, tambah ostream& operator<< deh. Jadi ntar kalau di cout << grid bakal keluar karakternya. Paling if-if doang. Ntar gw cari cara ngewarnainnya deh, bareng kita buatnya.
+
+
+Novan & Prama:
+•Mana nih?
