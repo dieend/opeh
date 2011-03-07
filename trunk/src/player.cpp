@@ -129,12 +129,12 @@ void Player::eat(int numInv) {
 	int eff;
 	if (inventory.cekSlot(numInv)) {
 		item = inventory.slot[numInv];
-		inventory.deleteItem(numInv,1);
-	
+		inventory.deleteItem(numInv,1);	
 		eff = item.getEfekBuah();
 	
 	
 	if (efTime == 0) {
+	}
 }
 
 void Player::put(int noSlot,int jumlah) {

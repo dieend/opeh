@@ -4,7 +4,7 @@
 
 class Area {
 private:
-	Grid grid[10][10];
+	Grid *grid[10][10];
 	/*
 		Merupakan array dari Grid yang berukuran 10x10.
 	*/
