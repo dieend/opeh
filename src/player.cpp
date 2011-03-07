@@ -32,9 +32,8 @@ static Player* Player::getInstances() {
 
 Grid * Player::getFrontGrid() {
 /*
-
+	maksud lu kyk gini Din??
 */
-	Grid* front = curGrid;
 	Point* p = new Point();
 	int temp;
 	
@@ -59,7 +58,7 @@ Grid * Player::getFrontGrid() {
 		p.setX(temp);
 	}
 	
-	front.setPosisi(p);
+	Grid* front = curArea->getGrid(p);
 	return front;
 }
 
