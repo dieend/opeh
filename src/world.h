@@ -42,7 +42,6 @@ public:
 	World(World&); // cctor
 	virtual ~World(); // dtor
 	World& operator=(const World&); // operator =
-	
 	friend ostream& operator<<(ostream&,const World&);
 	/* Stream operator untuk cout. Bakal menampilkan area secara keseluruhan. Dengan meng-cout World
 		maka user dapat melihat keadaan seluruh grid pada area player berada saat tersebut.
@@ -65,6 +64,8 @@ public:
 	/* Mengembalikan pointer ke kurcaci sesuai parameter
 		0 kurcaci water, 1 kurcaci harvest, 2 kurcaci slash
 	*/
+	Time* getTime();
+	Player* getPlayer();
 	void kurcaciWork();
 	/* Membuat kurcaci melakukan pekerjaan yang dilakukan setiap action player terjadi
 	*/

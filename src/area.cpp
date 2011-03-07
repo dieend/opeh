@@ -4,6 +4,12 @@
 #define TOKO 2
 #define G((i),(j),(n)) grid[i][j] = new Grid(n)
 
+Area::getGrid(int x, int y) {
+	return grid[x][y];
+}
+Area::getGrid(Point p) {
+	return grid[p.getX()][p.getY];
+}
 Area::Area():typeArea(0) {
 	for (int i=0; i<10; i++) {
 		for (int j=0; j<10; j++) {

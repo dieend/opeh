@@ -1,0 +1,33 @@
+Onta: 
+	>grid_lahan:
+	itu if-if mu salah lho tanda kurungnya kurang :p. ama di cctornya, variablenya ga sama dengan parameter.
+diheadernya, iswaterednya masih ga ada type.
+	>grid_tanaman:
+	kayaknya kita bakal butuh cctor dengan parameter item/bibit. Jadi grid tanamannya itu dibuat berdasarkan spesifikasi item yang dimiliki.
+	Oia, nama kelasnya awalnya pake huruf gede dong. Jadi GridLahan atau Grid_Lahan gitulah ya. Thx
+Novan:
+	>Map:
+	kenapa arraynya lu buat dinamis? Langsung aja dibuat int arr[12][13] juga gapapa kalau diujung2nya dialokasikannya selalu segitu. Haha
+	>nextmove:
+	Parameternya jangan dwarf, tapi dwarf&. Kalau ga bakal dilakukan cctor
+	>destruktor:
+	kalau udah di dtor ngapain status nya dibuat 0? toh objeknya udah ga ada lagi -.-" selain pointer ga ada hal khusus yang harus dilakukan haha
+
+Septu:
+	Onta ngeganti kelas Plant jadi grid_plant.. Trus untuk yang polymorphismnya itu aku masih salah neranginnya deh. Besok aku coba terangin lagi.
+
+
+Nugraha:
+	>Toko:
+	listitem() nya, itu bakal nulisin "Barang1, harganya adalah 1000" kalau misal tipeitem =1 dan harga = 1000. Oia, convention penulisan namanya masih salah tuh. Harusnya kalau kelas dideklarasi dengan kapital huruf pertamanya. Trus kalau method dan atribut, huruf pertamanya huruf kecil tapi kata berikutnya huruf besar. Jadi kalau getcost itu yang bener getCost dan item itu harusnya Item. Orang jadi salah manggil lho kalau salah walau cuma besar kecil. Dan itu bakal jadi kesalahan yang ngebuat repot.trus toko.h nya mana? Kan atribut toko array of item, kok jadi ada atribut tipeItem? Kan bisa didapat tipeItem dari Item. Item kan udah nyimpan tipe Itemnya apa. Trus nampilinnya jangan hanya nama item sama harga, jelasin juga itu bibit apa, hasil panennya kalau dimakan gimana, dimusim apa aja bisa ditanam. Samain dengan Onta mengenai deskripsinya, diskusi bareng aja. Trus jangan pakai kalimat aja biar ringkas tampilannya. contohnya gini:
+
+Mangga
+harga: xxxxx	musim: xxxxxx
+efek: menambah energi jadi 10 act per 10min
+
+Racun
+harga: xxxx musim: xxxx
+efek: ngebunuh hama, kalau dimakan jadi sakit #ini ngasal haha
+
+Prama:
+	>good luck dengan dokumennya ya. Ntar aku bantu nyicil deh Gamenya. masih belum mulai ya?

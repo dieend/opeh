@@ -29,14 +29,14 @@ World::World(){
 World::World(World& world) {
 	// cctor
 	weather 	= world.weather;
-	time 		= new Time(*(world.time));
-	player 		= new Player(*(world.player));
-	area[RUMAH] = new Area(*(world.area[RUMAH]));
-	area[LAHAN] = new Area(*(world.area[LAHAN]));
-	area[TOKO ] = new Area(*(world.area[TOKO ]));
-	kurcaci[HARVEST]= new Kurcaci(HARVEST);
-	kurcaci[WATER] 	= new Kurcaci(WATER);
-	kurcaci[SLASH]	= new Kurcaci(SLASH);
+	time 		= new Time(*(world.getTime()));
+	player 		= new Player(*(world.getPlayer()));
+	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
+	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
+	area[TOKO ] = new Area(*(world.getArea(TOKO )));
+	kurcaci[HARVEST]= new Kurcaci(*(world.getKurcaci(HARVEST)));
+	kurcaci[WATER] 	= new Kurcaci(*(world.getKurcaci(WATER)));
+	kurcaci[SLASH]	= new Kurcaci(*(world.getKurcaci(SLASH)));
 }
 
 World::~World() {
@@ -52,14 +52,14 @@ World::~World() {
 }
 World& World::operator=(const World& world) {
 	weather 	= world.weather;
-	time 		= new Time(*(world.time));
-	player 		= new Player(*(world.player));
-	area[RUMAH] = new Area(*(world.area[RUMAH]));
-	area[LAHAN] = new Area(*(world.area[LAHAN]));
-	area[TOKO ] = new Area(*(world.area[TOKO ]));
-	kurcaci[HARVEST]= new Kurcaci(HARVEST);
-	kurcaci[WATER] 	= new Kurcaci(WATER);
-	kurcaci[SLASH]	= new Kurcaci(SLASH);
+	time 		= new Time(*(world.getTime()));
+	player 		= new Player(*(world.getPlayer()));
+	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
+	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
+	area[TOKO ] = new Area(*(world.getArea(TOKO )));
+	kurcaci[HARVEST]= new Kurcaci(*(world.getKurcaci(HARVEST)));
+	kurcaci[WATER] 	= new Kurcaci(*(world.getKurcaci(WATER)));
+	kurcaci[SLASH]	= new Kurcaci(*(world.getKurcaci(SLASH)));
 	return (*this);
 }
 
@@ -104,9 +104,9 @@ ostream& operator<<(ostream& c,const World* world){
 		char tmp[100];
 		sprintf(tmp,"%10sDesa Opeh%10s\n","s","s");
 		c << judul << tmp << white;
-		if (world->player->getCurArea()->typeArea == 0) c << "Rumah:\n";
-		if (world->player->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n";
-		c << *(world->player->getCurArea());
+		if (world->getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n";
+		if (world->getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n";
+		c << *(world->getPlayer()->getCurArea());
 	} else {
 		c << "> New Game\n\n";
 		c << "> Load Game\n\n\n\n\n\n";
