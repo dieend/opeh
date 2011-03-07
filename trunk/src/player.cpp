@@ -3,17 +3,17 @@
 Player::Player () {
 }
 
-//Player::Player (Inventory i) {
-//}
+Player::Player (Inventory i, int uang) {
+}
 
 Player::~Player () {
 }
 
-void Player::setMoney()	{
+void Player::setMoney(int x)	{
 	/*
 	
 	*/
-	money = 2000;
+	money = x;
 }
 
 int Player::getMoney() {
@@ -23,23 +23,16 @@ int Player::getMoney() {
 	return money;
 }
 
-static Player* Player::getInstances() {
-/*
-
-*/
-	return player;
-}
-
 Grid * Player::getFrontGrid() {
 /*
 	Maksud lu gini y din??
 */
-	Grid* front = curGrid;
+	Grid* front;
 	Point* p = new Point();
 	int temp;
 	
 	
-	p = curGrid.getPosisi();
+	(*p) = curGrid->getPosisi();
 	
 	if (arahHadap == 1) {
 		temp = p.getY();
@@ -59,11 +52,11 @@ Grid * Player::getFrontGrid() {
 		p.setX(temp);
 	}
 	
-	front = curArea->getGrid(p);
+	front = curArea->getGrid(*p);
 	return front;
 }
 
-void Player::setStatus(int a) {
+void Player::setStatus(Item a) {
 /*
 
 */
@@ -83,15 +76,15 @@ void Player::plow() {
 
 */
 	int tipe;
-	Grid* front = *this.getFrontGrid();
+	Grid* front = getFrontGrid();
 	
 	tipe = front.getType();
 	if (tipe == 0) {
 		front.setFase(1);
 	} else if (tipe == 5) {
 		if (front.getFase() == 2) {
-			front.setFase(0);
 			front.setType(0);
+			front.setFase(1);
 		}
 	}
 }
@@ -101,7 +94,7 @@ void Player::slash() {
 
 */
 	int tipe;
-	Grid* front = *this.getFrontGrid();
+	Grid* front = getFrontGrid();
 	
 	tipe = front.getType();
 	if (tipe == 5) {
@@ -118,18 +111,17 @@ void Player::water() {
 
 */
 	int tipe;
-	Grid* front = *this.getFrontGrid();
+	Grid* front = getFrontGrid();
 	
 	tipe = front.getType();
 	if (tipe == 5) {
 		if (front.isWatered() == 0) {
-			front.setSiram() == 1
-			front.getFase == 
+			front.setSiram();
 		}
 	}
 }
 
-void eat(int numInv) {
+void Player::eat(int numInv) {
 /*
 
 */
@@ -145,15 +137,35 @@ void eat(int numInv) {
 	if (efTime == 0) {
 }
 
-void put(int,int);
+void Player::put(int noSlot,int jumlah) {
 /*
 
 */
+	int tipe;
+	int fase;
+	Grid* front = getFrontGrid();
+	Item item;
+	
+	tipe = front.getTipe();
+	if (tipe == 0) {
+		fase = front.getFase();
+		front.setTipe(5);
+		front.setFase(fase);
+		inventory.deleteItem(noSlot,jumlah);
+	} else if (tipe == 8) {
+		item = inventory.slot[noSlot];
+		inventory.deleteItem(noSlot,jumlah);
+		sellItem(item);
+	} else {
+		inventory.deleteItem(noSlot,jumlah);
+	}
+}
 
-void move(int,int);
+void Player::move(int arah,int jumlahStep) {
 /*
 
 */
+	
 
 void harvest();
 /*
