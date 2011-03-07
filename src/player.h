@@ -132,7 +132,7 @@ class Player {
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
 	Toko -> Lahan -> Rumah
 	*/
-	
+	Area * getCurArea() const;
 	
 	private :
 	Grid * curGrid; //grid player berada

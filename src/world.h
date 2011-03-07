@@ -44,37 +44,29 @@ public:
 	World& operator=(const World&); // operator =
 	
 	friend ostream& operator<<(ostream&,const World&);
-	/*
-		Stream operator untuk cout. Bakal menampilkan area secara keseluruhan. Dengan meng-cout World
+	/* Stream operator untuk cout. Bakal menampilkan area secara keseluruhan. Dengan meng-cout World
 		maka user dapat melihat keadaan seluruh grid pada area player berada saat tersebut.
 	*/
-	
 	static void save(const string&,const World&); 
-	/*
-		Procedure static yang menyimpan world direference di parameter ke file dengan string pathFile
+	/* Procedure static yang menyimpan world direference di parameter ke file dengan string pathFile
 	*/
 	static World* load(const string&);  
-	/*
-		Procedure yang mengembalikan address world yang udah diinstansiasi dan 
+	/* Procedure yang mengembalikan address world yang udah diinstansiasi dan 
 		sama seperti file yang diload
 	*/
 	void setWeather();
-	/*
-		Merandom cuaca untuk hari itu. Kemudian melakukan efeknya dengan method doWeather()
+	/* Merandom cuaca untuk hari itu. Kemudian melakukan efeknya dengan method doWeather()
 	*/
 	Area* getArea(int);
-	/*
-		Mengembalikan pointer yang menunjuk ke area sesuai parameter. 
+	/* Mengembalikan pointer yang menunjuk ke area sesuai parameter. 
 		0 untuk rumah, 1 untuk lahan, 2 untuk toko
 	*/
 	Kurcaci* getKurcaci(int);
-	/*
-		Mengembalikan pointer ke kurcaci sesuai parameter
+	/* Mengembalikan pointer ke kurcaci sesuai parameter
 		0 kurcaci water, 1 kurcaci harvest, 2 kurcaci slash
 	*/
 	void kurcaciWork();
-	/*
-		Membuat kurcaci melakukan pekerjaan yang dilakukan setiap action player terjadi
+	/* Membuat kurcaci melakukan pekerjaan yang dilakukan setiap action player terjadi
 	*/
 };
 #endif

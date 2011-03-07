@@ -20,6 +20,7 @@ class grid
 	// 6 = save
 	// 7 = selling box
 	// 8 = inventory box
+	// 9 = unstepable (meja,dinding,barang2)
 	int	fase;
 	// fase grid.
 	// lahan kosong
@@ -40,6 +41,8 @@ class grid
 	grid();
 	grid(point,int,int);
 	// constructor
+	grid(int,int,int);
+	// copy constructor dengan parameter x,y, dan tipe. fase dibuat 0.
 	grid(const grid&);
 	// copy constructor
 	virtual ~grid();
