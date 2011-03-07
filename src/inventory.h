@@ -1,9 +1,10 @@
-#ifndef item
-#define item
+#ifndef inventory
+#define inventory
+#include "item.h"
 
 class inventory//untuk player saja
 //deskripsi umum kelas inventory: kelas inventory digunakan untuk melakukan penambahan item, penghapusan item, dan pengecekan isi slot.
-	friend class item;
+
 	//Kamus Global
 	private:
 		int maxslot = 3;//maksimum slot yang dimiliki oleh player

@@ -1,9 +1,9 @@
-#ifndef item
-#define item
+#ifndef toko
+#define toko
+#include "item.h"
 
 class toko{
 //deskripsi umum kelas toko: kelas toko digunakan untuk menampilkan vector yang berisi listItem yang dijual di toko 
-	friend class item;
 	//Kamus Global
 	
 	//Method yang dipakai
