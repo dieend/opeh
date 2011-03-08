@@ -2,13 +2,13 @@
 #define RUMAH 0
 #define LAHAN 1
 #define TOKO 2
-#define G((i),(j),(n)) grid[i][j] = new Grid(n)
+#define G(i,j,n) grid[(i)][(j)]=new Grid((i),(j),(n))
 
-Area::getGrid(int x, int y) {
+Grid * Area::getGrid(int x, int y) {
 	return grid[x][y];
 }
-Area::getGrid(Point p) {
-	return grid[p.getX()][p.getY];
+Grid * Area::getGrid(Point p) {
+	return grid[p.getX()][p.getY()];
 }
 Area::Area():typeArea(0) {
 	for (int i=0; i<10; i++) {
@@ -18,13 +18,13 @@ Area::Area():typeArea(0) {
 	}	
 }
 
-Area::Area(const Area& area): typeArea(area.typeArea) {
-	for (int i=0; i<10; i++) {
-		for (int j=0; j<10; j++) {
-			grid[i][j] = new Grid(*(area.grid[i][j]));
-		}
-	}	
-}
+// Area::Area(const Area& area): typeArea(area.typeArea) {
+	// for (int i=0; i<10; i++) {
+		// for (int j=0; j<10; j++) {
+			// grid[i][j] = new Grid(*(area.grid[i][j]));
+		// }
+	// }	
+// }
 
 Area::~Area(){
 	for (int i=0; i<10; i++) {
@@ -34,7 +34,7 @@ Area::~Area(){
 	}	
 }
 
-Area::Area(int& tipe)
+Area::Area(int tipe)
 	: typeArea(tipe) {
 	if (tipe == RUMAH) {
 		G(0,0,2);G(0,1,9);G(0,2,6);G(0,3,9);G(0,4,2);G(0,5,2);G(0,6,2);G(0,7,2);G(0,8,2);G(0,9,2);
@@ -79,61 +79,62 @@ Area::Area(int& tipe)
 	}
 }
 
-string rumah[10] = {
+string peta_rumah[10] = {
 		".[-]......",
 		"*.........",
 		"*.........",
-		"..../\n..]",
-		"...n\/...]",
+		"..../\\n..]",
+		"...n\\/...]",
 		"..........",
 		"BBB.......",
 		"BBB.......",
 		"BBB...III.",
 		"BBB...III."
-		}
-string toko[10] = {
-		"&..%%.#[-]"
-		"%&....#..*"
-		"&.....#..*"
-		"......#..."
-		"......#<.."
-		"......#..v"
-		"n/\n..#.**"
-		"n\/n..#***"
-		"n/\n..#.**"
-		"n\/n..#***"
-}
+		};
+string peta_toko[10] = {
+		"&..%%.#[-]",
+		"%&....#..*",
+		"&.....#..*",
+		"......#...",
+		"......#<..",
+		"......#..v",
+		"n/\\n..#.**",
+		"n\\/n..#***",
+		"n/\\n..#.**",
+		"n\\/n..#***"
+};
 		
-ostream& operator<<(ostream& c,const Area* area) {
-	if (area->tipeArea==0) {
+ostream& operator<<(ostream& c,Area* area) {
+	if (area->typeArea==0) {
 		c << dinding << "+----------+\n|" << white;
 		for (int i=0; i<10; i++) {
 			for(int j=0; j<10; j++) {
-				if (area->grid[i][j]->getType() == 1) {
-					c << lantai << (area->grid[i][j]) << white;
+				if (area->getGrid(i,j)->getType() == 1) {
+					c << lantai << (area->getGrid(i,j)) << white;
 				} else {
-					c << lantai << rumah[i][j] << white;
+					c << lantai << peta_rumah[i][j] << white;
 				}
 			}
-			c << endl
+			c << endl;
 		}
 		c << dinding << "+----------+\n|" << white;
-	} else if (area->tipeArea==1) {
+	} else if (area->typeArea==1) {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				c << (area->grid[i][j]);
+				c << (area->getGrid(i,j));
 			}
 		}
-	} else if (area->tipeArea==2) {
+	} else if (area->typeArea==2) {
 		c << dinding << "+----------+\n|" << white;
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				if (area->grid[i][j]->getType() == 1) {
-					c << toko << (area->grid[i][j]) << white;
+				if (area->getGrid(i,j)->getType() == 1) {
+					c << toko << (area->getGrid(i,j)) << white;
 				} else {
-					c << toko << toko[i][j] << white;
+					c << toko << peta_toko[i][j] << white;
 				}
 			}
+			c << endl;
 		}
 		c << dinding << "+----------+\n|" << white;
 	}

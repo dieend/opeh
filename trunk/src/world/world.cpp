@@ -20,9 +20,9 @@ World::World(){
 	area[LAHAN] 	= new Area(LAHAN);
 	area[TOKO ] 	= new Area(TOKO );
 	player 			= new Player();
-	kurcaci[HARVEST]= new Kurcaci(HARVEST);
-	kurcaci[WATER] 	= new Kurcaci(WATER);
-	kurcaci[SLASH]	= new Kurcaci(SLASH);
+	dwarf[HARVEST]	= new Dwarf(HARVEST);
+	dwarf[WATER] 	= new Dwarf(WATER);
+	dwarf[SLASH]	= new Dwarf(SLASH);
 	time 			= new Time();
 }
 
@@ -34,9 +34,9 @@ World::World(World& world) {
 	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
 	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
 	area[TOKO ] = new Area(*(world.getArea(TOKO )));
-	kurcaci[HARVEST]= new Kurcaci(*(world.getKurcaci(HARVEST)));
-	kurcaci[WATER] 	= new Kurcaci(*(world.getKurcaci(WATER)));
-	kurcaci[SLASH]	= new Kurcaci(*(world.getKurcaci(SLASH)));
+	dwarf[HARVEST]= new Dwarf(*(world.getKurcaci(HARVEST)));
+	dwarf[WATER] 	= new Dwarf(*(world.getKurcaci(WATER)));
+	dwarf[SLASH]	= new Dwarf(*(world.getKurcaci(SLASH)));
 }
 
 World::~World() {
@@ -45,25 +45,25 @@ World::~World() {
 	delete area[RUMAH];
 	delete area[LAHAN];
 	delete area[TOKO];
-	delete kurcaci[HARVEST];
-	delete kurcaci[WATER];
-	delete kurcaci[SLASH];
+	delete dwarf[HARVEST];
+	delete dwarf[WATER];
+	delete dwarf[SLASH];
 	// dtor
 }
-World& World::operator=(const World& world) {
+World& World::operator=(World& world) {
 	weather 	= world.weather;
 	time 		= new Time(*(world.getTime()));
 	player 		= new Player(*(world.getPlayer()));
 	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
 	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
 	area[TOKO ] = new Area(*(world.getArea(TOKO )));
-	kurcaci[HARVEST]= new Kurcaci(*(world.getKurcaci(HARVEST)));
-	kurcaci[WATER] 	= new Kurcaci(*(world.getKurcaci(WATER)));
-	kurcaci[SLASH]	= new Kurcaci(*(world.getKurcaci(SLASH)));
+	dwarf[HARVEST]= new Dwarf(*(world.getKurcaci(HARVEST)));
+	dwarf[WATER] 	= new Dwarf(*(world.getKurcaci(WATER)));
+	dwarf[SLASH]	= new Dwarf(*(world.getKurcaci(SLASH)));
 	return (*this);
 }
 
-void World::save(const string& pathFile,const World& world){
+void World::save(const string& pathFile,World& world){
 	// menulis kondisi world ke file
 	ofstream fout(pathFile.c_str(), ios::out | ios::binary);
 	fout.seekp(0);
@@ -72,12 +72,14 @@ void World::save(const string& pathFile,const World& world){
 	fout.close();
 }
 
-void World::load(const string& pathFile, World& world){
+World* World::load(const string& pathFile){
+	World* world = new World();
 	ifstream fin (pathFile.c_str(), ios::in | ios::binary);
 	fin.seekg(0);
 	// masih salah
 	fin.read((char*)(&world), sizeof(World));
 	fin.close();
+	return world;
 }
 
 void World::doWeather() {
@@ -98,7 +100,7 @@ void World::setWeather() {
 	doWeather();
 }
 
-ostream& operator<<(ostream& c,const World* world){
+ostream& operator<<(ostream& c,World* world){
 	// belum diimplementasi
 	if (world != NULL) {
 		char tmp[100];
@@ -116,11 +118,11 @@ ostream& operator<<(ostream& c,const World* world){
 }
 
 Area* getArea(int n) {
-	return (area[n]);
+	return (this->area[n]);
 }
 
-Kurcaci* getKurcaci(int n) {
-	return kurcaci[n];
+Dwarf* getKurcaci(int n) {
+	return (this->dwarf[n]);
 }
 
 void kurcaciWork(){
