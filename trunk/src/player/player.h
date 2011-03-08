@@ -114,13 +114,13 @@ class Player {
 	grid akan menjadi lahan
 	*/
 	
-	void sellItem(Item);
+	void sellItem(int,int);
 	/*
 	Prosedur untuk menjual item, dimana uang akan bertambah sesuai
 	dengan penjualan dan jenis barang yang dijual
 	*/
 	
-	void buyItem(Item);
+	void buyItem(string,int);
 	/*
 	Prosedur untuk membeli item, dimana uang akan berkurang sesuai
 	dengan jumlah dan jenis barang yang dibeli
@@ -132,7 +132,9 @@ class Player {
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
 	Toko -> Lahan -> Rumah
 	*/
-	Area * getCurArea() const;
+	Area * getCurArea() ;
+	Inventory * getInventory();
+	
 	
 	private :
 	Grid * curGrid; //grid player berada
