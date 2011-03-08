@@ -9,8 +9,8 @@ class inventory{
 
 	private:
 		int maxslot = 3;//maksimum slot yang dimiliki oleh player
-		int slot[];//array berisi jenis item berukuran maksimum 3
-		int total[];//array berisi jumlah item berukuran maksimum 3
+		int slot[3];//array berisi jenis item berukuran maksimum 3
+		int total[3];//array berisi jumlah item berukuran maksimum 3
 	
 	public:
 		inventory();//konstruktor
@@ -20,6 +20,5 @@ class inventory{
 		
 		void addItem(item p, int jumlah);//melakukan penambahan item pada vector
 		void deleteItem(item p, int jumlah);//melakukan penghapusan item pada vector
-		int cekslot(int nomorslot);//mengecek isi dari vector, apakah kosong, berisi atau penuh 
 }
 #endif

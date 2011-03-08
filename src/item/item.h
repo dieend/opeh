@@ -14,7 +14,7 @@ class item{
 		//item &operator=(const item&);//operator assignment
 		virtual ~item (); //destructor
 		
-		int getcost(tipeItem int);//memberikan harga dari item
-		int gettipeItem();//memberikan tipe dari item
+		int getcost(int );//memberikan harga dari item
+		int gettipeItem(int );//memberikan tipe dari item
 }
 #endif
