@@ -1,6 +1,6 @@
 #ifndef dwarf_H
 #define dwarf_H
-#include "point.h"
+#include "../point/point.h"
 class dwarf
 {
        friend void nextmove(dwarf,dwarf,dwarf);

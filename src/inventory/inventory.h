@@ -11,7 +11,7 @@ class inventory{
 		int maxslot = 3;//maksimum slot yang dimiliki oleh player
 		int slot[3];//array berisi jenis item berukuran maksimum 3
 		int total[3];//array berisi jumlah item berukuran maksimum 3
-	
+		void listItem();
 	public:
 		inventory();//konstruktor
 		inventory(const inventory&);//copy konstruktor
