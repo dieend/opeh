@@ -4,9 +4,10 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
-#include "time.h"
-#include "area.h"
-#include "player.h"
+#include "../time/time.h"
+#include "../area/area.h"
+#include "../player/player.h"
+#include "../dwarf/dwarf.h"
 using namespace std;
 
 class World{
@@ -23,9 +24,9 @@ private:
 	/*
 		Array yang berisikan pointer yang menunjuk ke objek Area
 	*/
-	Kurcaci* kurcaci[3];
+	Dwarf* dwarf[3];
 	/*
-		Array yang berisi pointer ke objek kurcaci
+		Array yang berisi pointer ke objek dwarf
 	*/
 	int weather;
 	/*
@@ -41,12 +42,12 @@ public:
 	World(); // ctor
 	World(World&); // cctor
 	virtual ~World(); // dtor
-	World& operator=(const World&); // operator =
-	friend ostream& operator<<(ostream&,const World&);
+	World& operator=(World& world); // operator =
+	friend ostream& operator<<(ostream&, World&);
 	/* Stream operator untuk cout. Bakal menampilkan area secara keseluruhan. Dengan meng-cout World
 		maka user dapat melihat keadaan seluruh grid pada area player berada saat tersebut.
 	*/
-	static void save(const string&,const World&); 
+	static void save(const string&,World&); 
 	/* Procedure static yang menyimpan world direference di parameter ke file dengan string pathFile
 	*/
 	static World* load(const string&);  
@@ -60,14 +61,14 @@ public:
 	/* Mengembalikan pointer yang menunjuk ke area sesuai parameter. 
 		0 untuk rumah, 1 untuk lahan, 2 untuk toko
 	*/
-	Kurcaci* getKurcaci(int);
-	/* Mengembalikan pointer ke kurcaci sesuai parameter
-		0 kurcaci water, 1 kurcaci harvest, 2 kurcaci slash
+	Dwarf* getKurcaci(int);
+	/* Mengembalikan pointer ke dwarf sesuai parameter
+		0 dwarf water, 1 dwarf harvest, 2 dwarf slash
 	*/
 	Time* getTime();
 	Player* getPlayer();
 	void kurcaciWork();
-	/* Membuat kurcaci melakukan pekerjaan yang dilakukan setiap action player terjadi
+	/* Membuat dwarf melakukan pekerjaan yang dilakukan setiap action player terjadi
 	*/
 };
 #endif

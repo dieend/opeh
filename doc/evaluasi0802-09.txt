@@ -1,0 +1,22 @@
+>Novan:
+-kelas time konvesi penamaan method dan kelasnya masih salah. -.-" #barunyadar
+-Yang kelas tambahan yang lu buat itu, jadiin kelas didalam kelas dwarf aja bisa ga? kan ga perlu dipake ama kelas2 lain kan?
+
+>Nugraha:
+-Toko dibuat jadi turunan dari grid juga deh. Biar bisa seragam. maksudnya, Area itu bakal jadi array of grid semuanya, tapi ada beberapa yang grid_lahan, grid_plant, ama grid_toko yang disitu bisa dilakukan action.
+-trus kelas inventory itu bisa dipake oleh inventory box ga hanya player. Inventory box yang kalo kita jadi iseng ngebuat. :p dan si inventory box bakal jadi turunan dari grid juga. Tapi itu ntar aja deh.
+-inventory juga perlu punya method yang bisa ngelist item2nya. Mungkin di item bisa ada method getDescription() yang ngembaliin string, trus di inventory ada method listDescription() yang ngembaliin vector of string deskripsi-deskripsi yang ada di inventory.
+
+>Onta:
+-ternyata lu konvensi penamaannya juga masih salah -.-a 
+
+
+>ALL:
+-ternyata masih banyak yang konvensi penamaan. Hati2 ya penamaannya.
+-dimasukin perfolder untuk tiap kelas.. kalau mau include yang difolder lain jadinya kira2 gini: #include "../namaFolder/namaHeader.h". biar rapi diliat dari luar :p haha. Pusing gw ngeliat text dimana2
+-itu disediain sebuah kelas tambahan helper, yang merupakan singleton. Dan isinya method2 yang umum dan mungkin dipake di banyak kelas tapi bukan untuk diturunkan. Contohnya untuk ngewarnain sebuah grid. Area bakal butuh itu, tapi grid juga butuh, world juga butuh. dan kelas2 lain mungkin jg butuh. tapi belum dibuat ahaha baru nyediain :p
+-cara ngompile walau belum disatuin:
+#pertama compile dulu headernya. Jangan lupa diheader itu juga diinclude kelas2 lain yang dibutuhin.
+#setelah tercompile, compile juga header2 lain yang diinclude.
+#compile semua file.cpp yang headernya diinclude tapi tanpa parameter -o. jadinya gini: g++ file1.cpp file2.cpp
+#jadi diharapkan semua kesalahan syntax sederhana hari ini udah ga ada. kecuali yang salah2 polymorphism dan yang rebek2 baru ntar bareng2 aja biar semua bisa ngerti juga

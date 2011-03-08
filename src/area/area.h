@@ -1,6 +1,8 @@
 #ifndef AREA_H
 #define AREA_H
-#include "color.h"
+#include "../helper/color.h"
+#include "../grid/grid.h"
+#include "../point/point.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -14,11 +16,12 @@ public:
 	const int typeArea;
 	/* menandakan jenis Area;
 	*/
-	Area(int& tipe);
+	Area(int tipe);
 	/*  Constructor Area dengan menginstansiasi typeArea dengan tipe.
 		0 rumah, 1 lahan, 2 toko
 		juga menginstansiasi grid dengan tipe jalan.
 	*/
+	// Area(const Area&);
 	Area();
 	/* Default ctor. typeArea = 0
 	*/
@@ -29,7 +32,7 @@ public:
 	/* mengembalikan address grid yang diacu oleh Point
 	*/
 	Grid* getGrid(int,int);
-	friend &ostream operator<<(ostream&,const Area&);
+	friend ostream& operator<<(ostream&,Area&);
 	
 };
 #endif
