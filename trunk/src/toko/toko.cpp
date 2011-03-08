@@ -23,16 +23,16 @@ int toko :: listItem()
 
 	//Algoritma
 	cout<<"Barang yang dijual di toko adalah\n"<<endl;
-	cout<<"Barang"<<tipeItem[0]<<",harganya adalah "<<cost[0]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[1]<<",harganya adalah "<<cost[1]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[2]<<",harganya adalah "<<cost[2]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[3]<<",harganya adalah "<<cost[3]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[4]<<",harganya adalah "<<cost[4]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[5]<<",harganya adalah "<<cost[5]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[6]<<",harganya adalah "<<cost[6]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[7]<<",harganya adalah "<<cost[7]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[8]<<",harganya adalah "<<cost[8]<<"\n"<<endl;
-	cout<<"Barang"<<tipeItem[9]<<",harganya adalah "<<cost[9]<<endl;
+	cout<<"Barang"<<item::gettipeItem(1)<<",harganya adalah "<<item::getcost(1)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(2)<<",harganya adalah "<<item::getcost(2)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(3)<<",harganya adalah "<<item::getcost(3)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(4)<<",harganya adalah "<<item::getcost(4)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(5)<<",harganya adalah "<<item::getcost(5)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(6)<<",harganya adalah "<<item::getcost(6)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(7)<<",harganya adalah "<<item::getcost(7)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(8)<<",harganya adalah "<<item::getcost(8)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(9)<<",harganya adalah "<<item::getcost(9)<<"\n"<<endl;
+	cout<<"Barang"<<item::gettipeItem(10)<<",harganya adalah "<<item::getcost(10)<<endl;
 	
 	return 0;
 }

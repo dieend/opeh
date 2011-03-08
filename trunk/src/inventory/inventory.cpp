@@ -3,38 +3,44 @@
 using namespace std;
 
 
-void inventory :: addItem(item p, int jumlah)
+void inventory :: addItem(int p, int jumlah)
 {	
 	//Kamus Lokal
 	int i=0;//Iterator
+	item r;//sebuah objek berkelas item
+	int total=0;//inisialisasi nilai variabel total=0
 	
 	//Method
 	do{
-		if(p::gettipeItem(slot[i])!=NULL){
-			if(p::gettipeItem(slot[i]) == p::gettipeItem(int tipeItem[])){
+		if(r.gettipeItem(slot[i])!=NULL){
+			if(r.gettipeItem(slot[i]) == r.gettipeItem(p){
 				total[i]=total[i]+jumlah;}
-				i++;
+			else{
+					i++;
+				}
 		}else{
-			slot[i]= p::gettipeItem(int tipeItem[];
-			total[i]=total[i]+jumlah;
-			i++;}
-	}while (i<=maxslot);
+			slot[i]= r.gettipeItem(p);
+			total[i]=total[i]+jumlah;}
+	}while(i<=maxslot);
 }
 	
-void inventory :: deleteItem(item p, int jumlah)
+void inventory :: deleteItem(int p, int jumlah)
 {
 	//Kamus Lokal
-	int j=0;//Iterator
+	int i=0;//Iterator
+	item r;//sebuah objek berkelas item
+	int total=0;//inisialisasi nilai variabel total=0
 	
 	//Method
 	do{
-		if(p::gettipeItem(slot[j])!=NULL){
-			if(p::gettipeItem(slot[j]) == p::gettipeItem(int tipeItem[])){
-				total[j]=total[j]-jumlah;}
+		if(r.gettipeItem(slot[i])!=NULL){
+			if(r.gettipeItem(slot[i]) == r.gettipeItem(p)){
+				total[i]=total[i]-jumlah;}
+			else{
 				i++;
+				}
 		}else{
-			slot[i]= p::gettipeItem(int tipeItem[];
-			total[i]=total[i]-jumlah;
-			i++;}
+			slot[i]= r.gettipeItem(p);
+			total[i]=total[i]-jumlah;}
 	}while (i<=maxslot);
 }
