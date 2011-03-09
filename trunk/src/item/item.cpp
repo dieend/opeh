@@ -7,6 +7,9 @@ Item :: Item()
 	cout<<"ctor Item"<<endl;
 }
 
+Item:: Item(const string&){
+}
+
 Item :: Item(const Item&)
 {
 	cout<<"cctor Item"<<endl;
@@ -31,4 +34,10 @@ int Item :: gettipeItem()
 {
 	//Kamus Lokal
     return type;
+}
+
+int Item::getEfekBuah(){
+}
+
+int Item::getEfekTime(){
 }

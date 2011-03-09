@@ -18,7 +18,7 @@ class Inventory{
 	virtual ~Inventory();//destructor
         
 	void listItem();
-        void addItem(string, int jumlah);//melakukan penambahan item pada vector
+        void addItem(const string&, int jumlah);//melakukan penambahan item pada vector
         void addItem(int p, int jumlah);//melakukan penambahan item pada vector
         void deleteItem(int, int jumlah);//melakukan penghapusan item pada vector
         bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak.
