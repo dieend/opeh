@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../point/point.h"
 #include "map.h"
+#include "fnextmove.cpp"
 using namespace std;
 
 int main()
