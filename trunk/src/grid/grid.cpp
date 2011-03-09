@@ -5,7 +5,7 @@ Grid::Grid()
 
 }
 
-Grid::Grid(point newPosisi,int newType,int newFase)
+Grid::Grid(Point newPosisi,int newType,int newFase)
 {
 	posisi 	= newPosisi;
 	type 	= newType;
@@ -24,7 +24,7 @@ Grid::~Grid()
 
 }
 
-point Grid::getPosisi() const
+Point Grid::getPosisi() const
 {
 	return posisi;
 }
@@ -41,11 +41,8 @@ int	Grid::getType() const
 
 bool Grid::isPlantable() const
 {
-	if type == 0
-		return true;
-	// lahan diwakilkan oleh int 0
-	else
-		return false;
+	if (type == 0) return true;	// lahan diwakilkan oleh int 0
+	else return false;
 }
 
 void Grid::setType(int newType)

@@ -1,11 +1,11 @@
-#include "Grid_Plant.h"
+#include "grid_plant.h"
 
 Grid_Plant::Grid_Plant()
 {
 
 }
 
-Grid_Plant::Grid_Plant(point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newMusim,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
+Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newSeason,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
 {
 	setPosisi(newPosisi);
 	setType(newType);
