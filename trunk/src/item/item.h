@@ -25,6 +25,5 @@ class Item{
                 int getEfekTime();
                 ostream& operator<<(ostream&);
                 bool isBibit();
-                int getCost;
 };
 #endif
