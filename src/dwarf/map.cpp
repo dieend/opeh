@@ -60,6 +60,6 @@ void map::performmap()
   }
 }
 
-void bfsdwarf(dwarf d,deque<int> &dq)
+void bfsdwarf(Dwarf d,deque<int> &dq)
 {
 }

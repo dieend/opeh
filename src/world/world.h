@@ -61,7 +61,7 @@ public:
 	/* Mengembalikan pointer yang menunjuk ke area sesuai parameter. 
 		0 untuk rumah, 1 untuk lahan, 2 untuk toko
 	*/
-	Dwarf* getKurcaci(int);
+	Dwarf* getDwarf(int);
 	/* Mengembalikan pointer ke dwarf sesuai parameter
 		0 dwarf water, 1 dwarf harvest, 2 dwarf slash
 	*/

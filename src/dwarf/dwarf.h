@@ -3,19 +3,19 @@
 #include "../point/point.h"
 class Dwarf
 {
-       friend void nextmove(Dwarf,Dwarf,Dwarf);
+       friend void nextMove(Dwarf,Dwarf,Dwarf);
 public :
        Dwarf(int);
        ~Dwarf();
-       bool dojob();
-       void wakeup();
+       bool doJob();
+       void wakeUp();
        void sleep();
-       int getstatus();
-       void performstatus();
-       void setposition(Point);
-       Point getposition();
-       void setdirection(int);
-       int getdirection();
+       int getStatus();
+       void performStatus();
+       void setPosition(Point);
+       Point getPosition();
+       void setDirection(int);
+       int getDirection();
 private :
         //const point defpos;
         Point cpos;

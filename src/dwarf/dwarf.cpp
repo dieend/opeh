@@ -26,12 +26,12 @@ Dwarf::~Dwarf()
   status=0;
 }
 
-bool Dwarf::dojob()
+bool Dwarf::doJob()
 {
      return 1;
 }
 
-void Dwarf::wakeup()
+void Dwarf::wakeUp()
 {
   status=1;
 }
@@ -41,12 +41,12 @@ void Dwarf::sleep()
   status=0;
 }
 
-int Dwarf::getstatus()
+int Dwarf::getStatus()
 {
   return status;
 }
 
-void Dwarf::performstatus()
+void Dwarf::performStatus()
 {
   cout << type << " ";
   if (status==1)
@@ -55,23 +55,23 @@ void Dwarf::performstatus()
     cout << "sleep.";
 }
 
-void Dwarf::setposition(Point p)
+void Dwarf::setPosition(Point p)
 {
   cpos.setX(p.getX());
   cpos.setY(p.getY());
 }
 
-Point Dwarf::getposition()
+Point Dwarf::getPosition()
 {
   return cpos;
 }
 
-void Dwarf::setdirection(int nd)
+void Dwarf::setDirection(int nd)
 {
   direction=nd;
 }
 
-int Dwarf::getdirection()
+int Dwarf::getDirection()
 {
   return direction;
 }

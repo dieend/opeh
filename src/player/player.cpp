@@ -92,7 +92,6 @@ void Player::setStatus(Item a) {
 */
 	int stat = a.getEfekBuah();
 	
-	if stat
 }
 
 int Player::getStatus() {
@@ -209,11 +208,11 @@ int Player::eat(int numInv) {
 */
 	Item* item;
 	int eff;
-	if (inventory.cekSlot(numInv)) {
-		item = inventory.getSlot(numInv);
-		inventory.deleteItem(numInv,1);	
-		setStatus (*item);
-		return item->getEfekTime();
+	if (inventory.cekSlot(numInv)){
+            item = inventory.getSlot(numInv);
+            inventory.deleteItem(numInv,1);
+            setStatus (*item);
+            return item->getEfekTime();
 	} else {
 		return 0;
 	}
@@ -228,12 +227,12 @@ void Player::put(int noSlot,int jumlah) {
 	Grid* front = getFrontGrid();
 	Grid_Lahan* lahan;
 	
-	tipe = front->getTipe();
+	tipe = front->getType();
 	if (tipe == 0) {
 		lahan = (Grid_Lahan*)front;
 		fase = lahan->getFase();
 		if (fase == 1) {
-			lahan->setTipe(5);
+			lahan->setType(5);
 			delete front;
 			front = new Grid_Plant();
 			front->setFase(0);
@@ -254,7 +253,7 @@ void Player::move(int arah) {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
 	if (arahHadap == arah) {
@@ -274,11 +273,11 @@ void Player::harvest() {
 	int fase;
 	int tipeTanaman;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 5) {
-		tanaman = (Plant*)front;
+		tanaman = (Grid_Plant*)front;
 		fase = tanaman->getFase();
 		if ((fase == 4) || (fase == 5)) {
 			tanaman->setPanen();
@@ -287,7 +286,7 @@ void Player::harvest() {
 			if (tanaman->getFase() == 6) {
 				delete front;
 				front = new Grid_Lahan();
-				front->setTipe(0);
+				front->setType(0);
 				front->setFase(0);
 			}
 		}
@@ -299,7 +298,7 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 
 */
 	Item* item;
-	item = inventory.slot[NoSlot];
+	item = inventory.getSlot(NoSlot);
 	money = money + item->getCost() * Jumlah;
 	inventory.deleteItem(NoSlot,Jumlah);
 }
@@ -313,7 +312,7 @@ void Player::buyItem(string name,int Jumlah) {
 	dummyItem = new Item(name);
 	if (money > (dummyItem->getCost() * Jumlah)) {
 		money = money - dummyItem->getCost() * Jumlah;
-		inventory.addItem(name,jumlah);
+		inventory.addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
 	 delete dummyItem;
 }

@@ -6,7 +6,6 @@ using namespace std;
 class Grid
 // merupakan kotak-kotak pembentuk area
 {
-	private :
 	Point posisi;
 	// posisi Grid.
 	int	type;

@@ -1,168 +1,168 @@
 #include "grid_plant.h"
 
-grid_plant::grid_plant()
+Grid_Plant::Grid_Plant()
 {
 
 }
 
-grid_plant::grid_plant(point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
+Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
 {
 	setPosisi(newPosisi);
 	setType(newType);
 	setFase(newFase);
-	typetanaman		= newTypeTanaman;
+	typeTanaman		= newTypeTanaman;
 	cost			= newCost;
-	happymeter		= newHappyMeter;
-	titikdewasa		= newTitikDewasa;
-	titikpanen		= newTitikPanen;
+	happyMeter		= newHappyMeter;
+	titikDewasa		= newTitikDewasa;
+	titikPanen		= newTitikPanen;
 	umur			= newUmur;
-	panenberulang	= newPanenBerulang;
+	panenBerulang	= newPanenBerulang;
 }
 
-grid_plant::grid_plant(const grid_plant& GP)
+Grid_Plant::Grid_Plant(const Grid_Plant& GP)
 {
 	setPosisi(GP.getPosisi());
 	setType(GP.getType());
-	setFase(G.getFase());
-	typetanaman		= GP.getTypeTanaman();
+	setFase(GP.getFase());
+	typeTanaman		= GP.getTypeTanaman();
 	cost			= GP.getCost();
-	happymeter		= GP.getHappyMeter();
-	titikdewasa		= GP.getTitikDewasa();
-	titikpanen		= GP.getTitikPanen();
+	happyMeter		= GP.getHappyMeter();
+	titikDewasa		= GP.getTitikDewasa();
+	titikPanen		= GP.getTitikPanen();
 	umur			= GP.getUmur();
-	panenberulang	= GP.getPanenBerulang();
+	panenBerulang	= GP.getPanenBerulang();
 }
 
-grid_plant::~grid_plant()
+Grid_Plant::~Grid_Plant()
 {
 
 }
 
-int	plant::getTypeTanaman() const
+int Grid_Plant::getTypeTanaman() const
 // mengeluarkan macam Tanaman.
 {
 	return typeTanaman;
 }
 
-int	plant::getHappyMeter() const
+int	Grid_Plant::getHappyMeter() const
 // mengeluarkan tingkat kebahagiaan tanaman.
 {
-	return happymeter;
+	return happyMeter;
 }
 	
-int plant::getCost() const
+int Grid_Plant::getCost() const
 // mengeluarkan harga tanaman.
 {
 	return cost;
 }
 
-int	plant::getTitikDewasa() const
+int	Grid_Plant::getTitikDewasa() const
 // mengeluarkan titik dewasa tanaman.
 {
-	return titikdewasa;
+	return titikDewasa;
 }
 
-int	plant::getTitikPanen() const
+int	Grid_Plant::getTitikPanen() const
 // mengeluarkan titik panen tanaman.
 {
-	return titikpanen;
+	return titikPanen;
 }
 
-int	plant::getUmur() const
+int	Grid_Plant::getUmur() const
 // mengeluarkan umur tanaman.
 {
 	return umur;
 }
 	
-bool plant::isWatered() const
+bool Grid_Plant::isWatered() const
 // mengeluarkan TRUE jika tanaman sudah disiram.
 {
-	if getFase()%2 == 1
+	if (getFase()%2 == 1)
 		return true;
 	else
 		return false;
 }
 
-bool plant::isBibit() const
+bool Grid_Plant::isBibit() const
 // mengeluarkan TRUE jika tanaman berupa bibit.
 {
-	if getFase() == 0 || getFase() == 1
+	if (getFase() == 0 || getFase() == 1)
 		return true;
 	else
 		return false;
 }
 
-bool isDewasa() const
+bool Grid_Plant::isDewasa() const
 {
-	if getFase() == 2 || getFase() == 3
+	if (getFase() == 2 || getFase() == 3)
 		return true;
 	else
 		return false;
 }
 
-bool isPanen() const
+bool Grid_Plant::isPanen() const
 {
-	if getFase() == 4 || getFase() == 5
+	if (getFase() == 4 || getFase() == 5)
 		return true;
 	else
 		return false;
 }
 
-bool isPanenBerulang() const
+bool Grid_Plant::isPanenBerulang() const
 // mengeluarkan TRUE jika tanaman yang dapat berbuah lagi
 {
-	return panenberulang;
+	return panenBerulang;
 }
 
-void grid_plant::setCangkul();
-void grid_plant::setSlash();
+void Grid_Plant::setCangkul();
+void Grid_Plant::setSlash();
 
-void grid_pant::setSiram()
+void Grid_Plant::setSiram()
 // pengubahan fase tanaman ketika disiram
 // instant change
 {
-	if getFase() != 6 && !isWatered()
+	if (getFase() != 6 && !isWatered())
 		setFase(getFase()+1);
 }
 
-void grid_plant::setPanen()
+void Grid_Plant::setPanen()
 // pengubahan fase tanaman ketika dipanen
 // instant change
 {
-	if isPanenBerulang()
+	if (isPanenBerulang())
 		{
 		setFase(3);
-		setHappyMeter(titikpanen);
-		if titikdewasa + 1 != titikpanen
-			setTitikPanen(titikpanen-1);
+		setHappyMeter(titikPanen);
+		if (titikDewasa + 1 != titikPanen)
+			setTitikPanen(titikPanen-1);
 		}
 	else
 		setFase(6);
 }
 
-void grid_plant::grow()
+void Grid_Plant::grow()
 // mengubah fase pada pergantian hari
 // not instant change
 {
 	setUmur(umur-1);
-	if isWatered
-		setHappyMeter(happymeter+1);
+	if (isWatered())
+		setHappyMeter(happyMeter+1);
 	else
-		setHappyMeter(happymeter-1);
-	if umur == 0
+		setHappyMeter(happyMeter-1);
+	if (umur == 0)
 		setFase(6);
 	else
 		{
-		if isBibit()
+		if (isBibit())
 			{
-			if happymeter == titikdewasa
+			if (happyMeter == titikDewasa)
 				setFase(getFase()+1);
 			else
 				setFase(getFase()-1);
 			}
-		else if isDewasa()
+		else if (isDewasa())
 			{
-			if happymeter == titikpanen
+			if (happyMeter == titikPanen)
 				setFase(getFase()+1);
 			else
 				setFase(getFase()-1);
@@ -170,44 +170,44 @@ void grid_plant::grow()
 		}
 }
 
-void grid_plant::setTypeTanaman(int newTypeTanaman)
+void Grid_Plant::setTypeTanaman(int newTypeTanaman)
 // mengeset macam tanaman.
 {
-	typetanaman		= newTypeTanaman;
+	typeTanaman		= newTypeTanaman;
 }
 
-void grid_plant::setCost(int newCost)
+void Grid_Plant::setCost(int newCost)
 // mengeset harga tanaman.
 {
 	cost			= newCost;
 }
 
-void grid_plant::sethappyMeter(int newHappyMeter)
+void Grid_Plant::setHappyMeter(int newHappyMeter)
 // mengeset tingkat kebahagiaan tanaman.
 {
-	happymeter		= newHappyMeter;
+	happyMeter		= newHappyMeter;
 }
 	
-void grid_plant::setTitikDewasa(int newTitikDewasa)
+void Grid_Plant::setTitikDewasa(int newTitikDewasa)
 // mengeset titik dewasa tanaman.
 {
-	titikdewasa		= newTitikDewasa;
+	titikDewasa		= newTitikDewasa;
 }
 
-void grid_plant::setTitikPanen(int newTitikPanen)
+void Grid_Plant::setTitikPanen(int newTitikPanen)
 // mengeset titik panen tanaman.
 {
-	titikpanen		= newTitikPanen;
+	titikPanen		= newTitikPanen;
 }
 	
-void grid_plant::setUmur(int newUmur)
+void Grid_Plant::setUmur(int newUmur)
 // mengeset umur tanaman.
 {
 	umur			= newUmur;
 }
 
-void grid_plant::setPanenBerulang(bool newPanenBerulang)
+void Grid_Plant::setPanenBerulang(bool newPanenBerulang)
 // mengeset nilai panen berulang.
 {
-	panenberulang	= newPanenBerulang;
+	panenBerulang	= newPanenBerulang;
 }

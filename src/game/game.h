@@ -17,6 +17,6 @@ class Game {
 		void run();
 		void getPerintah();
 		bool doPerintah();
-}
+};
 #endif
 
