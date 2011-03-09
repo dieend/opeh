@@ -3,7 +3,7 @@
 #define KIRI 4
 #define ATAS 1
 #define BAWAH 3
-Game::Run() {
+void Game::Run() {
 	bool notExit;
 	do {
 		cout << world;
@@ -23,7 +23,7 @@ Game::Run() {
 	}while(notExit);
 }
 
-Game::doPerintah() {
+bool Game::doPerintah() {
 	if (world == NULL) {
 		if (perintah == "new") {
 		} else if (perintah == "load") {
@@ -114,8 +114,9 @@ Game::doPerintah() {
 		}
 		world->setWeather();
 	}
+	return true;
 }
-Game::getPerintah(){
+void Game::getPerintah(){
 	//parsing perintah user
 	int x = getch();
 	string tmp;
