@@ -125,7 +125,7 @@ Inventory * Player::getInventory() {
 /*
 
 */
-	return &inventory;
+	return  (& inventory);
 }
 
 void Player::setFrontGrid(Grid * front) {
@@ -166,14 +166,14 @@ void Player::slash() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	grid_plant* tanaman;
+	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 5) {
-		tanaman = (grid_plant*)front;
+		tanaman = (Grid_Plant*)front;
 		if (tanaman->getFase() == 3) {
-			delete tanaman;
-			tanaman = new grid_lahan();
+			delete front;
+			front = new Grid_Lahan();
 			tanaman->setFase(0);
 			tanaman->setType(0);
 		}
@@ -191,7 +191,7 @@ void Player::water() {
 	
 	tipe = front->getType();
 	if (tipe == 5) {
-		tanaman = (grid_plant*)front;
+		tanaman = (Grid_Plant*)front;
 		if (tanaman->isWatered() == 0) {
 			tanaman->setSiram();
 		}

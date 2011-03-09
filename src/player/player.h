@@ -6,7 +6,8 @@
 #include "../inventory/inventory.h"
 #include "../area/area.h"
 #include "../grid/grid.h"
-#include "../grid_plant/grid_plant.h"
+#include "../grid/grid_plant.h"
+#include "../grid/grid_lahan.h"
 #include "../item/item.h"
 using namespace std;
 
@@ -72,7 +73,7 @@ class Player {
 	
 	*/
 	
-	void setFrontGrid(Grid);
+	void setFrontGrid(Grid*);
 	/*
 	
 	*/
