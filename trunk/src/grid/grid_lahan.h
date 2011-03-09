@@ -1,6 +1,12 @@
 #ifndef _GRID_LAHAN_H
 #define	_GRID_LAHAN_H
+
 #include "grid.h"
+
+	/* _GRID_LAHAN_H */
+
+#include "grid.h"
+
 
 class Grid_Lahan : public Grid
 {
@@ -12,8 +18,6 @@ class Grid_Lahan : public Grid
 	// copy constructor
 	virtual ~Grid_Lahan();
 	// destructor
-
-	isWatered();
 
 	void setCangkul();
 	// pengubahan fase lahan setelah dicangkul
