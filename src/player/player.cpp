@@ -90,7 +90,7 @@ void Player::setStatus(Item a) {
 /*
 
 */
-	//status = a;
+	status = a.getEfekBuah();
 }
 
 int Player::getStatus() {
@@ -144,10 +144,12 @@ void Player::plow() {
 	int tipe;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
+	Grid_Lahan* lahan;
 	
 	tipe = front->getType();
 	if (tipe == 0) {
-		front->setFase(1);
+		lahan = (Grid_Lahan*)front;
+		lahan->setFase(1);
 	} else if (tipe == 5) {
 		tanaman = (Grid_Plant*)front;
 		if (tanaman->getFase() == 2) {
@@ -176,6 +178,7 @@ void Player::slash() {
 			front = new Grid_Lahan();
 			tanaman->setFase(0);
 			tanaman->setType(0);
+			setFrontGrid(front);
 		}
 	}
 }
@@ -187,7 +190,7 @@ void Player::water() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	grid_plant* tanaman;
+	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 5) {
@@ -202,15 +205,12 @@ void Player::eat(int numInv) {
 /*
 
 */
-	Item item;
+	Item* item;
 	int eff;
 	if (inventory.cekSlot(numInv)) {
-		item = inventory.slot[numInv];
+		item = inventory.getSlot(numInv);
 		inventory.deleteItem(numInv,1);	
-		eff = item.getEfekBuah();
-	
-	
-	if (efTime == 0) {
+		setStatus (*item);
 	}
 }
 
@@ -221,15 +221,20 @@ void Player::put(int noSlot,int jumlah) {
 	int tipe;
 	int fase;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	Grid_Lahan* lahan;
 	
 	tipe = front->getTipe();
-	fase = front->getFase();
-	if ((tipe == 0) && (fase == 1)) {
-		front->setTipe(5);
-		tanaman = (Plant*)front;
-		tanaman->setFase(0);
-		inventory.deleteItem(noSlot,jumlah);
+	if (tipe == 0) {
+		lahan = (Grid_Lahan*)front;
+		fase = lahan->getFase();
+		if (fase == 1) {
+			lahan->setTipe(5);
+			delete front;
+			front = new Grid_Plant();
+			front->setFase(0);
+			inventory.deleteItem(noSlot,jumlah);
+			setFrontGrid(front);
+		}
 	} else if (tipe == 8) {
 		inventory.deleteItem(noSlot,jumlah);
 		sellItem(noSlot,jumlah);
@@ -250,7 +255,7 @@ void Player::move(int arah) {
 	if (arahHadap == arah) {
 		if ((tipe == 0) || (tipe == 3)) {
 			curGrid = front;
-		} else //throw "Tidak bisa dilalui";
+		} //else throw "Tidak bisa dilalui";
 	} else {
 		arahHadap = arah;
 	}
@@ -262,6 +267,7 @@ void Player::harvest() {
 */
 	int tipe;
 	int fase;
+	int tipeTanaman;
 	Grid* front = getFrontGrid();
 	Plant* tanaman;
 	
@@ -271,6 +277,14 @@ void Player::harvest() {
 		fase = tanaman->getFase();
 		if ((fase == 4) || (fase == 5)) {
 			tanaman->setPanen();
+			tipeTanaman = tanaman->getTypeTanaman();
+			inventory.addItem(tipeTanaman,1);
+			if (tanaman->getFase() == 6) {
+				delete front;
+				front = new Grid_Lahan();
+				front->setTipe(0);
+				front->setFase(0);
+			}
 		}
 	}
 }
@@ -279,14 +293,24 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 /*
 
 */
-	money = money + i.getCost();
+	Item* item;
+	item = inventory.slot[NoSlot];
+	money = money + item->getCost() * Jumlah;
+	inventory.deleteItem(NoSlot,Jumlah);
 }
 
 void Player::buyItem(string name,int Jumlah) {
 /*
 
 */
-	money = money - i.getCost();
+	Item * dummyItem;
+	
+	dummyItem = new Item(name);
+	if (money > (dummyItem->getCost() * Jumlah)) {
+		money = money - dummyItem->getCost() * Jumlah;
+		inventory.addItem(name,jumlah);
+	 } //else throw "Uang Tidak Mencukupi"
+	 delete dummyItem;
 }
 
 void Player::teleport(Area destination) {
