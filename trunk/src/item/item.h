@@ -19,11 +19,11 @@ class Item{
                 Item(string);
 		Item &operator=(const Item&);//operator assignment
 		virtual ~Item (); //destructor
-		int getcost();//memberikan harga dari item
+		int getCost();//memberikan harga dari item
 		int gettipeItem(int );//memberikan tipe dari item
                 int getEfekBuah();
                 int getEfekTime();
-        ostream& operator<<(ostream&);
+                ostream& operator<<(ostream&);
                 bool isBibit();
                 int getCost;
 };
