@@ -127,3 +127,10 @@ Dwarf* World::getDwarf(int n) {
 
 void World::kurcaciWork(){
 }
+
+Time* World::getTime() {
+    return time;
+}
+Player* World::getPlayer() {
+    return player;
+}

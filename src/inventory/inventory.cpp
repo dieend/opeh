@@ -49,3 +49,10 @@ void Inventory :: deleteItem(int p, int jumlah)
 Item* getSlot(int){
     
 }
+Inventory::Inventory(){
+}
+Inventory::~Inventory(){
+}
+Inventory& Inventory::operator=(const Inventory& apa) {
+    return (*this);
+}
