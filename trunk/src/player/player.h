@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <string.h>
+#include "../inventory/inventory.h"
+#include "../area/area.h"
+#include "../grid/grid.h"
+#include "../grid_plant/grid_plant.h"
+#include "../item/item.h"
 using namespace std;
 
 class Player {
@@ -55,6 +60,21 @@ class Player {
 	string getName();
 	/*
 	Mengambil nama dari player
+	*/
+	
+	Area * getCurArea();
+	/*
+	
+	*/
+	
+	Inventory * getInventory();
+	/*
+	
+	*/
+	
+	void setFrontGrid();
+	/*
+	
 	*/
 	
 	//metode umum untuk Player
@@ -132,9 +152,6 @@ class Player {
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
 	Toko -> Lahan -> Rumah
 	*/
-	Area * getCurArea() ;
-	Inventory * getInventory();
-	
 	
 	private :
 	Grid * curGrid; //grid player berada
