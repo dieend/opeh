@@ -1,30 +1,32 @@
 #ifndef GRID_PLANT
 #define GRID_PLANT
 
-#include "grid.h"
+#include "Grid.h"
 
 class Grid_Plant : public Grid
 // merupakan tanaman
 {
 	private :
-	int	typeTanaman;
+	int	typetanaman;
 	// macam tanaman.
 	int	cost;
 	// harga tanaman
-	int	happyMeter;
+	int season;
+	// jenis musim tanaman
+	int	happymeter;
 	// tingkat kebahagiaan tanaman.
-	int	titikDewasa;
+	int	titikdewasa;
 	// titik dewasa tanaman.
-	int	titikPanen;
+	int	titikpanen;
 	// titik panen tanaman.
 	int	umur;
 	// umur tanaman.
-	bool panenBerulang;
+	bool panenberulang;
 	// bernilai TRUE jika merupakan tanaman jenis panen berulang.
 	
 	public :
 	Grid_Plant();
-	Grid_Plant(Point,int,int,int,int,int,int,int,int,bool);
+	Grid_Plant(point,int,int,int,int,int,int,int,int,int,bool);
 	// constructor
 	Grid_Plant(const Grid_Plant&);
 	// copy constructor
@@ -42,7 +44,6 @@ class Grid_Plant : public Grid
 	// mengeluarkan titik panen tanaman.
 	int	getUmur() const;
 	// mengeluarkan umur tanaman.
-        int     getPanenBerulang();
 	
 	bool isWatered() const;
 	// mengeluarkan TRUE jika tanaman sudah disiram.
@@ -59,7 +60,7 @@ class Grid_Plant : public Grid
 	void setSlash();
 	void setSiram();
 	// pengubah fase tanaman ketika disiram
-	void setPanen();
+	void setPanen()
 	// pengubahan fase tanaman ketika dipanen
 	void setTypeTanaman(int);
 	// mengeset macam tanaman.
@@ -77,5 +78,5 @@ class Grid_Plant : public Grid
 	// mengeset nilai panen berulang.
 	void grow();
 	// mengubah fase pada pergantian hari
-};
+}
 #endif
