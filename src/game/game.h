@@ -17,5 +17,6 @@ class Game {
 		void Run();
 		void getPerintah();
 		bool doPerintah();
+		virtual ~Game();
 };
 #endif
