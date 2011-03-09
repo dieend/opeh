@@ -30,7 +30,7 @@ bool Game::doPerintah() {
 		} else throw 2;
 	} else {
 		if (perintah == "teleport") {
-			int where = world->getPlayer()->getCurArea();
+			int where = world->getPlayer()->getCurArea()->getType();
 			if (paramStr[0] == "-help") {
 				if (where ==0) {
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
@@ -44,17 +44,17 @@ bool Game::doPerintah() {
 				if (paramInt[0] != 1) {
 					throw 2;
 				}
-				world->getPlayer()->teleport(getArea(paramInt[0]));
+				world->getPlayer()->teleport(world->getArea(paramInt[0]));
 			} else if (where == 1) {
 				if (paramInt[0] == 1) {
 					throw 2;
 				}
-				world->getPlayer()->teleport(getArea(paramInt[0]));
+				world->getPlayer()->teleport(world->getArea(paramInt[0]));
 			} else if (where == 2) {
 				if (paramInt[0] !=1) {
 					throw 2;
 				}
-				world->getPlayer()->teleport(getArea(paramInt[0]));
+				world->getPlayer()->teleport(world->getArea(paramInt[0]));
 			}
 		} else if (perintah == "right") {
 			for (int i=0; i<paramInt[0]; i++) {

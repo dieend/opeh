@@ -19,4 +19,3 @@ class Game {
 		bool doPerintah();
 };
 #endif
-

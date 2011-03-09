@@ -15,9 +15,12 @@ Area::Area():typeArea(0) {
 		for (int j=0; j<10; j++) {
 			grid[i][j] = new Grid();
 		}
-	}	
+	}
+        typeArea = 0;
 }
-
+int Area::getType(){
+    return typeArea;
+}
 // Area::Area(const Area& area): typeArea(area.typeArea) {
 	// for (int i=0; i<10; i++) {
 		// for (int j=0; j<10; j++) {
