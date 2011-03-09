@@ -1,42 +1,43 @@
-#include "grid_lahan.h"
+#include "../grid/grid_lahan.h"
 
-grid_lahan::grid_lahan()
+Grid_Lahan::Grid_Lahan()
 {
 
 }
 
-grid_lahan::grid_lahan(point newPosisi,int newType,int newFase)
+Grid_Lahan::Grid_Lahan(Point newPosisi,int newType,int newFase)
 {
 	setPosisi(newPosisi);
 	setType(newType);
 	setFase(newFase);
 }
 
-grid_lahan::grid_lahan(const grid& GL)
+Grid_Lahan::Grid_Lahan(const Grid& GL)
 {
-	setPosisi(G.getPosisi());
-	setType(G.getType());
-	setFase(G.getFase());
+	setPosisi(GL.getPosisi());
+	setType(GL.getType());
+	setFase(GL.getFase());
 }
 
-grid_lahan::~grid_lahan()
+Grid_Lahan::~Grid_Lahan()
 {
 
 }
 
-void grid_lahan::setCangkul()
+void Grid_Lahan::setCangkul()
 // pengubahan fase lahan setelah dicangkul
 {
-	if getFase() == 0
+	if (getFase() == 0)
 		setFase(1);
 }
 
-void grid_lahan::setSiram();
+void Grid_Lahan::setSiram()
 // pengubahan fase lahan setelah disiram
 {
-	if getFase() == 1
+	if (getFase() == 1)
 		setFase(2);
 }
 
-void grid_lahan::setPut();
+void Grid_Lahan::setPut(){
 // pengubahan fase lahan setelah ditanam bibit
+}

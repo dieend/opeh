@@ -1,62 +1,62 @@
-#include "grid.h"
+#include "../grid/grid.h"
 
-grid::grid()
+Grid::Grid()
 {
 
 }
 
-grid::grid(point newPosisi,int newType,int newFase)
+Grid::Grid(Point newPosisi,int newType,int newFase)
 {
 	posisi 	= newPosisi;
 	type 	= newType;
 	fase	= newFase;
 }
 
-grid::grid(const grid& G)
+Grid::Grid(const Grid& G)
 {
 	posisi	= G.getPosisi();
 	type	= G.getType();
 	fase	= G.getFase();
 }
 
-grid::~grid()
+Grid::~Grid()
 {
 
 }
 
-point grid::getPosisi() const
+Point Grid::getPosisi() const
 {
 	return posisi;
 }
 	
-int	grid::getFase() const
+int	Grid::getFase() const
 {
 	return fase;
 }
 
-int	grid::getType() const
+int	Grid::getType() const
 {
 	return type;
 }
 
-boolean grid::isPlantable() const
+boolean Grid::isPlantable() const
 {
-	if type == 0
+	if (type == 0)
 		return true;
 	// lahan diwakilkan oleh int 0
 	else
 		return false;
 }
 
-void grid::setType(int newType)
+void Grid::setType(int newType)
 {
-	type = NewType;
+	type = newType;
 }
-void grid::setFase(int newFase)
+void Grid::setFase(int newFase)
 {
 	fase = newFase;
 }
-void setPosisi(point newPosisi)
+void Grid::setPosisi(Point newPosisi)
 {
 	posisi = newPosisi;
 }	

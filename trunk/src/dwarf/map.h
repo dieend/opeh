@@ -15,7 +15,7 @@ public :
        int getsizec();
        void setmapij(int,int,int);
        void performmap();
-       void bfsdwarf(dwarf,deque<int> &);
+       void bfsdwarf(Dwarf,deque<int> &);
 private :
         int **arr;
         const int sizer;

@@ -7,19 +7,19 @@ class Grid_Plant : public Grid
 // merupakan tanaman
 {
 	private :
-	int	typetanaman;
+	int	typeTanaman;
 	// macam tanaman.
 	int	cost;
 	// harga tanaman
-	int	happymeter;
+	int	happyMeter;
 	// tingkat kebahagiaan tanaman.
-	int	titikdewasa;
+	int	titikDewasa;
 	// titik dewasa tanaman.
-	int	titikpanen;
+	int	titikPanen;
 	// titik panen tanaman.
 	int	umur;
 	// umur tanaman.
-	bool panenberulang;
+	bool panenBerulang;
 	// bernilai TRUE jika merupakan tanaman jenis panen berulang.
 	
 	public :
@@ -59,7 +59,7 @@ class Grid_Plant : public Grid
 	void setSlash();
 	void setSiram();
 	// pengubah fase tanaman ketika disiram
-	void setPanen()
+	void setPanen();
 	// pengubahan fase tanaman ketika dipanen
 	void setTypeTanaman(int);
 	// mengeset macam tanaman.

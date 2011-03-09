@@ -33,11 +33,11 @@ Game::doPerintah() {
 			int where = world->getPlayer()->getCurArea();
 			if (paramStr[0] == "-help") {
 				if (where ==0) {
-					cout << "Anda bisa teleport ke `lahan` (kode 1)\n"
+					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
 				} else if (where == 1) {
-					cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n"
+					cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n";
 				} else if (where == 2) {
-					cout << "Anda bisa teleport ke `lahan` (kode 1)\n"
+					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
 				}
 			} else
 			if (where == 0) {
@@ -59,22 +59,22 @@ Game::doPerintah() {
 		} else if (perintah == "right") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(KANAN);
-				world->getTime()->next10minutes();
+				world->getTime()->next10Minutes();
 			}
 		} else if (perintah == "left") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(KIRI);
-				world->getTime()->next10minutes();
+				world->getTime()->next10Minutes();
 			}
 		} else if (perintah == "up") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(ATAS);
-				world->getTime()->next10minutes();
+				world->getTime()->next10Minutes();
 			}
 		} else if (perintah == "down") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(BAWAH);
-				world->getTime()->next10minutes();
+				world->getTime()->next10Minutes();
 			}
 		} else if (perintah == "inventory") {
 			world->getPlayer()->getInventory()->listItem();
@@ -89,9 +89,9 @@ Game::doPerintah() {
 		} else if (perintah == "harvest") {
 			world->getPlayer()->harvest();
 		} else if (perintah == "wake_up") {
-			world->getKurcaci(paramInt[0]-1)->wakeUp();
+			world->getDwarf(paramInt[0]-1)->wakeUp();
 		} else if (perintah == "sleep") {
-			world->getKurcaci(paramInt[0]-1)->wakeUp();
+			world->getDwarf(paramInt[0]-1)->wakeUp();
 		} else if (perintah == "status") {
 			cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
 			cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
@@ -107,10 +107,10 @@ Game::doPerintah() {
 		} else if (perintah == "buy") {
 			world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
 		} else if (perintah == "sell") {
-			world->getPlayer()-sellItem(paramInt[1],paramInt[1]);
+			world->getPlayer()->sellItem(paramInt[1],paramInt[1]);
 		}
 		if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
-			world->next10minutes();
+			world->getTime()->next10Minutes();
 		}
 		world->setWeather();
 	}
@@ -119,6 +119,7 @@ Game::getPerintah(){
 	//parsing perintah user
 	int x = getch();
 	string tmp;
+        string dummy;
 	perintah = "";
 	if (x==224) {
 		x = getch();

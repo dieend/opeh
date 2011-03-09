@@ -6,16 +6,16 @@ class Time
 public :
        Time();
        virtual ~Time();
-       void next10minutes();
-       int getminutes();
-       void nextjam();
-       int getjam();
-       void nextseason();
-       int getseason();
-       void nextday();
-       int getday();
-       void setzero();
-       void setact();
+       void next10Minutes();
+       int getMinutes();
+       void nextJam();
+       int getJam();
+       void nextSeason();
+       int getSeason();
+       void nextDay();
+       int getDay();
+       void setZero();
+       void setAct();
 private :
         int minutes;
         int jam;

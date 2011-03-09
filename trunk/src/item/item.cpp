@@ -2,27 +2,27 @@
 #include <iostream>
 using namespace std;
 
-item :: item()
+Item :: Item()
 {
-	cout<<"ctor item"<<endl; 
+	cout<<"ctor Item"<<endl;
 }
 
-item :: item(const item&)
+Item :: Item(const Item&)
 {
-	cout<<"cctor item"<<endl;
+	cout<<"cctor Item"<<endl;
 }
 
-virtual item :: ~item()
+virtual Item :: ~Item()
 {
-	cout<<"dtor item""<<endl;
+	cout<<"dtor Item"<<endl;
 }
 
-item :: item(int ,int ,int ,int)
+Item :: Item(int)
 {
 	
 }
 
-int item :: getcost(int i)
+int Item :: getcost(int i)
 {
 	//Kamus Lokal
 	int j;
@@ -52,22 +52,22 @@ int item :: getcost(int i)
 	return j;
 }
 
-int item :: gettipeItem(int i)
+int Item :: gettipeItem(int i)
 {
 	//Kamus Lokal
-	int i;
+	int j;
 	//Method
-	int tipeItem[10] ={1,2,3,4,5,6,7,8,9,10}
-	if(i = 1){j=tipeItem[0];}
-	if(i = 2){j=tipeItem[1];}
-	if(i = 3){j=tipeItem[2];}
-	if(i = 4){j=tipeItem[3];}
-	if(i = 5){j=tipeItem[4];}
-	if(i = 6){j=tipeItem[5];}
-	if(i = 7){j=tipeItem[6];}
-	if(i = 8){j=tipeItem[7];}
-	if(i = 9){j=tipeItem[8];}
-	if(i = 10){j=tipeItem[9];}
+	int tipeItem[10] ={1,2,3,4,5,6,7,8,9,10};
+	if(i == 1){j=tipeItem[0];}
+	if(i == 2){j=tipeItem[1];}
+	if(i == 3){j=tipeItem[2];}
+	if(i == 4){j=tipeItem[3];}
+	if(i == 5){j=tipeItem[4];}
+	if(i == 6){j=tipeItem[5];}
+	if(i == 7){j=tipeItem[6];}
+	if(i == 8){j=tipeItem[7];}
+	if(i == 9){j=tipeItem[8];}
+	if(i == 10){j=tipeItem[9];}
 	//mangga 		= 1
 	//apel 			= 2
 	//pepaya		= 3
