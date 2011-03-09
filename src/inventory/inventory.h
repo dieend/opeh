@@ -14,7 +14,7 @@ class Inventory{
     public:
 	Inventory();//konstruktor
 	Inventory(const Inventory&);//copy konstruktor
-	Inventory& operator=(const Inventory&);//operator assignment
+	Inventory& operator= (const Inventory&);//operator assignment
 	virtual ~Inventory();//destructor
         
 	void listItem();
