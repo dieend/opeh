@@ -20,7 +20,7 @@ class Item{
 		Item &operator=(const Item&);//operator assignment
 		virtual ~Item (); //destructor
 		int getCost();//memberikan harga dari item
-		int gettipeItem(int );//memberikan tipe dari item
+		int gettipeItem();//memberikan tipe dari item
                 int getEfekBuah();
                 int getEfekTime();
                 ostream& operator<<(ostream&);

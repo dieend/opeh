@@ -17,9 +17,9 @@ Item :: ~Item()
 	cout<<"dtor Item"<<endl;
 }
 
-Item :: Item(int)
+Item :: Item(int a)
 {
-    return type;
+
 }
 
 int Item :: getCost()
