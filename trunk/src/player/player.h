@@ -101,7 +101,7 @@ class Player {
 	akan berubah menjadi sudah disiram
 	*/
 	
-	void eat(int);
+	int eat(int);
 	/*
 	Prosedur memakan item yang ada pada inventory dengan slot tertentu, kemudian
 	mengecek efek yang terjadi, dan memberikan status pada player, serta melakukan
