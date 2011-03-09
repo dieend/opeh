@@ -2,51 +2,51 @@
 #include <iostream>
 using namespace std;
 
-dwarf::dwarf(int ntype) : type(ntype),status(1),direction(4)
+Dwarf::Dwarf(int ntype) : type(ntype),status(1),direction(4)
 {
   if (ntype==0)
   {
-    cpos.setx(1);
-    cpos.sety(8);
+    cpos.setX(1);
+    cpos.setY(8);
   }
   else if (ntype==1)
   {
-    cpos.setx(1);
-    cpos.sety(9);
+    cpos.setX(1);
+    cpos.setY(9);
   }
   else if (ntype==2)
   {
-    cpos.setx(1);
-    cpos.sety(10);
+    cpos.setX(1);
+    cpos.setY(10);
   }
 }
 
-dwarf::~dwarf() 
+Dwarf::~Dwarf()
 {
   status=0;
 }
 
-bool dwarf::dojob()
+bool Dwarf::dojob()
 {
      return 1;
 }
 
-void dwarf::wakeup()
+void Dwarf::wakeup()
 {
   status=1;
 }
 
-void dwarf::sleep()
+void Dwarf::sleep()
 {
   status=0;
 }
 
-int dwarf::getstatus()
+int Dwarf::getstatus()
 {
   return status;
 }
 
-void dwarf::performstatus()
+void Dwarf::performstatus()
 {
   cout << type << " ";
   if (status==1)
@@ -55,23 +55,23 @@ void dwarf::performstatus()
     cout << "sleep.";
 }
 
-void dwarf::setposition(point p)
+void Dwarf::setposition(Point p)
 {
-  cpos.setx(p.getx());
-  cpos.sety(p.gety());
+  cpos.setX(p.getX());
+  cpos.setY(p.getY());
 }
 
-point dwarf::getposition()
+Point Dwarf::getposition()
 {
   return cpos;
 }
 
-void dwarf::setdirection(int nd)
+void Dwarf::setdirection(int nd)
 {
   direction=nd;
 }
 
-int dwarf::getdirection()
+int Dwarf::getdirection()
 {
   return direction;
 }

@@ -5,8 +5,8 @@ class Dwarf
 {
        friend void nextmove(Dwarf,Dwarf,Dwarf);
 public :
-       dwarf(int);
-       ~dwarf();
+       Dwarf(int);
+       ~Dwarf();
        bool dojob();
        void wakeup();
        void sleep();
