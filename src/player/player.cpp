@@ -140,7 +140,7 @@ void Player::setFrontGrid(Grid * front) {
 //metode umum untuk Player
 void Player::plow() {
 /*
-
+	baca punya onta untuk nentuin bibit sudah disiram dan belum disiram
 */
 	int tipe;
 	Grid* front = getFrontGrid();
@@ -150,7 +150,7 @@ void Player::plow() {
 	tipe = front->getType();
 	if (tipe == 0) {
 		lahan = (Grid_Lahan*)front;
-		lahan->setFase(1);
+		lahan->setCangkul();
 	} else if (tipe == 5) {
 		tanaman = (Grid_Plant*)front;
 		if (tanaman->getFase() == 2) {
@@ -220,7 +220,7 @@ int Player::eat(int numInv) {
 
 void Player::put(int noSlot,int jumlah) {
 /*
-
+	validasi bibit
 */
 	int tipe;
 	int fase;
@@ -232,9 +232,9 @@ void Player::put(int noSlot,int jumlah) {
 		lahan = (Grid_Lahan*)front;
 		fase = lahan->getFase();
 		if (fase == 1) {
-			lahan->setType(5);
 			delete front;
 			front = new Grid_Plant();
+			front->setType(5);
 			front->setFase(0);
 			inventory.deleteItem(noSlot,jumlah);
 			setFrontGrid(front);
@@ -249,7 +249,7 @@ void Player::put(int noSlot,int jumlah) {
 
 void Player::move(int arah) {
 /*
-
+	tambahkan setting type menjadi 1 jika bergerak
 */
 	int tipe;
 	Grid* front = getFrontGrid();
@@ -317,9 +317,9 @@ void Player::buyItem(string name,int Jumlah) {
 	 delete dummyItem;
 }
 
-void Player::teleport(Area destination) {
+void Player::teleport(Area * destination) {
 /*
 
 */
-	(*curArea) = destination; //masih belum lengkap
+	curArea = destination; //masih belum lengkap
 }
