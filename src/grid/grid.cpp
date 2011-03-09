@@ -53,7 +53,7 @@ void Grid::setFase(int newFase)
 {
 	fase = newFase;
 }
-void setPosisi(Point newPosisi)
+void Grid::setPosisi(Point newPosisi)
 {
 	posisi = newPosisi;
 }	
