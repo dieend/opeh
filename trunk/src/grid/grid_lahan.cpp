@@ -12,7 +12,7 @@ Grid_Lahan::Grid_Lahan(Point newPosisi,int newType,int newFase)
 	setFase(newFase);
 }
 
-Grid_Lahan::Grid_Lahan(const Grid& GL)
+Grid_Lahan::Grid_Lahan(const Grid_Lahan& GL)
 {
 	setPosisi(GL.getPosisi());
 	setType(GL.getType());
