@@ -16,7 +16,6 @@ Area::Area():typeArea(0) {
 			grid[i][j] = new Grid();
 		}
 	}
-        typeArea = 0;
 }
 int Area::getType(){
     return typeArea;
