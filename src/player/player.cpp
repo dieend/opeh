@@ -90,7 +90,9 @@ void Player::setStatus(Item a) {
 /*
 
 */
-	status = a.getEfekBuah();
+	int stat = a.getEfekBuah();
+	
+	if stat
 }
 
 int Player::getStatus() {
@@ -201,7 +203,7 @@ void Player::water() {
 	}
 }
 
-void Player::eat(int numInv) {
+int Player::eat(int numInv) {
 /*
 
 */
@@ -211,6 +213,9 @@ void Player::eat(int numInv) {
 		item = inventory.getSlot(numInv);
 		inventory.deleteItem(numInv,1);	
 		setStatus (*item);
+		return item->getEfekTime();
+	} else {
+		return 0;
 	}
 }
 
