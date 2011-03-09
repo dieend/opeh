@@ -23,7 +23,7 @@ class Item{
 		int gettipeItem(int );//memberikan tipe dari item
                 int getEfekBuah(int);
                 int getEfekTime(int);
-                ostream& operator<<();
+        ostream& operator<<(ostream&);
                 bool isBibit();
                 int getCost;
 };
