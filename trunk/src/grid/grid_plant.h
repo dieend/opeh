@@ -7,21 +7,21 @@ class Grid_Plant : public Grid
 // merupakan tanaman
 {
 	private :
-	int	typetanaman;
+	int	typeTanaman;
 	// macam tanaman.
 	int	cost;
 	// harga tanaman
 	int season;
 	// jenis musim tanaman
-	int	happymeter;
+	int	happyMeter;
 	// tingkat kebahagiaan tanaman.
-	int	titikdewasa;
+	int	titikDewasa;
 	// titik dewasa tanaman.
-	int	titikpanen;
+	int	titikPanen;
 	// titik panen tanaman.
 	int	umur;
 	// umur tanaman.
-	bool panenberulang;
+	bool panenBerulang;
 	// bernilai TRUE jika merupakan tanaman jenis panen berulang.
 	
 	public :
@@ -44,7 +44,9 @@ class Grid_Plant : public Grid
 	// mengeluarkan titik panen tanaman.
 	int	getUmur() const;
 	// mengeluarkan umur tanaman.
-	
+        int     getSeason() const;
+        
+
 	bool isWatered() const;
 	// mengeluarkan TRUE jika tanaman sudah disiram.
 	bool isBibit() const;
@@ -74,7 +76,7 @@ class Grid_Plant : public Grid
 	// mengeset titik panen tanaman.
 	void setUmur(int);
 	// mengeset umur tanaman.
-	void setPanenBerulang(boolean);
+	void setPanenBerulang(bool);
 	// mengeset nilai panen berulang.
 	void grow();
 	// mengubah fase pada pergantian hari
