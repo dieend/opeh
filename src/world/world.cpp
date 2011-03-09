@@ -108,7 +108,7 @@ ostream& operator<<(ostream& c,World* world){
 		c << judul << tmp << white;
 		if (world->getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n";
 		if (world->getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n";
-		c << *(world->getPlayer()->getCurArea());
+		c << (world->getPlayer()->getCurArea());
 	} else {
 		c << "> New Game\n\n";
 		c << "> Load Game\n\n\n\n\n\n";
