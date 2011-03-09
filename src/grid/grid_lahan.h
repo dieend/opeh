@@ -5,8 +5,6 @@
 
 	/* _GRID_LAHAN_H */
 
-#include "grid.h"
-
 
 class Grid_Lahan : public Grid
 {

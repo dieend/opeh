@@ -47,13 +47,13 @@ bool Grid::isPlantable() const
 
 void Grid::setType(int newType)
 {
-	type = NewType;
+	type = newType;
 }
 void Grid::setFase(int newFase)
 {
 	fase = newFase;
 }
-void setPosisi(point newPosisi)
+void setPosisi(Point newPosisi)
 {
 	posisi = newPosisi;
 }	
