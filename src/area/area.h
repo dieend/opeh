@@ -16,6 +16,7 @@ public:
 	const int typeArea;
 	/* menandakan jenis Area;
 	*/
+        int getType();
 	Area(int tipe);
 	/*  Constructor Area dengan menginstansiasi typeArea dengan tipe.
 		0 rumah, 1 lahan, 2 toko
