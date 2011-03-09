@@ -1,7 +1,7 @@
 #ifndef item
 #define item
 
-class item{
+class Item{
 //deskripsi umum kelas item: kelas item digunakan untuk memberikan harga dari item dan tipe dari item.
 	//Kamus Global
 	private:
@@ -9,12 +9,12 @@ class item{
 		int efektime;//lama nya efek dari buah yang dimakan player
 		
 	public :
-		item (); //konstruktor
-		item(const item&);//copy konstruktor
+		Item (); //konstruktor
+		Item(const Item&);//copy konstruktor
 		//item &operator=(const item&);//operator assignment
-		virtual ~item (); //destructor
+		virtual ~Item (); //destructor
 		
 		int getcost(int );//memberikan harga dari item
 		int gettipeItem(int );//memberikan tipe dari item
-}
+};
 #endif
