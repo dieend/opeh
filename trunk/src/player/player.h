@@ -147,7 +147,7 @@ class Player {
 	dengan jumlah dan jenis barang yang dibeli
 	*/
 	
-	void teleport(Area);
+	void teleport(Area*);
 	/*
 	Prosedur untuk berpindah area dari area yang satu ke area yang
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
