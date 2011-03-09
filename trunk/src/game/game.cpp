@@ -184,3 +184,9 @@ void Game::getPerintah(){
 		if (dummy != "#") throw 0;
 	}
 }
+
+Game::Game() {
+}
+Game::~Game(){
+    delete world;
+}

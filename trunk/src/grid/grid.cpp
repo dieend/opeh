@@ -56,4 +56,7 @@ void Grid::setFase(int newFase)
 void Grid::setPosisi(Point newPosisi)
 {
 	posisi = newPosisi;
-}	
+}
+
+Grid::Grid(int,int,int){
+}
