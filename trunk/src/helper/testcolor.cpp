@@ -6,5 +6,5 @@ using namespace std;
 int main()
 {
   printf("Default Color.\n");
-  cout << judul<< " test " << white;
+  cout << lahan<< " test " << white;
 }

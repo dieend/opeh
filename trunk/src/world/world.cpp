@@ -34,9 +34,9 @@ World::World(World& world) {
 	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
 	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
 	area[TOKO ] = new Area(*(world.getArea(TOKO )));
-	dwarf[HARVEST]= new Dwarf(*(world.getKurcaci(HARVEST)));
-	dwarf[WATER] 	= new Dwarf(*(world.getKurcaci(WATER)));
-	dwarf[SLASH]	= new Dwarf(*(world.getKurcaci(SLASH)));
+	dwarf[HARVEST]= new Dwarf(*(world.getDwarf(HARVEST)));
+	dwarf[WATER] 	= new Dwarf(*(world.getDwarf(WATER)));
+	dwarf[SLASH]	= new Dwarf(*(world.getDwarf(SLASH)));
 }
 
 World::~World() {
@@ -57,9 +57,9 @@ World& World::operator=(World& world) {
 	area[RUMAH] = new Area(*(world.getArea(RUMAH)));
 	area[LAHAN] = new Area(*(world.getArea(LAHAN)));
 	area[TOKO ] = new Area(*(world.getArea(TOKO )));
-	dwarf[HARVEST]= new Dwarf(*(world.getKurcaci(HARVEST)));
-	dwarf[WATER] 	= new Dwarf(*(world.getKurcaci(WATER)));
-	dwarf[SLASH]	= new Dwarf(*(world.getKurcaci(SLASH)));
+	dwarf[HARVEST]= new Dwarf(*(world.getDwarf(HARVEST)));
+	dwarf[WATER] 	= new Dwarf(*(world.getDwarf(WATER)));
+	dwarf[SLASH]	= new Dwarf(*(world.getDwarf(SLASH)));
 	return (*this);
 }
 
@@ -117,13 +117,13 @@ ostream& operator<<(ostream& c,World* world){
 	return c;
 }
 
-Area* getArea(int n) {
-	return (this->area[n]);
+Area* World::getArea(int n) {
+	return (area[n]);
 }
 
-Dwarf* getKurcaci(int n) {
-	return (this->dwarf[n]);
+Dwarf* World::getDwarf(int n) {
+	return (dwarf[n]);
 }
 
-void kurcaciWork(){
+void World::kurcaciWork(){
 }

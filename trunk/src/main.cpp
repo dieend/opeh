@@ -2,7 +2,7 @@
 using namespace std;
 int main(){
     Game* game = new Game();
-    game->run();
+    game->Run();
     delete game;
     return 0;
 }

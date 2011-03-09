@@ -1,6 +1,6 @@
 #ifndef _GRID_LAHAN_H
 #define	_GRID_LAHAN_H
-#include "Grid.h"
+#include "grid.h"
 
 class Grid_Lahan : public Grid
 {

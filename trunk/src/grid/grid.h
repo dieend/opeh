@@ -53,7 +53,7 @@ class Grid
 	// mengeluarkan type Grid.
 	int	getFase() const;
 	// mengeluarkan fase gird.
-	bool	isPlantable() const;
+	bool isPlantable() const;
 	// mengeluarkan nilai kebenaran apakah Grid dapat ditanami atau tidak.
 	
 	

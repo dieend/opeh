@@ -1,7 +1,7 @@
 #ifndef GRID_PLANT
 #define GRID_PLANT
 
-#include "Grid.h"
+#include "grid.h"
 
 class Grid_Plant : public Grid
 // merupakan tanaman
@@ -26,7 +26,7 @@ class Grid_Plant : public Grid
 	
 	public :
 	Grid_Plant();
-	Grid_Plant(point,int,int,int,int,int,int,int,int,int,bool);
+	Grid_Plant(Point,int,int,int,int,int,int,int,int,int,bool);
 	// constructor
 	Grid_Plant(const Grid_Plant&);
 	// copy constructor
@@ -60,7 +60,7 @@ class Grid_Plant : public Grid
 	void setSlash();
 	void setSiram();
 	// pengubah fase tanaman ketika disiram
-	void setPanen()
+	void setPanen();
 	// pengubahan fase tanaman ketika dipanen
 	void setTypeTanaman(int);
 	// mengeset macam tanaman.
@@ -78,5 +78,5 @@ class Grid_Plant : public Grid
 	// mengeset nilai panen berulang.
 	void grow();
 	// mengubah fase pada pergantian hari
-}
+};
 #endif
