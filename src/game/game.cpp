@@ -3,7 +3,7 @@
 #define KIRI 4
 #define ATAS 1
 #define BAWAH 3
-Game::run() {
+Game::Run() {
 	bool notExit;
 	do {
 		cout << world;

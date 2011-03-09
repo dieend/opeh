@@ -14,7 +14,7 @@ class Game {
 	public:
 		World* world;
 		Game();
-		void run();
+		void Run();
 		void getPerintah();
 		bool doPerintah();
 };

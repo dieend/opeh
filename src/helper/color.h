@@ -16,7 +16,7 @@ inline std::ostream& dinding(std::ostream &s)
 inline std::ostream& lahan(std::ostream &s)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
-    SetConsoleTextAttribute(hStdout, BACKGROUND_GREEN|BACKGROUND_INTENSITY);
+    SetConsoleTextAttribute(hStdout, BACKGROUND_GREEN);
     return s;
 }
 

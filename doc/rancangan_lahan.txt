@@ -1,7 +1,7 @@
 +----------+
- .......... //ga bisa ditanam
-|........##|//ga bisa ditanam
-|........##|//ga bisa ditanam
+ P......##.|//ga bisa ditanam
+|..........|//ga bisa ditanam
+|.......kkk|//ga bisa ditanam
 |..........|
 |..........|
 |..........|
