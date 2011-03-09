@@ -114,6 +114,28 @@ Mengambil nama dari player
 	return nama;
 }
 
+Area * Player::getCurArea() {
+/*
+
+*/
+	return curArea;
+}
+
+Inventory * Player::getInventory() {
+/*
+
+*/
+	return &inventory;
+}
+
+void Player::setFrontGrid(Grid * front) {
+/*
+
+*/
+	Grid* frontp = getFrontGrid();
+	frontp = front;
+}
+
 //metode umum untuk Player
 void Player::plow() {
 /*
@@ -131,9 +153,9 @@ void Player::plow() {
 		if (tanaman->getFase() == 2) {
 			delete front;
 			front = new Grid_Lahan();
-			tanaman->setType(0);
-			tanaman->setFase(1);
-			
+			front->setType(0);
+			front->setFase(1);
+			setFrontGrid(front);
 		}
 	}
 }

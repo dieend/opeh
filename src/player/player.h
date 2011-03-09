@@ -72,7 +72,7 @@ class Player {
 	
 	*/
 	
-	void setFrontGrid();
+	void setFrontGrid(Grid);
 	/*
 	
 	*/
