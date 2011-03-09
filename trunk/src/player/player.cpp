@@ -55,10 +55,10 @@ int Player::getMoney() {
 
 Grid * Player::getFrontGrid() {
 /*
-	Maksud lu gini y din??
+	
 */
 	Grid* front;
-	Point* p = new Point();
+	Point* p;
 	int temp;
 	
 	
@@ -121,16 +121,19 @@ void Player::plow() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 0) {
 		front->setFase(1);
 	} else if (tipe == 5) {
-		tanaman = (Plant*)front;
+		tanaman = (Grid_Plant*)front;
 		if (tanaman->getFase() == 2) {
+			delete front;
+			front = new Grid_Lahan();
 			tanaman->setType(0);
 			tanaman->setFase(1);
+			
 		}
 	}
 }
@@ -141,12 +144,14 @@ void Player::slash() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	grid_plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 5) {
-		tanaman = (Plant*)front;
+		tanaman = (grid_plant*)front;
 		if (tanaman->getFase() == 3) {
+			delete tanaman;
+			tanaman = new grid_lahan();
 			tanaman->setFase(0);
 			tanaman->setType(0);
 		}
@@ -160,11 +165,11 @@ void Player::water() {
 */
 	int tipe;
 	Grid* front = getFrontGrid();
-	Plant* tanaman;
+	grid_plant* tanaman;
 	
 	tipe = front->getType();
 	if (tipe == 5) {
-		tanaman = (Plant*)front;
+		tanaman = (grid_plant*)front;
 		if (tanaman->isWatered() == 0) {
 			tanaman->setSiram();
 		}
@@ -195,7 +200,6 @@ void Player::put(int noSlot,int jumlah) {
 	int fase;
 	Grid* front = getFrontGrid();
 	Plant* tanaman;
-	Item item;
 	
 	tipe = front->getTipe();
 	fase = front->getFase();
@@ -205,9 +209,8 @@ void Player::put(int noSlot,int jumlah) {
 		tanaman->setFase(0);
 		inventory.deleteItem(noSlot,jumlah);
 	} else if (tipe == 8) {
-		item = inventory.slot[noSlot];
 		inventory.deleteItem(noSlot,jumlah);
-		sellItem(item);
+		sellItem(noSlot,jumlah);
 	} else {
 		inventory.deleteItem(noSlot,jumlah);
 	}
@@ -250,14 +253,14 @@ void Player::harvest() {
 	}
 }
 
-void Player::sellItem(Item i) {
+void Player::sellItem(int NoSlot, int Jumlah) {
 /*
 
 */
 	money = money + i.getCost();
 }
 
-void Player::buyItem(Item i) {
+void Player::buyItem(string name,int Jumlah) {
 /*
 
 */
