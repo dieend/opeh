@@ -12,7 +12,7 @@ Item :: Item(const Item&)
 	cout<<"cctor Item"<<endl;
 }
 
-virtual Item :: ~Item()
+Item :: ~Item()
 {
 	cout<<"dtor Item"<<endl;
 }
@@ -22,7 +22,7 @@ Item :: Item(int)
 	
 }
 
-int Item :: getcost(int i)
+int Item :: getcost()
 {
 	//Kamus Lokal
 	int j;

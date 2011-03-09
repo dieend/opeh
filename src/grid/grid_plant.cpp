@@ -121,8 +121,6 @@ bool Grid_Plant::isPanenBerulang() const
 	return panenBerulang;
 }
 
-void Grid_Plant::setCangkul();
-void Grid_Plant::setSlash();
 
 void Grid_Plant::setSiram()
 // pengubahan fase tanaman ketika disiram

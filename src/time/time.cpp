@@ -3,7 +3,7 @@
 Time::Time(){
 }
 
-virtual Time::~Time(){
+Time::~Time(){
 }
 void Time::next10Minutes(){
 }
@@ -25,4 +25,3 @@ void Time::setZero(){
 }
 void Time::setAct(){
 }
-#endif
