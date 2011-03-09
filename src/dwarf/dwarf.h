@@ -1,9 +1,9 @@
 #ifndef dwarf_H
 #define dwarf_H
 #include "../point/point.h"
-class dwarf
+class Dwarf
 {
-       friend void nextmove(dwarf,dwarf,dwarf);
+       friend void nextmove(Dwarf,Dwarf,Dwarf);
 public :
        dwarf(int);
        ~dwarf();
@@ -12,13 +12,13 @@ public :
        void sleep();
        int getstatus();
        void performstatus();
-       void setposition(point);
-       point getposition();
+       void setposition(Point);
+       Point getposition();
        void setdirection(int);
        int getdirection();
 private :
         //const point defpos;
-        point cpos;
+        Point cpos;
         //Grid *cGrid;
         //area[1] *field;
         int direction;//1 for left,2 for up,3 for right,4 for down

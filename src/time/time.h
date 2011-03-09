@@ -1,11 +1,11 @@
 #ifndef time_H
 #define time_H
 
-class time
+class Time
 {
 public :
-       time();
-       virtual ~time();
+       Time();
+       virtual ~Time();
        void next10minutes();
        int getminutes();
        void nextjam();
