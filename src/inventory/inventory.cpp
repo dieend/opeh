@@ -46,7 +46,7 @@ void Inventory :: deleteItem(int p, int jumlah)
 //	}while (i<=maxslot);
 }
 
-Item* getSlot(int){
+Item* Inventory::getSlot(int){
     
 }
 Inventory::Inventory(){
@@ -55,4 +55,11 @@ Inventory::~Inventory(){
 }
 Inventory& Inventory::operator=(const Inventory& apa) {
     return (*this);
+}
+
+void Inventory::listItem(){
+}
+bool Inventory::cekSlot(int) {
+}
+void Inventory::addItem(const string&, int jumlah){
 }

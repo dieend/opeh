@@ -14,9 +14,9 @@ class Item{
                 bool bibit;
 	public :
 		Item (); //konstruktor
+                Item(const string&);
 		Item(const Item&);//copy konstruktor
                 Item(int);
-                Item(string);
 		Item &operator=(const Item&);//operator assignment
 		virtual ~Item (); //destructor
 		int getCost();//memberikan harga dari item
