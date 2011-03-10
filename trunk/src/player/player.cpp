@@ -278,7 +278,7 @@ void Player::move(int arah) {
 				tipeArea = curArea->getType();
 			if (tipeArea == 1) {
 				p = curGrid->getPosisi();
-				if (p.getX() <= 3) {
+				if (p.getX() < 3) {
 					curGrid->setType(2);
 				} else {
 					curGrid->setType(0);
@@ -356,7 +356,7 @@ void Player::teleport(Area * destination) {
 	curArea = destination; //masih belum lengkap
 	area = curArea->getType();
 	if (area == 0) {
-		p.setX(9);
+		p.setX(8);
 		p.setY(4);
 	} else if (area == 1) {
 		p.setX(1);
