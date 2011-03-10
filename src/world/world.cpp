@@ -129,11 +129,11 @@ ostream& operator<<(ostream& c,World& world){
         for (int i=0; i<3; i++) {
             if (world.player->getInventory()->cekSlot(i)){
                 cout << "slot " << i <<" exist\n";
-                cout << "tipe item bibit" << world.player->getInventory()->getSlot(0)->gettipeBibit() << endl;
-                cout << "tipe item buah" << world.player->getInventory()->getSlot(0)->gettipeBuah() << endl;
-                cout << "tipe item tanaman" << world.player->getInventory()->getSlot(0)->gettipeTanaman() << endl;
-                cout << "price beli" << world.player->getInventory()->getSlot(0)->getcostBuy() << endl;
-                cout << "price sell" << world.player->getInventory()->getSlot(0)->getcostSell() << endl;
+                cout << "tipe item bibit" << world.player->getInventory()->getSlot(0)->getTipeBibit() << endl;
+                cout << "tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah() << endl;
+                cout << "tipe item tanaman" << world.player->getInventory()->getSlot(0)->getTipeTanaman() << endl;
+                cout << "price beli" << world.player->getInventory()->getSlot(0)->getCostBuy() << endl;
+                cout << "price sell" << world.player->getInventory()->getSlot(0)->getCostSell() << endl;
                 cout << "efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah() << endl;
                 cout << "efek time " << world.player->getInventory()->getSlot(0)->getEfekTime() << endl;
             } else {
