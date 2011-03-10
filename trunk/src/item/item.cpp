@@ -50,37 +50,37 @@ Item :: Item(int item)//untuk mementukan jenis buah
 	else if(item == 12)	{typeTanaman = 12;typeBibit = 23;typeBuah = 24;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 360;}
 }
 
-int Item :: getcostBuy()
+int Item :: getCostBuy()
 {
     return costBuy;
 }
 
-int Item :: getcostSell()
+int Item :: getCostSell()
 {
 	return costSell;
 }
 
-int Item :: gettipeBibit()
+int Item :: getTipeBibit()
 {
 	return typeBibit;
 }
 
-int Item :: gettipeBuah()
+int Item :: getTipeBuah()
 {
 	return typeBuah;
 }
 
-int Item :: gettipeTanaman()
+int Item :: getTipeTanaman()
 {
 	return typeTanaman;
 }
 
-int Item::getefekBuah()
+int Item::getEfekBuah()
 {
 	return efekBuah;
 }
 
-int Item::getefekTime()
+int Item::getEfekTime()
 {
 	return efekTime;
 }
