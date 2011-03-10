@@ -8,7 +8,7 @@ Item :: Item()
 	cout<<"ctor Item"<<endl;
 }
 
-Item:: Item(const string& item)
+Item :: Item(const string& item)
 {
 	if(item == "Kentang")		{typeTanaman = 1;typeBibit = 1;typeBuah = 2;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 720;}
 	else if(item == "Lobak")	{typeTanaman = 2;typeBibit = 3;typeBuah = 4;efekBuah = 0;efekTime = 0;costBuy = 120;costSell = 540;}
@@ -24,9 +24,15 @@ Item:: Item(const string& item)
 	else if(item == "Paprika")	{typeTanaman = 12;typeBibit = 23;typeBuah = 24;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 360;}
 }
 
-Item :: Item(const Item&)
+Item :: Item(const Item& item)//copy konstruktor
 {
-	cout<<"cctor Item"<<endl;
+	typeBuah = item.typeBuah;
+	typeTanaman = item.typeTanaman;
+	typeBibit = item.typeBibit;
+	efekBuah = item.efekBuah;
+	efekTime = item.efekTime;
+	costBuy = item.costBuy;
+	costSell = item.costSell;
 }
 
 Item :: ~Item()
