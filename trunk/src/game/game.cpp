@@ -6,88 +6,47 @@
 void Game::Run() {
     bool notExit;
     do {
-        system("cls");																		//MENGHAPUS LAYAR SEBELUMNYA
-        if (world != NULL) 																	//KETIKA SUDAH TERPANGGIL FUNGSI NEW ATAU LOAD
-		{
-		cout << (*world);																	//MEMANGGIL WORLD
+        system("cls");
+        if (world != NULL) cout << (*world);
+        else {
+            cout << "> New Game\n\n";
+            cout << "> Load Game\n\n\n\n\n\n";
         }
-		else 
-		{
-            cout << "> New Game                        > Load Game\n\n\n\n\n";				//
-        }
-		
-    try {
+        try {
                 getPerintah();
                 notExit = doPerintah();
-        } 
-		catch (int i) 
-		{
-                if (i==0) 
-				{
-                    cerr << "input tidak sesuai format!\n";
-                } 
-				else 
-				if (i==1) 
-				{
-                    cerr << "tidak ada perintah yang dimaksud\n";
-                } 
-				else 
-				if (i==2) 
-				{
-                    cerr << "perintah ini tidak bisa dilakukan disini\n";
+        } catch (int i) {
+                if (i==0) {
+                        cerr << "input tidak sesuai format!\n";
+                } else if (i==1) {
+                        cerr << "tidak ada perintah yang dimaksud\n";
+                } else if (i==2) {
+                        cerr << "perintah ini tidak bisa dilakukan disini\n";
                 }
-				else
-				if (i==3)
-				{
-					Exit;
-				}
-                getch();
+                int x = getch();
+                if (x==224) getch();
         }
     }while(notExit);
 }
 
-bool Game::doPerintah() 
-{
-	if (world == NULL) 
-	{
-		if (perintah == "new") 
-		{
-            world = new World();
-		} 
-		else 
-		if (perintah == "load") 
-		{
-		} 
-		else 
-		if (perintah == "exit")
-		{
-			throw 3;
-		}
-		throw 2;
-	} 
-	else 
-	{
-		if (perintah == "teleport") 
-		{
+bool Game::doPerintah() {
+	if (world == NULL) {
+		if (perintah == "new") {
+                    world = new World();
+		} else if (perintah == "load") {
+		} else throw 2;
+	} else {
+		if (perintah == "teleport") {
 			int where = world->getPlayer()->getCurArea()->getType();
-			if (paramStr[0] == "-help") 
-			{
-				if (where ==0) 
-				{
+			if (paramStr[0] == "-help") {
+				if (where ==0) {
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
-				} 
-				else 
-				if (where == 1) 
-				{
+				} else if (where == 1) {
 					cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n";
-				} 
-				else 
-				if (where == 2) 
-				{
+				} else if (where == 2) {
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
 				}
-			} 
-			else
+			} else
 			if (where == 0) {
 				if (paramInt[0] != 1) {
 					throw 2;
@@ -107,22 +66,22 @@ bool Game::doPerintah()
 		} else if (perintah == "right") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(KANAN);
-				world->getTime()->next10Minutes();
+				world->getTime()->nextMinutes();
 			}
 		} else if (perintah == "left") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(KIRI);
-				world->getTime()->next10Minutes();
+				world->getTime()->nextMinutes();
 			}
 		} else if (perintah == "up") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(ATAS);
-				world->getTime()->next10Minutes();
+				world->getTime()->nextMinutes();
 			}
 		} else if (perintah == "down") {
 			for (int i=0; i<paramInt[0]; i++) {
 				world->getPlayer()->move(BAWAH);
-				world->getTime()->next10Minutes();
+				world->getTime()->nextMinutes();
 			}
 		} else if (perintah == "inventory") {
 			world->getPlayer()->getInventory()->listItem();
@@ -158,28 +117,24 @@ bool Game::doPerintah()
 			world->getPlayer()->sellItem(paramInt[1],paramInt[1]);
 		}
 		if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
-			world->getTime()->next10Minutes();
+			world->getTime()->nextMinutes();
 		}
 		world->setWeather();
 	}
 	return true;
 }
-void Game::getPerintah()
-{
-	int x = getch();															// PARSING MASUKKAN
+void Game::getPerintah(){
+	//parsing perintah user
+	int x = getch();
 	string tmp;
         string dummy;
 	perintah = "";
-	if (x==224) 
-    {
+	if (x==224) {
 		x = getch();
-		if (x==72) 
-        {
+		if (x==72) {
 			perintah = "up";
 			paramInt[0] = 1;
-		} 
-        else 
-        if (x==75) {
+		} else if (x==75) {
 			perintah = "left";
 			paramInt[0] = 1;
 		} else if (x==77) {
@@ -229,18 +184,9 @@ void Game::getPerintah()
 		} else if (perintah == "store") {
 		} else if (perintah == "buy") {
 			cin >> paramStr[0] >> paramInt[0];
-		} 
-		else 
-		if (perintah == "sell") 
-		{
+		} else if (perintah == "sell") {
 			cin >> paramInt[0] >> paramInt[1];
-		} 
-		else
-		if (perintah == "#") 
-		{
-			throw 0;
-		} 
-		else {
+		} else {
 			throw 1;
 		}
 		cin >> dummy;
@@ -249,11 +195,9 @@ void Game::getPerintah()
         cout << "perintahnya adalah " << perintah << endl;  
 }
 
-Game::Game() 																			// KONSTRUKTOR
-{
+Game::Game() {
     world = NULL;
 }
-Game::~Game()																			// DESTRUKTOR
-{
+Game::~Game(){
     delete world;
 }

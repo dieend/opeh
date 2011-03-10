@@ -6,7 +6,7 @@ class Time
 public :
        Time();//ctor time
        virtual ~Time();//dtor time
-       void nextMinutes(int=2);//menentukan menit berikutnya(dieksekusi saat 1 gerakan dilakukan), parameter defaultnya adalah 2
+       int nextMinutes(int=2);//menentukan menit berikutnya(dieksekusi saat 1 gerakan dilakukan), parameter defaultnya adalah 2
        int getMinutes();
        void nextJam();
        int getJam();
@@ -15,7 +15,7 @@ public :
        void nextDay();
        int getDay();
        void setZero();
-       void setAct();
+       void setAct(int);
 private :
         int minutes;
         int jam;

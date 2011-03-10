@@ -33,7 +33,7 @@ Area::~Area(){
 		for (int j=0; j<10; j++) {
 			delete grid[i][j];
 		}
-	}	
+	}
 }
 
 Area::Area(int tipe)
@@ -138,13 +138,21 @@ ostream& operator<<(ostream& c,Area* area) {
 	} else if (area->typeArea==1) {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				if (area->getGrid(i,j)->getType() == 1) {
-                    Player * p = area->getPlayer();
+                                Grid* grid = area->getGrid(i,j);
+				if (grid->getType() == 1) { //player
+                                        Player * p = area->getPlayer();
 					c << lahan << p << white;
-				} else {
-					c << lahan << peta_lahan[i][j] << white;
-				}
-				//c << (area->getGrid(i,j));
+				} else if (grid->getType()== 4){ //tanaman
+                                        Grid_Plant * plant;
+                                        plant = (Grid_Plant*) grid;
+                                        c << lahan << plant << white;
+                                } else if (grid->getType()==0) {
+                                    Grid_Lahan * L;
+                                    L = (Grid_Lahan *) grid;
+                                    c << lahan << L << white;
+                                } else {
+                                    c << peta_lahan[i][j] << white;
+                                }
 			}
 			c << endl;
 		}

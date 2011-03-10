@@ -26,6 +26,7 @@ class Grid_Plant : public Grid
 	
 	public :
 	Grid_Plant();
+        Grid_Plant(int);
 	Grid_Plant(Point,int,int,int,int,int,int,int,int,int,bool);
 	// constructor
 	Grid_Plant(const Grid_Plant&);

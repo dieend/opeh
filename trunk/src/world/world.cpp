@@ -28,6 +28,7 @@ World::World(){
 	dwarf[WATER] 	= new Dwarf(WATER);
 	dwarf[SLASH]	= new Dwarf(SLASH);
 	time 		= new Time();
+        time->setZero();
 }
 
 World::World(World& world) {
@@ -123,8 +124,14 @@ ostream& operator<<(ostream& c,World& world){
             for (int j=0; j<10;j++){
                 cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getType();
             }
+            cout << "|";
+            for (int j=0; j<10;j++){
+                cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getFase();
+            }
             cout << endl;
         }
+        cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << endl;
+        cout << "Player has status " << world.getPlayer()->getStatus();
         cout << "Player Inventory: " << endl;
         for (int i=0; i<3; i++) {
             if (world.player->getInventory()->cekSlot(i)){

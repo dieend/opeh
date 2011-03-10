@@ -13,6 +13,20 @@ inline std::ostream& dinding(std::ostream &s)
     return s;
 }
 
+inline std::ostream& lahan_plowed(std::ostream &s)
+{
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+    SetConsoleTextAttribute(hStdout, 
+                BACKGROUND_RED|BACKGROUND_GREEN|BACKGROUND_INTENSITY);
+    return s;
+}
+inline std::ostream& lahan_watered(std::ostream &s)
+{
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+    SetConsoleTextAttribute(hStdout, BACKGROUND_INTENSITY);
+    return s;
+}
+
 inline std::ostream& lahan(std::ostream &s)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
