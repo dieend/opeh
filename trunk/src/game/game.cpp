@@ -6,34 +6,64 @@
 void Game::Run() {
     bool notExit;
     do {
-        system("cls");
-        if (world != NULL) cout << (*world);
-        else {
-            cout << "> New Game\n\n";
-            cout << "> Load Game\n\n\n\n\n\n";
+        system("cls");																		//MENGHAPUS LAYAR SEBELUMNYA
+        if (world != NULL) 
+		{
+		cout << (*world);
         }
-        try {
+		else 
+		{
+            cout << "> New Game                        > Load Game\n\n\n\n\n";
+        }
+		
+    try {
                 getPerintah();
                 notExit = doPerintah();
-        } catch (int i) {
-                if (i==0) {
+        } 
+		catch (int i) 
+		{
+                if (i==0) 
+				{
                         cerr << "input tidak sesuai format!\n";
-                } else if (i==1) {
+                } 
+				else 
+				if (i==1) 
+				{
                         cerr << "tidak ada perintah yang dimaksud\n";
-                } else if (i==2) {
-                        cerr << "perintah ini tidak bisa dilakukan disini\n";
+                } 
+				else 
+				if (i==2) 
+				{
+                    cerr << "perintah ini tidak bisa dilakukan disini\n";
                 }
+				else
+				if (i==3)
+				{
+					exit;
+				}
                 getch();
         }
     }while(notExit);
 }
 
-bool Game::doPerintah() {
-	if (world == NULL) {
-		if (perintah == "new") {
-                    world = new World();
-		} else if (perintah == "load") {
-		} else throw 2;
+bool Game::doPerintah() 
+{
+	if (world == NULL) 
+	{
+		if (perintah == "new") 
+		{
+            world = new World();
+		} 
+		else 
+		if (perintah == "load") 
+		{
+		} 
+		else 
+		if (perintah == "exit")
+		{
+			throw 3;
+		}
+		throw 2;
 	} else {
 		if (perintah == "teleport") {
 			int where = world->getPlayer()->getCurArea()->getType();
@@ -128,12 +158,16 @@ void Game::getPerintah(){
 	string tmp;
         string dummy;
 	perintah = "";
-	if (x==224) {
+	if (x==224) 
+    {
 		x = getch();
-		if (x==72) {
+		if (x==72) 
+        {
 			perintah = "up";
 			paramInt[0] = 1;
-		} else if (x==75) {
+		} 
+        else 
+        if (x==75) {
 			perintah = "left";
 			paramInt[0] = 1;
 		} else if (x==77) {
@@ -194,9 +228,11 @@ void Game::getPerintah(){
         cout << "perintahnya adalah " << perintah << endl;  
 }
 
-Game::Game() {
+Game::Game() 																			// KONSTRUKTOR
+{
     world = NULL;
 }
-Game::~Game(){
+Game::~Game()																			// DESTRUKTOR
+{
     delete world;
 }
