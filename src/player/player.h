@@ -11,38 +11,25 @@
 #include "../item/item.h"
 using namespace std;
 
+class Area;
 class Player {
-	public :
-	
-	//ctor
-	Player();
+public :
+	Player(Area*);
+        //ctor
 	Player(Inventory,int,string);
-	
 	//cctor
 	Player(const Player &);
-	
 	//dtor
 	virtual ~Player();
-	
 	//operator=
 	Player& operator= (const Player&);
-	
 	//metode get dan set
 	void setMoney(int);
-	/*
-	Mengisi uang untuk player
-	*/
-	
+	//Mengisi uang untuk player
 	int getMoney();
-	/*
-	Mengambil nilai money pada Player
-	*/
-	
+	//Mengambil nilai money pada Player
 	Grid * getFrontGrid();
-	/*
-	Mengambil grid di depan pemain dihitung dari curGrid dan arahHadap
-	*/
-	
+	//Mengambil grid di depan pemain dihitung dari curGrid dan arahHadap
 	void setStatus(Item);
 	/*
 	Mengisi jenis status pada item
@@ -153,7 +140,7 @@ class Player {
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
 	Toko -> Lahan -> Rumah
 	*/
-	
+        friend ostream& operator<<(ostream&, Player*);
 	private :
 	Grid * curGrid; //grid player berada
 	Area * curArea; //area player berada

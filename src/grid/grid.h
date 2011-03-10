@@ -1,6 +1,7 @@
 #ifndef GRID_H
 #define GRID_H
 #include "../point/point.h"
+#include <iostream>
 using namespace std;
 
 class Grid

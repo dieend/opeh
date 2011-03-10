@@ -1,7 +1,10 @@
 #include "player.h"
 #include <string.h>
 
-Player::Player () {
+Player::Player (Area* area) {
+    curArea = area;
+    curGrid = area->getGrid(8,4);
+    curGrid->setType(1);
 }
 
 Player::Player (Inventory i, int uang, string name) {
@@ -58,31 +61,31 @@ Grid * Player::getFrontGrid() {
 	
 */
 	Grid* front;
-	Point* p;
+	Point p;
 	int temp;
 	
 	
-	(*p) = curGrid->getPosisi();
+	p = curGrid->getPosisi();
 	
 	if (arahHadap == 1) {
-		temp = (*p).getY();
+		temp = p.getY();
 		temp++;
-		(*p).setY(temp);
+		p.setY(temp);
 	} else if (arahHadap == 2) {
-		temp = (*p).getX();
+		temp = p.getX();
 		temp++;
-		(*p).setX(temp);
+		p.setX(temp);
 	} else if (arahHadap == 3) {
-		temp = (*p).getY();
+		temp = p.getY();
 		temp--;
-		(*p).setY(temp);
+		p.setY(temp);
 	} else {
-		temp = (*p).getX();
+		temp = p.getX();
 		temp--;
-		(*p).setX(temp);
+		p.setX(temp);
 	}
-	
-	front = curArea->getGrid(*p);
+        cout << &p;
+	front = curArea->getGrid(p);
 	return front;
 }
 
@@ -256,9 +259,16 @@ void Player::move(int arah) {
 	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
+        cout << tipe << endl;
 	if (arahHadap == arah) {
-		if ((tipe == 0) || (tipe == 3)) {
-			curGrid = front;
+		if ((tipe == 0) || (tipe == 2)) {
+                    Point p = curGrid->getPosisi();
+                    cout << p;
+                    curGrid->setType(0);
+                    curGrid = front;
+                    p = curGrid->getPosisi();
+                    cout << p;
+                    curGrid->setType(1);
 		} //else throw "Tidak bisa dilalui";
 	} else {
 		arahHadap = arah;
@@ -322,4 +332,9 @@ void Player::teleport(Area * destination) {
 
 */
 	curArea = destination; //masih belum lengkap
+}
+
+ostream& operator<<(ostream& c, Player* p){
+    c << "P";
+    return c;
 }

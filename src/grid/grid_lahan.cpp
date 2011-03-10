@@ -41,3 +41,7 @@ void Grid_Lahan::setSiram()
 void Grid_Lahan::setPut(){
 // pengubahan fase lahan setelah ditanam bibit
 }
+
+ostream& operator<<(ostream& c, Grid_Lahan* GL){
+    return c;
+}

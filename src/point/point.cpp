@@ -68,3 +68,12 @@ bool Point::operator== (Point P) {
 		return false;
 	}
 }
+ostream& operator<<(ostream& c, Point* p){
+    c << "("<<p->getX() << ","<<p->getY()<<")\n";
+    return c;
+}
+
+ostream& operator<<(ostream& c, Point& p){
+    c << "("<<p.getX() << ","<<p.getY()<<")\n";
+    return c;
+}

@@ -1,4 +1,4 @@
-#include "Grid.h"
+#include "grid.h"
 
 Grid::Grid()
 {
@@ -58,5 +58,10 @@ void Grid::setPosisi(Point newPosisi)
 	posisi = newPosisi;
 }
 
-Grid::Grid(int,int,int){
+Grid::Grid(int x,int y,int tipe){
+    Point p(x,y);
+    posisi = p;
+    type = tipe;
+    fase = 0;
 }
+
