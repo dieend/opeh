@@ -52,6 +52,14 @@ inline std::ostream& white(std::ostream &s)
     return s;
 }
 
+inline std::ostream& blue(std::ostream &s)
+{
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+    SetConsoleTextAttribute(hStdout, 
+       FOREGROUND_BLUE|FOREGROUND_INTENSITY);
+    return s;
+}
+
 struct color {
     color(WORD attribute):m_color(attribute){};
     WORD m_color;

@@ -9,6 +9,7 @@
 #include "../grid/grid_plant.h"
 #include "../grid/grid_lahan.h"
 #include "../item/item.h"
+#include "../helper/color.h"
 using namespace std;
 
 class Area;
