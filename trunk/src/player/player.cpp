@@ -366,6 +366,8 @@ void Player::teleport(Area * destination) {
 		p.setY(0);
 	}
 	curGrid->setPosisi(p);
+	curGrid->setType(1);
+	arahHadap = 1;
 }
 
 ostream& operator<<(ostream& c, Player* p){
