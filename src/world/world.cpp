@@ -113,7 +113,33 @@ ostream& operator<<(ostream& c,World& world){
 	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n:" << white;
         if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Toko:\n" << white;
 	c << (world.getPlayer()->getCurArea());
-	
+
+
+//* UNCOMMENT FOR DEBUG
+        cout << "Player position : " << new Point(world.player->getCurGrid()->getPosisi())<< endl;
+        cout << "Player area : " << world.player->getCurArea()->getType() << endl;
+        cout << "Area masking: " << endl;
+        for (int i=0; i<10; i++) {
+            for (int j=0; j<10;j++){
+                cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getType();
+            }
+            cout << endl;
+        }
+        cout << "Player Inventory: " << endl;
+        for (int i=0; i<3; i++) {
+            if (world.player->getInventory()->cekSlot(i)){
+                cout << "slot " << i <<" exist\n";
+                cout << "tipe item " << world.player->getInventory()->getSlot(0)->gettipeItem();
+                cout << "price " << world.player->getInventory()->getSlot(0)->getCost();
+                cout << "efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah();
+                cout << "efek time " << world.player->getInventory()->getSlot(0)->getEfekTime();
+            } else {
+                cout << "slot "<< i << "not exist";
+            }
+        }
+//*/
+
+
 	c << "Perintah:\n";
 	return c;
 }

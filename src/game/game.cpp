@@ -1,8 +1,8 @@
 #include "game.h"
-#define KANAN 2
-#define KIRI 4
-#define ATAS 1
-#define BAWAH 3
+#define KANAN 1
+#define KIRI 3
+#define ATAS 4
+#define BAWAH 2
 void Game::Run() {
     bool notExit;
     do {
@@ -25,7 +25,6 @@ void Game::Run() {
                 }
                 getch();
         }
-        system("PAUSE");
     }while(notExit);
 }
 
@@ -143,7 +142,9 @@ void Game::getPerintah(){
 		} else if (x==80) {
 			perintah = "down";
 			paramInt[0] = 1;
-		}
+		} else {
+                    perintah = "fail";
+                }
 	} else {
 		cout << (char)x;
 		perintah += (char)x;
