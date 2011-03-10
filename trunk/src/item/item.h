@@ -14,6 +14,7 @@ class Item{
         int typetanaman;
 		int typebibit;
 		int typebuah;
+                bool bibit;
 	public :
 		Item (); //konstruktor
         Item(const string&);
@@ -28,5 +29,6 @@ class Item{
         int gettipeTanaman();
         int getEfekBuah();
         int getEfekTime();
+        bool isBibit();
 };
 #endif

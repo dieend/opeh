@@ -85,4 +85,6 @@ int Item::getEfekTime()
 	return efektime;
 }
 
-
+bool Item::isBibit() {
+    return true;
+}
