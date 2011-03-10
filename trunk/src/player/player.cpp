@@ -362,8 +362,8 @@ void Player::teleport(Area * destination) {
 		p.setX(1);
 		p.setY(0);
 	} else {
-		p.setX(9);
-		p.setY(4);
+		p.setX(3);
+		p.setY(0);
 	}
 	curGrid->setPosisi(p);
 }
