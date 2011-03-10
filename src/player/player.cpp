@@ -350,11 +350,34 @@ void Player::teleport(Area * destination) {
 /*
 
 */
+	int area;
+	Point p;
+	
 	curArea = destination; //masih belum lengkap
+	area = curArea->getType();
+	if (area == 0) {
+		p.setX(9);
+		p.setY(4);
+	} else if (area == 1) {
+		p.setX(1);
+		p.setY(0);
+	} else {
+		p.setX(9);
+		p.setY(4);
+	}
+	curGrid->setPosisi(p);
 }
 
 ostream& operator<<(ostream& c, Player* p){
-    c << "P";
+    if (arahHadap == 1) {
+		c << ">";
+	} else if (arahHadap == 2) {
+		c << "v";
+	} else if (arahHadap == 3) {
+		c << "<";
+	} else {
+		c << "^";
+	}
     return c;
 }
 
