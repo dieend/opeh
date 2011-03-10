@@ -7,13 +7,13 @@ void Game::Run() {
     bool notExit;
     do {
         system("cls");																		//MENGHAPUS LAYAR SEBELUMNYA
-        if (world != NULL) 
+        if (world != NULL) 																	//KETIKA SUDAH TERPANGGIL FUNGSI NEW ATAU LOAD
 		{
-		cout << (*world);
+		cout << (*world);																	//MEMANGGIL WORLD
         }
 		else 
 		{
-            cout << "> New Game                        > Load Game\n\n\n\n\n";
+            cout << "> New Game                        > Load Game\n\n\n\n\n";				//
         }
 		
     try {
@@ -24,12 +24,12 @@ void Game::Run() {
 		{
                 if (i==0) 
 				{
-                        cerr << "input tidak sesuai format!\n";
+                    cerr << "input tidak sesuai format!\n";
                 } 
 				else 
 				if (i==1) 
 				{
-                        cerr << "tidak ada perintah yang dimaksud\n";
+                    cerr << "tidak ada perintah yang dimaksud\n";
                 } 
 				else 
 				if (i==2) 
@@ -39,7 +39,7 @@ void Game::Run() {
 				else
 				if (i==3)
 				{
-					exit;
+					Exit;
 				}
                 getch();
         }
@@ -64,18 +64,30 @@ bool Game::doPerintah()
 			throw 3;
 		}
 		throw 2;
-	} else {
-		if (perintah == "teleport") {
+	} 
+	else 
+	{
+		if (perintah == "teleport") 
+		{
 			int where = world->getPlayer()->getCurArea()->getType();
-			if (paramStr[0] == "-help") {
-				if (where ==0) {
+			if (paramStr[0] == "-help") 
+			{
+				if (where ==0) 
+				{
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
-				} else if (where == 1) {
+				} 
+				else 
+				if (where == 1) 
+				{
 					cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n";
-				} else if (where == 2) {
+				} 
+				else 
+				if (where == 2) 
+				{
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
 				}
-			} else
+			} 
+			else
 			if (where == 0) {
 				if (paramInt[0] != 1) {
 					throw 2;
@@ -152,9 +164,9 @@ bool Game::doPerintah()
 	}
 	return true;
 }
-void Game::getPerintah(){
-	//parsing perintah user
-	int x = getch();
+void Game::getPerintah()
+{
+	int x = getch();															// PARSING MASUKKAN
 	string tmp;
         string dummy;
 	perintah = "";
@@ -217,9 +229,18 @@ void Game::getPerintah(){
 		} else if (perintah == "store") {
 		} else if (perintah == "buy") {
 			cin >> paramStr[0] >> paramInt[0];
-		} else if (perintah == "sell") {
+		} 
+		else 
+		if (perintah == "sell") 
+		{
 			cin >> paramInt[0] >> paramInt[1];
-		} else {
+		} 
+		else
+		if (perintah == "#") 
+		{
+			throw 0;
+		} 
+		else {
 			throw 1;
 		}
 		cin >> dummy;
