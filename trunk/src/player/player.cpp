@@ -26,6 +26,8 @@ Player::Player(const Player & chara) {
 }
 
 Player::~Player () {
+	delete curGrid;
+	delete curArea;
 }
 
 //operator=
@@ -84,7 +86,8 @@ Grid * Player::getFrontGrid() {
 		temp--;
 		p.setX(temp);
 	}
-        front = curArea->getGrid(p);
+	
+    front = curArea->getGrid(p);
 	return front;
 }
 
@@ -145,6 +148,7 @@ void Player::plow() {
 	baca punya onta untuk nentuin bibit sudah disiram dan belum disiram
 */
 	int tipe;
+	int fase;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	Grid_Lahan* lahan;
@@ -155,11 +159,12 @@ void Player::plow() {
 		lahan->setCangkul();
 	} else if (tipe == 5) {
 		tanaman = (Grid_Plant*)front;
-		if (tanaman->getFase() == 2) {
+		fase = tanaman->getFase();
+		if ((fase == 1) || (fase == 2)) {
 			delete front;
 			front = new Grid_Lahan();
 			front->setType(0);
-			front->setFase(1);
+			front->setFase(fase);
 			setFrontGrid(front);
 		}
 	}
@@ -228,18 +233,26 @@ void Player::put(int noSlot,int jumlah) {
 	int fase;
 	Grid* front = getFrontGrid();
 	Grid_Lahan* lahan;
+	Item* item;
 	
 	tipe = front->getType();
 	if (tipe == 0) {
 		lahan = (Grid_Lahan*)front;
 		fase = lahan->getFase();
 		if (fase == 1) {
-			delete front;
-			front = new Grid_Plant();
-			front->setType(5);
-			front->setFase(0);
+			item = inventory.getSlot(noSlot);
+			if (item->isBibit()) {
+				delete front;
+				front = new Grid_Plant();
+				front->setType(5);
+				front->setFase(0);
+				inventory.deleteItem(noSlot,jumlah);
+				setFrontGrid(front);
+			} else {
+				inventory.deleteItem(noSlot,jumlah);
+			}
+		} else {
 			inventory.deleteItem(noSlot,jumlah);
-			setFrontGrid(front);
 		}
 	} else if (tipe == 8) {
 		inventory.deleteItem(noSlot,jumlah);
@@ -254,16 +267,28 @@ void Player::move(int arah) {
 	tambahkan setting type menjadi 1 jika bergerak
 */
 	int tipe;
+	int tipeArea;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
+	Point p;
 	
 	tipe = front->getType();
 	if (arahHadap == arah) {
 		if ((tipe == 0) || (tipe == 2)) {
-                    curGrid->setType(0);
-                    curGrid = front;
-                    curGrid->setType(1);
-		} //else throw "Tidak bisa dilalui";
+				tipeArea = curArea->getType();
+			if (tipeArea == 1) {
+				p = curGrid->getPosisi();
+				if (p.getX() <= 3) {
+					curGrid->setType(2);
+				} else {
+					curGrid->setType(0);
+				}
+			} else {
+				curGrid->setType(2);
+			}
+			curGrid = front;
+			curGrid->setType(1);
+		}
 	} else {
 		arahHadap = arah;
 	}
