@@ -84,8 +84,7 @@ Grid * Player::getFrontGrid() {
 		temp--;
 		p.setX(temp);
 	}
-        cout << &p;
-	front = curArea->getGrid(p);
+        front = curArea->getGrid(p);
 	return front;
 }
 
@@ -259,15 +258,10 @@ void Player::move(int arah) {
 	Grid_Plant* tanaman;
 	
 	tipe = front->getType();
-        cout << tipe << endl;
 	if (arahHadap == arah) {
 		if ((tipe == 0) || (tipe == 2)) {
-                    Point p = curGrid->getPosisi();
-                    cout << p;
                     curGrid->setType(0);
                     curGrid = front;
-                    p = curGrid->getPosisi();
-                    cout << p;
                     curGrid->setType(1);
 		} //else throw "Tidak bisa dilalui";
 	} else {
@@ -337,4 +331,8 @@ void Player::teleport(Area * destination) {
 ostream& operator<<(ostream& c, Player* p){
     c << "P";
     return c;
+}
+
+Grid * Player::getCurGrid(){
+    return curGrid;
 }

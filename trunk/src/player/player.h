@@ -51,6 +51,7 @@ public :
 	*/
 	
 	Area * getCurArea();
+        Grid * getCurGrid();
 	/*
 	
 	*/
