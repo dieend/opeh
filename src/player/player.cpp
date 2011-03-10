@@ -328,7 +328,7 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 */
 	Item* item;
 	item = inventory.getSlot(NoSlot);
-	money = money + item->getcostSell() * Jumlah;
+	money = money + item->getCostSell() * Jumlah;
 	inventory.deleteItem(NoSlot,Jumlah);
 }
 
@@ -339,7 +339,7 @@ void Player::buyItem(string name,int Jumlah) {
 	Item * dummyItem;
 	
 	dummyItem = new Item(name);
-	if (money > (dummyItem->getcostBuy() * Jumlah)) {
+	if (money > (dummyItem->getCostBuy() * Jumlah)) {
 		money = money - dummyItem->getcostBuy()* Jumlah;
 		inventory.addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
