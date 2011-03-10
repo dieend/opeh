@@ -9,21 +9,24 @@ class Item{
 	private:
 		int efekbuah;//efek dari buah yang dimakan player
 		int efektime;//lama nya efek dari buah yang dimakan player
-                int cost;
-                int type;
-                bool bibit;
+        int costbuy;
+		int costsell;
+        int typetanaman;
+		int typebibit;
+		int typebuah;
 	public :
 		Item (); //konstruktor
-                Item(const string&);
+        Item(const string&);
 		Item(const Item&);//copy konstruktor
-                Item(int);
-		Item &operator=(const Item&);//operator assignment
+        Item(int);
 		virtual ~Item (); //destructor
-		int getCost();//memberikan harga dari item
-		int gettipeItem();//memberikan tipe dari item
-                int getEfekBuah();
-                int getEfekTime();
-                ostream& operator<<(ostream&);
-                bool isBibit();
+
+		int getcostBuy();
+		int getcostSell();
+		int gettipeBibit();
+		int gettipeBuah();
+        int gettipeTanaman();
+        int getEfekBuah();
+        int getEfekTime();
 };
 #endif

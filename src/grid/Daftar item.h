@@ -5,7 +5,7 @@
 //	cost buy		: 150
 //  cost sell		: 720
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 1
 //	happymeter		: 0
 //	titikdewasa		: 5
@@ -20,7 +20,7 @@
 //	cost buy		: 120
 //  cost sell		: 540
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 1
 //	happymeter		: 0
 //	titikdewasa		: 2
@@ -36,7 +36,7 @@
 //	cost buy		: 200
 //  cost sell		: 900
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 1
 //	happymeter		: 0
 //	titikdewasa		: 5
@@ -52,7 +52,7 @@
 //	cost buy		: 500
 //  cost sell		: 2250
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 1
 //	happymeter		: 0
 //	titikdewasa		: 10
@@ -68,7 +68,7 @@
 //	cost buy		: 300
 //  cost sell		: 900
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 2
 //	happymeter		: 0
 //	titikdewasa		: 12
@@ -84,7 +84,7 @@
 //	cost buy		: 200
 //  cost sell		: 540
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 2
 //	happymeter		: 0
 //	titikdewasa		: 7
@@ -100,7 +100,7 @@
 //	cost buy		: 150
 //  cost sell		: 720
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 2
 //	happymeter		: 0
 //	titikdewasa		: 5 
@@ -116,7 +116,7 @@
 //	cost buy		: 1000
 //  cost sell		: 4500
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 2
 //	happymeter		: 0
 //	titikdewasa		: 16
@@ -132,7 +132,7 @@
 //	cost buy		: 300
 //  cost sell		: 1080
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 3
 //	happymeter		: 0
 //	titikdewasa		: 5
@@ -148,7 +148,7 @@
 //	cost buy		: 120
 //  cost sell		: 720
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 3
 //	happymeter		: 0
 //	titikdewasa		: 7
@@ -164,7 +164,7 @@
 //	cost buy		: 300
 //  cost sell		: 1080
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 3
 //	happymeter		: 0
 //	titikdewasa		: 3
@@ -179,7 +179,7 @@
 //	cost buy		: 150
 //  cost sell		: 360
 //  effect bibit	: 
-//  effect buah		: 
+//  effect buah		: 0
 //	season			: 3
 //	happymeter		: 0
 //	titikdewasa		: 6
