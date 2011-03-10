@@ -10,18 +10,22 @@ public :
        int getMinutes();
        void nextJam();
        int getJam();
-       void nextSeason();//season dalam satu tahun, ada 4 season,0 untuk spring, 1 untuk summmer,2 untuk autumn, 3 untuk winter
-       int getSeason();//mengembalikan nilai season sekarang
        void nextDay();
        int getDay();
+       void nextSeason();//season dalam satu tahun, ada 4 season,0 untuk spring, 1 untuk summmer,2 untuk autumn, 3 untuk winter
+       int getSeason();//mengembalikan nilai season sekarang
        void setZero();
-       void setAct();
+       bool iscJam();//true jika jam baru berubah(setelah 1 aksi), false jika tidak
+       bool iscDay();//true jika day baru berubah(setelah 1 aksi), false jika tidak
+       bool iscSeason();//true jika season baru berubah(setelah 1 aksi), false jika tidak
 private :
         int minutes;
         int jam;
         int day;
         int season;
-        int act;
+        bool cjam;
+        bool cday;
+        bool cseason;
 };
 
 #endif
