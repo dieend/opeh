@@ -372,13 +372,13 @@ void Player::teleport(Area * destination) {
 
 ostream& operator<<(ostream& c, Player* p){
     if (p->arahHadap == 1) {
-		c << ">";
+		c << (char) 272;
 	} else if (p->arahHadap == 2) {
-		c << "v";
+		c << (char) 287;
 	} else if (p->arahHadap == 3) {
-		c << "<";
+		c << (char) 273;
 	} else {
-		c << "^";
+		c << (char) 286;
 	}
     return c;
 }
