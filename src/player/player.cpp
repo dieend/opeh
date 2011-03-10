@@ -365,7 +365,7 @@ void Player::teleport(Area * destination) {
 		p.setX(3);
 		p.setY(0);
 	}
-	curGrid->setPosisi(p);
+	curGrid = curArea->getGrid(p);
 	curGrid->setType(1);
 	arahHadap = 1;
 }
