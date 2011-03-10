@@ -6,5 +6,5 @@ using namespace std;
 int main()
 {
   printf("Default Color.\n");
-  cout << lahan<< " test " << white;
+  cout << lahan_watered << " test " << white;
 }

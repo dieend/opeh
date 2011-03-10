@@ -218,5 +218,297 @@ void Grid_Plant::setPanenBerulang(bool newPanenBerulang)
 }
 
 ostream& operator<<(ostream& c, Grid_Plant* GP){
+    	if (GP->getFase() == 0)
+		c << ".";
+	else if (GP->getFase() == 1)
+		c << ":";
+	else if (GP->getFase() == 2)
+		c << "i";
+	else if (GP->getFase() == 3)
+		c << "I";
+	else if (GP->getFase() == 5)
+		c << "T";
+	else if (GP->getFase() == 6)
+		c << "Y";
     return c;
+}
+Grid_Plant::Grid_Plant(int newTypeItem)
+{
+	if (newTypeItem == 1)
+		{
+		//	nama			: Kentang
+		//	type tanaman	: 1
+		//  type bibit		: 1
+		//	cost buy		: 150
+		//  cost sell		: 720
+		//	season			: 1
+		//	happymeter		: 0
+		//	titikdewasa		: 5
+		//	titikpanen		: 8
+		//	umur			: 10
+		//	panenberulang	: false
+		setType(4);
+		setFase(0);
+		typeTanaman		= 1;
+		cost			= 720;
+		season			= 1;
+		happyMeter		= 0;
+		titikDewasa		= 5;
+		titikPanen		= 8;
+		umur			= 10;
+		panenBerulang	= false;
+		}
+	else if (newTypeItem == 3)
+		{
+		//	nama			: Lobak
+		//	type tanaman	: 2
+		//  type bibit		: 3
+		//  cost sell		: 540
+		//	season			: 1
+		//	happymeter		: 0
+		//	titikdewasa		: 2
+		//	titikpanen		: 5
+		//	umur			: 8
+		//	panenberulang	: false
+		setType(4);
+		setFase(0);
+		typeTanaman		= 2;
+		cost			= 540;
+		season			= 1;
+		happyMeter		= 0;
+		titikDewasa		= 2;
+		titikPanen		= 5;
+		umur			= 8;
+		panenBerulang	= false;
+		}
+	else if (newTypeItem == 5)
+		{
+		//	nama			: Timun
+		//	type tanaman	: 3
+		//  type bibit		: 5
+		//  cost sell		: 900
+		//	season			: 1
+		//	happymeter		: 0
+		//	titikdewasa		: 5
+		//	titikpanen		: 10
+		//	umur			: 25
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 3;
+		cost			= 900;
+		season			= 1;
+		happyMeter		= 0;
+		titikDewasa		= 5;
+		titikPanen		= 10;
+		umur			= 25;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 7)
+		{
+		//	nama			: Kubis
+		//	type tanaman	: 4
+		//  type bibit		: 7
+		//  cost sell		: 2250
+		//	season			: 1
+		//	happymeter		: 0
+		//	titikdewasa		: 10
+		//	titikpanen		: 15
+		//	umur			: 20
+		//	panenberulang	: false
+		setType(4);
+		setFase(0);
+		typeTanaman		= 4;
+		cost			= 2250;
+		season			= 1;
+		happyMeter		= 0;
+		titikDewasa		= 10;
+		titikPanen		= 15;
+		umur			= 20;
+		panenBerulang	= false;
+		}
+	else if (newTypeItem == 9)
+		{
+		//	nama			: Jagung
+		//	type tanaman	: 5
+		//  type bibit		: 9
+		//  cost sell		: 900
+		//	season			: 2
+		//	happymeter		: 0
+		//	titikdewasa		: 12
+		//	titikpanen		: 15
+		//	umur			: 25
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 5;
+		cost			= 900;
+		season			= 2;
+		happyMeter		= 0;
+		titikDewasa		= 12;
+		titikPanen		= 15;
+		umur			= 25;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 11)
+		{
+		//	nama			: Tomat
+		//	type tanaman	: 6
+		//  type bibit		: 11
+		//  cost sell		: 540
+		//	season			: 2
+		//	happymeter		: 0
+		//	titikdewasa		: 7
+		//	titikpanen		: 10
+		//	umur			: 20
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 6;
+		cost			= 540;
+		season			= 2;
+		happyMeter		= 0;
+		titikDewasa		= 7;
+		titikPanen		= 10;
+		umur			= 20;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 13)
+		{
+		//	nama			: Bawang
+		//	type tanaman	: 7
+		//  type bibit		: 13
+		//  cost sell		: 720
+		//	season			: 2
+		//	happymeter		: 0
+		//	titikdewasa		: 5
+		//	titikpanen		: 8
+		//	umur			: 12
+		//	panenberulang	: false
+		setType(4);
+		setFase(0);
+		typeTanaman		= 7;
+		cost			= 720;
+		season			= 2;
+		happyMeter		= 0;
+		titikDewasa		= 5;
+		titikPanen		= 8;
+		umur			= 12;
+		panenBerulang	= false;
+		}
+	else if (newTypeItem == 15)
+		{
+		//	nama			: Nanas
+		//	type tanaman	: 8
+		//  type bibit		: 15
+		//  cost sell		: 4500
+		//	season			: 2
+		//	happymeter		: 0
+		//	titikdewasa		: 16
+		//	titikpanen		: 21
+		//	umur			: 30
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 8;
+		cost			= 4500;
+		season			= 1;
+		happyMeter		= 0;
+		titikDewasa		= 16;
+		titikPanen		= 21;
+		umur			= 30;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 17)
+		{
+		//	nama			: Wortel
+		//	type tanaman	: 9
+		//  type bibit		: 17
+		//  cost sell		: 1080
+		//	season			: 3
+		//	happymeter		: 0
+		//	titikdewasa		: 5
+		//	titikpanen		: 8
+		//	umur			: 12
+		//	panenberulang	: false
+		setType(4);
+		setFase(0);
+		typeTanaman		= 9;
+		cost			= 1080;
+		season			= 3;
+		happyMeter		= 0;
+		titikDewasa		= 5;
+		titikPanen		= 6;
+		umur			= 12;
+		panenBerulang	= false;
+		}
+	else if (newTypeItem == 19)
+		{
+		//	nama			: Terong
+		//	type tanaman	: 10
+		//  type bibit		: 19
+		//  cost sell		: 720
+		//	season			: 3
+		//	happymeter		: 0
+		//	titikdewasa		: 7
+		//	titikpanen		: 10
+		//	umur			: 20
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 10;
+		cost			= 720;
+		season			= 3;
+		happyMeter		= 0;
+		titikDewasa		= 7;
+		titikPanen		= 10;
+		umur			= 20;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 21)
+		{
+		//	nama			: Ubi
+		//	type tanaman	: 11
+		//  type bibit		: 21
+		//  cost sell		: 1080
+		//	season			: 3
+		//	happymeter		: 0
+		//	titikdewasa		: 3
+		//	titikpanen		: 6
+		//	umur			: 20
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 11;
+		cost			= 1080;
+		season			= 3;
+		happyMeter		= 0;
+		titikDewasa		= 3;
+		titikPanen		= 6;
+		umur			= 20;
+		panenBerulang	= true;
+		}
+	else if (newTypeItem == 23)
+		{
+		//	nama			: Paprika
+		//	type tanaman	: 12
+		//  type bibit		: 23
+		//  cost sell		: 360
+		//	season			: 3
+		//	happymeter		: 0
+		//	titikdewasa		: 6
+		//	titikpanen		: 8
+		//	umur			: 20
+		//	panenberulang	: true
+		setType(4);
+		setFase(0);
+		typeTanaman		= 12;
+		cost			= 360;
+		season			= 3;
+		happyMeter		= 0;
+		titikDewasa		= 6;
+		titikPanen		= 8;
+		umur			= 20;
+		panenBerulang	= true;
+		}
 }

@@ -1,5 +1,5 @@
 #include "../grid/grid_lahan.h"
-
+#include "../helper/color.h"
 Grid_Lahan::Grid_Lahan()
 {
 
@@ -43,5 +43,10 @@ void Grid_Lahan::setPut(){
 }
 
 ostream& operator<<(ostream& c, Grid_Lahan* GL){
+    if (GL->getFase()==0) c<<lahan;
+    if (GL->getFase()==1) c<<lahan_plowed;
+    if (GL->getFase()==2) c<<lahan_watered;
+    c << ".";
+    c<< white;
     return c;
 }

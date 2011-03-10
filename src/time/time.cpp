@@ -38,7 +38,7 @@ void Time::nextJam(){
        ++jam;
      else
      {
-       nextday();
+       nextDay();
        jam=0;
      }       
 }
@@ -50,12 +50,12 @@ int Time::getJam(){
 
 //setting day, 30 day merupakan 1 musim, rentang day dari 1-30
 void Time::nextDay(){
-     if (day<30)
-       ++day;
-     else
-     {
-       nextseason();
-       day=1;
+    if (day<30){
+        ++day;
+    } else {
+        nextSeason();
+        day=1;
+    }
 }
 
 //mengembalikan nilai dari current day
