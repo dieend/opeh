@@ -340,7 +340,7 @@ void Player::buyItem(string name,int Jumlah) {
 	
 	dummyItem = new Item(name);
 	if (money > (dummyItem->getCostBuy() * Jumlah)) {
-		money = money - dummyItem->getcostBuy()* Jumlah;
+		money = money - dummyItem->getCostBuy()* Jumlah;
 		inventory.addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
 	 delete dummyItem;
