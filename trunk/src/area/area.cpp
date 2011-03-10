@@ -112,7 +112,8 @@ ostream& operator<<(ostream& c,Area* area) {
 		for (int i=0; i<10; i++) {
 			for(int j=0; j<10; j++) {
 				if (area->getGrid(i,j)->getType() == 1) {
-					c << lantai << (area->getGrid(i,j)) << white;
+                                    Player * p = area->getPlayer();
+					c << lantai << p << white;
 				} else {
 					c << lantai << peta_rumah[i][j] << white;
 				}
@@ -131,7 +132,7 @@ ostream& operator<<(ostream& c,Area* area) {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				if (area->getGrid(i,j)->getType() == 1) {
-					c << toko << (area->getGrid(i,j)) << white;
+					c << toko << (area->getPlayer()) << white;
 				} else {
 					c << toko << peta_toko[i][j] << white;
 				}
@@ -141,4 +142,12 @@ ostream& operator<<(ostream& c,Area* area) {
 		c << dinding << "+----------+\n|" << white;
 	}
 	return c;
+}
+
+Player* Area::getPlayer(){
+    return player;
+}
+
+void Area::setPlayer(Player* p){
+    player = p;
 }

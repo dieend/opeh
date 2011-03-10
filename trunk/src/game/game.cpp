@@ -4,28 +4,35 @@
 #define ATAS 1
 #define BAWAH 3
 void Game::Run() {
-	bool notExit;
-	do {
-		cout << world;
-		try {
-			getPerintah();
-			notExit = doPerintah();
-		} catch (int i) {
-			if (i==0) {
-				cerr << "input tidak sesuai format!\n";
-			} else if (i==1) {
-				cerr << "tidak ada perintah yang dimaksud\n";
-			} else if (i==2) {
-				cerr << "perintah ini tidak bisa dilakukan disini\n";
-			}
-			getch();
-		}
-	}while(notExit);
+    bool notExit;
+    do {
+        system("cls");
+        if (world != NULL) cout << (*world);
+        else {
+            cout << "> New Game\n\n";
+            cout << "> Load Game\n\n\n\n\n\n";
+        }
+        try {
+                getPerintah();
+                notExit = doPerintah();
+        } catch (int i) {
+                if (i==0) {
+                        cerr << "input tidak sesuai format!\n";
+                } else if (i==1) {
+                        cerr << "tidak ada perintah yang dimaksud\n";
+                } else if (i==2) {
+                        cerr << "perintah ini tidak bisa dilakukan disini\n";
+                }
+                getch();
+        }
+        system("PAUSE");
+    }while(notExit);
 }
 
 bool Game::doPerintah() {
 	if (world == NULL) {
 		if (perintah == "new") {
+                    world = new World();
 		} else if (perintah == "load") {
 		} else throw 2;
 	} else {
@@ -183,9 +190,11 @@ void Game::getPerintah(){
 		cin >> dummy;
 		if (dummy != "#") throw 0;
 	}
+        cout << "perintahnya adalah " << perintah << endl;  
 }
 
 Game::Game() {
+    world = NULL;
 }
 Game::~Game(){
     delete world;

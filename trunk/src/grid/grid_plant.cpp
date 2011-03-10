@@ -216,3 +216,7 @@ void Grid_Plant::setPanenBerulang(bool newPanenBerulang)
 {
 	panenBerulang	= newPanenBerulang;
 }
+
+ostream& operator<<(ostream& c, Grid_Plant* GP){
+    return c;
+}

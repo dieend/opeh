@@ -16,7 +16,7 @@ class Grid_Lahan : public Grid
 	// copy constructor
 	virtual ~Grid_Lahan();
 	// destructor
-
+        friend ostream& operator<<(ostream&, Grid_Lahan*);
 	void setCangkul();
 	// pengubahan fase lahan setelah dicangkul
 	void setSiram();

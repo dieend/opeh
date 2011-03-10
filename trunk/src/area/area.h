@@ -3,19 +3,26 @@
 #include "../helper/color.h"
 #include "../grid/grid.h"
 #include "../point/point.h"
+#include "../player/player.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
+class Player;
+
 class Area {
 private:
 	Grid * grid[10][10];
+        Player* player;
+//        Player* player();
 	/* Merupakan array dari Grid yang berukuran 10x10.
 	*/
 public:
 	const int typeArea;
 	/* menandakan jenis Area;
 	*/
+        Player* getPlayer();
+        void setPlayer(Player*);
         int getType();
 	Area(int tipe);
 	/*  Constructor Area dengan menginstansiasi typeArea dengan tipe.
@@ -24,6 +31,8 @@ public:
 	*/
 	// Area(const Area&);
 	Area();
+//        Player* getPlayer();
+//        void setPlayer(Player* p);
 	/* Default ctor. typeArea = 0
 	*/
 	virtual ~Area();
@@ -33,7 +42,8 @@ public:
 	/* mengembalikan address grid yang diacu oleh Point
 	*/
 	Grid* getGrid(int,int);
-	friend ostream& operator<<(ostream&,Area*);
-	
+	friend ostream& operator<<(ostream&, Area*);
 };
+
+
 #endif

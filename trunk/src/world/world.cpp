@@ -15,15 +15,19 @@
 
 World::World(){
 	// ctor
-	weather 		= 0;
+	weather 	= 0;
 	area[RUMAH] 	= new Area(RUMAH);
 	area[LAHAN] 	= new Area(LAHAN);
 	area[TOKO ] 	= new Area(TOKO );
-	player 			= new Player();
+	player 		= new Player(area[RUMAH]);
+        area[RUMAH]->setPlayer(player);
+        area[LAHAN]->setPlayer(player);
+        area[TOKO ]->setPlayer(player);
+        cout << area[RUMAH]->getPlayer() << endl << endl;
 	dwarf[HARVEST]	= new Dwarf(HARVEST);
 	dwarf[WATER] 	= new Dwarf(WATER);
 	dwarf[SLASH]	= new Dwarf(SLASH);
-	time 			= new Time();
+	time 		= new Time();
 }
 
 World::World(World& world) {
@@ -100,19 +104,16 @@ void World::setWeather() {
 	doWeather();
 }
 
-ostream& operator<<(ostream& c,World* world){
+ostream& operator<<(ostream& c,World& world){
 	// belum diimplementasi
-	if (world != NULL) {
-		char tmp[100];
-		sprintf(tmp,"%10sDesa Opeh%10s\n","s","s");
-		c << judul << tmp << white;
-		if (world->getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n";
-		if (world->getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n";
-		c << (world->getPlayer()->getCurArea());
-	} else {
-		c << "> New Game\n\n";
-		c << "> Load Game\n\n\n\n\n\n";
-	}
+	char tmp[100];
+	sprintf(tmp,"%10sDesa Opeh%10s\n","","");
+	c << judul << tmp << white;
+	if (world.getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n" << white;
+	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian\n:" << white;
+        if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Toko:\n" << white;
+	c << (world.getPlayer()->getCurArea());
+	
 	c << "Perintah:\n";
 	return c;
 }
@@ -134,3 +135,4 @@ Time* World::getTime() {
 Player* World::getPlayer() {
     return player;
 }
+

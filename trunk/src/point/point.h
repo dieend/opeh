@@ -31,7 +31,8 @@ class Point {
 	bool operator> (Point);
 
 	bool operator== (Point);
-	
+        friend ostream& operator<<(ostream&,Point*);
+        friend ostream& operator<<(ostream&,Point&);
 	private:
 	int x;
 	int y;

@@ -71,4 +71,5 @@ public:
 	/* Membuat dwarf melakukan pekerjaan yang dilakukan setiap action player terjadi
 	*/
 };
+
 #endif
