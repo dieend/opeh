@@ -66,16 +66,16 @@ Area::Area(int tipe)
 			for (int j=0; j<10; j++) {
 				Point P(i,j);
 				if ((i==1 || i==2) && (j==8 || j==9)) {
-					grid[i][j] = new Grid(P,2,0);
+					grid[i][j] = new Grid(P,3,0);
 				} else {
-					grid[i][j] = new Grid(P,0,2);
+					grid[i][j] = new Grid(P,2,0);
 				}
 			}
 		}
 		for (int i=3; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				Point P(i,j);
-				grid[i][j] = new Grid(P,1,0);
+				grid[i][j] = new Grid(P,0,0);
 			}
 		}
 	}
@@ -93,6 +93,20 @@ string peta_rumah[10] = {
 		"BBB...III.",
 		"BBB...III."
 		};
+		
+string peta_lahan[10] = {
+		".........."
+		"........xx"
+		"........xx"
+		"tttttttttt"
+		"tttttttttt"
+		"tttttttttt"
+		"tttttttttt"
+		"tttttttttt"
+		"tttttttttt"
+		"tttttttttt"
+		};
+		
 string peta_toko[10] = {
 		"&..%%.#[-]",
 		"%&....#..*",
@@ -112,7 +126,7 @@ ostream& operator<<(ostream& c,Area* area) {
 		for (int i=0; i<10; i++) {
 			for(int j=0; j<10; j++) {
 				if (area->getGrid(i,j)->getType() == 1) {
-                                    Player * p = area->getPlayer();
+                    Player * p = area->getPlayer();
 					c << lantai << p << white;
 				} else {
 					c << lantai << peta_rumah[i][j] << white;
@@ -124,8 +138,15 @@ ostream& operator<<(ostream& c,Area* area) {
 	} else if (area->typeArea==1) {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
-				c << (area->getGrid(i,j));
+				if (area->getGrid(i,j)->getType() == 1) {
+                    Player * p = area->getPlayer();
+					c << lahan << p << white;
+				} else {
+					c << lahan << peta_lahan[i][j] << white;
+				}
+				//c << (area->getGrid(i,j));
 			}
+			c << endl;
 		}
 	} else if (area->typeArea==2) {
 		c << dinding << "+----------+\n|" << white;
