@@ -5,7 +5,9 @@ using namespace std;
 
 Inventory::Inventory()//konstruktor
 {
-    cout<<"ctor Inventory"<<endl;
+	slot[0] = NULL;
+	slot[1] = NULL;
+	slot[2] = NULL;
 }
 
 Inventory::Inventory(const Inventory& inventory)//copy konstruktor
@@ -13,11 +15,12 @@ Inventory::Inventory(const Inventory& inventory)//copy konstruktor
 	cout <<"cctro"<<endl;
 }
 
-Inventory& Inventory::operator=(const Inventory& inventory) {
-	// maxslot = inventory.maxslot;
-	//total[]
-
-	//return (*this);
+Inventory& Inventory::operator= (const Inventory& inventory) {
+	maxslot = inventory.maxslot;
+	total[0] = 0;
+	total[1] = 0;
+	total[2] = 0;
+	return (*this);
 }
 
 Inventory::~Inventory()//destructor
@@ -45,30 +48,48 @@ return 0;
 
 void Inventory::addItem(const string& item, int jumlah)//melakukan penambahan item pada vector
 {
-int i = 0; //iterator diinisialisasi = 1
-for(i=0;i<=2;i++){
-    if (slot[i]!=0){
-        if(item == "Kentang"||"Lobak"||"Timun"||"Kubis"||"Jagung"||"Tomat"||"Bawang"||"Nanas"||"Wortel"||"Terong"||"Ubi"||"Paprika"){
-            total[i] = total[i]+jumlah;}
+	int i = 2; //iterator diinisialisasi = 1
+	int temp = -1;
+	bool found = false;
+	Item * dummyItem = new Item(item);
+	
+	cout << "tes7" << endl;
+    while ((i >= 0) && (!found)) {
+		if (slot[i] != NULL) {
+			if(slot[i]->getTipeBibit() == dummyItem->getTipeBibit()) {
+				cout << "tes" << endl;
+				total[i] = total[i]+jumlah;
+				found = true;
+			} else {
+				cout << "tes2" << endl;
+				i--;
+			}
+		} else {
+			cout << "tes3" << endl;
+			temp = i;
+			i--;
+		}
+	}
+	if ((!found) && (temp >= 0)) {
+		cout << "tes4" << endl;
+		slot[temp] = dummyItem;
+	} else {
+		cout << "tes5" << endl;
+		delete dummyItem;
+	}
 }
-for(i=0;i<=2;i++){
-    if(slot[i]==0){
-    slot[i] = new Item(item);
-    total[i] = jumlah;
-    }
-}
-}}
 
-void Inventory::addItem(int item, int jumlah){
-int i = 0; //iterator diinisialisasi = 1
-for(i=0;i<=2;i++){
-    if (slot[i]!=0){
+void Inventory::addItem(int item, int jumlah) {
+	int i = 0; //iterator diinisialisasi = 1
+	cout << "tes8" <<endl;
+	for(i=0;i<=2;i++) {
+    if (slot[i]!=NULL) {
         if(item == (1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21||22||23||24)){
             total[i] = total[i]+jumlah;}
 }
 }
 for(i=0;i<=2;i++){
-    if(slot[i]==0){
+    if(slot[i]==NULL){
     slot[i] = new Item(item);
     total[i] = jumlah;
     }
@@ -79,7 +100,7 @@ void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pad
 {
     int i = 0; //iterator diinisialisasi = 1
     for(i=0;i<=2;i++){
-        if (slot[i]!=0){
+        if (slot[i]!= NULL){
             if(item == (1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21||22||23||24)){
                 total[i] = total[i]-jumlah;}
         }
@@ -88,12 +109,13 @@ void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pad
 
 
 bool Inventory::cekSlot(int noslot) {
-	if(total[noslot] != (1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21||22||23||24))
-	{return false;}
+	if(slot[noslot] != NULL)
+	{return true;}
 	else{
-	return true;}
+	return false;}
 }
 
 Item* Inventory::getSlot(int noslot){
-	cout <<"Didalam slot ke-"<<noslot<<", tersimpan Item "<<slot[noslot]<<" sebanyak = "<<total[noslot]<<endl;
+	//cout <<"Didalam slot ke-"<<noslot<<", tersimpan Item "<<slot[noslot]<<" sebanyak = "<<total[noslot]<<endl;
+	return (slot[noslot]);
 }
