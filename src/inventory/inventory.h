@@ -10,8 +10,8 @@ class Inventory{
     private:
 	int maxslot;//maksimum slot yang dimiliki oleh player
 	int temp;//jumlah barang di dalam array
-	Item *slot[3];//array berisi jenis item berukuran maksimum 3
-	int total[3];//array berisi jumlah item berukuran maksimum 3
+	Item* slot[];//array berisi jenis item berukuran maksimum 3
+	int total[];//array berisi jumlah item berukuran maksimum 3
     public:
 	Inventory();//konstruktor
 	Inventory(const Inventory&);//copy konstruktor
