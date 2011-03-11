@@ -175,7 +175,7 @@ void Player::plow() {
 			if ((fase == 1) || (fase == 2)) {
 				delete front;
 				front = new Grid_Lahan(p,0,fase);
-				curArea->setGrid(p,front);
+				curArea->setGrid(front);
 				front->setFase(fase);
 				front->setType(0);
 			}
@@ -202,7 +202,7 @@ void Player::slash() {
 				cout << "tes" << endl;
 				front = new Grid_Lahan();
 				cout << "tes2" << endl;
-				curArea->setGrid(p,front);
+				curArea->setGrid(front);
 				cout << "tes3" << endl;
 				front->setFase(0);
 				front->setType(0);
@@ -276,7 +276,7 @@ void Player::put(int noSlot,int jumlah) {
 				if (item->isBibit()) {
 					delete front;
 					front = new Grid_Plant(p,5,fase);
-					curArea->setGrid(p,front);
+					curArea->setGrid(front);
 					// front->setType(5);
 					// front->setFase(fase);
 					inventory->deleteItem(noSlot,jumlah);
@@ -352,7 +352,7 @@ void Player::harvest() {
 				if (tanaman->getFase() == 6) {
 					delete front;
 					front = new Grid_Lahan();
-					curArea->setGrid(p,front);
+					curArea->setGrid(front);
 					front->setType(0);
 					front->setFase(0);
 				}
