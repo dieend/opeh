@@ -9,6 +9,7 @@ Player::Player (Area* area, int uang, string name) {
 	curArea = area;
     curGrid = area->getGrid(8,4);
     curGrid->setType(1);
+	arahHadap = 1;
 	money = uang;
 	nama = name;
 	
