@@ -160,9 +160,11 @@ void Player::plow() {
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	Grid_Lahan* lahan;
+	Point p;
 	
 	if (front != NULL) {
 		tipe = front->getType();
+		p = front->getPosisi();
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setCangkul();
@@ -171,10 +173,13 @@ void Player::plow() {
 			fase = tanaman->getFase();
 			if ((fase == 1) || (fase == 2)) {
 				delete front;
+				cout << "tes" << endl;
 				front = new Grid_Lahan();
-				front->setType(0);
+				cout << "tes2" << endl;
+				curArea->setGrid(p,front);
+				cout << "tes3" << endl;
 				front->setFase(fase);
-				setFrontGrid(front);
+				front->setType(0);
 			}
 		}
 	}
@@ -187,17 +192,22 @@ void Player::slash() {
 	int tipe;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
+	Point p;
 	
 	if (front != NULL) {
 		tipe = front->getType();
+		p = front->getPosisi();
 		if (tipe == 5) {
 			tanaman = (Grid_Plant*)front;
 			if (tanaman->getFase() == 3) {
 				delete front;
+				cout << "tes" << endl;
 				front = new Grid_Lahan();
-				tanaman->setFase(0);
-				tanaman->setType(0);
-				setFrontGrid(front);
+				cout << "tes2" << endl;
+				curArea->setGrid(p,front);
+				cout << "tes3" << endl;
+				front->setFase(0);
+				front->setType(0);
 			}
 		}
 	}
@@ -212,9 +222,11 @@ void Player::water() {
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	Grid_Lahan* lahan;
+	Point p;
 	
 	if (front != NULL) {
 		tipe = front->getType();
+		p = front->getPosisi();
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setFase(2);
@@ -260,16 +272,16 @@ void Player::put(int noSlot,int jumlah) {
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
-			if (fase == 1) {
+			if ((fase == 1) || (fase== 2)) {
 				item = inventory->getSlot(noSlot);
 				if (item->isBibit()) {
 					delete front;
-					front = curArea->getGrid(p);
 					front = new Grid_Plant();
+					curArea->setGrid(p,front);
 					front->setType(5);
-					front->setFase(1);
+					front->setFase(fase);
 					inventory->deleteItem(noSlot,jumlah);
-					setFrontGrid(front);
+					//setFrontGrid(front);
 				} else {
 					inventory->deleteItem(noSlot,jumlah);
 				}
@@ -326,9 +338,11 @@ void Player::harvest() {
 	int tipeTanaman;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
+	Point p;
 	
 	if (front != NULL) {
 		tipe = front->getType();
+		p = front->getPosisi();
 		if (tipe == 5) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
@@ -339,6 +353,7 @@ void Player::harvest() {
 				if (tanaman->getFase() == 6) {
 					delete front;
 					front = new Grid_Lahan();
+					curArea->setGrid(p,front);
 					front->setType(0);
 					front->setFase(0);
 				}
