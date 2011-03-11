@@ -68,27 +68,33 @@ Grid * Player::getFrontGrid() {
 	
 	
 	p = curGrid->getPosisi();
-	
-	if (arahHadap == 1) {
+	if ((arahHadap == 1) && (p.getY() < 9)) {
 		temp = p.getY();
 		temp++;
 		p.setY(temp);
-	} else if (arahHadap == 2) {
+		front = curArea->getGrid(p);
+		return front;
+	} else if ((arahHadap == 2) && (p.getX() < 9)) {
 		temp = p.getX();
 		temp++;
 		p.setX(temp);
-	} else if (arahHadap == 3) {
+		front = curArea->getGrid(p);
+		return front;
+	} else if ((arahHadap == 3) && (p.getY() > 0)) {
 		temp = p.getY();
 		temp--;
 		p.setY(temp);
+		front = curArea->getGrid(p);
+		return front;
+	} else if ((arahHadap == 4) && (p.getX() > 0)) {
+		temp = p.getX();
+		temp--;
+		p.setX(temp);
+		front = curArea->getGrid(p);
+		return front;
 	} else {
-		temp = p.getX();
-		temp--;
-		p.setX(temp);
+		return NULL;
 	}
-	
-    front = curArea->getGrid(p);
-	return front;
 }
 
 void Player::setStatus(Item a) {
@@ -199,9 +205,13 @@ void Player::water() {
 	int tipe;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
+	Grid_Lahan* lahan;
 	
 	tipe = front->getType();
-	if (tipe == 5) {
+	if (tipe == 0) {
+		lahan = (Grid_Lahan*)front;
+		lahan->setFase(2);
+	} else if (tipe == 5) {
 		tanaman = (Grid_Plant*)front;
 		if (tanaman->isWatered() == 0) {
 			tanaman->setSiram();
@@ -272,8 +282,8 @@ void Player::move(int arah) {
 	Grid_Plant* tanaman;
 	Point p;
 	
-	tipe = front->getType();
-	if (arahHadap == arah) {
+	if ((front != NULL) && (arahHadap == arah)) {
+		tipe = front->getType();
 		if ((tipe == 0) || (tipe == 2)) {
 				tipeArea = curArea->getType();
 			if (tipeArea == 1) {
@@ -288,7 +298,7 @@ void Player::move(int arah) {
 			}
 			curGrid = front;
 			curGrid->setType(1);
-		}
+		} 
 	} else {
 		arahHadap = arah;
 	}
