@@ -13,13 +13,15 @@
 	// return tsc;
 // }
 
-World::World(){
+World::World() {
+}
+World::World(string nama){
 	// ctor
 	weather 	= 0;
 	area[RUMAH] 	= new Area(RUMAH);
 	area[LAHAN] 	= new Area(LAHAN);
 	area[TOKO ] 	= new Area(TOKO );
-	player 		= new Player(area[RUMAH]);
+	player 		= new Player(area[RUMAH],2000,nama);
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);
         area[TOKO ]->setPlayer(player);
@@ -133,17 +135,18 @@ ostream& operator<<(ostream& c,World& world){
         }
         cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << endl;
         cout << "Player has status " << world.getPlayer()->getStatus();
+        cout << "Player has money" << world.getPlayer()->getMoney();
         cout << "Player Inventory: " << endl;
         for (int i=0; i<3; i++) {
             if (world.player->getInventory()->cekSlot(i)){
                 cout << "slot " << i <<" exist\n";
-                cout << "tipe item bibit" << world.player->getInventory()->getSlot(0)->getTipeBibit() << endl;
-                cout << "tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah() << endl;
-                cout << "tipe item tanaman" << world.player->getInventory()->getSlot(0)->getTipeTanaman() << endl;
-                cout << "price beli" << world.player->getInventory()->getSlot(0)->getCostBuy() << endl;
-                cout << "price sell" << world.player->getInventory()->getSlot(0)->getCostSell() << endl;
-                cout << "efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah() << endl;
-                cout << "efek time " << world.player->getInventory()->getSlot(0)->getEfekTime() << endl;
+                cout << "tipe item bibit" << world.player->getInventory()->getSlot(i)->getTipeBibit() << endl;
+                cout << "tipe item buah" << world.player->getInventory()->getSlot(i)->getTipeBuah() << endl;
+                cout << "tipe item tanaman" << world.player->getInventory()->getSlot(i)->getTipeTanaman() << endl;
+                cout << "price beli" << world.player->getInventory()->getSlot(i)->getCostBuy() << endl;
+                cout << "price sell" << world.player->getInventory()->getSlot(i)->getCostSell() << endl;
+                cout << "efek buah " << world.player->getInventory()->getSlot(i)->getEfekBuah() << endl;
+                cout << "efek time " << world.player->getInventory()->getSlot(i)->getEfekTime() << endl;
             } else {
                 cout << "slot "<< i << "not exist\n";
             }

@@ -40,8 +40,9 @@ private:
 	
 public:
 	World(); // ctor
-	World(World&); // cctor
+	World(string nama);
 	virtual ~World(); // dtor
+        World(World& world);
 	World& operator=(World& world); // operator =
 	friend ostream& operator<<(ostream&, World&);
 	/* Stream operator untuk cout. Bakal menampilkan area secara keseluruhan. Dengan meng-cout World
