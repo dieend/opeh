@@ -165,6 +165,7 @@ void Player::plow() {
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
+		cout << p << endl;
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setCangkul();
@@ -175,7 +176,7 @@ void Player::plow() {
 				delete front;
 				cout << "tes" << endl;
 				front = new Grid_Lahan();
-				cout << "tes2" << endl;
+				cout << p << endl;
 				curArea->setGrid(p,front);
 				cout << "tes3" << endl;
 				front->setFase(fase);
@@ -268,6 +269,7 @@ void Player::put(int noSlot,int jumlah) {
 	
 	if (front != NULL) {
 		p = front->getPosisi();
+		cout << p << endl;
 		tipe = front->getType();
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
