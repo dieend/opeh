@@ -159,19 +159,21 @@ void Player::plow() {
 	Grid_Plant* tanaman;
 	Grid_Lahan* lahan;
 	
-	tipe = front->getType();
-	if (tipe == 0) {
-		lahan = (Grid_Lahan*)front;
-		lahan->setCangkul();
-	} else if (tipe == 5) {
-		tanaman = (Grid_Plant*)front;
-		fase = tanaman->getFase();
-		if ((fase == 1) || (fase == 2)) {
-			delete front;
-			front = new Grid_Lahan();
-			front->setType(0);
-			front->setFase(fase);
-			setFrontGrid(front);
+	if (front != NULL) {
+		tipe = front->getType();
+		if (tipe == 0) {
+			lahan = (Grid_Lahan*)front;
+			lahan->setCangkul();
+		} else if (tipe == 5) {
+			tanaman = (Grid_Plant*)front;
+			fase = tanaman->getFase();
+			if ((fase == 1) || (fase == 2)) {
+				delete front;
+				front = new Grid_Lahan();
+				front->setType(0);
+				front->setFase(fase);
+				setFrontGrid(front);
+			}
 		}
 	}
 }
@@ -184,15 +186,17 @@ void Player::slash() {
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	
-	tipe = front->getType();
-	if (tipe == 5) {
-		tanaman = (Grid_Plant*)front;
-		if (tanaman->getFase() == 3) {
-			delete front;
-			front = new Grid_Lahan();
-			tanaman->setFase(0);
-			tanaman->setType(0);
-			setFrontGrid(front);
+	if (front != NULL) {
+		tipe = front->getType();
+		if (tipe == 5) {
+			tanaman = (Grid_Plant*)front;
+			if (tanaman->getFase() == 3) {
+				delete front;
+				front = new Grid_Lahan();
+				tanaman->setFase(0);
+				tanaman->setType(0);
+				setFrontGrid(front);
+			}
 		}
 	}
 }
@@ -207,14 +211,16 @@ void Player::water() {
 	Grid_Plant* tanaman;
 	Grid_Lahan* lahan;
 	
-	tipe = front->getType();
-	if (tipe == 0) {
-		lahan = (Grid_Lahan*)front;
-		lahan->setFase(2);
-	} else if (tipe == 5) {
-		tanaman = (Grid_Plant*)front;
-		if (tanaman->isWatered() == 0) {
-			tanaman->setSiram();
+	if (front != NULL) {
+		tipe = front->getType();
+		if (tipe == 0) {
+			lahan = (Grid_Lahan*)front;
+			lahan->setFase(2);
+		} else if (tipe == 5) {
+			tanaman = (Grid_Plant*)front;
+			if (tanaman->isWatered() == 0) {
+				tanaman->setSiram();
+			}
 		}
 	}
 }
@@ -245,30 +251,32 @@ void Player::put(int noSlot,int jumlah) {
 	Grid_Lahan* lahan;
 	Item* item;
 	
-	tipe = front->getType();
-	if (tipe == 0) {
-		lahan = (Grid_Lahan*)front;
-		fase = lahan->getFase();
-		if (fase == 1) {
-			item = inventory.getSlot(noSlot);
-			if (item->isBibit()) {
-				delete front;
-				front = new Grid_Plant();
-				front->setType(5);
-				front->setFase(0);
-				inventory.deleteItem(noSlot,jumlah);
-				setFrontGrid(front);
+	if (front != NULL) {
+		tipe = front->getType();
+		if (tipe == 0) {
+			lahan = (Grid_Lahan*)front;
+			fase = lahan->getFase();
+			if (fase == 1) {
+				item = inventory.getSlot(noSlot);
+				if (item->isBibit()) {
+					delete front;
+					front = new Grid_Plant();
+					front->setType(5);
+					front->setFase(0);
+					inventory.deleteItem(noSlot,jumlah);
+					setFrontGrid(front);
+				} else {
+					inventory.deleteItem(noSlot,jumlah);
+				}
 			} else {
 				inventory.deleteItem(noSlot,jumlah);
 			}
+		} else if (tipe == 8) {
+			inventory.deleteItem(noSlot,jumlah);
+			sellItem(noSlot,jumlah);
 		} else {
 			inventory.deleteItem(noSlot,jumlah);
 		}
-	} else if (tipe == 8) {
-		inventory.deleteItem(noSlot,jumlah);
-		sellItem(noSlot,jumlah);
-	} else {
-		inventory.deleteItem(noSlot,jumlah);
 	}
 }
 
@@ -314,19 +322,21 @@ void Player::harvest() {
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	
-	tipe = front->getType();
-	if (tipe == 5) {
-		tanaman = (Grid_Plant*)front;
-		fase = tanaman->getFase();
-		if ((fase == 4) || (fase == 5)) {
-			tanaman->setPanen();
-			tipeTanaman = tanaman->getTypeTanaman();
-			inventory.addItem(tipeTanaman,1);
-			if (tanaman->getFase() == 6) {
-				delete front;
-				front = new Grid_Lahan();
-				front->setType(0);
-				front->setFase(0);
+	if (front != NULL) {
+		tipe = front->getType();
+		if (tipe == 5) {
+			tanaman = (Grid_Plant*)front;
+			fase = tanaman->getFase();
+			if ((fase == 4) || (fase == 5)) {
+				tanaman->setPanen();
+				tipeTanaman = tanaman->getTypeTanaman();
+				inventory.addItem(tipeTanaman,1);
+				if (tanaman->getFase() == 6) {
+					delete front;
+					front = new Grid_Lahan();
+					front->setType(0);
+					front->setFase(0);
+				}
 			}
 		}
 	}
