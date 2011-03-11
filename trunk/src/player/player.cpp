@@ -174,11 +174,8 @@ void Player::plow() {
 			fase = tanaman->getFase();
 			if ((fase == 1) || (fase == 2)) {
 				delete front;
-				cout << "tes" << endl;
-				front = new Grid_Lahan();
-				cout << p << endl;
+				front = new Grid_Lahan(p,0,fase);
 				curArea->setGrid(p,front);
-				cout << "tes3" << endl;
 				front->setFase(fase);
 				front->setType(0);
 			}
@@ -278,10 +275,10 @@ void Player::put(int noSlot,int jumlah) {
 				item = inventory->getSlot(noSlot);
 				if (item->isBibit()) {
 					delete front;
-					front = new Grid_Plant();
+					front = new Grid_Plant(p,5,fase);
 					curArea->setGrid(p,front);
-					front->setType(5);
-					front->setFase(fase);
+					// front->setType(5);
+					// front->setFase(fase);
 					inventory->deleteItem(noSlot,jumlah);
 					//setFrontGrid(front);
 				} else {
