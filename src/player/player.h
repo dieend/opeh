@@ -10,6 +10,7 @@
 #include "../grid/grid_lahan.h"
 #include "../item/item.h"
 #include "../helper/color.h"
+#include "../toko/toko.h"
 using namespace std;
 
 class Area;
@@ -146,7 +147,7 @@ public :
 	private :
 	Grid * curGrid; //grid player berada
 	Area * curArea; //area player berada
-	Inventory inventory(3); //inventory dari player
+	Inventory inventory; //inventory dari player
 	int money; //jumlah uang
 	int arahHadap; //arah hadap player, 1 = atas, 2 = kanan, 3 = bawah, 4 = kiri
 	int status; //status player akibat makanan yang dimakan
