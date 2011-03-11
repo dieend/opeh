@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
   printf("Default Color.\n");
-  cout << BACKGROUND_RED<< "tes "<< endl;
-  cout << lahan_watered << " test " << white;
+  HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+  SetConsoleTextAttribute(hStdout, BACKGROUND_BLUE);
+  cout << "tes "<< endl;
+  // cout << lahan_watered << " test " << white;
 }
