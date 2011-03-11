@@ -12,6 +12,7 @@ Player::Player (Area* area, int uang, string name) {
 	arahHadap = 1;
 	money = uang;
 	nama = name;
+	inventory = new Inventory();
 	
 }
 
@@ -138,7 +139,7 @@ Inventory * Player::getInventory() {
 /*
 
 */
-	return  (& inventory);
+	return  (inventory);
 }
 
 void Player::setFrontGrid(Grid * front) {
@@ -232,9 +233,9 @@ int Player::eat(int numInv) {
 */
 	Item* item;
 	int eff;
-	if (inventory.cekSlot(numInv)){
-            item = inventory.getSlot(numInv);
-            inventory.deleteItem(numInv,1);
+	if (inventory->cekSlot(numInv)){
+            item = inventory->getSlot(numInv);
+            inventory->deleteItem(numInv,1);
             setStatus (*item);
             return item->getEfekTime();
 	} else {
@@ -258,25 +259,25 @@ void Player::put(int noSlot,int jumlah) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
 			if (fase == 1) {
-				item = inventory.getSlot(noSlot);
+				item = inventory->getSlot(noSlot);
 				if (item->isBibit()) {
 					delete front;
 					front = new Grid_Plant();
 					front->setType(5);
 					front->setFase(0);
-					inventory.deleteItem(noSlot,jumlah);
+					inventory->deleteItem(noSlot,jumlah);
 					setFrontGrid(front);
 				} else {
-					inventory.deleteItem(noSlot,jumlah);
+					inventory->deleteItem(noSlot,jumlah);
 				}
 			} else {
-				inventory.deleteItem(noSlot,jumlah);
+				inventory->deleteItem(noSlot,jumlah);
 			}
 		} else if (tipe == 8) {
-			inventory.deleteItem(noSlot,jumlah);
+			inventory->deleteItem(noSlot,jumlah);
 			sellItem(noSlot,jumlah);
 		} else {
-			inventory.deleteItem(noSlot,jumlah);
+			inventory->deleteItem(noSlot,jumlah);
 		}
 	}
 }
@@ -331,7 +332,7 @@ void Player::harvest() {
 			if ((fase == 4) || (fase == 5)) {
 				tanaman->setPanen();
 				tipeTanaman = tanaman->getTypeTanaman();
-				inventory.addItem(tipeTanaman,1);
+				inventory->addItem(tipeTanaman,1);
 				if (tanaman->getFase() == 6) {
 					delete front;
 					front = new Grid_Lahan();
@@ -348,23 +349,24 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 
 */
 	Item* item;
-	item = inventory.getSlot(NoSlot);
+	item = inventory->getSlot(NoSlot);
 	money = money + item->getCostSell() * Jumlah;
-	inventory.deleteItem(NoSlot,Jumlah);
+	inventory->deleteItem(NoSlot,Jumlah);
 }
 
-void Player::buyItem(string name,int Jumlah) {
+void Player::buyItem(const string name,int Jumlah) {
 /*
 
 */
 	Item * dummyItem;
-	
+	cout << "tes6" << endl;
 	dummyItem = new Item(name);
 	if (money > (dummyItem->getCostBuy() * Jumlah)) {
 		money = money - dummyItem->getCostBuy()* Jumlah;
-		inventory.addItem(name,Jumlah);
+		inventory->addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
 	 delete dummyItem;
+	 system("pause");
 }
 
 void Player::teleport(Area * destination) {

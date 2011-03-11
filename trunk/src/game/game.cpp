@@ -122,7 +122,7 @@ bool Game::doPerintah() {
 		} else if (perintah == "buy") {
 			world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
 		} else if (perintah == "sell") {
-			world->getPlayer()->sellItem(paramInt[1],paramInt[1]);
+			world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
 		}
 		
 	}
