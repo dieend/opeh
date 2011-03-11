@@ -5,7 +5,7 @@
 using namespace std;
 int main()
 {
-  printf("Default Color.\n");
+  
   HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
   SetConsoleTextAttribute(hStdout, BACKGROUND_BLUE);
   cout << "tes "<< endl;

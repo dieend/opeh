@@ -4,6 +4,7 @@
 #include "../grid/grid.h"
 class Toko: public Grid {
 //    Inventory barang;
+public:
     Toko();
     Toko(const Toko&);
     virtual ~Toko();

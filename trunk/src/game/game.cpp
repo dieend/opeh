@@ -33,7 +33,7 @@ void Game::Run() {
 bool Game::doPerintah() {
 	if (world == NULL) {
 		if (perintah == "new") {
-                    world = new World();
+                    world = new World(paramStr[0]);
 		} else if (perintah == "load") {
 		} else throw 2;
 	} else {
@@ -113,7 +113,12 @@ bool Game::doPerintah() {
                         cout << "A";
                         world = NULL;
 		} else if (perintah == "store") {
-			
+                    if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
+                        system("cls");
+                        Toko * toko = (Toko*) world->getPlayer()->getFrontGrid();
+                        toko->listItem();
+                        getch();
+                    } else throw 2;
 		} else if (perintah == "buy") {
 			world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
 		} else if (perintah == "sell") {

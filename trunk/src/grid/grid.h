@@ -2,6 +2,8 @@
 #define GRID_H
 #include "../point/point.h"
 #include <iostream>
+#define GSTORE 3
+#define GTANAMAN 4
 using namespace std;
 
 class Grid
