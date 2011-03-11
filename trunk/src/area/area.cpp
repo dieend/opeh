@@ -183,3 +183,7 @@ Player* Area::getPlayer(){
 void Area::setPlayer(Player* p){
     player = p;
 }
+
+void Area::setGrid(Point p, Grid* g){
+    grid[p.getX()][p.getY()] = g;
+}

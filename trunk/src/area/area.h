@@ -42,6 +42,7 @@ public:
 	/* mengembalikan address grid yang diacu oleh Point
 	*/
 	Grid* getGrid(int,int);
+        void setGrid(Point, Grid*);
 	friend ostream& operator<<(ostream&, Area*);
 };
 
