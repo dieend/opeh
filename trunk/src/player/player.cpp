@@ -252,8 +252,10 @@ void Player::put(int noSlot,int jumlah) {
 	Grid* front = getFrontGrid();
 	Grid_Lahan* lahan;
 	Item* item;
+	Point p;
 	
 	if (front != NULL) {
+		p = front->getPosisi();
 		tipe = front->getType();
 		if (tipe == 0) {
 			lahan = (Grid_Lahan*)front;
@@ -262,9 +264,10 @@ void Player::put(int noSlot,int jumlah) {
 				item = inventory->getSlot(noSlot);
 				if (item->isBibit()) {
 					delete front;
+					front = curArea->getGrid(p);
 					front = new Grid_Plant();
 					front->setType(5);
-					front->setFase(0);
+					front->setFase(1);
 					inventory->deleteItem(noSlot,jumlah);
 					setFrontGrid(front);
 				} else {
