@@ -176,8 +176,6 @@ void Player::plow() {
 				delete front;
 				front = new Grid_Lahan(p,0,fase);
 				curArea->setGrid(front);
-				front->setFase(fase);
-				front->setType(0);
 			}
 		}
 	}
@@ -199,13 +197,8 @@ void Player::slash() {
 			tanaman = (Grid_Plant*)front;
 			if (tanaman->getFase() == 3) {
 				delete front;
-				cout << "tes" << endl;
-				front = new Grid_Lahan();
-				cout << "tes2" << endl;
+				front = new Grid_Lahan(p,0,0);
 				curArea->setGrid(front);
-				cout << "tes3" << endl;
-				front->setFase(0);
-				front->setType(0);
 			}
 		}
 	}
@@ -277,10 +270,7 @@ void Player::put(int noSlot,int jumlah) {
 					delete front;
 					front = new Grid_Plant(p,5,fase);
 					curArea->setGrid(front);
-					// front->setType(5);
-					// front->setFase(fase);
 					inventory->deleteItem(noSlot,jumlah);
-					//setFrontGrid(front);
 				} else {
 					inventory->deleteItem(noSlot,jumlah);
 				}
@@ -351,10 +341,8 @@ void Player::harvest() {
 				inventory->addItem(tipeTanaman,1);
 				if (tanaman->getFase() == 6) {
 					delete front;
-					front = new Grid_Lahan();
+					front = new Grid_Lahan(p,0,0);
 					curArea->setGrid(front);
-					front->setType(0);
-					front->setFase(0);
 				}
 			}
 		}
