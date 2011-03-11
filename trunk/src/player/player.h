@@ -15,9 +15,9 @@ using namespace std;
 class Area;
 class Player {
 public :
-	Player(Area*);
+	Player();
         //ctor
-	Player(Inventory,int,string);
+	Player(Area*,int,string);
 	//cctor
 	Player(const Player &);
 	//dtor

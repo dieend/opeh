@@ -1,14 +1,14 @@
 #include "player.h"
 #include <string.h>
 
-Player::Player (Area* area) {
-    curArea = area;
-    curGrid = area->getGrid(8,4);
-    curGrid->setType(1);
+Player::Player () {
+    
 }
 
-Player::Player (Inventory i, int uang, string name) {
-	inventory = i;
+Player::Player (Area* area, int uang, string name) {
+	curArea = area;
+    curGrid = area->getGrid(8,4);
+    curGrid->setType(1);
 	money = uang;
 	nama = name;
 	
