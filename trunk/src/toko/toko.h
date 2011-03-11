@@ -6,7 +6,7 @@ class Toko: public Grid {
 //    Inventory barang;
     Toko();
     Toko(const Toko&);
-    ~Toko();
+    virtual ~Toko();
     void listItem();
 };
 
