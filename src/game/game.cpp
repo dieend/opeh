@@ -7,6 +7,7 @@ void Game::Run() {
     bool notExit;
     do {
         system("cls");
+        cout << world;
         if (world != NULL) cout << (*world);
         else {
             cout << "> New Game\n\n";
@@ -109,6 +110,8 @@ bool Game::doPerintah() {
 			world->getTime()->nextDay();
 		} else if (perintah == "exit") {
 			delete world;
+                        cout << "A";
+                        world = NULL;
 		} else if (perintah == "store") {
 			
 		} else if (perintah == "buy") {
@@ -116,11 +119,16 @@ bool Game::doPerintah() {
 		} else if (perintah == "sell") {
 			world->getPlayer()->sellItem(paramInt[1],paramInt[1]);
 		}
-		if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
-			world->getTime()->nextMinutes();
-		}
-		world->setWeather();
+		
 	}
+        cout << " C";
+        if (world != NULL) {
+            if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
+                world->getTime()->nextMinutes();
+            }
+            world->setWeather();
+        }
+        cout << " B";
 	return true;
 }
 void Game::getPerintah(){

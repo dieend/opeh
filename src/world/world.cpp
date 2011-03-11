@@ -45,11 +45,12 @@ World::World(World& world) {
 }
 
 World::~World() {
+    cout << "world destruct";
 	delete time;
-	delete player;
-	delete area[RUMAH];
+        delete area[RUMAH];
 	delete area[LAHAN];
 	delete area[TOKO];
+	delete player;
 	delete dwarf[HARVEST];
 	delete dwarf[WATER];
 	delete dwarf[SLASH];

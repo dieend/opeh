@@ -23,7 +23,6 @@ Dwarf::Dwarf(int ntype) : type(ntype),status(1),direction(4)
 
 Dwarf::~Dwarf()
 {
-  status=0;
 }
 
 bool Dwarf::doJob()
