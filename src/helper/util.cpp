@@ -3,7 +3,7 @@
 Utilities::Utilities(){
 }
 
-static Utilities::Utilities* getInstances(){
+Utilities* Utilities::getInstances(){
 	if (utilities == NULL) {
 		utilities = new Utilites();
 	} else {
