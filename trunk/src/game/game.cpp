@@ -47,6 +47,7 @@ bool Game::doPerintah() {
 				} else if (where == 2) {
 					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
 				}
+                                getch();
 			} else
 			if (where == 0) {
 				if (paramInt[0] != 1) {
@@ -169,7 +170,10 @@ void Game::getPerintah(){
 		} else if (perintah == "load") {
 			cin >> paramStr[0];
 		} else if (perintah == "teleport") {
-			cin >> paramInt[0];
+                        cin >> paramStr[0];
+                        if (paramStr[0][0]!='-') {
+                            paramInt[0]=paramStr[0][0]-'0';
+                        }
 		} else if (perintah == "right") {
 			cin >> paramInt[0];
 		} else if (perintah == "left") {

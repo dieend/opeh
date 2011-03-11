@@ -4,6 +4,12 @@ Grid_Plant::Grid_Plant()
 {
 
 }
+Grid_Plant::Grid_Plant(Point p,int ntype,int nfase)
+{
+    setType(ntype);
+    setPosisi(p);
+    setFase(nfase);
+}
 
 Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newSeason,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
 {
