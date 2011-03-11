@@ -146,7 +146,7 @@ public :
 	private :
 	Grid * curGrid; //grid player berada
 	Area * curArea; //area player berada
-	Inventory inventory; //inventory dari player
+	Inventory inventory(3); //inventory dari player
 	int money; //jumlah uang
 	int arahHadap; //arah hadap player, 1 = atas, 2 = kanan, 3 = bawah, 4 = kiri
 	int status; //status player akibat makanan yang dimakan
