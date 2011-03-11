@@ -1,9 +1,13 @@
-
 #pragma once
 #include <iostream>
-
 #include <windows.h>
+using namespace std;
 
+class Utilities{
+private:
+    Utilities();
+    int color;
+};
 
 inline std::ostream& dinding(std::ostream &s)
 {

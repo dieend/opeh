@@ -26,8 +26,8 @@ Player::Player(const Player & chara) {
 }
 
 Player::~Player () {
-	delete curGrid;
-	delete curArea;
+//	delete curGrid;
+//	delete curArea;
 }
 
 //operator=
