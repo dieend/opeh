@@ -9,19 +9,20 @@ class Inventory{
 //deskripsi umum kelas inventory: kelas inventory digunakan untuk melakukan penambahan item, penghapusan item, dan pengecekan isi slot.
     private:
 	int maxslot;//maksimum slot yang dimiliki oleh player
-	Item* slot[3];//array berisi jenis item berukuran maksimum 3
+	int temp;//jumlah barang di dalam array
+	Item *slot[3];//array berisi jenis item berukuran maksimum 3
 	int total[3];//array berisi jumlah item berukuran maksimum 3
     public:
 	Inventory();//konstruktor
 	Inventory(const Inventory&);//copy konstruktor
 	Inventory& operator= (const Inventory&);//operator assignment
 	virtual ~Inventory();//destructor
-        
-	void listItem();
-        void addItem(const string&, int jumlah);//melakukan penambahan item pada vector
-        void addItem(int p, int jumlah);//melakukan penambahan item pada vector
-        void deleteItem(int, int jumlah);//melakukan penghapusan item pada vector
-        bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak.
-        Item* getSlot(int);
+
+	int listItem();
+    void addItem(const string&, int);//melakukan penambahan item pada vector
+    void addItem(int, int);//melakukan penambahan item pada vector
+    void deleteItem(int, int);//melakukan penghapusan item pada vector
+    bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak. Mengembaikan true jika kosong.
+    Item* getSlot(int);
 };
 #endif
