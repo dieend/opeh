@@ -73,6 +73,7 @@ void Inventory::addItem(const string& item, int jumlah)//melakukan penambahan it
 	if ((!found) && (temp >= 0)) {
 		cout << "tes4" << endl;
 		slot[temp] = dummyItem;
+		total[temp] = jumlah;
 	} else {
 		cout << "tes5" << endl;
 		delete dummyItem;
@@ -80,31 +81,42 @@ void Inventory::addItem(const string& item, int jumlah)//melakukan penambahan it
 }
 
 void Inventory::addItem(int item, int jumlah) {
-	int i = 0; //iterator diinisialisasi = 1
-	cout << "tes8" <<endl;
-	for(i=0;i<=2;i++) {
-    if (slot[i]!=NULL) {
-        if(item == (1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21||22||23||24)){
-            total[i] = total[i]+jumlah;}
-}
-}
-for(i=0;i<=2;i++){
-    if(slot[i]==NULL){
-    slot[i] = new Item(item);
-    total[i] = jumlah;
-    }
-}
+	int i = 2; //iterator diinisialisasi = 1
+	int temp = -1;
+	bool found = false;
+	
+    while ((i >= 0) && (!found)) {
+		if (slot[i] != NULL) {
+			if(slot[i]->getTipeTanaman() == item) {
+				total[i] = total[i]+jumlah;
+				found = true;
+			} else {
+				i--;
+			}
+		} else {
+			temp = i;
+			i--;
+		}
+	}
+	if ((!found) && (temp >= 0)) {
+		slot[temp] = new Item(item);
+		total[temp] = jumlah;
+	}
 }
 
 void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pada vector
 {
-    int i = 0; //iterator diinisialisasi = 1
-    for(i=0;i<=2;i++){
-        if (slot[i]!= NULL){
-            if(item == (1||2||3||4||5||6||7||8||9||10||11||12||13||14||15||16||17||18||19||20||21||22||23||24)){
-                total[i] = total[i]-jumlah;}
-        }
-    }
+	if (slot[item] != NULL) {
+		if (total[item] > jumlah) {
+			total[item] = total[item]-jumlah;
+		} else if (total[item] == jumlah) {
+			total[item] = 0;
+			slot[item] == NULL;
+			cout << "tesss" << endl;
+		} else {
+			throw 2;
+		}
+	}
 }
 
 

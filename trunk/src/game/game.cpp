@@ -117,9 +117,13 @@ bool Game::doPerintah() {
                     getch();
                 } else throw 2;
             } else if (perintah == "buy") {
-                    world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
+					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
+						world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
+					} else throw 2;
             } else if (perintah == "sell") {
-                    world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
+					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
+						world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
+					} else throw 2;
             }
 		
 	}

@@ -7,7 +7,7 @@ Player::Player () {
 
 Player::Player (Area* area, int uang, string name) {
 	curArea = area;
-    curGrid = area->getGrid(8,4);
+    curGrid = area->getGrid(4,3);
     curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
@@ -355,9 +355,15 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 
 */
 	Item* item;
-	item = inventory->getSlot(NoSlot);
-	money = money + item->getCostSell() * Jumlah;
-	inventory->deleteItem(NoSlot,Jumlah);
+	
+	if (inventory->cekSlot(NoSlot)) {
+		item = inventory->getSlot(NoSlot);
+		money = money + item->getCostSell() * Jumlah;
+		inventory->deleteItem(NoSlot,Jumlah);
+	} else {
+		throw 2;
+	}
+	system("pause");
 }
 
 void Player::buyItem(const string name,int Jumlah) {
