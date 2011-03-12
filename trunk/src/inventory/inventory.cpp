@@ -53,29 +53,23 @@ void Inventory::addItem(const string& item, int jumlah)//melakukan penambahan it
 	bool found = false;
 	Item * dummyItem = new Item(item);
 	
-	cout << "tes7" << endl;
     while ((i >= 0) && (!found)) {
 		if (slot[i] != NULL) {
 			if(slot[i]->getTipeBibit() == dummyItem->getTipeBibit()) {
-				cout << "tes" << endl;
 				total[i] = total[i]+jumlah;
 				found = true;
 			} else {
-				cout << "tes2" << endl;
 				i--;
 			}
 		} else {
-			cout << "tes3" << endl;
 			temp = i;
 			i--;
 		}
 	}
 	if ((!found) && (temp >= 0)) {
-		cout << "tes4" << endl;
 		slot[temp] = dummyItem;
 		total[temp] = jumlah;
 	} else {
-		cout << "tes5" << endl;
 		delete dummyItem;
 	}
 }
@@ -114,7 +108,6 @@ void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pad
 			total[item] = 0;
 			delete slot[item];
 			slot[item] = NULL;
-			cout << "tesss" << endl;
 		} else {
 			throw 2;
 		}
