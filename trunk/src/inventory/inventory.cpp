@@ -100,6 +100,7 @@ void Inventory::addItem(int item, int jumlah) {
 	}
 	if ((!found) && (temp >= 0)) {
 		slot[temp] = new Item(item);
+		slot[temp]->setBuah();
 		total[temp] = jumlah;
 	}
 }
