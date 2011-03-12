@@ -1,7 +1,5 @@
 #ifndef map_H
 #define map_H
-#include "dwarf.h"
-#include <deque>
 using namespace std;
 
 class map
@@ -15,7 +13,6 @@ public :
        int getsizec();
        void setmapij(int,int,int);
        void performmap();
-       void bfsdwarf(Dwarf,deque<int> &);
 private :
         int **arr;
         const int sizer;

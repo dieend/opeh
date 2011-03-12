@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../point/point.h"
 #include "map.h"
-#include "fnextmove.cpp"
+#include "dwarf.h"
 using namespace std;
 
 int main()
@@ -16,7 +16,7 @@ int main()
     map rm;
     rm.performmap();
     Dwarf dw1(1),dw2(2),dw3(3);
-    nextmove(dw1,dw2,dw3);
+    //nextmove(dw1,dw2,dw3);
     system("PAUSE");
     return 0;
 }
