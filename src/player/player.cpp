@@ -166,10 +166,10 @@ void Player::plow() {
 		tipe = front->getType();
 		p = front->getPosisi();
 		cout << p << endl;
-		if (tipe == 0) {
+		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setCangkul();
-		} else if (tipe == 5) {
+		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
 			if ((fase == 1) || (fase == 2)) {
