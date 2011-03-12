@@ -223,7 +223,8 @@ void Player::water() {
 			lahan->setFase(2);
 		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
-			if (tanaman->isWatered() == 0) {
+			if (!(tanaman->isWatered())) {
+				cout << "tes" << endl;
 				tanaman->setSiram();
 			}
 		}
