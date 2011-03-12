@@ -111,7 +111,8 @@ void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pad
 			total[item] = total[item]-jumlah;
 		} else if (total[item] == jumlah) {
 			total[item] = 0;
-			slot[item] == NULL;
+			delete slot[item];
+			slot[item] = NULL;
 			cout << "tesss" << endl;
 		} else {
 			throw 2;
