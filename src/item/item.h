@@ -11,6 +11,7 @@ class Item{
         int efekTime;//lama nya efek dari buah yang dimakan player
         int costBuy;
         int costSell;
+		int costSellBibit;
         int typeTanaman;
         int typeBibit;
         int typeBuah;
@@ -29,6 +30,7 @@ class Item{
         int getTipeTanaman();
         int getEfekBuah();
         int getEfekTime();
+		void setBuah();
         bool isBibit();
 };
 #endif
