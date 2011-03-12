@@ -8,7 +8,7 @@ Player::Player () {
 Player::Player (Area* area, int uang, string name) {
 	curArea = area;
     curGrid = area->getGrid(8,4);
-    curGrid->setType(1);
+    curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
 	nama = name;
@@ -193,11 +193,11 @@ void Player::slash() {
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
-		if (tipe == 5) {
+		if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			if (tanaman->getFase() == 3) {
 				delete front;
-				front = new Grid_Lahan(p,0,0);
+				front = new Grid_Lahan(p,GLAHAN,0);
 				curArea->setGrid(front);
 			}
 		}
@@ -218,10 +218,10 @@ void Player::water() {
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
-		if (tipe == 0) {
+		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setFase(2);
-		} else if (tipe == 5) {
+		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			if (tanaman->isWatered() == 0) {
 				tanaman->setSiram();
@@ -261,14 +261,14 @@ void Player::put(int noSlot,int jumlah) {
 		p = front->getPosisi();
 		cout << p << endl;
 		tipe = front->getType();
-		if (tipe == 0) {
+		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
 			if ((fase == 1) || (fase== 2)) {
 				item = inventory->getSlot(noSlot);
 				if (item->isBibit()) {
 					delete front;
-					front = new Grid_Plant(p,5,fase);
+					front = new Grid_Plant(p,GTANAMAN,fase);
 					curArea->setGrid(front);
 					inventory->deleteItem(noSlot,jumlah);
 				} else {
@@ -297,24 +297,24 @@ void Player::move(int arah) {
 	Point p;
 	
 	if ((front != NULL) && (arahHadap == arah)) {
-		tipe = front->getType();
-		if ((tipe == 0) || (tipe == 2)) {
-				tipeArea = curArea->getType();
-			if (tipeArea == 1) {
-				p = curGrid->getPosisi();
-				if (p.getX() < 3) {
-					curGrid->setType(2);
-				} else {
-					curGrid->setType(0);
-				}
-			} else {
-				curGrid->setType(2);
-			}
-			curGrid = front;
-			curGrid->setType(1);
-		} 
+            tipe = front->getType();
+            if ((tipe == GLAHAN) || (tipe == GJALAN)) {
+                tipeArea = curArea->getType();
+                if (tipeArea == 1) {
+                    p = curGrid->getPosisi();
+                    if (p.getX() < 3) {
+                        curGrid->setType(GJALAN);
+                    } else {
+                        curGrid->setType(GLAHAN);
+                    }
+                } else {
+                    curGrid->setType(GJALAN);
+                }
+                curGrid = front;
+                curGrid->setType(GPLAYER);
+            }
 	} else {
-		arahHadap = arah;
+            arahHadap = arah;
 	}
 }
 
@@ -332,7 +332,7 @@ void Player::harvest() {
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
-		if (tipe == 5) {
+		if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
 			if ((fase == 4) || (fase == 5)) {
@@ -383,10 +383,10 @@ void Player::teleport(Area * destination) {
 	
 	curArea = destination; //masih belum lengkap
 	area = curArea->getType();
-	if (area == 0) {
+	if (area == RUMAH) {
 		p.setX(8);
 		p.setY(4);
-	} else if (area == 1) {
+	} else if (area == LAHAN) {
 		p.setX(1);
 		p.setY(0);
 	} else {

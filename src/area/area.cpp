@@ -1,21 +1,18 @@
 #include "area.h"
-#define RUMAH 0
-#define LAHAN 1
-#define TOKO 2
-#define G(i,j,n) grid[(i)][(j)]=new Grid((i),(j),(n))
+#include "../point/point.h"
 
 Grid * Area::getGrid(int x, int y) {
-	return grid[x][y];
+    return grid[x][y];
 }
 Grid * Area::getGrid(Point p) {
-	return grid[p.getX()][p.getY()];
+    return grid[p.getX()][p.getY()];
 }
 Area::Area():typeArea(0) {
-	for (int i=0; i<10; i++) {
-		for (int j=0; j<10; j++) {
-			grid[i][j] = new Grid();
-		}
-	}
+    for (int i=0; i<MAXROW; i++) {
+        for (int j=0; j<MAXCOLUMN; j++) {
+            grid[i][j] = new Grid();
+        }
+    }
 }
 int Area::getType(){
     return typeArea;
@@ -29,14 +26,14 @@ int Area::getType(){
 // }
 
 Area::~Area(){
-        cout << "Area destruct";
-	for (int i=0; i<10; i++) {
-            cout << i;
-		for (int j=0; j<10; j++) {
-                    cout << j;
-			delete grid[i][j];
-		}
-	}
+    cout << "Area destruct";
+    for (int i=0; i<MAXROW; i++) {
+        cout << i;
+        for (int j=0; j<MAXCOLUMN; j++) {
+            cout << j;
+            delete grid[i][j];
+        }
+    }
 }
 
 Area::Area(int tipe)
@@ -65,26 +62,26 @@ Area::Area(int tipe)
 		G(8,0,2);G(8,1,9);G(8,2,9);G(8,3,2);G(8,4,2);G(8,5,2);G(8,6,9);G(8,7,9);G(8,8,9);G(8,9,9);
 		G(9,0,2);G(9,1,9);G(9,2,9);G(9,3,2);G(9,4,2);G(9,5,2);G(9,6,9);G(9,7,9);G(9,8,9);G(9,9,9);
 	} else {
-		for (int i=0;i<3; i++) {
-			for (int j=0; j<10; j++) {
-				Point P(i,j);
-				if ((i==1 || i==2) && (j==8 || j==9)) {
-					grid[i][j] = new Grid(P,3,0);
-				} else {
-					grid[i][j] = new Grid(P,2,0);
-				}
-			}
-		}
-		for (int i=3; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				Point P(i,j);
-				grid[i][j] = new Grid(P,0,0);
-			}
-		}
+            for (int i=0;i<3; i++) {
+                for (int j=0; j<MAXCOLUMN; j++) {
+                    Point P(i,j);
+                    if ((i==1 || i==2) && (j==8 || j==9)) {
+                        grid[i][j] = new Grid(P,3,0);
+                    } else {
+                        grid[i][j] = new Grid(P,2,0);
+                    }
+                }
+            }
+            for (int i=3; i<MAXROW; i++) {
+                for (int j=0; j<MAXCOLUMN; j++) {
+                    Point P(i,j);
+                    grid[i][j] = new Grid(P,0,0);
+                }
+            }
 	}
 }
 
-string peta_rumah[10] = {
+string peta_rumah[MAXROW] = {
 		".[-]......",
 		"*.........",
 		"*.........",
@@ -97,7 +94,7 @@ string peta_rumah[10] = {
 		"BBB...III."
 		};
 		
-string peta_lahan[10] = {
+string peta_lahan[MAXROW] = {
 		".........."
 		"........xx"
 		"........xx"
@@ -110,7 +107,7 @@ string peta_lahan[10] = {
 		"tttttttttt"
 		};
 		
-string peta_toko[10] = {
+string peta_toko[MAXROW] = {
 		"&..%%.#[-]",
 		"%&....#..*",
 		"&.....#..*",
@@ -125,53 +122,53 @@ string peta_toko[10] = {
 		
 ostream& operator<<(ostream& c,Area* area) {
 	if (area->typeArea==0) {
-		c << dinding << "+----------+\n|" << white;
-		for (int i=0; i<10; i++) {
-			for(int j=0; j<10; j++) {
-				if (area->getGrid(i,j)->getType() == 1) {
-                    Player * p = area->getPlayer();
-					c << lantai << p << white;
-				} else {
-					c << lantai << peta_rumah[i][j] << white;
-				}
-			}
-			c << endl;
-		}
-		c << dinding << "+----------+\n|" << white;
+            c << dinding << "+----------+\n|" << white;
+            for (int i=0; i<10; i++) {
+                for(int j=0; j<10; j++) {
+                    if (area->getGrid(i,j)->getType() == 1) {
+                        Player * p = area->getPlayer();
+                        c << lantai << p << white;
+                    } else {
+                        c << lantai << peta_rumah[i][j] << white;
+                    }
+                }
+                c << endl;
+            }
+            c << dinding << "+----------+\n|" << white;
 	} else if (area->typeArea==1) {
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-                                Grid* grid = area->getGrid(i,j);
-				if (grid->getType() == 1) { //player
-                                        Player * p = area->getPlayer();
-					c << lahan << p << white;
-				} else if (grid->getType()== 4){ //tanaman
-                                        Grid_Plant * plant;
-                                        plant = (Grid_Plant*) grid;
-                                        c << lahan << plant << white;
-                                } else if (grid->getType()==0) {
-                                    Grid_Lahan * L;
-                                    L = (Grid_Lahan *) grid;
-                                    c << lahan << L << white;
-                                } else {
-                                    c << peta_lahan[i][j] << white;
-                                }
-			}
-			c << endl;
-		}
+            for (int i=0; i<10; i++) {
+                for (int j=0; j<10; j++) {
+                    Grid* grid = area->getGrid(i,j);
+                    if (grid->getType() == 1) { //player
+                        Player * p = area->getPlayer();
+                        c << lahan << p << white;
+                    } else if (grid->getType()== 4){ //tanaman
+                        Grid_Plant * plant;
+                        plant = (Grid_Plant*) grid;
+                        c << lahan << plant << white;
+                    } else if (grid->getType()==0) {
+                        Grid_Lahan * L;
+                        L = (Grid_Lahan *) grid;
+                        c << lahan << L << white;
+                    } else {
+                        c << peta_lahan[i][j] << white;
+                    }
+                }
+                c << endl;
+            }
 	} else if (area->typeArea==2) {
-		c << dinding << "+----------+\n|" << white;
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				if (area->getGrid(i,j)->getType() == 1) {
-					c << toko << (area->getPlayer()) << white;
-				} else {
-					c << toko << peta_toko[i][j] << white;
-				}
-			}
-			c << endl;
-		}
-		c << dinding << "+----------+\n|" << white;
+            c << dinding << "+----------+\n|" << white;
+            for (int i=0; i<10; i++) {
+                for (int j=0; j<10; j++) {
+                    if (area->getGrid(i,j)->getType() == 1) {
+                        c << toko << (area->getPlayer()) << white;
+                    } else {
+                        c << toko << peta_toko[i][j] << white;
+                    }
+                }
+                c << endl;
+            }
+            c << dinding << "+----------+\n|" << white;
 	}
 	return c;
 }

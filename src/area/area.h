@@ -6,6 +6,13 @@
 #include "../player/player.h"
 #include <iostream>
 #include <string>
+#define MAXROW 10
+#define MAXCOLUMN 10
+#define RUMAH 0
+#define LAHAN 1
+#define TOKO 2
+#define G(i,j,n) grid[(i)][(j)]=new Grid((i),(j),(n))
+
 using namespace std;
 
 class Player;

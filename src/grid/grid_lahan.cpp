@@ -50,3 +50,6 @@ ostream& operator<<(ostream& c, Grid_Lahan* GL){
     c<< white;
     return c;
 }
+void Grid_Lahan::grow(){
+    setFase(0);
+}
