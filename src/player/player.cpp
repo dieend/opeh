@@ -388,6 +388,7 @@ void Player::teleport(Area * destination) {
 	int area;
 	Point p;
 	
+	curGrid->setType(0);
 	curArea = destination; //masih belum lengkap
 	area = curArea->getType();
 	if (area == RUMAH) {
