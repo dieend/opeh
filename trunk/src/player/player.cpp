@@ -387,23 +387,35 @@ void Player::teleport(Area * destination) {
 */
 	int area;
 	Point p;
+	int tipe;
 	
-	curGrid->setType(0);
-	curArea = destination; //masih belum lengkap
+	p = curGrid->getPosisi();
+	if (curArea->getType() == LAHAN) {
+		if (p.getX() >= 3) {
+			curGrid->setType(0);
+		} else {
+			curGrid->setType(2);
+		}
+	} else {
+		curGrid->setType(2);
+	}
+	curArea = destination;
 	area = curArea->getType();
 	if (area == RUMAH) {
 		p.setX(8);
 		p.setY(4);
+		arahHadap = 4;
 	} else if (area == LAHAN) {
 		p.setX(1);
 		p.setY(0);
+		arahHadap = 1;
 	} else {
 		p.setX(3);
 		p.setY(0);
+		arahHadap = 1;
 	}
 	curGrid = curArea->getGrid(p);
 	curGrid->setType(1);
-	arahHadap = 1;
 }
 
 ostream& operator<<(ostream& c, Player* p){
