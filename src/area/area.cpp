@@ -75,7 +75,7 @@ Area::Area(int tipe)
             for (int i=3; i<MAXROW; i++) {
                 for (int j=0; j<MAXCOLUMN; j++) {
                     Point P(i,j);
-                    grid[i][j] = new Grid(P,0,0);
+                    grid[i][j] = new Grid(P,0,2);
                 }
             }
 	}
@@ -95,16 +95,16 @@ string peta_rumah[MAXROW] = {
 		};
 		
 string peta_lahan[MAXROW] = {
-		".........."
-		"........xx"
-		"........xx"
-		"tttttttttt"
-		"tttttttttt"
-		"tttttttttt"
-		"tttttttttt"
-		"tttttttttt"
-		"tttttttttt"
-		"tttttttttt"
+		"..........",
+		"........xx",
+		"........xx",
+		"tttttttttt",
+		"tttttttttt",
+		"tttttttttt",
+		"tttttttttt",
+		"tttttttttt",
+		"tttttttttt",
+		"tttttttttt",
 		};
 		
 string peta_toko[MAXROW] = {
@@ -121,7 +121,7 @@ string peta_toko[MAXROW] = {
 };
 		
 ostream& operator<<(ostream& c,Area* area) {
-	if (area->typeArea==0) {
+	if (area->typeArea==RUMAH) {
             c << dinding << "+----------+\n|" << white;
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {
@@ -135,18 +135,18 @@ ostream& operator<<(ostream& c,Area* area) {
                 c << endl;
             }
             c << dinding << "+----------+\n|" << white;
-	} else if (area->typeArea==1) {
+	} else if (area->typeArea==LAHAN) {
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {
                     Grid* grid = area->getGrid(i,j);
-                    if (grid->getType() == 1) { //player
+                    if (grid->getType() == GPLAYER) { //player
                         Player * p = area->getPlayer();
                         c << lahan << p << white;
-                    } else if (grid->getType()== 4){ //tanaman
+                    } else if (grid->getType()== GTANAMAN){ //tanaman
                         Grid_Plant * plant;
                         plant = (Grid_Plant*) grid;
                         c << lahan << plant << white;
-                    } else if (grid->getType()==0) {
+                    } else if (grid->getType()==GLAHAN) {
                         Grid_Lahan * L;
                         L = (Grid_Lahan *) grid;
                         c << lahan << L << white;
@@ -156,8 +156,7 @@ ostream& operator<<(ostream& c,Area* area) {
                 }
                 c << endl;
             }
-	} else if (area->typeArea==2) {
-            c << dinding << "+----------+\n|" << white;
+	} else if (area->typeArea==TOKO) {
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
@@ -168,7 +167,6 @@ ostream& operator<<(ostream& c,Area* area) {
                 }
                 c << endl;
             }
-            c << dinding << "+----------+\n|" << white;
 	}
 	return c;
 }

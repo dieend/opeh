@@ -12,6 +12,27 @@
 #define GSELLINGBOX 7
 #define GINVBOX 8
 #define GUNSTEP 9
+#define BIBIT 0
+#define SBIBIT 1
+#define REMAJA 2
+#define SREMAJA 3
+#define DEWASA 4
+#define SDEWASA 5
+#define MATI 6
+#define PLOW 0
+#define SPLOW 1
+#define LAND 2
+// 0 = sudah dicangkul
+	// 1 = sudah dicangkul sudah disiram
+	// 2 = belum dicangkul
+	// tanaman
+	// 0 = bibit belum disiram
+	// 1 = bibit sudah disiram
+	// 2 = tanaman dewasa belum disiram
+	// 3 = tanaman dewasa sudah disiram
+	// 4 = tanaman panen belum disiram
+	// 5 = tanaman panen sudah disiram
+	// 6 = tanaman mati atau habis panen
 
 	// 1 = dwarf atau player
 	// 2 = jalan
@@ -35,17 +56,7 @@ class Grid
 	int	fase;
 	// fase Grid.
 	// lahan kosong
-	// 0 = belum dicangkul
-	// 1 = sudah dicangkul
-	// 2 = sudah dicangkul sudah disiram
-	// tanaman
-	// 0 = bibit belum disiram
-	// 1 = bibit sudah disiram
-	// 2 = tanaman dewasa belum disiram
-	// 3 = tanaman dewasa sudah disiram
-	// 4 = tanaman panen belum disiram
-	// 5 = tanaman panen sudah disiram
-	// 6 = tanaman mati atau habis panen
+	
 	
 	
 	public :
