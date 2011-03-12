@@ -90,10 +90,12 @@ int	Grid_Plant::getUmur() const
 bool Grid_Plant::isWatered() const
 // mengeluarkan TRUE jika tanaman sudah disiram.
 {
-	if (getFase()%2 == 1)
+	if (getFase() % 2 == 0) {
+		cout << "tes2" << endl;
 		return true;
-	else
+	} else {
 		return false;
+	}
 }
 
 bool Grid_Plant::isBibit() const
@@ -132,7 +134,7 @@ void Grid_Plant::setSiram()
 // pengubahan fase tanaman ketika disiram
 // instant change
 {
-	if (getFase() != 6 && !isWatered())
+	if ((getFase() != 6) && (!isWatered()))
 		setFase(getFase()+1);
 }
 
