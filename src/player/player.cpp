@@ -365,7 +365,6 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 	} else {
 		throw 2;
 	}
-	system("pause");
 }
 
 void Player::buyItem(const string name,int Jumlah) {
@@ -373,14 +372,12 @@ void Player::buyItem(const string name,int Jumlah) {
 
 */
 	Item * dummyItem;
-	cout << "tes6" << endl;
 	dummyItem = new Item(name);
 	if (money > (dummyItem->getCostBuy() * Jumlah)) {
 		money = money - dummyItem->getCostBuy()* Jumlah;
 		inventory->addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
 	 delete dummyItem;
-	 system("pause");
 }
 
 void Player::teleport(Area * destination) {
