@@ -1,8 +1,4 @@
 #include "game.h"
-#define KANAN 1
-#define KIRI 3
-#define ATAS 4
-#define BAWAH 2
 void Game::Run() {
     bool notExit;
     do {
@@ -32,107 +28,115 @@ void Game::Run() {
 
 bool Game::doPerintah() {
 	if (world == NULL) {
-		if (perintah == "new") {
-                    world = new World(paramStr[0]);
-		} else if (perintah == "load") {
-		} else throw 2;
+            if (perintah == "new") {
+                world = new World(paramStr[0]);
+            } else if (perintah == "load") {
+            } else throw 2;
 	} else {
-		if (perintah == "teleport") {
-			int where = world->getPlayer()->getCurArea()->getType();
-			if (paramStr[0] == "-help") {
-				if (where ==0) {
-					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
-				} else if (where == 1) {
-					cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n";
-				} else if (where == 2) {
-					cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
-				}
-                                getch();
-			} else
-			if (where == 0) {
-				if (paramInt[0] != 1) {
-					throw 2;
-				}
-				world->getPlayer()->teleport(world->getArea(paramInt[0]));
-			} else if (where == 1) {
-				if (paramInt[0] == 1) {
-					throw 2;
-				}
-				world->getPlayer()->teleport(world->getArea(paramInt[0]));
-			} else if (where == 2) {
-				if (paramInt[0] !=1) {
-					throw 2;
-				}
-				world->getPlayer()->teleport(world->getArea(paramInt[0]));
-			}
-		} else if (perintah == "right") {
-			for (int i=0; i<paramInt[0]; i++) {
-				world->getPlayer()->move(KANAN);
-				world->getTime()->nextMinutes();
-			}
-		} else if (perintah == "left") {
-			for (int i=0; i<paramInt[0]; i++) {
-				world->getPlayer()->move(KIRI);
-				world->getTime()->nextMinutes();
-			}
-		} else if (perintah == "up") {
-			for (int i=0; i<paramInt[0]; i++) {
-				world->getPlayer()->move(ATAS);
-				world->getTime()->nextMinutes();
-			}
-		} else if (perintah == "down") {
-			for (int i=0; i<paramInt[0]; i++) {
-				world->getPlayer()->move(BAWAH);
-				world->getTime()->nextMinutes();
-			}
-		} else if (perintah == "inventory") {
-			world->getPlayer()->getInventory()->listItem();
-		} else if (perintah == "plow") {
-			world->getPlayer()->plow();
-		} else if (perintah == "put") {
-			world->getPlayer()->put(paramInt[0],paramInt[1]);
-		} else if (perintah == "slash") {
-			world->getPlayer()->slash();
-		} else if (perintah == "water") {
-			world->getPlayer()->water();
-		} else if (perintah == "harvest") {
-			world->getPlayer()->harvest();
-		} else if (perintah == "wake_up") {
-			world->getDwarf(paramInt[0]-1)->wakeUp();
-		} else if (perintah == "sleep") {
-			world->getDwarf(paramInt[0]-1)->wakeUp();
-		} else if (perintah == "status") {
-			cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
-			cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
-			cout << 3 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
-		} else if (perintah == "save") {
-			World::save("save.oph",*world);
-		} else if (perintah == "sleep") {
-			world->getTime()->nextDay();
-		} else if (perintah == "exit") {
-			delete world;
-                        cout << "A";
-                        world = NULL;
-		} else if (perintah == "store") {
-                    if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
-                        system("cls");
-                        Toko * toko = (Toko*) world->getPlayer()->getFrontGrid();
-                        toko->listItem();
-                        getch();
-                    } else throw 2;
-		} else if (perintah == "buy") {
-			world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
-		} else if (perintah == "sell") {
-			world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
-		}
+            if (perintah == "teleport") {
+                    int where = world->getPlayer()->getCurArea()->getType();
+                    if (paramStr[0] == "-help") {
+                            if (where ==0) {
+                                    cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
+                            } else if (where == 1) {
+                                    cout << "Anda bisa teleport ke `rumah` (kode 0) atau `toko` (kode 2)\n";
+                            } else if (where == 2) {
+                                    cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
+                            }
+                            getch();
+                    } else
+                    if (where == 0) {
+                            if (paramInt[0] != 1) {
+                                    throw 2;
+                            }
+                            world->getPlayer()->teleport(world->getArea(paramInt[0]));
+                    } else if (where == 1) {
+                            if (paramInt[0] == 1) {
+                                    throw 2;
+                            }
+                            world->getPlayer()->teleport(world->getArea(paramInt[0]));
+                    } else if (where == 2) {
+                            if (paramInt[0] !=1) {
+                                    throw 2;
+                            }
+                            world->getPlayer()->teleport(world->getArea(paramInt[0]));
+                    }
+            } else if (perintah == "right") {
+                    for (int i=0; i<paramInt[0]; i++) {
+                            world->getPlayer()->move(KANAN);
+                            world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+                    }
+            } else if (perintah == "left") {
+                    for (int i=0; i<paramInt[0]; i++) {
+                            world->getPlayer()->move(KIRI);
+                            world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+                    }
+            } else if (perintah == "up") {
+                    for (int i=0; i<paramInt[0]; i++) {
+                            world->getPlayer()->move(ATAS);
+                            world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+                    }
+            } else if (perintah == "down") {
+                    for (int i=0; i<paramInt[0]; i++) {
+                            world->getPlayer()->move(BAWAH);
+                            world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+                    }
+            } else if (perintah == "inventory") {
+                    world->getPlayer()->getInventory()->listItem();
+            } else if (perintah == "plow") {
+                    world->getPlayer()->plow();
+            } else if (perintah == "put") {
+                    world->getPlayer()->put(paramInt[0],paramInt[1]);
+            } else if (perintah == "slash") {
+                    world->getPlayer()->slash();
+            } else if (perintah == "water") {
+                    world->getPlayer()->water();
+            } else if (perintah == "harvest") {
+                    world->getPlayer()->harvest();
+            } else if (perintah == "wake_up") {
+                    world->getDwarf(paramInt[0]-1)->wakeUp();
+            } else if (perintah == "sleep") {
+                    world->getDwarf(paramInt[0]-1)->wakeUp();
+            } else if (perintah == "status") {
+                    cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 3 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
+            } else if (perintah == "save") {
+                    World::save("save.oph",*world);
+            } else if (perintah == "sleep") {
+                    world->getTime()->nextDay();
+            } else if (perintah == "exit") {
+                    delete world;
+                    cout << "A";
+                    world = NULL;
+            } else if (perintah == "store") {
+                if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
+                    system("cls");
+                    Toko * toko = (Toko*) world->getPlayer()->getFrontGrid();
+                    toko->listItem();
+                    getch();
+                } else throw 2;
+            } else if (perintah == "buy") {
+                    world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
+            } else if (perintah == "sell") {
+                    world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
+            }
 		
 	}
         cout << " C";
         if (world != NULL) {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
-                world->getTime()->nextMinutes();
+                world->getTime()->next10Minutes(world->getPlayer()->getStatus());
             }
-            world->setWeather();
+            if (world->getTime()->iscDay()) {
+                world->setWeather();
+                for (int i=0; i<MAXROW; i++){
+                    for (int j=0; j<MAXCOLUMN; j++){
+                        cout << i << j << endl;
+                        world->getArea(1)->getGrid(i,j)->grow();
+                    }
+                }
+            }
         }
         cout << " B";
 	return true;

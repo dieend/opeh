@@ -2,18 +2,17 @@
 #define GRID_H
 #include "../point/point.h"
 #include <iostream>
+#define GLAHAN 0
+#define GPLAYER 1
+#define GJALAN 2
 #define GSTORE 3
 #define GTANAMAN 4
-using namespace std;
+#define GBED 5
+#define GSAVE 6
+#define GSELLINGBOX 7
+#define GINVBOX 8
+#define GUNSTEP 9
 
-class Grid
-// merupakan kotak-kotak pembentuk area
-{
-	Point posisi;
-	// posisi Grid.
-	int	type;
-	// macam-macam Grid.
-	// 0 = lahan
 	// 1 = dwarf atau player
 	// 2 = jalan
 	// 3 = toko
@@ -23,6 +22,16 @@ class Grid
 	// 7 = selling box
 	// 8 = inventory box
 	// 9 = unstepable (meja,dinding,barang2)
+using namespace std;
+
+class Grid
+// merupakan kotak-kotak pembentuk area
+{
+	Point posisi;
+	// posisi Grid.
+	int	type;
+	// macam-macam Grid.
+	
 	int	fase;
 	// fase Grid.
 	// lahan kosong
@@ -59,7 +68,7 @@ class Grid
 	bool isPlantable() const;
 	// mengeluarkan nilai kebenaran apakah Grid dapat ditanami atau tidak.
 	
-	
+        virtual void grow();
 	void setType(int);
 	// mengeset type Grid.
 	void setFase(int);

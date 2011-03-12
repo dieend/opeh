@@ -21,6 +21,7 @@ World::World(string nama){
 	area[RUMAH] 	= new Area(RUMAH);
 	area[LAHAN] 	= new Area(LAHAN);
 	area[TOKO ] 	= new Area(TOKO );
+        cout << "pass1";
 	player 		= new Player(area[RUMAH],2000,nama);
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);

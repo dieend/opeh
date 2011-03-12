@@ -11,6 +11,10 @@
 #include "../item/item.h"
 #include "../helper/color.h"
 #include "../toko/toko.h"
+#define KANAN 1
+#define KIRI 3
+#define ATAS 4
+#define BAWAH 2
 using namespace std;
 
 class Area;

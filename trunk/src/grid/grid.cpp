@@ -65,3 +65,6 @@ Grid::Grid(int x,int y,int tipe){
     fase = 0;
 }
 
+void Grid::grow(){
+    cout << "grow grid is USED";
+}
