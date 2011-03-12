@@ -62,7 +62,9 @@ Grid::Grid(int x,int y,int tipe){
     Point p(x,y);
     posisi = p;
     type = tipe;
-    fase = 0;
+    if (tipe==GLAHAN)
+        fase = 2;
+    else fase = 0;
 }
 
 void Grid::grow(){

@@ -25,5 +25,6 @@ class Inventory{
     void deleteItem(int, int);//melakukan penghapusan item pada vector
     bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak. Mengembaikan true jika kosong.
     Item* getSlot(int);
+    int getJumlah(int noslot);
 };
 #endif

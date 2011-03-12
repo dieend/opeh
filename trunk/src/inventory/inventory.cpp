@@ -133,3 +133,7 @@ Item* Inventory::getSlot(int noslot){
 	//cout <<"Didalam slot ke-"<<noslot<<", tersimpan Item "<<slot[noslot]<<" sebanyak = "<<total[noslot]<<endl;
 	return (slot[noslot]);
 }
+
+int Inventory::getJumlah(int noslot){
+    return (total[noslot]);
+}

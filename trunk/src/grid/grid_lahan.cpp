@@ -27,15 +27,15 @@ Grid_Lahan::~Grid_Lahan()
 void Grid_Lahan::setCangkul()
 // pengubahan fase lahan setelah dicangkul
 {
-	if (getFase() == 0)
-		setFase(1);
+	if (getFase() == LAND)
+		setFase(0);
 }
 
 void Grid_Lahan::setSiram()
 // pengubahan fase lahan setelah disiram
 {
-	if (getFase() == 1)
-		setFase(2);
+	if (getFase() == PLOW)
+		setFase(1);
 }
 
 void Grid_Lahan::setPut(){
@@ -43,10 +43,10 @@ void Grid_Lahan::setPut(){
 }
 
 ostream& operator<<(ostream& c, Grid_Lahan* GL){
-    if (GL->getFase()==0) c<<lahan;
-    if (GL->getFase()==1) c<<lahan_plowed;
-    if (GL->getFase()==2) c<<lahan_watered;
-    c << ".";
+    if (GL->getFase()==PLOW) c<<lahan_plowed;
+    if (GL->getFase()==SPLOW) c<<lahan_watered;
+    if (GL->getFase()==LAND) c<<lahan;
+    c << " ";
     c<< white;
     return c;
 }

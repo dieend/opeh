@@ -135,12 +135,12 @@ ostream& operator<<(ostream& c,World& world){
             cout << endl;
         }
         cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << endl;
-        cout << "Player has status " << world.getPlayer()->getStatus();
-        cout << "Player has money" << world.getPlayer()->getMoney();
+        cout << "Player has status " << world.getPlayer()->getStatus() << endl;
+        cout << "Player has money " << world.getPlayer()->getMoney() << endl;
         cout << "Player Inventory: " << endl;
         for (int i=0; i<3; i++) {
             if (world.player->getInventory()->cekSlot(i)){
-                cout << "slot " << i <<" exist\n";
+                cout << "slot " << i <<" exist.  "; cout << "jumlah "<< world.player->getInventory()->getJumlah(i) << endl;
                 cout << "tipe item bibit" << world.player->getInventory()->getSlot(i)->getTipeBibit() << endl;
                 cout << "tipe item buah" << world.player->getInventory()->getSlot(i)->getTipeBuah() << endl;
                 cout << "tipe item tanaman" << world.player->getInventory()->getSlot(i)->getTipeTanaman() << endl;

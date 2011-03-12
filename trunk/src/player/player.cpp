@@ -7,8 +7,8 @@ Player::Player () {
 
 Player::Player (Area* area, int uang, string name) {
 	curArea = area;
-    curGrid = area->getGrid(4,3);
-    curGrid->setType(GPLAYER);
+        curGrid = area->getGrid(4,3);
+        curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
 	nama = name;
@@ -172,7 +172,7 @@ void Player::plow() {
 		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
-			if ((fase == 1) || (fase == 2)) {
+			if ((fase == BIBIT) || (fase == SBIBIT)) {
 				delete front;
 				front = new Grid_Lahan(p,0,fase);
 				curArea->setGrid(front);
@@ -195,7 +195,7 @@ void Player::slash() {
 		p = front->getPosisi();
 		if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
-			if (tanaman->getFase() == 3) {
+			if (tanaman->getFase() >= REMAJA) {
 				delete front;
 				front = new Grid_Lahan(p,GLAHAN,0);
 				curArea->setGrid(front);
@@ -219,16 +219,20 @@ void Player::water() {
 		tipe = front->getType();
 		p = front->getPosisi();
 		if (tipe == GLAHAN) {
+                    cout << "LAHAN INI\n";
 			lahan = (Grid_Lahan*)front;
-			lahan->setFase(2);
+			lahan->setSiram();
 		} else if (tipe == GTANAMAN) {
+                    cout << "TANAMAN INI \n";
 			tanaman = (Grid_Plant*)front;
 			if (!(tanaman->isWatered())) {
+                                cout << "WAH BELUM DISIRAM";
 				cout << "tes" << endl;
 				tanaman->setSiram();
 			}
 		}
 	}
+        system("PAUSE");
 }
 
 int Player::eat(int numInv) {
@@ -254,20 +258,22 @@ void Player::put(int noSlot,int jumlah) {
 	int tipe;
 	int fase;
 	Grid* front = getFrontGrid();
+        Item* item = inventory->getSlot(noSlot);
 	Grid_Lahan* lahan;
-	Item* item;
 	Point p;
 	
-	if (front != NULL) {
+	if ((front != NULL) && (item != NULL)) {
 		p = front->getPosisi();
 		cout << p << endl;
 		tipe = front->getType();
 		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
-			if ((fase == 1) || (fase== 2)) {
-				item = inventory->getSlot(noSlot);
+                        cout << fase << endl;
+			if ((fase == PLOW) || (fase== SPLOW)) {
+                            cout << "PLOWED";
 				if (item->isBibit()) {
+                                    cout<<"BIBIT";
 					delete front;
 					front = new Grid_Plant(p,GTANAMAN,fase);
 					curArea->setGrid(front);
@@ -276,15 +282,18 @@ void Player::put(int noSlot,int jumlah) {
 					inventory->deleteItem(noSlot,jumlah);
 				}
 			} else {
+                            cout << "DELETED1";
 				inventory->deleteItem(noSlot,jumlah);
 			}
-		} else if (tipe == 8) {
+		} else if (tipe == GINVBOX) {
 			inventory->deleteItem(noSlot,jumlah);
 			sellItem(noSlot,jumlah);
 		} else {
+                    cout << "DELETED2";
 			inventory->deleteItem(noSlot,jumlah);
 		}
 	}
+        system("PAUSE");
 }
 
 void Player::move(int arah) {
@@ -301,8 +310,8 @@ void Player::move(int arah) {
             tipe = front->getType();
             if ((tipe == GLAHAN) || (tipe == GJALAN)) {
                 tipeArea = curArea->getType();
-                if (tipeArea == 1) {
-                    p = curGrid->getPosisi();
+                if (tipeArea == LAHAN) {
+                        p = curGrid->getPosisi();
                     if (p.getX() < 3) {
                         curGrid->setType(GJALAN);
                     } else {
@@ -320,27 +329,23 @@ void Player::move(int arah) {
 }
 
 void Player::harvest() {
-/*
-
-*/
 	int tipe;
 	int fase;
 	int tipeTanaman;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
-	Point p;
-	
+	Point p;	
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
 		if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
-			if ((fase == 4) || (fase == 5)) {
+			if ((fase == DEWASA) || (fase == SDEWASA)) {
 				tanaman->setPanen();
 				tipeTanaman = tanaman->getTypeTanaman();
 				inventory->addItem(tipeTanaman,1);
-				if (tanaman->getFase() == 6) {
+				if (tanaman->getFase() == MATI) {
 					delete front;
 					front = new Grid_Lahan(p,0,0);
 					curArea->setGrid(front);
@@ -351,9 +356,6 @@ void Player::harvest() {
 }
 
 void Player::sellItem(int NoSlot, int Jumlah) {
-/*
-
-*/
 	Item* item;
 	
 	if (inventory->cekSlot(NoSlot)) {
