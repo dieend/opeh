@@ -393,13 +393,15 @@ void Game::getPerintah(){
         if (i>2){
             throw 0;
         }
-        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
-            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
-            if (paramInt[0]>1000){
+        if (i>1){
+            if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+                sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+                if (paramInt[0]>1000){
+                    throw 0;
+                }
+            }else{
                 throw 0;
             }
-        }else{
-            throw 0;
         }
     } else if (perintah == "status") {
         do {

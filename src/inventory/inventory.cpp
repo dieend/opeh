@@ -46,57 +46,54 @@ int Inventory::listItem()
 return 0;
 }
 
-void Inventory::addItem(const string& item, int jumlah)//melakukan penambahan item pada vector
+void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan item pada vector
 {
-	int i = 2; //iterator diinisialisasi = 1
-	int temp = -1;
-	bool found = false;
-	Item * dummyItem = new Item(item);
+    int i = 2; //iterator diinisialisasi = 1
+    int temp = -1;
+    bool found = false;
+    Item * dummyItem = Item::makeBibit(name);
 	
     while ((i >= 0) && (!found)) {
-		if (slot[i] != NULL) {
-			if(slot[i]->getTipeBibit() == dummyItem->getTipeBibit()) {
-				total[i] = total[i]+jumlah;
-				found = true;
-			} else {
-				i--;
-			}
-		} else {
-			temp = i;
-			i--;
-		}
-	}
-	if ((!found) && (temp >= 0)) {
-		slot[temp] = dummyItem;
-		total[temp] = jumlah;
-	} else {
-		delete dummyItem;
-	}
+        if (slot[i] != NULL) {
+            if((*(slot[i])) == (*dummyItem)) {
+                total[i] = total[i]+jumlah;
+                found = true;
+            } 
+        } else {
+            temp = i;
+            i--;
+        }
+    }
+    if ((!found) && (temp >= 0)) {
+        slot[temp] = dummyItem;
+        total[temp] = jumlah;
+    } else {
+        delete dummyItem;
+    }
 }
 
-void Inventory::addItem(int item, int jumlah) {
-	int i = 2; //iterator diinisialisasi = 1
-	int temp = -1;
-	bool found = false;
-	
+void Inventory::addItem(Grid_Plant* tanaman, int jumlah) {
+    int i = 2; //iterator diinisialisasi = 1
+    int temp = -1;
+    bool found = false;
+    Item * dummyItem = Item::makeBuah(tanaman);
     while ((i >= 0) && (!found)) {
-		if (slot[i] != NULL) {
-			if(slot[i]->getTipeTanaman() == item) {
-				total[i] = total[i]+jumlah;
-				found = true;
-			} else {
-				i--;
-			}
-		} else {
-			temp = i;
-			i--;
-		}
-	}
-	if ((!found) && (temp >= 0)) {
-		slot[temp] = new Item(item);
-		slot[temp]->setBuah();
-		total[temp] = jumlah;
-	}
+        if (slot[i] != NULL) {
+            if((*slot[i]) == (*dummyItem)) {
+                total[i] = total[i]+jumlah;
+                found = true;
+            } else {
+                i--;
+            }
+        } else {
+            temp = i;
+            i--;
+        }
+    }
+    if ((!found) && (temp >= 0)) {
+        slot[temp] = dummyItem;
+        total[temp] = jumlah;
+    }
 }
 
 void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pada vector

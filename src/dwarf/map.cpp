@@ -1,5 +1,4 @@
 #include "map.h"
-#include <iostream>
 using namespace std;
 
 map::map() : sizer(13),sizec(12)
@@ -60,7 +59,7 @@ void map::performmap()
   }
 }
 
-void bfsdwarf(Dwarf d,deque<int> &dq)
-{
+//void bfsdwarf(Dwarf d,deque<int> &dq)
+//{
     
-}
+//}

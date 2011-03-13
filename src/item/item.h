@@ -1,6 +1,8 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include <iostream>
+#include <string>
+#include "../grid/grid_plant.h"
 using namespace std;
 
 class Item{
@@ -11,26 +13,33 @@ class Item{
         int efekTime;//lama nya efek dari buah yang dimakan player
         int costBuy;
         int costSell;
-		int costSellBibit;
+	int costSellBibit;
         int typeTanaman;
-        int typeBibit;
         int typeBuah;
+        int IDitem;
         bool bibit;
 	public :
         Item (); //konstruktor
-        Item(const string&);
-        Item(const Item&);//copy konstruktor
-        Item(int);
         virtual ~Item (); //destructor
-
-        int getCostBuy();
-        int getCostSell();
-        int getTipeBibit();
-        int getTipeBuah();
-        int getTipeTanaman();
-        int getEfekBuah();
-        int getEfekTime();
-		void setBuah();
+        static Item* makeBibit(const string&);
+        static Item* makeBuah(const Grid_Plant*);
+        bool operator==(const Item&);
+        int getCostBuy() const;
+        int getCostSell()const;
+        int getTipeBuah() const;
+        int getTipeTanaman() const;
+        int getEfekBuah() const;
+        int getEfekTime() const;
+        int getIDitem() const;
         bool isBibit();
+        void setEfekBuah(int);
+        void setEfekTime(int);
+        void setCostBuy(int);
+        void setCostSell(int);
+	void setCostSellBibit(int);
+        void setTypeTanaman(int);
+        void setTypeBuah(int);
+        void setIDitem(int);
+        void setBibit(bool);
 };
 #endif
