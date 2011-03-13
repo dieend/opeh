@@ -1,4 +1,6 @@
 #include "item.h"
+#include "../grid/grid_plant.cpp"
+
 
 using namespace std;
 
@@ -62,36 +64,35 @@ bool Item::isBibit() {
 
 Item* Item::makeBibit(const string& name){
     Item * item = new Item();
-    if(name == "kentang")	{item->setIDitem(0);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(true);}
-//    else if(name == "lobak")	{IDitem = 1;typeTanaman = 2;typeBuah = 14;efekBuah = 0;efekTime = 0;costBuy = 120;costSell = 540;costSellBibit = 60;bibit=true;}
-//    else if(name == "timun")	{IDitem = 2;typeTanaman = 3;typeBuah = 15;efekBuah = 0;efekTime = 0;costBuy = 200;costSell = 900;costSellBibit = 100;bibit=true;}
-//    else if(name == "kubis")	{IDitem = 3;typeTanaman = 4;typeBuah = 16;efekBuah = 0;efekTime = 0;costBuy = 500;costSell = 2250;costSellBibit = 250;bibit=true;}
-//    else if(name == "jagung")	{IDitem = 4;typeTanaman = 5;typeBuah = 17;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 900;costSellBibit = 150;bibit=true;}
-//    else if(name == "tomat")	{IDitem = 5;typeTanaman = 6;typeBuah = 18;efekBuah = 0;efekTime = 0;costBuy = 200;costSell = 540;costSellBibit = 100;bibit=true;}
-//    else if(name == "bawang")	{IDitem = 6;typeTanaman = 7;typeBuah = 19;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 720;costSellBibit = 75;bibit=true;}
-//    else if(name == "nanas")	{IDitem = 7;typeTanaman = 8;typeBuah = 20;efekBuah = 0;efekTime = 0;costBuy = 1000;costSell = 4500;costSellBibit = 500;bibit=true;}
-//    else if(name == "wortel")	{IDitem = 8;typeTanaman = 9;typeBuah = 21;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 1080;costSellBibit = 150;bibit=true;}
-//    else if(name == "terong")	{IDitem = 9;typeTanaman = 10;typeBuah = 22;efekBuah = 0;efekTime = 0;costBuy = 120;costSell = 720;costSellBibit = 60;bibit=true;}
-//    else if(name == "ubi")		{IDitem = 10;typeTanaman = 11;typeBuah = 23;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 1080;costSellBibit = 150;bibit=true;}
-//    else if(name == "paprika")	{IDitem = 11;typeTanaman = 12;typeBuah = 24;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 360;costSellBibit = 75;bibit=true;}
+    if(name == "kentang")		{item->setIDitem(0);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(true);}
+    else if(name == "lobak")	{item->setIDitem(1);item->setTypeTanaman(2);item->setTypeBuah(14);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(540);item->setCostSellBibit(60);item->setBibit(true);}
+    else if(name == "timun")	{item->setIDitem(2);item->setTypeTanaman(3);item->setTypeBuah(15);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(900);item->setCostSellBibit(100);item->setBibit(true);}
+    else if(name == "kubis")	{item->setIDitem(3);item->setTypeTanaman(4);item->setTypeBuah(16);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(500);item->setCostSell(2250);item->setCostSellBibit(250);item->setBibit(true);}
+    else if(name == "jagung")	{item->setIDitem(4);item->setTypeTanaman(5);item->setTypeBuah(17);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(900);item->setCostSellBibit(150);item->setBibit(true);}
+    else if(name == "tomat")	{item->setIDitem(5);item->setTypeTanaman(6);item->setTypeBuah(18);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(540);item->setCostSellBibit(100);item->setBibit(true);}
+    else if(name == "bawang")	{item->setIDitem(6);item->setTypeTanaman(7);item->setTypeBuah(19);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(true);}
+    else if(name == "nanas")	{item->setIDitem(7);item->setTypeTanaman(8);item->setTypeBuah(20);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(1000);item->setCostSell(4500);item->setCostSellBibit(500);item->setBibit(true);}
+    else if(name == "wortel")	{item->setIDitem(8);item->setTypeTanaman(9);item->setTypeBuah(21);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
+    else if(name == "terong")	{item->setIDitem(9);item->setTypeTanaman(10);item->setTypeBuah(22);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(720);item->setCostSellBibit(60);item->setBibit(true);}
+    else if(name == "ubi")		{item->setIDitem(10);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
+    else if(name == "paprika")	{item->setIDitem(11);item->setTypeTanaman(12);item->setTypeBuah(24);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(360);item->setCostSellBibit(75);item->setBibit(true);}
     return item;
 }
 
 Item* Item::makeBuah(const Grid_Plant* GP){
     Item* item = new Item();
-    if (GP->getTypeTanaman() == 1) {item->setIDitem(12);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(false);}
-//    if(item == 1)		{IDitem = 12;typeTanaman = 1;typeBuah = 13;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 720;bibit = false;}
-//    else if(item == 2)	{IDitem = 13;typeTanaman = 2;typeBuah = 14;efekBuah = 0;efekTime = 0;costBuy = 120;costSell = 540;bibit = false;}
-//    else if(item == 3)	{IDitem = 14;typeTanaman = 3;typeBuah = 15;efekBuah = 0;efekTime = 0;costBuy = 200;costSell = 900;bibit = false;}
-//    else if(item == 4)	{IDitem = 15;typeTanaman = 4;typeBuah = 16;efekBuah = 0;efekTime = 0;costBuy = 500;costSell = 2250;bibit = false;}
-//    else if(item == 5)	{IDitem = 16;typeTanaman = 5;typeBuah = 17;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 900;bibit = false;}
-//    else if(item == 6)	{IDitem = 17;typeTanaman = 6;typeBuah = 18;efekBuah = 0;efekTime = 0;costBuy = 200;costSell = 540;bibit = false;}
-//    else if(item == 7)	{IDitem = 18;typeTanaman = 7;typeBuah = 19;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 720;bibit = false;}
-//    else if(item == 8)	{IDitem = 19;typeTanaman = 8;typeBuah = 20;efekBuah = 0;efekTime = 0;costBuy = 1000;costSell = 4500;bibit = false;}
-//    else if(item == 9)	{IDitem = 20;typeTanaman = 9;typeBuah = 21;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 1080;bibit = false;}
-//    else if(item == 10)	{IDitem = 21;typeTanaman = 10;typeBuah = 22;efekBuah = 0;efekTime = 0;costBuy = 120;costSell = 720;bibit = false;}
-//    else if(item == 11)	{IDitem = 22;typeTanaman = 11;typeBuah = 23;efekBuah = 0;efekTime = 0;costBuy = 300;costSell = 1080;bibit = false;}
-//    else if(item == 12)	{IDitem = 23;typeTanaman = 12;typeBuah = 24;efekBuah = 0;efekTime = 0;costBuy = 150;costSell = 360;bibit = false;}
+    if (GP->getTypeTanaman() == 1)		{item->setIDitem(12);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 2)	{item->setIDitem(13);item->setTypeTanaman(2);item->setTypeBuah(14);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(540);item->setCostSellBibit(60);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 3)	{item->setIDitem(14);item->setTypeTanaman(3);item->setTypeBuah(15);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(900);item->setCostSellBibit(100);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 4)	{item->setIDitem(15);item->setTypeTanaman(4);item->setTypeBuah(16);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(500);item->setCostSell(2250);item->setCostSellBibit(250);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 5)	{item->setIDitem(16);item->setTypeTanaman(5);item->setTypeBuah(17);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(900);item->setCostSellBibit(150);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 6)	{item->setIDitem(17);item->setTypeTanaman(6);item->setTypeBuah(18);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(540);item->setCostSellBibit(100);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 7)	{item->setIDitem(18);item->setTypeTanaman(7);item->setTypeBuah(19);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 8)	{item->setIDitem(19);item->setTypeTanaman(8);item->setTypeBuah(20);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(1000);item->setCostSell(4500);item->setCostSellBibit(500);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 9)	{item->setIDitem(20);item->setTypeTanaman(9);item->setTypeBuah(21);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 10)	{item->setIDitem(21);item->setTypeTanaman(10);item->setTypeBuah(22);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(720);item->setCostSellBibit(60);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 11)	{item->setIDitem(22);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(false);}
+    else if(GP->getTypeTanaman() == 12)	{item->setIDitem(23);item->setTypeTanaman(12);item->setTypeBuah(24);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(360);item->setCostSellBibit(75);item->setBibit(false);}
     return item;
 }
 
@@ -129,3 +130,4 @@ bool Item::operator==(const Item& item){
         return true;
     } else return false;
 }
+

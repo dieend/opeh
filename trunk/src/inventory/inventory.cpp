@@ -120,10 +120,17 @@ bool Inventory::cekSlot(int noslot) {
 }
 
 Item* Inventory::getSlot(int noslot){
-	//cout <<"Didalam slot ke-"<<noslot<<", tersimpan Item "<<slot[noslot]<<" sebanyak = "<<total[noslot]<<endl;
 	return (slot[noslot]);
 }
 
 int Inventory::getJumlah(int noslot){
     return (total[noslot]);
+}
+
+int Inventory::listDescription()//me-list setiap barang yang ada di inventory
+{
+	for (i=0;i<=;i++){
+		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i] <<",sebanyak "<<total[i]<<endl;
+	}
+return 0;
 }
