@@ -1,30 +1,43 @@
 #include "grid_plant.h"
-
+#define SUMMER 0
+#define WINTER 1
+#define FALL 2
+#define SPRING 3
 Grid_Plant::Grid_Plant()
 {
 
 }
-Grid_Plant::Grid_Plant(Point p,int ntype,int nfase)
+Grid_Plant::Grid_Plant(Point p,int ntype,int nfase, int tanaman)
 {
     setType(ntype);
     setPosisi(p);
     setFase(nfase);
+    if (tanaman == 1) {
+        season			= SUMMER;
+	happyMeter		= 0;
+	titikDewasa		= 5;
+	titikPanen		= 8;
+	umur			= 10;
+	panenBerulang           = false;
+    } else if (tanaman == 2){
+    }
+
 }
 
-Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newSeason,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
-{
-	setPosisi(newPosisi);
-	setType(newType);
-	setFase(newFase);
-	typeTanaman		= newTypeTanaman;
-	cost			= newCost;
-	season			= newSeason;
-	happyMeter		= newHappyMeter;
-	titikDewasa		= newTitikDewasa;
-	titikPanen		= newTitikPanen;
-	umur			= newUmur;
-	panenBerulang	= newPanenBerulang;
-}
+//Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newSeason,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
+//{
+//	setPosisi(newPosisi);
+//	setType(newType);
+//	setFase(newFase);
+//	typeTanaman		= newTypeTanaman;
+//	cost			= newCost;
+//	season			= newSeason;
+//	happyMeter		= newHappyMeter;
+//	titikDewasa		= newTitikDewasa;
+//	titikPanen		= newTitikPanen;
+//	umur			= newUmur;
+//	panenBerulang           = newPanenBerulang;
+//}
 
 Grid_Plant::Grid_Plant(const Grid_Plant& GP)
 {

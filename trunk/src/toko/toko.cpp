@@ -20,17 +20,17 @@ Toko :: ~Toko() //destruktor
 
 void Toko::listItem()
 {
-	cout << "Nama Item \t" <<endl; cout << "Harga Beli item \t" <<endl;cout << "Harga Jual item \t" <<endl;cout <<"\n"<<endl;
-	cout << "Kentang\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Lobak\t" <<endl; cout <<"Rp 120\t"<<endl; cout <<"Rp 540\t"<<endl;cout <<"\n"<<endl;
-	cout << "Timun\t" <<endl; cout <<"Rp 200\t"<<endl; cout <<"Rp 900\t"<<endl;cout <<"\n"<<endl;
-	cout << "Kubis\t" <<endl; cout <<"Rp 500\t"<<endl; cout <<"Rp 2.250\t"<<endl;cout <<"\n"<<endl;
-	cout << "Jagung\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 900\t"<<endl;cout <<"\n"<<endl;
-	cout << "Tomat\t" <<endl; cout <<"Rp 200\t"<<endl; cout <<"Rp 540\t"<<endl;cout <<"\n"<<endl;
-	cout << "Bawang\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Nanas\t" <<endl; cout <<"Rp 1.000\t"<<endl; cout <<"Rp 4.500\t"<<endl;cout <<"\n"<<endl;
-	cout << "Wortel\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 1080\t"<<endl;cout <<"\n"<<endl;
-	cout << "Terong\t" <<endl; cout <<"Rp 120\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Ubi\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 1.080\t"<<endl;cout <<"\n"<<endl;
-	cout << "Paprika\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 360\t"<<endl;;
+	cout << "Nama Item \t" << "Harga Beli item \t" << "Harga Jual item \t" <<"\n";
+	cout << "Kentang\t" <<"Rp 150\t"<<"Rp 720\t"<<"\n";
+	cout << "Lobak\t" <<"Rp 120\t"<<"Rp 540\t"<<"\n";
+	cout << "Timun\t" <<"Rp 200\t"<<"Rp 900\t"<<"\n";
+	cout << "Kubis\t" <<"Rp 500\t"<<"Rp 2.250\t"<<"\n";
+	cout << "Jagung\t" <<"Rp 300\t"<<"Rp 900\t"<<"\n";
+	cout << "Tomat\t" <<"Rp 200\t"<<"Rp 540\t"<<"\n";
+	cout << "Bawang\t" <<"Rp 150\t"<<"Rp 720\t"<<"\n";
+	cout << "Nanas\t" <<"Rp 1.000\t"<<"Rp 4.500\t"<<"\n";
+	cout << "Wortel\t" <<"Rp 300\t"<<"Rp 1080\t"<<"\n";
+	cout << "Terong\t" <<"Rp 120\t"<<"Rp 720\t"<<"\n";
+	cout << "Ubi\t" <<"Rp 300\t"<<"Rp 1.080\t"<<"\n";
+	cout << "Paprika\t" <<"Rp 150\t"<<"Rp 360\t\n";
 }

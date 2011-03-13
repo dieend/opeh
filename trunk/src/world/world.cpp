@@ -21,7 +21,6 @@ World::World(string nama){
 	area[RUMAH] 	= new Area(RUMAH);
 	area[LAHAN] 	= new Area(LAHAN);
 	area[TOKO ] 	= new Area(TOKO );
-        cout << "pass1";
 	player 		= new Player(area[RUMAH],2000,nama);
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);
@@ -31,7 +30,6 @@ World::World(string nama){
 	dwarf[WATER] 	= new Dwarf(WATER);
 	dwarf[SLASH]	= new Dwarf(SLASH);
 	time 		= new Time();
-        time->setZero();
 }
 
 World::World(World& world) {
@@ -141,7 +139,7 @@ ostream& operator<<(ostream& c,World& world){
         for (int i=0; i<3; i++) {
             if (world.player->getInventory()->cekSlot(i)){
                 cout << "slot " << i <<" exist.  "; cout << "jumlah "<< world.player->getInventory()->getJumlah(i) << endl;
-                cout << "tipe item bibit" << world.player->getInventory()->getSlot(i)->getTipeBibit() << endl;
+                cout << "BIBIT? "<< world.player->getInventory()->getSlot(i)->isBibit()<< endl;
                 cout << "tipe item buah" << world.player->getInventory()->getSlot(i)->getTipeBuah() << endl;
                 cout << "tipe item tanaman" << world.player->getInventory()->getSlot(i)->getTipeTanaman() << endl;
                 cout << "price beli" << world.player->getInventory()->getSlot(i)->getCostBuy() << endl;

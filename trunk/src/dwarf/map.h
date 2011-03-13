@@ -1,5 +1,7 @@
 #ifndef map_H
 #define map_H
+#include <deque>
+#include <iostream>
 using namespace std;
 
 class map
