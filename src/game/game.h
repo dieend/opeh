@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <cstdio>
 #include "../world/world.h"
 
 using namespace std;

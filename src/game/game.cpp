@@ -1,6 +1,6 @@
 #include "game.h"
 void Game::Run() {
-    bool notExit;
+    bool notExit = true;
     do {
         system("cls");
         cout << world;
@@ -11,6 +11,11 @@ void Game::Run() {
         }
         try {
                 getPerintah();
+                cout << "perintahnya : " << perintah << endl;
+                cout << "int: " << (char)9 << paramInt[0] << (char) 9 << paramInt[1] << endl;
+                cout << "str: " << (char)9 << paramStr[0] << (char) 9 << paramStr[1] << endl;
+//                int x=getch();
+//                if (x==224) getch();
                 notExit = doPerintah();
         } catch (int i) {
                 if (i==0) {
@@ -19,6 +24,7 @@ void Game::Run() {
                         cerr << "tidak ada perintah yang dimaksud\n";
                 } else if (i==2) {
                         cerr << "perintah ini tidak bisa dilakukan disini\n";
+                } else {
                 }
                 int x = getch();
                 if (x==224) getch();
@@ -31,7 +37,12 @@ bool Game::doPerintah() {
             if (perintah == "new") {
                 world = new World(paramStr[0]);
             } else if (perintah == "load") {
-            } else throw 2;
+            } else if (perintah == "exit") {
+                return false;
+            } else {
+                throw 2;
+            }
+
 	} else {
             if (perintah == "teleport") {
                     int where = world->getPlayer()->getCurArea()->getType();
@@ -107,7 +118,6 @@ bool Game::doPerintah() {
                     world->getTime()->nextDay();
             } else if (perintah == "exit") {
                     delete world;
-                    cout << "A";
                     world = NULL;
             } else if (perintah == "store") {
                 if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
@@ -146,78 +156,339 @@ bool Game::doPerintah() {
 	return true;
 }
 void Game::getPerintah(){
-	//parsing perintah user
-	int x = getch();
-	string tmp;
-        string dummy;
-	perintah = "";
-	if (x==224) {
-		x = getch();
-		if (x==72) {
-			perintah = "up";
-			paramInt[0] = 1;
-		} else if (x==75) {
-			perintah = "left";
-			paramInt[0] = 1;
-		} else if (x==77) {
-			perintah = "right";
-			paramInt[0] = 1;
-		} else if (x==80) {
-			perintah = "down";
-			paramInt[0] = 1;
-		} else {
-                    perintah = "fail";
-                }
-	} else {
-		cout << (char)x;
-		perintah += (char)x;
-		cin >> tmp;
-		perintah += tmp;
-		if (perintah == "new") {
-			cin >> paramStr[0];
-		} else if (perintah == "load") {
-			cin >> paramStr[0];
-		} else if (perintah == "teleport") {
-                        cin >> paramStr[0];
-                        if (paramStr[0][0]!='-') {
-                            paramInt[0]=paramStr[0][0]-'0';
-                        }
-		} else if (perintah == "right") {
-			cin >> paramInt[0];
-		} else if (perintah == "left") {
-			cin >> paramInt[0];
-		} else if (perintah == "up") {
-			cin >> paramInt[0];
-		} else if (perintah == "down") {
-			cin >> paramInt[0];
-		} else if (perintah == "inventory") {
-		} else if (perintah == "plow") {
-		} else if (perintah == "put") {
-			cin >> paramInt[0] >> paramInt[1];
-		} else if (perintah == "slash") {
-		} else if (perintah == "water") {
-		} else if (perintah == "harvest") {
-		} else if (perintah == "wake_up") {
-			cin >> paramInt[0];
-		} else if (perintah == "sleep") {
-			cin >> paramInt[0];
-		} else if (perintah == "status") {
-			cin >> paramStr[0];
-		} else if (perintah == "save") {
-		} else if (perintah == "sleep") {
-		} else if (perintah == "exit") {
-		} else if (perintah == "store") {
-		} else if (perintah == "buy") {
-			cin >> paramStr[0] >> paramInt[0];
-		} else if (perintah == "sell") {
-			cin >> paramInt[0] >> paramInt[1];
-		} else {
-			throw 1;
-		}
-		cin >> dummy;
-		if (dummy != "#") throw 0;
-	}
-        cout << "perintahnya adalah " << perintah << endl;  
+	//terima perintah user
+    char c; int i=0;
+    char stmp[100],kata[100];
+    int itmp;
+    bool shortcut = false;
+    do {
+        c = getch();
+        if ((int)c == -32) {
+            shortcut = true;
+            c = getch();
+            if (c==72) {
+                perintah = "up";
+                paramInt[0] = 1;
+            } else if (c==75) {
+                perintah = "left";
+                paramInt[0] = 1;
+            } else if (c==77) {
+                perintah = "right";
+                paramInt[0] = 1;
+            } else if (c==80) {
+                perintah = "down";
+                paramInt[0] = 1;
+            } else {
+                perintah = "fail";
+            }
+            return;
+        } else if (('0' <= c && c<='9') || ('a'<=c && c<='z')) {
+            kata[i++] = c;
+            kata[i]='\0';
+            cout << c;
+        } else if ('A'<=c && c<='Z') {
+            kata[i++] = (char)(c+32);
+            kata[i]='\0';
+            cout << c;
+        } else if ((int) c == 32) {
+            kata[i++] = ' ';
+            kata[i] = '\0';
+            cout << " ";
+        } else if ((int)c==8) {
+            if (i>0) kata[--i] = '\0';
+            cout << "\b \b";
+        }
+    } while (c!= '#' && !shortcut);
+    cout << c;
+    kata[i++] = ' ';
+    kata[i++] = '#';
+    kata[i] = '\0';
+    int done = 0;
+    if (!shortcut){
+        sscanf(kata,"%s",stmp);
+        perintah = stmp;
+        done = perintah.size()+1;
+    }
+    i = 0;
+    cout << perintah << done;
+    if (perintah == "new") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+    } else if (perintah == "load") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+    } else if (perintah == "teleport") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+        if (paramStr[0][0] != '-' || ('0' <= paramStr[0][0] && paramStr[0][0]<='9')) {
+            paramInt[0] = paramStr[0][0]-'0';
+        } else {
+            throw 0;
+        }
+    } else if (perintah == "right") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "left") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "up") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "down") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2) throw 0;
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "inventory") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "plow") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "put") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>3){
+            throw 0;
+        }
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+        if ('0' <= paramStr[1][0] && paramStr[1][0]<='9') {
+            sscanf(paramStr[1].c_str(),"%d",&paramInt[1]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "slash") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "water") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "harvest") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "wake_up") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2){
+            throw 0;
+        }
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "sleep") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>2){
+            throw 0;
+        }
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "status") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "save") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "sleep") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "exit") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "store") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>1){
+            throw 0;
+        }
+    } else if (perintah == "buy") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>3){
+            throw 0;
+        }
+        if ('0' <= paramStr[1][0] && paramStr[1][0]<='9') {
+            sscanf(paramStr[1].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    } else if (perintah == "sell") {
+        do {
+            sscanf(kata+done,"%s",stmp);
+            done+=strlen(stmp)+1;
+            paramStr[i] = stmp;
+        } while (paramStr[i++][0] != '#');
+        if (i>3){
+            throw 0;
+        }
+        if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+            sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+        if ('0' <= paramStr[1].c_str()[0] && paramStr[1][0]<='9') {
+            sscanf(paramStr[1].c_str(),"%d",&paramInt[1]);
+            if (paramInt[0]>1000){
+                throw 0;
+            }
+        }else{
+            throw 0;
+        }
+    }
 }
 
 Game::Game() {
