@@ -14,6 +14,10 @@ int main(int argc, char *argv[])
       cin >> state;
       rt.next10Minutes(state);
       rt.performtime();
+      if (rt.iscDay())
+        cout << "cday\n";
+      else 
+        cout << "NOT cday\n";
     }
     system("PAUSE");
     return 0;

@@ -36,7 +36,12 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
   if (stp==normal)//keadaan normal//
   {
       if (act+1<=6)
+      {
         act++;
+        cjam=false;
+        cday=false;
+        cseason=false;
+      }
       else 
       {
         nextMinutes();
@@ -56,6 +61,12 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         if ( ((act<13) && (13<=act+6)) || ((act<25) && (25<=act+6)) || ((act<37) && (37<=act+6)) || ((act<49) && (49<=act+6)) || ((act<61) && (61<=act+6)))
         {
           nextMinutes();
+        }
+        else
+        {
+          cjam=false;
+          cday=false;
+          cseason=false;
         }
         act+=6;
       }        
@@ -79,14 +90,12 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         stime=normal;
         act=(act+6)%162;//setting aksi
         nextDay();
-        cday=true;
       }
     }
   }
   else if (stp==poisoned)//tidak mempengaruhi stime
   {
     nextDay();
-    cday=true;
     stime=normal;
     act=1;
   }
@@ -99,20 +108,33 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       {
         nextMinutes();
       }
-      act=1;
+      else
+      {
+        act=1;
+        cjam=false;
+        cday=false;
+        cseason=false;
+      }
     }
     else if (stime==fullpower)
     {
       if (act+1<=72)
       {
-        act++;
         if (act%12==0)
         {
           nextMinutes();
         }
+        else
+        {
+          cjam=false;
+          cday=false;
+          cseason=false;
+        }
+        act++;
       }
       else
       {
+        nextJam();
         stime=normal;
         act=1;
       }
@@ -127,11 +149,17 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
           act=1;
           stime=normal;
         }
+        else
+        {
+          cjam=true;
+          cday=true;
+          cseason=true;
+        }
+        act++;
       }
       else 
       {
         nextDay();
-        cday=true;
         stime=normal;
         act=1;
       }
@@ -146,6 +174,12 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       {
         nextMinutes();
       }
+      else
+      {
+        cjam=false;
+        cday=false;
+        cseason=false;
+      }
       act=1;
     }
     else if (stime==fullpower)
@@ -155,6 +189,12 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         if (act%3==0)
         {
           nextMinutes();
+        }
+        else
+        {
+          cjam=false;
+          cday=false;
+          cseason=false;
         }
       }
       act=1;
@@ -168,12 +208,17 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         {
           nextMinutes();
         }
+        else
+        {
+          cjam=false;
+          cday=false;
+          cseason=false;
+        }
         act++;
       }
       else
       {
         nextDay();
-        cday=true;
         act=1;
         stime=normal;
       }
@@ -187,12 +232,13 @@ void Time::nextMinutes(){
      {
        minutes+=10;
        cjam=false;
+       cday=false;
+       cseason=false;
      }
      else
      {
        nextJam();
        minutes=0;
-       cjam=true;
      }
 }
 
@@ -204,18 +250,19 @@ int Time::getMinutes(){
 //setting nilai jam,rentang nilai jam 6-18(jam 6 pagi sampai jam 6 sore)
 //cday 1 jika membuat hari berubah,0 jika tidak
 void Time::nextJam(){
+     cjam=true;
      minutes=0;
      { 
        if (jam<18)
        {
          ++jam;
          cday=false;
+         cseason=false;
        }
        else
        {
          nextDay();
          jam=6;
-         cday=true;
        }       
      }
 }
@@ -228,6 +275,7 @@ int Time::getJam(){
 //setting day, 30 day merupakan 1 musim, rentang day dari 1-30
 //cseason 1 jika membuat season berubah, 0 jika tidak
 void Time::nextDay(){
+     cday=true;
      minutes=0;
      jam=6;
      if (day<30)
@@ -239,7 +287,6 @@ void Time::nextDay(){
      {
        nextSeason();
        day=1;
-       cseason=true;
      }
 }
 
@@ -250,6 +297,7 @@ int Time::getDay(){
 
 //season dalam satu tahun, ada 3,rentangnya 1-3
 void Time::nextSeason(){
+     cseason=true;
      minutes=0;
      jam=6;
      day=1;
