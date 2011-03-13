@@ -29,7 +29,7 @@ Grid_Plant::Grid_Plant(Point p,int ntype,int nfase, int tanaman)
     } else if (tanaman == 3){
         season			   = SPRING;
 	      happyMeter		 = 0;
-        titikDewasa		= 5
+        titikDewasa		= 5;
         titikPanen		 = 10;
         umur			     = 25;
         panenBerulang  = true;
@@ -53,7 +53,7 @@ Grid_Plant::Grid_Plant(Point p,int ntype,int nfase, int tanaman)
         titikDewasa		= 7;
         titikPanen		 = 10;
         umur			     = 20;
-        panenBerulang  = true;   
+        panenBerulang  = true;
     } else if (tanaman == 7){
         season			   = SUMMER;
 	      happyMeter		 = 0;
