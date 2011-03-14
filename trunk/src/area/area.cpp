@@ -66,7 +66,7 @@ Area::Area(int tipe)
                 for (int j=0; j<MAXCOLUMN; j++) {
                     Point P(i,j);
                     if ((i==1 || i==2) && (j==8 || j==9)) {
-                        grid[i][j] = new Grid(P,3,0);
+                        grid[i][j] = new Grid(P,GSELLINGBOX,0);
                     } else {
                         grid[i][j] = new Grid(P,2,0);
                     }
