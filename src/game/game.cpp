@@ -106,16 +106,18 @@ bool Game::doPerintah() {
                     world->getPlayer()->harvest();
             } else if (perintah == "wake_up") {
                     world->getDwarf(paramInt[0]-1)->wakeUp();
-            } else if (perintah == "sleep") {
+            } else if (perintah == "sleep" ) {
+                if (0 < paramInt[0] && paramInt[0]<=3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
                     world->getDwarf(paramInt[0]-1)->wakeUp();
+                } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
+                    world->getTime()->nextDay();
+                }
             } else if (perintah == "status") {
                     cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
                     cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
                     cout << 3 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
             } else if (perintah == "save") {
                     World::save("save.oph",*world);
-            } else if (perintah == "sleep") {
-                    world->getTime()->nextDay();
             } else if (perintah == "exit") {
                     delete world;
                     world = NULL;
@@ -139,9 +141,11 @@ bool Game::doPerintah() {
 	}
         cout << " C";
         if (world != NULL) {
-            if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right")) {
+            if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
                 world->getTime()->next10Minutes(world->getPlayer()->getStatus());
             }
+            cout << world->getTime()->iscDay() << endl;
+
             if (world->getTime()->iscDay()) {
                 world->setWeather();
                 for (int i=0; i<MAXROW; i++){
@@ -402,6 +406,8 @@ void Game::getPerintah(){
             }else{
                 throw 0;
             }
+        } else {
+            paramInt[0] = 0;
         }
     } else if (perintah == "status") {
         do {

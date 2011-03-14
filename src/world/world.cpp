@@ -25,7 +25,6 @@ World::World(string nama){
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);
         area[TOKO ]->setPlayer(player);
-        cout << area[RUMAH]->getPlayer() << endl << endl;
 	dwarf[HARVEST]	= new Dwarf(HARVEST);
 	dwarf[WATER] 	= new Dwarf(WATER);
 	dwarf[SLASH]	= new Dwarf(SLASH);

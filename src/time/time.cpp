@@ -33,6 +33,7 @@ septu_jamasoka: untuk sick 9 jam trus lgsung bgun keesokan hari*/
 
 void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
 {
+    cday = false;
   if (stp==normal)//keadaan normal//
   {
       if (act+1<=6)

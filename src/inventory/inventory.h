@@ -26,7 +26,7 @@ public:
     bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak. Mengembaikan true jika kosong.
     Item* getSlot(int);
     int getJumlah(int noslot);
-	Inventory* listDescription();//me-list setiap barang yang ada di inventory
+    void listDescription();//me-list setiap barang yang ada di inventory
 	
 };
 #endif
