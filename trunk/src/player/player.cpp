@@ -285,7 +285,7 @@ void Player::put(int noSlot,int jumlah) {
                             cout << "DELETED1";
 				inventory->deleteItem(noSlot,jumlah);
 			}
-		} else if (tipe == GINVBOX) {
+		} else if (tipe == GSELLINGBOX) {
 			inventory->deleteItem(noSlot,jumlah);
 			sellItem(noSlot,jumlah);
 		} else {
