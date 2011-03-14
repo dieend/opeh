@@ -51,14 +51,18 @@ void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan it
     int i = 2; //iterator diinisialisasi = 1
     int temp = -1;
     bool found = false;
+    cout << "ER";
     Item * dummyItem = Item::makeBibit(name);
-	
+    cout <<"hmm";
     while ((i >= 0) && (!found)) {
+        cout << "LALA";	
         if (slot[i] != NULL) {
             if((*(slot[i])) == (*dummyItem)) {
                 total[i] = total[i]+jumlah;
                 found = true;
-            } 
+            } else {
+                i--;
+            }
         } else {
             temp = i;
             i--;
@@ -73,11 +77,14 @@ void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan it
 }
 
 void Inventory::addItem(Grid_Plant* tanaman, int jumlah) {
-    int i = 2; //iterator diinisialisasi = 1
+    int i = 2; 
     int temp = -1;
     bool found = false;
+    
     Item * dummyItem = Item::makeBuah(tanaman);
+    
     while ((i >= 0) && (!found)) {
+        
         if (slot[i] != NULL) {
             if((*slot[i]) == (*dummyItem)) {
                 total[i] = total[i]+jumlah;
@@ -93,6 +100,8 @@ void Inventory::addItem(Grid_Plant* tanaman, int jumlah) {
     if ((!found) && (temp >= 0)) {
         slot[temp] = dummyItem;
         total[temp] = jumlah;
+    } else {
+        delete dummyItem;
     }
 }
 
@@ -127,10 +136,9 @@ int Inventory::getJumlah(int noslot){
     return (total[noslot]);
 }
 
-int Inventory::listDescription()//me-list setiap barang yang ada di inventory
+void Inventory::listDescription()//me-list setiap barang yang ada di inventory
 {
-	for (i=0;i<=;i++){
+	for (int i=0;i<=maxslot;i++){
 		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i] <<",sebanyak "<<total[i]<<endl;
 	}
-return 0;
 }

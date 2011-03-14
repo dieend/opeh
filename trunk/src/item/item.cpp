@@ -1,5 +1,4 @@
 #include "item.h"
-#include "../grid/grid_plant.cpp"
 
 
 using namespace std;
@@ -53,6 +52,7 @@ int Item::getIDitem() const{
 }
 
 bool Item::isBibit() {
+    cout << bibit << endl;
     if (bibit) {
         return true;
     }
@@ -64,7 +64,7 @@ bool Item::isBibit() {
 
 Item* Item::makeBibit(const string& name){
     Item * item = new Item();
-    if(name == "kentang")		{item->setIDitem(0);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(true);}
+    if(name == "kentang")	{item->setIDitem(0);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(true);}
     else if(name == "lobak")	{item->setIDitem(1);item->setTypeTanaman(2);item->setTypeBuah(14);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(540);item->setCostSellBibit(60);item->setBibit(true);}
     else if(name == "timun")	{item->setIDitem(2);item->setTypeTanaman(3);item->setTypeBuah(15);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(900);item->setCostSellBibit(100);item->setBibit(true);}
     else if(name == "kubis")	{item->setIDitem(3);item->setTypeTanaman(4);item->setTypeBuah(16);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(500);item->setCostSell(2250);item->setCostSellBibit(250);item->setBibit(true);}
@@ -74,14 +74,14 @@ Item* Item::makeBibit(const string& name){
     else if(name == "nanas")	{item->setIDitem(7);item->setTypeTanaman(8);item->setTypeBuah(20);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(1000);item->setCostSell(4500);item->setCostSellBibit(500);item->setBibit(true);}
     else if(name == "wortel")	{item->setIDitem(8);item->setTypeTanaman(9);item->setTypeBuah(21);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
     else if(name == "terong")	{item->setIDitem(9);item->setTypeTanaman(10);item->setTypeBuah(22);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(720);item->setCostSellBibit(60);item->setBibit(true);}
-    else if(name == "ubi")		{item->setIDitem(10);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
+    else if(name == "ubi")	{item->setIDitem(10);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
     else if(name == "paprika")	{item->setIDitem(11);item->setTypeTanaman(12);item->setTypeBuah(24);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(360);item->setCostSellBibit(75);item->setBibit(true);}
     return item;
 }
 
 Item* Item::makeBuah(const Grid_Plant* GP){
     Item* item = new Item();
-    if (GP->getTypeTanaman() == 1)		{item->setIDitem(12);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(false);}
+    if (GP->getTypeTanaman() == 1)	{item->setIDitem(12);item->setTypeTanaman(1);item->setTypeBuah(13);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(720);item->setCostSellBibit(75);item->setBibit(false);}
     else if(GP->getTypeTanaman() == 2)	{item->setIDitem(13);item->setTypeTanaman(2);item->setTypeBuah(14);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(540);item->setCostSellBibit(60);item->setBibit(false);}
     else if(GP->getTypeTanaman() == 3)	{item->setIDitem(14);item->setTypeTanaman(3);item->setTypeBuah(15);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(200);item->setCostSell(900);item->setCostSellBibit(100);item->setBibit(false);}
     else if(GP->getTypeTanaman() == 4)	{item->setIDitem(15);item->setTypeTanaman(4);item->setTypeBuah(16);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(500);item->setCostSell(2250);item->setCostSellBibit(250);item->setBibit(false);}

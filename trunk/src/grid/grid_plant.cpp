@@ -12,91 +12,92 @@ Grid_Plant::Grid_Plant(Point p,int ntype,int nfase, int tanaman)
     setType(ntype);
     setPosisi(p);
     setFase(nfase);
+    typeTanaman = tanaman;
     if (tanaman == 1) {
         season			   = SPRING;
-	      happyMeter		 = 0;
+        happyMeter		 = 0;
         titikDewasa		= 5;
         titikPanen		 = 8;
         umur			     = 10;
         panenBerulang  = false;
     } else if (tanaman == 2){
         season			   = SPRING;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 2;
         titikPanen		 = 5;
         umur			     = 8;
         panenBerulang  = false;
     } else if (tanaman == 3){
         season			   = SPRING;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 5;
         titikPanen		 = 10;
         umur			     = 25;
         panenBerulang  = true;
     } else if (tanaman == 4){
         season			   = SPRING;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 10;
         titikPanen		 = 15;
         umur			     = 20;
         panenBerulang  = false;
     } else if (tanaman == 5){
         season			   = SUMMER;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 12;
         titikPanen		 = 15;
         umur			     = 25;
         panenBerulang  = true;
     } else if (tanaman == 6){
         season			   = SUMMER;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 7;
         titikPanen		 = 10;
         umur			     = 20;
         panenBerulang  = true;
     } else if (tanaman == 7){
         season			   = SUMMER;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 5;
         titikPanen		 = 8;
         umur			     = 12;
         panenBerulang  = false;
     } else if (tanaman == 8){
         season			   = SUMMER;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 16;
         titikPanen		 = 21;
         umur			     = 30;
         panenBerulang  = true;
     } else if (tanaman == 9){
         season			   = FALL;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 5;
         titikPanen		 = 8;
         umur			     = 12;
         panenBerulang  = false;
     } else if (tanaman == 10){
         season			   = FALL;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 7;
         titikPanen		 = 10;
         umur			     = 20;
         panenBerulang  = true;
     } else if (tanaman == 11){
         season			   = FALL;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 3;
         titikPanen		 = 6;
         umur			     = 20;
         panenBerulang  = true;
     } else if (tanaman == 12){
         season			   = SUMMER;
-	      happyMeter		 = 0;
+	happyMeter		 = 0;
         titikDewasa		= 6;
         titikPanen		 = 8;
         umur			     = 20;
         panenBerulang  = true;
-
+    }
 }
 
 //Grid_Plant::Grid_Plant(Point newPosisi,int newType,int newFase,int newTypeTanaman,int newCost,int newSeason,int newHappyMeter,int newTitikDewasa,int newTitikPanen,int newUmur,bool newPanenBerulang)
@@ -231,14 +232,14 @@ void Grid_Plant::setPanen()
 // instant change
 {
 	if (isPanenBerulang())
-		{
-		setFase(3);
-		setHappyMeter(titikPanen);
-		if (titikDewasa + 1 != titikPanen)
-			setTitikPanen(titikPanen-1);
-		}
-	else
-		setFase(6);
+            {
+            setFase(REMAJA);
+            setHappyMeter(titikDewasa);
+            if (happyMeter + 1 != titikPanen)
+                    setTitikPanen(titikPanen-1);
+            else
+                setFase(6);
+            }
 }
 
 void Grid_Plant::grow()
@@ -251,22 +252,22 @@ void Grid_Plant::grow()
 	else
 		setHappyMeter(happyMeter-1);
 	if (umur == 0)
-		setFase(6);
+		setFase(MATI);
 	else
 		{
 		if (isBibit())
 			{
 			if (happyMeter == titikDewasa)
-				setFase(getFase()+1);
+				setFase(REMAJA);
 			else
-				setFase(getFase()-1);
+				setFase(BIBIT);
 			}
 		else if (isDewasa())
 			{
 			if (happyMeter == titikPanen)
-				setFase(getFase()+1);
+				setFase(DEWASA);
 			else
-				setFase(getFase()-1);
+				setFase(REMAJA);
 			}
 		}
 }
@@ -322,6 +323,8 @@ ostream& operator<<(ostream& c, Grid_Plant* GP){
 		c << "i";
 	else if (GP->getFase() == 3)
 		c << "I";
+        else if (GP->getFase() == 4)
+		c << "t";
 	else if (GP->getFase() == 5)
 		c << "T";
 	else if (GP->getFase() == 6)

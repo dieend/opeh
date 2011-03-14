@@ -344,11 +344,11 @@ void Player::harvest() {
 			if ((fase == DEWASA) || (fase == SDEWASA)) {
 				tanaman->setPanen();
 				inventory->addItem(tanaman,1);
-				if (tanaman->getFase() == MATI) {
-					delete front;
-					front = new Grid_Lahan(p,0,0);
-					curArea->setGrid(front);
-				}
+//				if (tanaman->getFase() == MATI) {
+//					delete front;
+//					front = new Grid_Lahan(p,0,0);
+//					curArea->setGrid(front);
+//				}
 			}
 		}
 	}
@@ -374,6 +374,7 @@ void Player::buyItem(const string name,int Jumlah) {
         cout << dummyItem -> getIDitem() << endl; system("pause");
 	if (money >= (dummyItem->getCostBuy() * Jumlah)) {
 		money = money - dummyItem->getCostBuy()* Jumlah;
+                cout <<"OK";
 		inventory->addItem(name,Jumlah);
 	 } //else throw "Uang Tidak Mencukupi"
 	 delete dummyItem;
