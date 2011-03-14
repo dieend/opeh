@@ -51,5 +51,5 @@ ostream& operator<<(ostream& c, Grid_Lahan* GL){
     return c;
 }
 void Grid_Lahan::grow(){
-    setFase(0);
+    setFase(LAND);
 }
