@@ -2,6 +2,7 @@
 #define GRID_PLANT
 
 #include "grid.h"
+#include "../helper/util.h"
 
 class Grid_Plant : public Grid
 // merupakan tanaman
