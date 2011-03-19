@@ -364,12 +364,13 @@ void Player::buyItem(const string name,int Jumlah) {
 */
 	Item * dummyItem;
 	dummyItem = Item::makeBibit(name);
-        cout << dummyItem -> getIDitem() << endl;
-	if (money >= (dummyItem->getCostBuy() * Jumlah)) {
-		money = money - dummyItem->getCostBuy()* Jumlah;
-                cout <<"OK";
-		inventory->addItem(name,Jumlah);
-	 } //else throw "Uang Tidak Mencukupi"
+	if (dummyItem != NULL) {
+		if (money >= (dummyItem->getCostBuy() * Jumlah)) {
+			money = money - dummyItem->getCostBuy()* Jumlah;
+					cout <<"OK";
+			inventory->addItem(name,Jumlah);
+		 } //else throw "Uang Tidak Mencukupi"
+	}
 	 delete dummyItem;
 }
 
