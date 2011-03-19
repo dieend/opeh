@@ -108,6 +108,10 @@ void Player::setStatus(Item a) {
 	
 }
 
+void Player::setStatus(int a) {
+	status = a;
+}
+
 int Player::getStatus() {
 /*
 
@@ -266,7 +270,7 @@ void Player::put(int noSlot,int jumlah) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
 			if ((fase == PLOW) || (fase== SPLOW)) {
-				if (item->isBibit() && ) {
+				if (item->isBibit()) {
 					delete front;
 					front = new Grid_Plant(p,GTANAMAN,fase,item->getTipeTanaman());
 					curArea->setGrid(front);
@@ -344,12 +348,14 @@ void Player::harvest() {
 
 void Player::sellItem(int NoSlot, int Jumlah) {
 	Item* item;
-	if (inventory->cekSlot(NoSlot)) {
-		item = inventory->getSlot(NoSlot);
-		money = money + item->getCostSell() * Jumlah;
-		inventory->deleteItem(NoSlot,Jumlah);
-	} else {
-		throw 2;
+	if (Jumlah > 0) {
+		if (inventory->cekSlot(NoSlot)) {
+			item = inventory->getSlot(NoSlot);
+			money = money + item->getCostSell() * Jumlah;
+			inventory->deleteItem(NoSlot,Jumlah);
+		} else {
+			throw 2;
+		}
 	}
 }
 
@@ -360,11 +366,13 @@ void Player::buyItem(const string name,int Jumlah) {
 	Item * dummyItem;
 	dummyItem = Item::makeBibit(name);
 	if (dummyItem != NULL) {
-		if (money >= (dummyItem->getCostBuy() * Jumlah)) {
-			money = money - dummyItem->getCostBuy()* Jumlah;
-					cout <<"OK";
-			inventory->addItem(name,Jumlah);
-		 } //else throw "Uang Tidak Mencukupi"
+		if (Jumlah > 0) {
+			if (money >= (dummyItem->getCostBuy() * Jumlah)) {
+				money = money - dummyItem->getCostBuy()* Jumlah;
+						cout <<"OK";
+				inventory->addItem(name,Jumlah);
+			 } //else throw "Uang Tidak Mencukupi"
+		}
 	}
 	 delete dummyItem;
 }

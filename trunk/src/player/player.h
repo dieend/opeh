@@ -41,6 +41,8 @@ public :
 	Mengisi jenis status pada item
 	*/
 	
+	void setStatus(int);
+	
 	int getStatus();
 	/*
 	Memeroleh informasi status dari player
