@@ -250,7 +250,7 @@ void Time::nextSeason(){
      minutes=0;
      jam=6;
      day=1;
-     season=(season%3)+1;
+     season=(season+1)%3;
 }
 
 //mengembalikan nilai season sekarang
