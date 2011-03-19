@@ -232,7 +232,11 @@ void Grid_Plant::setPanen()
 // instant change
 {
 	if (isPanenBerulang()) {
-		setFase(REMAJA);
+		if (getFase() == SDEWASA) {
+			setFase(SREMAJA);
+		} else {
+			setFase(REMAJA);
+		}
 		setHappyMeter(titikDewasa);
 		if (happyMeter + 1 != titikPanen) {
 				setTitikPanen(titikPanen-1);

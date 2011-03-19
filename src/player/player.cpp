@@ -105,7 +105,8 @@ void Player::setStatus(Item a) {
 
 */
 	status = a.getEfekBuah();
-	
+	cout << a.getEfekBuah() << endl;
+	system("pause");
 }
 
 void Player::setStatus(int a) {
@@ -200,7 +201,7 @@ void Player::slash() {
 		p = front->getPosisi();
 		if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
-			if (tanaman->getFase() >= REMAJA) {
+			if ((tanaman->getFase() >= REMAJA) && (tanaman->getFase() < DBIBIT )) {
 				delete front;
 				front = new Grid_Lahan(p,GLAHAN,0);
 				curArea->setGrid(front);
@@ -233,10 +234,9 @@ void Player::water() {
 			}
 		}
 	}
-        system("PAUSE");
 }
 
-int Player::eat(int numInv) {
+void Player::eat(int numInv) {
 /*
 
 */
@@ -244,11 +244,10 @@ int Player::eat(int numInv) {
 //	int eff;
 	if (inventory->cekSlot(numInv)){
             item = inventory->getSlot(numInv);
-            inventory->deleteItem(numInv,1);
             setStatus (*item);
-            return item->getEfekTime();
+			inventory->deleteItem(numInv,1);
 	} else {
-		return 0;
+		throw 0;
 	}
 }
 

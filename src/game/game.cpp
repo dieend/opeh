@@ -69,21 +69,25 @@ bool Game::doPerintah() {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KANAN);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+							world->getPlayer()->setStatus(world->getTime()->getSTime());
                     }
             } else if (perintah == "left") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KIRI);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+							world->getPlayer()->setStatus(world->getTime()->getSTime());
                     }
             } else if (perintah == "up") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(ATAS);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+							world->getPlayer()->setStatus(world->getTime()->getSTime());
                     }
             } else if (perintah == "down") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(BAWAH);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+							world->getPlayer()->setStatus(world->getTime()->getSTime());
                     }
             } else if (perintah == "inventory") {
                     world->getPlayer()->getInventory()->listItem();
@@ -129,7 +133,9 @@ bool Game::doPerintah() {
 					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
 						world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
 					} else throw 2;
-            } else if (perintah == "cheat") {
+            } else if (perintah == "eat") {
+					world->getPlayer()->eat(paramInt[0]);
+			} else if (perintah == "cheat") {
 					if (paramStr[0] == "nextday") {
 						world->getTime()->nextDay();
 					} else if (paramStr[0] == "nextseason") {
@@ -172,11 +178,13 @@ bool Game::doPerintah() {
         if (world != NULL) {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
                 world->getTime()->next10Minutes(world->getPlayer()->getStatus());
+				world->getPlayer()->setStatus(world->getTime()->getSTime());
             }
             cout << world->getTime()->iscDay() << endl;
 
             if (world->getTime()->iscDay()) {
                 world->setWeather();
+				world->getPlayer()->setStatus(0);
                 for (int i=0; i<MAXROW; i++){
                     for (int j=0; j<MAXCOLUMN; j++){
                         cout << i << j << endl;
@@ -215,6 +223,7 @@ void Game::getPerintah(){
     else if (perintah == "buy") getBuy(kata,done); 
     else if (perintah == "sell")getSell(kata,done);
 	else if (perintah == "cheat") getCheat(kata,done);
+	else if (perintah == "eat") getEat(kata,done);
     delete kata;
 }
 
@@ -629,6 +638,25 @@ void Game::getCheat(char * kata, int done) {
 		sscanf(paramStr[2].c_str(),"%d",&paramInt[0]);
 	}
 }
+
+void Game::getEat(char * kata, int done) {
+	char stmp[100];
+    int i = 0;
+    do {
+        sscanf(kata+done,"%s",stmp);
+        done+=strlen(stmp)+1;
+        paramStr[i] = stmp;
+    } while (paramStr[i++][0] != '#');
+	if (i > 2) {
+		throw 0;
+	}
+	if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
+		sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
+	} else {
+		throw 0;
+	}
+}
+		
 
 void Game::printPeta()
 {
