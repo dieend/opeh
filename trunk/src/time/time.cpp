@@ -227,6 +227,7 @@ void Time::nextDay(){
 	 cday=true;
      minutes=0;
      jam=6;
+	 
      if (day<30)
      {
        ++day;
@@ -292,4 +293,8 @@ void Time::setAct(int na)
 void Time::performtime()
 {
   cout << "minutes = " << minutes << ":Jam = " << jam << ":Day = " << day << ":Season = " << season << endl;
+}
+
+int Time::getSTime() {
+	return stime;
 }

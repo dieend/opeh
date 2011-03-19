@@ -21,6 +21,7 @@ public :
        bool iscSeason();//true jika season baru berubah(setelah 1 aksi), false jika tidak
        void setAct(int);
        void performtime();
+	   int getSTime();
 private :
         int minutes;
         int jam;

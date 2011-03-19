@@ -97,7 +97,7 @@ public :
 	akan berubah menjadi sudah disiram
 	*/
 	
-	int eat(int);
+	void eat(int);
 	/*
 	Prosedur memakan item yang ada pada inventory dengan slot tertentu, kemudian
 	mengecek efek yang terjadi, dan memberikan status pada player, serta melakukan
