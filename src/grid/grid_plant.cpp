@@ -231,15 +231,15 @@ void Grid_Plant::setPanen()
 // pengubahan fase tanaman ketika dipanen
 // instant change
 {
-	if (isPanenBerulang())
-            {
-            setFase(REMAJA);
-            setHappyMeter(titikDewasa);
-            if (happyMeter + 1 != titikPanen)
-                    setTitikPanen(titikPanen-1);
-            else
-                setFase(6);
-            }
+	if (isPanenBerulang()) {
+		setFase(REMAJA);
+		setHappyMeter(titikDewasa);
+		if (happyMeter + 1 != titikPanen) {
+				setTitikPanen(titikPanen-1);
+		}
+	} else {
+		setFase(6);
+    }
 }
 
 void Grid_Plant::grow()
