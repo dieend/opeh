@@ -9,11 +9,9 @@ void Game::Run() {
             cout << "> Load Game\n\n";
         }
         try {
-                getPerintah();
-                cout << "perintahnya : " << perintah << endl;
-                cout << "int: " << (char)9 << paramInt[0] << (char) 9 << paramInt[1] << endl;
-                cout << "str: " << (char)9 << paramStr[0] << (char) 9 << paramStr[1] << endl;
-                notExit = doPerintah();
+            cout << "Perintah:\n";
+            getPerintah();
+            notExit = doPerintah();
         } catch (int i) {
                 if (i==0) {
                         cerr << "input tidak sesuai format!\n";

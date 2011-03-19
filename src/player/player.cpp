@@ -412,6 +412,7 @@ void Player::teleport(Area * destination) {
 }
 
 ostream& operator<<(ostream& c, Player* p){
+    Utilities::getInstances().setFG(BLACK);
     if (p->arahHadap == 1) {
 		c << (char) 272;
 	} else if (p->arahHadap == 2) {
@@ -421,6 +422,7 @@ ostream& operator<<(ostream& c, Player* p){
 	} else {
 		c << (char) 286;
 	}
+    Utilities::getInstances().resetFG();
     return c;
 }
 
