@@ -15,7 +15,7 @@ class Grid_Lahan : public Grid
 	Grid_Lahan(const Grid_Lahan&);
 	// copy constructor
 	virtual ~Grid_Lahan();
-        void grow();
+        void grow(int);
 	// destructor
         friend ostream& operator<<(ostream&, Grid_Lahan*);
 	void setCangkul();

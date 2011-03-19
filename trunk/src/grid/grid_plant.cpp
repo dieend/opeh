@@ -334,6 +334,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP){
 	else if (GP->getFase() == SBIBIT) {
             Utilities::getInstances().setBG(LYELLOW);
             c << ".";
+            Utilities::getInstances().resetBG();
         }
 	else if (GP->getFase() == REMAJA) {
             c << "i";
@@ -341,6 +342,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP){
 	else if (GP->getFase() == SREMAJA) {
             Utilities::getInstances().setBG(LYELLOW);
             c << "i";
+            Utilities::getInstances().resetBG();
         }
         else if (GP->getFase() == DEWASA){
             c << "t";
@@ -348,9 +350,11 @@ ostream& operator<<(ostream& c, Grid_Plant* GP){
 	else if (GP->getFase() == SDEWASA){
             Utilities::getInstances().setBG(LYELLOW);
 		c << "t";
+                Utilities::getInstances().resetBG();
         }
 	else if (GP->getFase() == MATI)
 		c << "Y";
+        Utilities::getInstances().resetBG();
     return c;
 }
 Grid_Plant::Grid_Plant(int newTypeItem)

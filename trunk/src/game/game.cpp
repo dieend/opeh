@@ -171,7 +171,7 @@ bool Game::doPerintah() {
                 for (int i=0; i<MAXROW; i++){
                     for (int j=0; j<MAXCOLUMN; j++){
                         cout << i << j << endl;
-                        world->getArea(1)->getGrid(i,j)->grow();
+                        world->getArea(1)->getGrid(i,j)->grow(world->getTime()->getSeason());
                     }
                 }
             }

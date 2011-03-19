@@ -67,5 +67,5 @@ Grid::Grid(int x,int y,int tipe){
     else fase = 0;
 }
 
-void Grid::grow(){
+void Grid::grow(int b){
 }
