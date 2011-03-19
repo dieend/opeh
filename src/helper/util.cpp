@@ -83,18 +83,20 @@ void Utilities::resetBG(){
     int B;
     if (!oldBG.empty()){
         B= oldBG.top();
-        printf("%x",B);
         oldBG.pop();
     } else B=0x00;
-    setBG(B);
+    color &= 0x0F;
+    color |= B;
+    draw();
 }
 
 void Utilities::resetFG(){
     int F;
     if (!oldFG.empty()) {
         F = oldFG.top();
-        printf("%x",F);
         oldFG.pop();
     } else F=0x07;
-    setFG(F);
+    color &= 0xF0;
+    color |= F;
+    draw();
 }
