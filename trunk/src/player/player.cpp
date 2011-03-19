@@ -258,22 +258,18 @@ void Player::put(int noSlot,int jumlah) {
 	int tipe;
 	int fase;
 	Grid* front = getFrontGrid();
-        Item* item = inventory->getSlot(noSlot);
+    Item* item = inventory->getSlot(noSlot);
 	Grid_Lahan* lahan;
 	Point p;
 	
 	if ((front != NULL) && (item != NULL)) {
 		p = front->getPosisi();
-		cout << p << endl;
 		tipe = front->getType();
 		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
-                        cout << fase << endl;
 			if ((fase == PLOW) || (fase== SPLOW)) {
-                            cout << "PLOWED";
 				if (item->isBibit()) {
-                                    cout<<"BIBIT";
 					delete front;
 					front = new Grid_Plant(p,GTANAMAN,fase,item->getTipeTanaman());
 					curArea->setGrid(front);
@@ -282,18 +278,14 @@ void Player::put(int noSlot,int jumlah) {
 					inventory->deleteItem(noSlot,jumlah);
 				}
 			} else {
-                            cout << "DELETED1";
 				inventory->deleteItem(noSlot,jumlah);
 			}
 		} else if (tipe == GSELLINGBOX) {
-                        sellItem(noSlot,jumlah);
-			inventory->deleteItem(noSlot,jumlah);
+			sellItem(noSlot,jumlah);
 		} else {
-                    cout << "DELETED2";
 			inventory->deleteItem(noSlot,jumlah);
 		}
 	}
-        system("PAUSE");
 }
 
 void Player::move(int arah) {
@@ -344,11 +336,11 @@ void Player::harvest() {
 			if ((fase == DEWASA) || (fase == SDEWASA)) {
 				tanaman->setPanen();
 				inventory->addItem(tanaman,1);
-				if (tanaman->getFase() == MATI) {
-					delete front;
-					front = new Grid_Lahan(p,0,0);
-					curArea->setGrid(front);
-				}
+				// if (tanaman->getFase() == MATI) {
+					// delete front;
+					// front = new Grid_Lahan(p,0,0);
+					// curArea->setGrid(front);
+				// }
 			}
 		}
 	}
