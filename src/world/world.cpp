@@ -43,6 +43,8 @@ World::World(World& world) {
 	dwarf[HARVEST]= new Dwarf(*(world.getDwarf(HARVEST)));
 	dwarf[WATER] 	= new Dwarf(*(world.getDwarf(WATER)));
 	dwarf[SLASH]	= new Dwarf(*(world.getDwarf(SLASH)));
+        int temp;
+	srand(temp);
 }
 
 World::~World() {
@@ -102,8 +104,6 @@ void World::doWeather() {
         system("pause");
 }
 void World::setWeather() {
-	int temp;
-	srand(temp);
 	weather = rand()*rand()%100;
 	doWeather();
 }

@@ -2,7 +2,7 @@
 #define _PLAYA_H
 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include "../inventory/inventory.h"
 #include "../area/area.h"
 #include "../grid/grid.h"
@@ -155,7 +155,7 @@ public :
 	int money; //jumlah uang
 	int arahHadap; //arah hadap player, 1 = atas, 2 = kanan, 3 = bawah, 4 = kiri
 	int status; //status player akibat makanan yang dimakan
-	string nama; //nama dari player
+	char nama[32]; //nama dari player
 };
 
 #endif

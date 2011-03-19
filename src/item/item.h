@@ -18,7 +18,7 @@ class Item{
         int typeBuah;
         int IDitem;
         bool bibit;
-	string nama;
+	char nama[32];
 	public :
         Item (); //konstruktor
         virtual ~Item (); //destructor
