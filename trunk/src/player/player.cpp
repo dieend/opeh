@@ -173,7 +173,7 @@ void Player::plow() {
 		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
-			if ((fase == BIBIT) || (fase == SBIBIT)) {
+			if ((fase == BIBIT) || (fase == SBIBIT) || (fase == DBIBIT)) {
 				delete front;
 				front = new Grid_Lahan(p,0,fase);
 				curArea->setGrid(front);
@@ -220,15 +220,11 @@ void Player::water() {
 		tipe = front->getType();
 		p = front->getPosisi();
 		if (tipe == GLAHAN) {
-                    cout << "LAHAN INI\n";
 			lahan = (Grid_Lahan*)front;
 			lahan->setSiram();
 		} else if (tipe == GTANAMAN) {
-                    cout << "TANAMAN INI \n";
 			tanaman = (Grid_Plant*)front;
 			if (!(tanaman->isWatered())) {
-                                cout << "WAH BELUM DISIRAM";
-				cout << "tes" << endl;
 				tanaman->setSiram();
 			}
 		}
@@ -270,7 +266,7 @@ void Player::put(int noSlot,int jumlah) {
 			lahan = (Grid_Lahan*)front;
 			fase = lahan->getFase();
 			if ((fase == PLOW) || (fase== SPLOW)) {
-				if (item->isBibit()) {
+				if (item->isBibit() && ) {
 					delete front;
 					front = new Grid_Plant(p,GTANAMAN,fase,item->getTipeTanaman());
 					curArea->setGrid(front);
