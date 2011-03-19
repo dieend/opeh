@@ -76,7 +76,8 @@ Item* Item::makeBibit(const string& name){
     else if(name == "terong")	{item->setIDitem(9);item->setTypeTanaman(10);item->setTypeBuah(22);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(120);item->setCostSell(720);item->setCostSellBibit(60);item->setBibit(true);}
     else if(name == "ubi")	{item->setIDitem(10);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(true);}
     else if(name == "paprika")	{item->setIDitem(11);item->setTypeTanaman(12);item->setTypeBuah(24);item->setEfekBuah(0);item->setEfekTime(0);item->setCostBuy(150);item->setCostSell(360);item->setCostSellBibit(75);item->setBibit(true);}
-    return item;
+    else {item = NULL;}
+	return item;
 }
 
 Item* Item::makeBuah(const Grid_Plant* GP){
