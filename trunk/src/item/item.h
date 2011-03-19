@@ -13,12 +13,12 @@ class Item{
         int efekTime;//lama nya efek dari buah yang dimakan player
         int costBuy;
         int costSell;
-		int costSellBibit;
+	int costSellBibit;
         int typeTanaman;
         int typeBuah;
         int IDitem;
         bool bibit;
-		string nama;
+	string nama;
 	public :
         Item (); //konstruktor
         virtual ~Item (); //destructor
@@ -38,11 +38,11 @@ class Item{
         void setEfekTime(int);
         void setCostBuy(int);
         void setCostSell(int);
-		void setCostSellBibit(int);
+	void setCostSellBibit(int);
         void setTypeTanaman(int);
         void setTypeBuah(int);
         void setIDitem(int);
         void setBibit(bool);
-		void setNama(string);
+	void setNama(string);
 };
 #endif
