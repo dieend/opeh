@@ -7,12 +7,13 @@ Player::Player () {
 
 Player::Player (Area* area, int uang, string name) {
 	curArea = area;
-        curGrid = area->getGrid(4,3);
-        curGrid->setType(GPLAYER);
+	curGrid = area->getGrid(4,3);
+	curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
 	nama = name;
 	inventory = new Inventory();
+	status = 0;
 	
 }
 
@@ -103,7 +104,7 @@ void Player::setStatus(Item a) {
 /*
 
 */
-	int stat = a.getEfekBuah();
+	status = a.getEfekBuah();
 	
 }
 
