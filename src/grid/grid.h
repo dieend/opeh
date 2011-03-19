@@ -81,7 +81,7 @@ class Grid
 	bool isPlantable() const;
 	// mengeluarkan nilai kebenaran apakah Grid dapat ditanami atau tidak.
 	
-        virtual void grow();
+        virtual void grow(int);
 	void setType(int);
 	// mengeset type Grid.
 	void setFase(int);

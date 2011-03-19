@@ -50,6 +50,6 @@ ostream& operator<<(ostream& c, Grid_Lahan* GL){
     Utilities::getInstances().resetBG();
     return c;
 }
-void Grid_Lahan::grow(){
+void Grid_Lahan::grow(int a){
     setFase(LAND);
 }
