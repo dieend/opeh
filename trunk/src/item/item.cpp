@@ -133,5 +133,5 @@ bool Item::operator==(const Item& item){
 }
 
 void Item::setNama(string newName){
-    nama = newName;
+    copy(newName.begin(),newName.end(),nama);
 }

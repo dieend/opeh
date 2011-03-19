@@ -11,7 +11,7 @@ Player::Player (Area* area, int uang, string name) {
 	curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
-	nama = name;
+        copy(name.begin(),name.end(),nama);
 	inventory = new Inventory();
 	status = 0;
 	
@@ -19,7 +19,7 @@ Player::Player (Area* area, int uang, string name) {
 
 //cctor
 Player::Player(const Player & chara) {
-	nama = chara.nama;
+    copy(chara.nama,chara.nama+32,nama);
 	money = chara.money;
 	inventory = chara.inventory;
 	curGrid = chara.curGrid;
@@ -35,7 +35,7 @@ Player::~Player () {
 
 //operator=
 Player& Player::operator= (const Player& chara) {
-	nama = chara.nama;
+        copy(chara.nama,chara.nama+32,nama);
 	money = chara.money;
 	inventory = chara.inventory;
 	curGrid = chara.curGrid;
@@ -119,7 +119,7 @@ void Player::setName(string as) {
 /*
 Mengisi nama dari player
 */
-	nama = as;
+        copy(as.begin(),as.end(),nama);
 }
 	
 string Player::getName() {
@@ -237,7 +237,7 @@ int Player::eat(int numInv) {
 
 */
 	Item* item;
-	int eff;
+//	int eff;
 	if (inventory->cekSlot(numInv)){
             item = inventory->getSlot(numInv);
             inventory->deleteItem(numInv,1);
@@ -292,7 +292,7 @@ void Player::move(int arah) {
 	int tipe;
 	int tipeArea;
 	Grid* front = getFrontGrid();
-	Grid_Plant* tanaman;
+	
 	Point p;
 	
 	if ((front != NULL) && (arahHadap == arah)) {
@@ -320,7 +320,6 @@ void Player::move(int arah) {
 void Player::harvest() {
 	int tipe;
 	int fase;
-	int tipeTanaman;
 	Grid* front = getFrontGrid();
 	Grid_Plant* tanaman;
 	Point p;	
@@ -376,8 +375,7 @@ void Player::teleport(Area * destination) {
 */
 	int area;
 	Point p;
-	int tipe;
-	
+		
 	p = curGrid->getPosisi();
 	if (curArea->getType() == LAHAN) {
 		if (p.getX() >= 3) {
