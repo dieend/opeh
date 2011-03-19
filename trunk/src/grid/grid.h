@@ -19,8 +19,9 @@
 #define DEWASA 4
 #define SDEWASA 5
 #define MATI 6
+#define DBIBIT 7
 #define PLOW 0
-#define SPLOW 1
+#define SPLOW 1 
 #define LAND 2
 // 0 = sudah dicangkul
 	// 1 = sudah dicangkul sudah disiram
@@ -33,6 +34,7 @@
 	// 4 = tanaman panen belum disiram
 	// 5 = tanaman panen sudah disiram
 	// 6 = tanaman mati atau habis panen
+	// 7 = bibit mati atau bibit tanam salah musim
 
 	// 1 = dwarf atau player
 	// 2 = jalan

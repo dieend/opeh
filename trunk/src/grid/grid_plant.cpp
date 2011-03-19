@@ -242,7 +242,7 @@ void Grid_Plant::setPanen()
     }
 }
 
-void Grid_Plant::grow()
+void Grid_Plant::grow(int newCurrentSeason)
 // mengubah fase pada pergantian hari
 // not instant change
 {
@@ -252,7 +252,19 @@ void Grid_Plant::grow()
 	else
 		setHappyMeter(happyMeter-1);
 	if (umur == 0)
-		setFase(MATI);
+		{
+		if (isBibit())
+			setFase(DBIBIT);
+		else
+			setFase(MATI);
+		}
+	else if (newCurrentSeason != season)
+		{
+		if (isBibit())
+			setFase(DBIBIT);
+		else
+			setFase(MATI);
+		}
 	else
 		{
 		if (isBibit())
