@@ -155,7 +155,6 @@ bool Game::doPerintah() {
 								for (int k = 0; k < MAXCOLUMN; k++) {
 									if (world->getArea(1)->getGrid(j,k)->getType() == GTANAMAN) {
 										Grid_Plant * tanam = (Grid_Plant*) world->getArea(1)->getGrid(j,k);
-										cout << "testes" <<endl;
 										tanam->setSiram();
 									}
 								}
@@ -163,10 +162,8 @@ bool Game::doPerintah() {
 							for (int j=0; j<MAXROW; j++){
 								for (int k=0; k<MAXCOLUMN; k++) {
 									world->getArea(1)->getGrid(j,k)->grow(world->getTime()->getSeason());
-									cout << world->getTime()->getSeason() << endl;
 								}
 							}
-						system("pause");
 						}
 					} else if (paramStr[0] == "money") {
 						world->getPlayer()->setMoney(99999999);
@@ -187,7 +184,6 @@ bool Game::doPerintah() {
 				world->getPlayer()->setStatus(0);
                 for (int i=0; i<MAXROW; i++){
                     for (int j=0; j<MAXCOLUMN; j++){
-                        cout << i << j << endl;
                         world->getArea(1)->getGrid(i,j)->grow(world->getTime()->getSeason());
                     }
                 }
