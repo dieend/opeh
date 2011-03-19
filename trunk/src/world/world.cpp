@@ -73,12 +73,12 @@ World& World::operator=(World& world) {
 }
 
 void World::save(const string& pathFile,World& world){
-	// menulis kondisi world ke file
-	ofstream fout(pathFile.c_str(), ios::out | ios::binary);
-	fout.seekp(0);
-	// masih salah
-	fout.write((char*)(&world),sizeof(World));
-	fout.close();
+	// // menulis kondisi world ke file
+	// ofstream Opeh("opeh.txt", ios::out);
+	
+	// // masih salah
+	// fout.write((char*)(&world),sizeof(World));
+	// fout.close();
 }
 
 World* World::load(const string& pathFile){
