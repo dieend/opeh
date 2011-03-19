@@ -1,7 +1,7 @@
 all: opeh
 
-opeh: main.o world.o toko.o time.o point.o player.o item.o inventory.o grid.o game.o dwarf.o area.o grid_lahan.o grid_plant.o map.o
-	g++ main.o world.o toko.o time.o point.o player.o item.o inventory.o grid.o game.o dwarf.o area.o grid_lahan.o grid_plant.o map.o -o opeh
+opeh: main.o world.o toko.o time.o point.o player.o item.o inventory.o grid.o game.o dwarf.o area.o grid_lahan.o grid_plant.o map.o util.o
+	g++ main.o world.o toko.o time.o point.o player.o item.o inventory.o grid.o game.o dwarf.o area.o grid_lahan.o grid_plant.o map.o util.o -o opeh
 
 main.o: main.cpp
 	g++ -c -Wall main.cpp
@@ -48,5 +48,8 @@ grid_lahan.o: grid/grid_lahan.cpp
 map.o: dwarf/map.cpp
 	g++ -c -Wall dwarf/map.cpp
 
+util.o: helper/util.cpp
+	g++ -c -Wall helper/util.cpp
+	
 clean:
 	rm -rf *.o

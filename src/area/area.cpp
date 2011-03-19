@@ -82,16 +82,16 @@ Area::Area(int tipe)
 }
 
 string peta_rumah[MAXROW] = {
-		".[-]......",
-		"*.........",
-		"*.........",
-		"..../\\n..]",
-		"...n\\/...]",
-		"..........",
-		"BBB.......",
-		"BBB.......",
-		"BBB...III.",
-		"BBB...III."
+		" [-]      ",
+		"*         ",
+		"*         ",
+		"    /\\n  ]",
+		".  n\\/   ]",
+		"          ",
+		"BBB       ",
+		"BBB       ",
+		"BBB   III ",
+		"BBB   III "
 		};
 		
 string peta_lahan[MAXROW] = {
@@ -122,50 +122,54 @@ string peta_toko[MAXROW] = {
 		
 ostream& operator<<(ostream& c,Area* area) {
 	if (area->typeArea==RUMAH) {
+            Utilities::getInstances().setBackground(GRAY);
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
                         Player * p = area->getPlayer();
-                        c << lantai << p << white;
+                        c << p;
                     } else {
-                        c << lantai << peta_rumah[i][j] << white;
+                        c << peta_rumah[i][j];
                     }
                 }
                 c << endl;
             }
 	} else if (area->typeArea==LAHAN) {
+            Utilities::getInstances().setBackground(GRAY);
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {
                     Grid* grid = area->getGrid(i,j);
                     if (grid->getType() == GPLAYER) { //player
                         Player * p = area->getPlayer();
-                        c << lahan << p << white;
+                        c << p;
                     } else if (grid->getType()== GTANAMAN){ //tanaman
                         Grid_Plant * plant;
                         plant = (Grid_Plant*) grid;
-                        c << lahan << plant << white;
+                        c << plant;
                     } else if (grid->getType()==GLAHAN) {
                         Grid_Lahan * L;
                         L = (Grid_Lahan *) grid;
-                        c << lahan << L << white;
+                        c << L;
                     } else {
-                        c << peta_lahan[i][j] << white;
+                        c << peta_lahan[i][j];
                     }
                 }
                 c << endl;
             }
 	} else if (area->typeArea==TOKO) {
+            Utilities::getInstances().setBackground(GRAY);
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
-                        c << toko << (area->getPlayer()) << white;
+                        c << (area->getPlayer()) ;
                     } else {
-                        c << toko << peta_toko[i][j] << white;
+                        c << peta_toko[i][j];
                     }
                 }
                 c << endl;
             }
 	}
+        Utilities::getInstances().resetColor();
 	return c;
 }
 

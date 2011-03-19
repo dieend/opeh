@@ -111,10 +111,12 @@ ostream& operator<<(ostream& c,World& world){
 	// belum diimplementasi
 	char tmp[100];
 	sprintf(tmp,"%10sDesa Opeh%10s\n","","");
-	c << judul << tmp << white;
-	if (world.getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n" << white;
-	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian:\n" << white;
-        if (world.getPlayer()->getCurArea()->typeArea == 2) c << "Toko:\n" << white;
+        Utilities::getInstances().setColor(AQUA,BLACK);
+	c << tmp;
+        Utilities::getInstances().resetColor();
+	if (world.getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n" ;
+	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian:\n" ;
+        if (world.getPlayer()->getCurArea()->typeArea == 2) c << "Toko:\n" ;
 	c << (world.getPlayer()->getCurArea());
 
 

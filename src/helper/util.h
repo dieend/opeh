@@ -24,13 +24,15 @@ class Utilities{
 private:
     Utilities();
     int color;
-	void draw();
-	static Utilities* utilities;
+    void draw();
+    static Utilities* utilities;
 public:
-	static Utilities& getInstances();
-	void setBackground(int);
-	void setForeground(int);
-	void resetColor();
+    static Utilities& getInstances();
+    void setColor(int,int);
+    void setBackground(int);
+    void setForeground(int);
+    void resetColor();
+    void destroy();
 };
 
 #endif

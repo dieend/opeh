@@ -3,7 +3,6 @@ void Game::Run() {
     bool notExit = true;
     do {
         system("cls");
-        cout << world;
         if (world != NULL) cout << (*world);
         else {
             cout << "> New Game\n\n";
