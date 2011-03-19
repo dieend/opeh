@@ -68,5 +68,4 @@ Grid::Grid(int x,int y,int tipe){
 }
 
 void Grid::grow(){
-    cout << "grow grid is USED";
 }
