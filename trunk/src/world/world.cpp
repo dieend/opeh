@@ -46,7 +46,6 @@ World::World(World& world) {
 }
 
 World::~World() {
-    cout << "world destruct";
 	delete time;
         delete area[RUMAH];
 	delete area[LAHAN];
@@ -55,6 +54,7 @@ World::~World() {
 	delete dwarf[HARVEST];
 	delete dwarf[WATER];
 	delete dwarf[SLASH];
+        Utilities::getInstances().destroy();
 	// dtor
 }
 World& World::operator=(World& world) {
@@ -148,9 +148,6 @@ ostream& operator<<(ostream& c,World& world){
         if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah() << "\t\t\t";if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(1)->getEfekBuah() << "\t\t\t";if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(2)->getEfekBuah() << "\t\t\t";cout << endl;
         if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"efek time " << world.player->getInventory()->getSlot(0)->getEfekTime() << "\t\t\t";if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"efek time " << world.player->getInventory()->getSlot(1)->getEfekTime() << "\t\t\t";if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"efek time " << world.player->getInventory()->getSlot(2)->getEfekTime() << "\t\t\t";cout << endl;
 //*/
-
-
-	c << "Perintah:\n";
 	return c;
 }
 

@@ -43,10 +43,11 @@ void Grid_Lahan::setPut(){
 }
 
 ostream& operator<<(ostream& c, Grid_Lahan* GL){
-    if (GL->getFase()==PLOW) Utilities::getInstances().setBackground(YELLOW);
-    if (GL->getFase()==SPLOW) Utilities::getInstances().setBackground(LYELLOW);
-    if (GL->getFase()==LAND) Utilities::getInstances().setBackground(GREEN);
+    if (GL->getFase()==PLOW) Utilities::getInstances().setBG(YELLOW);
+    if (GL->getFase()==SPLOW) Utilities::getInstances().setBG(LYELLOW);
+    if (GL->getFase()==LAND) Utilities::getInstances().setBG(GREEN);
     c << " ";
+    Utilities::getInstances().resetBG();
     return c;
 }
 void Grid_Lahan::grow(){

@@ -315,26 +315,26 @@ void Grid_Plant::setPanenBerulang(bool newPanenBerulang)
 }
 
 ostream& operator<<(ostream& c, Grid_Plant* GP){
-        Utilities::getInstances().setBackground(YELLOW);
+        Utilities::getInstances().setBG(YELLOW);
     	if (GP->getFase() == BIBIT){
             c << ".";
         }
 	else if (GP->getFase() == SBIBIT) {
-            Utilities::getInstances().setBackground(LYELLOW);
+            Utilities::getInstances().setBG(LYELLOW);
             c << ".";
         }
 	else if (GP->getFase() == REMAJA) {
             c << "i";
         }
 	else if (GP->getFase() == SREMAJA) {
-            Utilities::getInstances().setBackground(LYELLOW);
+            Utilities::getInstances().setBG(LYELLOW);
             c << "i";
         }
         else if (GP->getFase() == DEWASA){
             c << "t";
         }
 	else if (GP->getFase() == SDEWASA){
-            Utilities::getInstances().setBackground(LYELLOW);
+            Utilities::getInstances().setBG(LYELLOW);
 		c << "t";
         }
 	else if (GP->getFase() == MATI)
