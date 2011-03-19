@@ -129,8 +129,36 @@ bool Game::doPerintah() {
 					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
 						world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
 					} else throw 2;
-            }
-		
+            } else if (perintah == "cheat") {
+					if (paramStr[0] == "nextday") {
+						world->getTime()->nextDay();
+					} else if (paramStr[0] == "nextseason") {
+						world->getTime()->nextSeason();
+					} else if (paramStr[0] == "teleport") {
+						if (paramStr[1] == "lahan") world->getPlayer()->teleport(world->getArea(1));
+                        if (paramStr[1] == "toko") world->getPlayer()->teleport(world->getArea(2));
+                        if (paramStr[1] == "rumah") world->getPlayer()->teleport(world->getArea(0));
+					} else if (paramStr[0] == "randomize") {
+						setWeather();
+					} else if (paramStr[0] == "status") {
+						world->getPlayer()->setStatus(paramInt[0]);
+					} else if (paramStr[0] == "grow") {
+						for (int i = 1; i <= paramInt[0]; i++) {
+							for (int j = 3; j < 10; j++) {
+								for (int k = 0; k < 10; k++) {
+									if (world->getArea(1)->getGrid(j,k)->getType() == GTANAMAN) {
+										Grid_Plant * tanam = world->getArea(1)->getGrid(j,k);
+										tanam->setSiram();
+										delete tanam;
+									}
+								}
+							}
+							grow();
+						}
+					} else if (paramStr[0] == "money") {
+						world->getPlayer()->setMoney(99999999);
+					}
+			}
 	}
         if (world != NULL) {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
@@ -177,6 +205,7 @@ void Game::getPerintah(){
     else if (perintah == "store") getStore(kata,done);
     else if (perintah == "buy") getBuy(kata,done); 
     else if (perintah == "sell")getSell(kata,done);
+	else if (perintah == "cheat") getCheat(kata,done);
     delete kata;
 }
 
@@ -574,6 +603,22 @@ void Game::getSell(char* kata, int done){
     }else{
         throw 0;
     }
+}
+
+void Game::getCheat(char * kata, int done) {
+	char stmp[100];
+    int i = 0;
+    do {
+        sscanf(kata+done,"%s",stmp);
+        done+=strlen(stmp)+1;
+        paramStr[i] = stmp;
+    } while (paramStr[i++][0] != '#');
+	if ((paramStr[0] == "status") && (paramStr[0] == "grow")) {
+		sscanf(paramStr[1].c_str(),"%d",&paramInt[0]);
+	}
+	else {
+		throw 0;
+	}
 }
 
 void Game::printPeta()
