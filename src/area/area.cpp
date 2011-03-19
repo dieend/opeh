@@ -75,7 +75,7 @@ Area::Area(int tipe)
             for (int i=3; i<MAXROW; i++) {
                 for (int j=0; j<MAXCOLUMN; j++) {
                     Point P(i,j);
-                    grid[i][j] = new Grid(P,0,2);
+                    grid[i][j] = new Grid_Lahan(P,GLAHAN,2);
                 }
             }
 	}
@@ -122,7 +122,6 @@ string peta_toko[MAXROW] = {
 		
 ostream& operator<<(ostream& c,Area* area) {
 	if (area->typeArea==RUMAH) {
-            c << dinding << "+----------+\n|" << white;
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
@@ -134,7 +133,6 @@ ostream& operator<<(ostream& c,Area* area) {
                 }
                 c << endl;
             }
-            c << dinding << "+----------+\n|" << white;
 	} else if (area->typeArea==LAHAN) {
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {

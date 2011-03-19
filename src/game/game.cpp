@@ -55,8 +55,9 @@ bool Game::doPerintah() {
                                     cout << "Anda bisa teleport ke `lahan` (kode 1)\n";
                             }
                             getch();
-                    } else
-                    if (where == 0) {
+                    } else if (0>paramInt[0] || paramInt[0] >2){
+						throw 2;
+					} else if (where == 0) {
                             if (paramInt[0] != 1) {
                                     throw 2;
                             }
@@ -201,7 +202,11 @@ void Game::getPerintah(){
         } else if ((int)c==8) {
             if (i>0) kata[--i] = '\0';
             cout << "\b \b";
-        }
+        } else {
+			kata[i++] = c;
+			kata[i] = '\0';
+			cout << c;
+		}
     } while (c!= '#' && !shortcut);
     cout << c;
     kata[i++] = ' ';
@@ -238,8 +243,6 @@ void Game::getPerintah(){
         if (i>2) throw 0;
         if (paramStr[0][0] != '-' || ('0' <= paramStr[0][0] && paramStr[0][0]<='9')) {
             paramInt[0] = paramStr[0][0]-'0';
-        } else {
-            throw 0;
         }
     } else if (perintah == "right") {
         do {
