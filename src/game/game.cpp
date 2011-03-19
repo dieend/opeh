@@ -139,24 +139,33 @@ bool Game::doPerintah() {
                         if (paramStr[1] == "toko") world->getPlayer()->teleport(world->getArea(2));
                         if (paramStr[1] == "rumah") world->getPlayer()->teleport(world->getArea(0));
 					} else if (paramStr[0] == "randomize") {
-						setWeather();
+						world->setWeather();
 					} else if (paramStr[0] == "status") {
 						world->getPlayer()->setStatus(paramInt[0]);
 					} else if (paramStr[0] == "grow") {
 						for (int i = 1; i <= paramInt[0]; i++) {
-							for (int j = 3; j < 10; j++) {
-								for (int k = 0; k < 10; k++) {
+							cout << paramInt[0] << endl;
+							for (int j = 3; j < MAXROW; j++) {
+								for (int k = 0; k < MAXCOLUMN; k++) {
 									if (world->getArea(1)->getGrid(j,k)->getType() == GTANAMAN) {
-										Grid_Plant * tanam = world->getArea(1)->getGrid(j,k);
+										Grid_Plant * tanam = (Grid_Plant*) world->getArea(1)->getGrid(j,k);
+										cout << "testes" <<endl;
 										tanam->setSiram();
-										delete tanam;
 									}
 								}
 							}
-							grow();
+							for (int j=0; j<MAXROW; j++){
+								for (int k=0; k<MAXCOLUMN; k++) {
+									world->getArea(1)->getGrid(j,k)->grow(world->getTime()->getSeason());
+									cout << world->getTime()->getSeason() << endl;
+								}
+							}
+						system("pause");
 						}
 					} else if (paramStr[0] == "money") {
 						world->getPlayer()->setMoney(99999999);
+					} else if (paramStr[0] == "buy") {
+						world->getPlayer()->buyItem(paramStr[1],paramInt[0]);
 					}
 			}
 	}
@@ -613,11 +622,11 @@ void Game::getCheat(char * kata, int done) {
         done+=strlen(stmp)+1;
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
-	if ((paramStr[0] == "status") && (paramStr[0] == "grow")) {
+	if ((paramStr[0] == "status") || (paramStr[0] == "grow")) {
+		cout << paramStr[1] << endl;
 		sscanf(paramStr[1].c_str(),"%d",&paramInt[0]);
-	}
-	else {
-		throw 0;
+	} else if (paramStr[0] == "buy") {
+		sscanf(paramStr[2].c_str(),"%d",&paramInt[0]);
 	}
 }
 
