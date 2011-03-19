@@ -105,8 +105,6 @@ void Player::setStatus(Item a) {
 
 */
 	status = a.getEfekBuah();
-	cout << a.getEfekBuah() << endl;
-	system("pause");
 }
 
 void Player::setStatus(int a) {
@@ -178,9 +176,13 @@ void Player::plow() {
 		} else if (tipe == GTANAMAN) {
 			tanaman = (Grid_Plant*)front;
 			fase = tanaman->getFase();
-			if ((fase == BIBIT) || (fase == SBIBIT) || (fase == DBIBIT)) {
+			if ((fase == BIBIT) || (fase == SBIBIT)) {
 				delete front;
 				front = new Grid_Lahan(p,0,fase);
+				curArea->setGrid(front);
+			} else if (fase == DBIBIT) {
+				delete front;
+				front = new Grid_Lahan(p,0,LAND);
 				curArea->setGrid(front);
 			}
 		}
