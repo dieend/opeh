@@ -81,7 +81,7 @@ class Grid_Plant : public Grid
 	// mengeset umur tanaman.
 	void setPanenBerulang(bool);
 	// mengeset nilai panen berulang.
-	void grow();
+	void grow(int);
 	// mengubah fase pada pergantian hari
         friend ostream& operator<<(ostream&, Grid_Plant*);
 };
