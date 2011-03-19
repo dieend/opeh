@@ -90,19 +90,20 @@ World* World::load(const string& pathFile){
 
 void World::doWeather() {
 	// belum diimplementasi
-	if (weather < 9000) {
+	if (weather < 50) {
 		cout << "normal\n";
 	}else 
-	if (9000<= weather && weather <=9900) {
+	if (50<= weather && weather <=80) {
 		cout << "raining\n";
 	}else {
 		cout << "tornado";
 	}
+        system("pause");
 }
 void World::setWeather() {
 	int temp;
 	srand(temp);
-	weather = rand()*rand()%10000;
+	weather = rand()*rand()%100;
 	doWeather();
 }
 
@@ -113,7 +114,7 @@ ostream& operator<<(ostream& c,World& world){
 	c << judul << tmp << white;
 	if (world.getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n" << white;
 	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian:\n" << white;
-    if (world.getPlayer()->getCurArea()->typeArea == 2) c << "Toko:\n" << white;
+        if (world.getPlayer()->getCurArea()->typeArea == 2) c << "Toko:\n" << white;
 	c << (world.getPlayer()->getCurArea());
 
 
