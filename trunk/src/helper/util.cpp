@@ -1,14 +1,16 @@
 #include "util.h"
 
+Utilities* Utilities::utilities = NULL;
+
 Utilities::Utilities(){
 }
 
-Utilities* Utilities::getInstances(){
-	if (utilities == NULL) {
-		utilities = new Utilites();
-	} else {
-		return utilites;
+Utilities& Utilities::getInstances(){
+	if (Utilities::utilities == NULL) {
+		Utilities::utilities = new Utilities();
 	}
+
+	return *(Utilities::utilities);
 }
 
 void Utilities::setBackground(int B){
@@ -17,7 +19,7 @@ void Utilities::setBackground(int B){
 	color |= B;
 	draw();
 }
-void Utilities::setForeground(int);{
+void Utilities::setForeground(int B){
 	color &= 0xF0;
 	color|=B;
 	draw();
