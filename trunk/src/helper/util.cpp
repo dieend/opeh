@@ -19,16 +19,25 @@ void Utilities::setBackground(int B){
 	color |= B;
 	draw();
 }
-void Utilities::setForeground(int B){
+void Utilities::setForeground(int F){
 	color &= 0xF0;
-	color|=B;
+	color|=F;
 	draw();
 }
+void Utilities::setColor(int B,int F){
+    Utilities::setBackground(B);
+    Utilities::setForeground(F);
+}
+
 void Utilities::resetColor(){
 	color =0x07;
 	draw();
 }
 void Utilities::draw(){
-	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
+    HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hStdout, color);
+}
+
+void Utilities::destroy() {
+    if (Utilities::utilities != NULL) delete Utilities::utilities;
 }

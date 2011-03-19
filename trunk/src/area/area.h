@@ -1,6 +1,6 @@
 #ifndef AREA_H
 #define AREA_H
-#include "../helper/color.h"
+#include "../helper/util.h"
 #include "../grid/grid.h"
 #include "../point/point.h"
 #include "../player/player.h"
