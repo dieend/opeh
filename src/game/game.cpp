@@ -108,6 +108,10 @@ bool Game::doPerintah() {
                     world->getDwarf(paramInt[0]-1)->wakeUp();
                 } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
                     world->getTime()->nextDay();
+					world->getPlayer()->getCurGrid()->setType(GLAHAN);
+					world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
+					world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
+					world->getPlayer()->setArah(1);
                 }
             } else if (perintah == "status") {
                     cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;

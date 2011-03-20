@@ -1,16 +1,17 @@
 #include "item.h"
+#include <iomanip>
+#include <iostream>
+using namespace std;
 
 
 using namespace std;
 
 Item :: Item()
 {
-	cout<<"ctor Item"<<endl;
 }
 
 Item :: ~Item()
 {
-	cout<<"dtor Item"<<endl;
 }
 
 int Item :: getCostBuy() const

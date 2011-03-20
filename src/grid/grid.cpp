@@ -21,7 +21,6 @@ Grid::Grid(const Grid& G)
 
 Grid::~Grid()
 {
-    cout << "grid destruct\n";
 }
 
 Point Grid::getPosisi() const

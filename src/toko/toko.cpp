@@ -1,36 +1,37 @@
 #include "toko.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 Toko :: Toko()//konstruktor
 {
-	cout<<"ctor Toko"<<endl;
 }
 
 Toko :: Toko(const Toko&)//copy konstruktor
 {
-	cout<<"cctor Toko"<<endl;
 }
 
 Toko :: ~Toko() //destruktor
 {
-	cout<<"dtor Toko"<<endl;
 }
 
 
 void Toko::listItem()
 {
-	cout << "Nama Item \t" << "Harga Beli item \t" << "Harga Jual item \t" <<"\n";
-	cout << "Kentang\t" <<"Rp 150\t"<<"Rp 720\t"<<"\n";
-	cout << "Lobak\t" <<"Rp 120\t"<<"Rp 540\t"<<"\n";
-	cout << "Timun\t" <<"Rp 200\t"<<"Rp 900\t"<<"\n";
-	cout << "Kubis\t" <<"Rp 500\t"<<"Rp 2.250\t"<<"\n";
-	cout << "Jagung\t" <<"Rp 300\t"<<"Rp 900\t"<<"\n";
-	cout << "Tomat\t" <<"Rp 200\t"<<"Rp 540\t"<<"\n";
-	cout << "Bawang\t" <<"Rp 150\t"<<"Rp 720\t"<<"\n";
-	cout << "Nanas\t" <<"Rp 1.000\t"<<"Rp 4.500\t"<<"\n";
-	cout << "Wortel\t" <<"Rp 300\t"<<"Rp 1080\t"<<"\n";
-	cout << "Terong\t" <<"Rp 120\t"<<"Rp 720\t"<<"\n";
-	cout << "Ubi\t" <<"Rp 300\t"<<"Rp 1.080\t"<<"\n";
-	cout << "Paprika\t" <<"Rp 150\t"<<"Rp 360\t\n";
+	cout << char(201); for (int i = 1; i <= 10; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(187) << endl;
+	cout << char(186) << setw(10) << left << "Nama Item"; cout << char(186) << setw(16)<< right << "Harga Beli item";cout << char(186) << setw(16)<< right << "Harga Jual item" << char(186) << endl;
+	cout << char(204); for (int i = 1; i <= 10; i++) {cout << char(205);} cout << char(206); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(206); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(185) << endl;
+	cout << char(186) << setw(10) << left << "Kentang"; cout << char(186) << setw(16)<< right <<"Rp 150"; cout << char(186) << setw(16)<< right <<"Rp 720"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Lobak"; cout << char(186) << setw(16)<< right <<"Rp 120"; cout << char(186) << setw(16)<< right <<"Rp 540"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Timun"; cout << char(186) << setw(16)<< right <<"Rp 200"; cout << char(186) << setw(16)<< right <<"Rp 900"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Kubis"; cout << char(186) << setw(16)<< right <<"Rp 500"; cout << char(186) << setw(16)<< right <<"Rp 2.250"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Jagung"; cout << char(186) << setw(16)<< right <<"Rp 300"; cout << char(186) << setw(16)<< right <<"Rp 900"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Tomat"; cout << char(186) << setw(16)<< right <<"Rp 200"; cout << char(186) << setw(16)<< right <<"Rp 540"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Bawang"; cout << char(186) << setw(16)<< right <<"Rp 150"; cout << char(186) << setw(16)<< right <<"Rp 720"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Nanas"; cout << char(186) << setw(16)<< right <<"Rp 1.000"; cout << char(186) << setw(16)<< right <<"Rp 4.500"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Wortel"; cout << char(186) << setw(16)<< right <<"Rp 300"; cout << char(186) << setw(16)<< right <<"Rp 1080"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Terong"; cout << char(186) << setw(16)<< right <<"Rp 120"; cout << char(186) << setw(16)<< right <<"Rp 720"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Ubi"; cout << char(186) << setw(16)<< right <<"Rp 300"; cout << char(186) << setw(16)<< right <<"Rp 1.080"<<char(186) << endl;
+	cout << char(186) << setw(10) << left << "Paprika"; cout << char(186) << setw(16)<< right <<"Rp 150"; cout << char(186) << setw(16)<< right <<"Rp 360"<<char(186) << endl;
+	cout << char(200); for (int i = 1; i <= 10; i++) {cout << char(205);} cout << char(202); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(202); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(188) << endl;
 }

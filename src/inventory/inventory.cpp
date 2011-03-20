@@ -1,6 +1,7 @@
 #include "inventory.h"
 #include "../item/item.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 Inventory::Inventory()//konstruktor
@@ -12,7 +13,6 @@ Inventory::Inventory()//konstruktor
 
 Inventory::Inventory(const Inventory& inventory)//copy konstruktor
 {
-	cout <<"cctro"<<endl;
 }
 
 Inventory& Inventory::operator= (const Inventory& inventory) {
@@ -25,24 +25,23 @@ Inventory& Inventory::operator= (const Inventory& inventory) {
 
 Inventory::~Inventory()//destructor
 {
-	cout<<"dtor Item"<<endl;
 }
 
 int Inventory::listItem()
 {
-	cout << "Nama Item \t" <<endl; cout << "Harga Beli item \t" <<endl;cout << "Harga Jual item \t" <<endl;cout <<"\n"<<endl;
-	cout << "Kentang\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Lobak\t" <<endl; cout <<"Rp 120\t"<<endl; cout <<"Rp 540\t"<<endl;cout <<"\n"<<endl;
-	cout << "Timun\t" <<endl; cout <<"Rp 200\t"<<endl; cout <<"Rp 900\t"<<endl;cout <<"\n"<<endl;
-	cout << "Kubis\t" <<endl; cout <<"Rp 500\t"<<endl; cout <<"Rp 2.250\t"<<endl;cout <<"\n"<<endl;
-	cout << "Jagung\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 900\t"<<endl;cout <<"\n"<<endl;
-	cout << "Tomat\t" <<endl; cout <<"Rp 200\t"<<endl; cout <<"Rp 540\t"<<endl;cout <<"\n"<<endl;
-	cout << "Bawang\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Nanas\t" <<endl; cout <<"Rp 1.000\t"<<endl; cout <<"Rp 4.500\t"<<endl;cout <<"\n"<<endl;
-	cout << "Wortel\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 1080\t"<<endl;cout <<"\n"<<endl;
-	cout << "Terong\t" <<endl; cout <<"Rp 120\t"<<endl; cout <<"Rp 720\t"<<endl;cout <<"\n"<<endl;
-	cout << "Ubi\t" <<endl; cout <<"Rp 300\t"<<endl; cout <<"Rp 1.080\t"<<endl;cout <<"\n"<<endl;
-	cout << "Paprika\t" <<endl; cout <<"Rp 150\t"<<endl; cout <<"Rp 360\t"<<endl;;
+	cout << setw(10) << left << "Nama Item " <<endl; cout << setw(18)<< right << "Harga Beli item" <<endl;cout << setw(18)<< right << "Harga Jual item" <<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Kentang" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Lobak" <<endl; cout << setw(18)<< right <<"Rp 120"<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Timun" <<endl; cout << setw(18)<< right <<"Rp 200"<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Kubis" <<endl; cout << setw(18)<< right <<"Rp 500"<<endl; cout << setw(18)<< right <<"Rp 2.250"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Jagung" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Tomat" <<endl; cout << setw(18)<< right <<"Rp 200"<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Bawang" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Nanas" <<endl; cout << setw(18)<< right <<"Rp 1.000"<<endl; cout << setw(18)<< right <<"Rp 4.500"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Wortel" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 1080"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Terong" <<endl; cout << setw(18)<< right <<"Rp 120"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Ubi" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 1.080"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Paprika" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 360"<<endl;;
 return 0;
 }
 

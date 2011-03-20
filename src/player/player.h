@@ -74,6 +74,10 @@ public :
 	
 	*/
 	
+	void setCurGrid(Grid * a);
+	
+	void setArah(int);
+	
 	//metode umum untuk Player
 	void plow();
 	/*
