@@ -1,5 +1,6 @@
 #include "dwarf.h"
 #include "map.h"
+#include "../item/item.h"
 #include <iostream>
 #include <deque>
 #include <utility>
@@ -113,10 +114,85 @@ int Dwarf::getType()
 }
 
 //dwarf melakukan perkerjaan , return true jika pekerjaan berhasil dilakukan false jika tidak
-bool Dwarf::doJob()
+int Dwarf::doJob()
 {
-    
+	int retval;
+    if (type==0)//dojob untuk type 0 adalah water
+	{
+		retval=0;
+		int tipe;
+		Grid* front = getFrontGrid();
+		Grid_Plant* tanaman;
+		Grid_Lahan* lahan;
+		Point p;
+	
+		if (front != NULL) {
+			tipe = front->getType();
+			p = front->getPosisi();
+			if (tipe == GLAHAN) {
+				lahan = (Grid_Lahan*)front;
+				lahan->setSiram();
+			} else if (tipe == GTANAMAN) {
+				tanaman = (Grid_Plant*)front;
+				if (!(tanaman->isWatered())) {
+				tanaman->setSiram();
+				}
+			}
+		}
+		return retval;
+	}
+	else if (type==1)//dojob untuk type 1 adalah harvest
+	{
+		int tipe;
+		int fase;
+		Grid* front = getFrontGrid();
+		Grid_Plant* tanaman;
+		Point p;	
+		if (front != NULL) {
+			tipe = front->getType();
+			p = front->getPosisi();
+			if (tipe == GTANAMAN) {
+				tanaman = (Grid_Plant*)front;
+				fase = tanaman->getFase();
+				if ((fase == DEWASA) || (fase == SDEWASA)) {
+					tanaman->setPanen();
+					Item *itdwarf = Item::makeBuah(tanaman);
+					retval=itdwarf->getCostSell();
+					delete itdwarf;
+				// if (tanaman->getFase() == MATI) {
+					// delete front;
+					// front = new Grid_Lahan(p,0,0);
+					// curArea->setGrid(front);
+				// }
+				}
+			}
+		}
+		return retval;
+	}
+	else if (type==2)//dojob untuk type 2 adalah slash
+	{
+		retval=0;
+		int tipe;
+		Grid* front = getFrontGrid();
+		Grid_Plant* tanaman;
+		Point p;
+	
+		if (front != NULL) {
+			tipe = front->getType();
+			p = front->getPosisi();
+			if (tipe == GTANAMAN) {
+				tanaman = (Grid_Plant*)front;
+				if ((tanaman->getFase() >= REMAJA) && (tanaman->getFase() < DBIBIT )) {
+					delete front;
+					front = new Grid_Lahan(p,GLAHAN,0);
+					Field->setGrid(front);
+				}
+			}
+		}
+		return retval;
+	}
 }
+	
 
 //mengaktifkan dwarf
 void Dwarf::wakeUp()
@@ -398,6 +474,7 @@ void Dwarf::oneMove()
            //mengganti karakter 3 menjadi 4
            cmap->setvalpoint(getFrontpoint(),'4');
            cmap->sett0(cmap->gett0()-1);
+		   doJob();
          }
          else if (type==1)
          {
@@ -405,12 +482,14 @@ void Dwarf::oneMove()
            cmap->setvalpoint(getFrontpoint(),'2');
            cmap->sett1(cmap->gett1()-1);
            cmap->sett2(cmap->gett2()+1);
+		   doJob();
          }
          else if (type==2)
          {
            //dojob() untuk slash, mengganti karakter 2 menjadi ' '
            cmap->setvalpoint(getFrontpoint(),' ');
            cmap->sett2(cmap->gett2()-1);
+		   doJob();
          }
        }
        else
