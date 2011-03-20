@@ -1,10 +1,10 @@
 #include "time.h"
 #include <iostream>
-#define normal 0
-#define paralyzed 1
-#define poisoned 2
-#define fullpower 3
-#define sick 4
+#define NORMAL 0
+#define PARALYZED 1
+#define POISONED 2
+#define FULLPOWER 3
+#define SICK 4
 
 using namespace std;
 Time::Time() : minutes(0),jam(6),day(1),season(0),cjam(false),cday(false),cseason(false),act(0),stime(0)//setting menit, jam season, dan counter menjadi 0
@@ -34,7 +34,7 @@ septu_jamasoka: untuk sick 9 jam trus lgsung bgun keesokan hari*/
 void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
 {
     cday = false;
-  if (stp==normal)//keadaan normal//
+  if (stp==NORMAL)//keadaan normal//
   {
       if (act+1<=6)
         act++;
@@ -44,15 +44,15 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         act=1;
       }
   }
-  else if (stp==paralyzed)//paralyzed, yang mempengaruhi : normal, fullpower,sick
+  else if (stp==PARALYZED)//paralyzed, yang mempengaruhi : normal, fullpower,sick
   {
-    if (stime==normal)//normal
+    if (stime==NORMAL)//normal
     {
       for (int i = 1; i <= 4; i++) {
 		nextJam();
 	  }
     }
-    else if (stime==fullpower)//full power
+    else if (stime==FULLPOWER)//full power
     {
       if (act+6<=72)
       {
@@ -65,11 +65,11 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       else 
       {
         act=(act+6)%72;
-        stime=normal;//setting status time jadi normal
+        stime=NORMAL;//setting status time jadi normal
         nextMinutes();
       }
     }
-    else if (stime==sick)//sick, mempengaruhi 
+    else if (stime==SICK)//sick, mempengaruhi
     {
       if (act+6<=162)
       {
@@ -79,30 +79,30 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       }
       else 
       {
-        stime=normal;
+        stime=NORMAL;
         act=(act+6)%162;//setting aksi
         nextDay();
       }
     }
   }
-  else if (stp==poisoned)//tidak mempengaruhi stime
+  else if (stp==POISONED)//tidak mempengaruhi stime
   {
     nextDay();
-    stime=normal;
+    stime=NORMAL;
     act=1;
   }
-  else if (stp==fullpower)//full power mempengaruhi normal,poisoned
+  else if (stp==FULLPOWER)//full power mempengaruhi normal,poisoned
   {
-    if (stime==normal)
+    if (stime==NORMAL)
     {
-      stime=fullpower;
+      stime=FULLPOWER;
       if (act==6)
       {
         nextMinutes();
       }
       act=1;
     }
-    else if (stime==fullpower)
+    else if (stime==FULLPOWER)
     {
       if (act+1<=72)
       {
@@ -114,11 +114,11 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       }
       else
       {
-        stime=normal;
+        stime=NORMAL;
         act=1;
       }
     }
-    else if (stime==sick)
+    else if (stime==SICK)
     {
       if (act+1<=162)
       {
@@ -126,29 +126,29 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         {
           nextMinutes();
           act=1;
-          stime=normal;
+          stime=NORMAL;
         }
       }
       else 
       {
         nextDay();
-        stime=normal;
+        stime=NORMAL;
         act=1;
       }
     }
   }
-  else if (stp==sick)
+  else if (stp==SICK)
   {
-    if (stime==normal)
+    if (stime==NORMAL)
     {
-      stime=sick;
+      stime=SICK;
       if (act==6)
       {
         nextMinutes();
       }
       act=1;
     }
-    else if (stime==fullpower)
+    else if (stime==FULLPOWER)
     {
       if (act+1<=162)
       {
@@ -158,9 +158,9 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         }
       }
       act=1;
-      stime=normal;
+      stime=NORMAL;
     }
-    else if (stime==sick)
+    else if (stime==SICK)
     {
       if (act+1<=162)
       {
@@ -174,7 +174,7 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
       {
         nextDay();
         act=1;
-        stime=normal;
+        stime=NORMAL;
       }
     }
   }       
