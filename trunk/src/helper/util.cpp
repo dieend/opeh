@@ -100,3 +100,61 @@ void Utilities::resetFG(){
     color |= F;
     draw();
 }
+
+void Utilities::printPeta(ostream& c)
+{
+	c << char(201)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(187) << endl;
+	c << char(186)<<"                  OOO   PPPP   EEEE  HH HH                             "<< char(186) << endl;
+	c << char(186)<<"  _____          OO OO  PP PP  EE    HH HH                             "<< char(186) << endl;
+	c << char(186)<<" ////"<<char(92) << char(92) << char(92)<<"         OO OO  PPPP   EEEE  HHHHH                             "<< char(186) << endl;
+	c << char(186)<<"////  "<<char(92) << char(92) << char(92) <<"        OO OO  PP     EE    HH HH                             "<< char(186) << endl;
+	c << char(186)<<"|___[]__|         OOO   PP     EEEE  HH HH                             "<< char(186) << endl;
+	c << char(204)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"                                                            _____      "<< char(186) << endl;
+	c << char(186)<<"                                      " << char(31)  <<"     " << char(31)  <<"     " << char(31)  <<"        |_____|     "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
+	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(204)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(203) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(203) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"  Musim    "<<char(186)<<"   Nama Player                     "<<char(186)<<"    Item 1             "<< char(186) << endl;
+	c << char(204)<<char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) <<char(206)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) <<char(206) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"  Tanggal  "<<char(186)<<"   Status                          "<<char(186)<<"    Item 2             "<< char(186) << endl;
+	c << char(204)<<char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) <<char(206)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) <<char(206) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"  07.30    "<<char(186)<<"                                   "<<char(186)<<"    Item 3             "<< char(186) << endl;
+	c << char(200)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188) << endl;
+
+}

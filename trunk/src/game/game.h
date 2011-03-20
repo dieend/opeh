@@ -43,7 +43,6 @@ class Game {
 		void getPerintah();
 		bool doPerintah();
 		virtual ~Game();
-		void printPeta();
 
 };
 #endif

@@ -1,6 +1,7 @@
 #ifndef dwarf_H
 #define dwarf_H
 #include "../point/point.h"
+#include "../area/area.h"
 #include "map.h"
 class Dwarf
 {
@@ -26,6 +27,7 @@ private :
         int status;//wakeup(status=1),sleep(status=0)
         const int type;//dwarf type, 0 for water,1 for harvest,2 for slash
 	map currmap;
+        Area* curArea;
 };
 
 
