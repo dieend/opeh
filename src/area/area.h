@@ -4,6 +4,7 @@
 #include "../grid/grid.h"
 #include "../point/point.h"
 #include "../player/player.h"
+#include "../dwarf/dwarf.h"
 #include <iostream>
 #include <string>
 #define MAXROW 10
@@ -16,11 +17,12 @@
 using namespace std;
 
 class Player;
-
+class Dwarf;
 class Area {
 private:
 	Grid * grid[10][10];
         Player* player;
+        Dwarf* dwarf[3];
 //        Player* player();
 	/* Merupakan array dari Grid yang berukuran 10x10.
 	*/
@@ -29,7 +31,9 @@ public:
 	/* menandakan jenis Area;
 	*/
         Player* getPlayer();
+        Dwarf* getDwarf(int);
         void setPlayer(Player*);
+        void setDwarf(int, Dwarf*);
         int getType();
 	Area(int tipe);
 	/*  Constructor Area dengan menginstansiasi typeArea dengan tipe.

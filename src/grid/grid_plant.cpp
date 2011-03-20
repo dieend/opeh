@@ -1189,6 +1189,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().resetBG();
 			}		
 	    }
+        return c;
 }
 Grid_Plant::Grid_Plant(int newTypeItem)
 {

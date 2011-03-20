@@ -7,25 +7,27 @@
 #define chartoint(c) int(c)-int('0')
 using namespace std;
 
-//inisialisasi map baru
-map *Dwarf::cmap= new map;
 
+//inisialisasi map baru
+map *Dwarf::cmap= new map();
+
+Area* Dwarf::Field = NULL;
 //inisialisasi dwarf dengan menggunakan int ntype
-Dwarf::Dwarf(Area * fieldinput,int ntype) : type(ntype),status(0),direction(2)
+Dwarf::Dwarf(int ntype) : type(ntype),status(0),direction(2)
 {
-  field=fieldinput;
   if (type==0)
   {
-    cGrid=fieldinput->getGrid(3,8);
+    cGrid=Field->getGrid(2,7);
   }
   else if (type==1)
   {
-    cGrid=fieldinput->getGrid(3,9);
+    cGrid=Field->getGrid(2,8);
   }
   else if (type==2)
   {
-    cGrid=fieldinput->getGrid(3,10);
+    cGrid=Field->getGrid(2,9);
   }
+  cGrid->setType(type+10);
   dwarfdqp = new deque<Point>;
   if (ntype==0)
   {
@@ -49,7 +51,7 @@ Dwarf::~Dwarf()
 {
 }
 
-void setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
+void Dwarf::setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
 {
 //setting status
   d0.sleep();
@@ -77,8 +79,8 @@ void setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
   {
     d0.cGrid->setType(GLAHAN);
   }
-  d0.cGrid=Field->getGrid(2,7);
-  cGrid->setType(WKURCACI);
+  d0.cGrid=d0.Field->getGrid(2,7);
+  d0.cGrid->setType(WKURCACI);
   
   if (d1.cGrid->getPosisi().getX()<3)
   {
@@ -88,8 +90,8 @@ void setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
   {
     d1.cGrid->setType(GLAHAN);
   }
-  d1.cGrid=Field->getGrid(2,8);
-  cGrid->setType(HKURCACI);
+  d1.cGrid=d1.Field->getGrid(2,8);
+  d1.cGrid->setType(HKURCACI);
   
   if (d2.cGrid->getPosisi().getX()<3)
   {
@@ -99,8 +101,8 @@ void setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
   {
     d2.cGrid->setType(GLAHAN);
   }
-  d2.cGrid=Field->getGrid(2,9);
-  cGrid->setType(SKURCACI);
+  d2.cGrid=d2.Field->getGrid(2,9);
+  d2.cGrid->setType(SKURCACI);
   
 }
   
@@ -113,7 +115,7 @@ int Dwarf::getType()
 //dwarf melakukan perkerjaan , return true jika pekerjaan berhasil dilakukan false jika tidak
 bool Dwarf::doJob()
 {
-  
+    
 }
 
 //mengaktifkan dwarf
@@ -194,22 +196,25 @@ void Dwarf::setmap()
   cmap->sett0(0);
   cmap->sett1(0);
   cmap->sett2(0);
-  for(i=0;i<MAXBARIS;++i)
+  for(i=0;i<MAXROW;i++)
   {
-    for(j=0;j<MAXKOLOM;++i)
+    for(j=0;j<MAXCOLUMN;j++)
     {
-      Grid *tGrid=field->getGrid(i,j);
+      Grid* tGrid=Field->getGrid(i,j);
       int tG=tGrid->getType();
       if ((tG==GSELLINGBOX) || (tG==GUNSTEP))
       {
+          cout << "sellbox";
         cmap->setmapij(i+1,j+1,'#');
       }
-      else if (tG==GPLAYER)
+      else if (tG==GPLAYER || tG==HKURCACI || tG==WKURCACI || tG==SKURCACI)
       {
-        cmap->setmapij(i+1,j+1,'3');
+          cout << "player";
+          cmap->setmapij(i+1,j+1,'3');
       }
       else if (tG==GTANAMAN)
       {
+          cout << "tanaman";
         Grid_Plant * tGP=(Grid_Plant *)tGrid;
         int fase=tGP->getFase();
         
@@ -226,13 +231,16 @@ void Dwarf::setmap()
         else if (!tGP->isWatered())
         {
           cmap->setmapij(i+1,j+1,'0');
-          cmap->sett3(cmap->gett3()+1);
+          cmap->sett0(cmap->gett0()+1);
         }
         else if (tGP->isWatered())
         {
           cmap->setmapij(i+1,j+1,'4');
         }
+      } else {
+          cmap->setmapij(i+1,j+1,' ');
       }
+
     }
   }
 }
@@ -496,32 +504,61 @@ Grid *Dwarf::getFrontGrid()
 	int temp;
 	
 	
-	p = curGrid->getPosisi();
-	if ((arahHadap == 1) && (p.getY() < 9)) {
+	p = cGrid->getPosisi();
+	if ((direction == 1) && (p.getY() < 9)) {
 		temp = p.getY();
 		temp++;
 		p.setY(temp);
-		front = curArea->getGrid(p);
+		front = Field->getGrid(p);
 		return front;
-	} else if ((arahHadap == 2) && (p.getX() < 9)) {
+	} else if ((direction == 2) && (p.getX() < 9)) {
 		temp = p.getX();
 		temp++;
 		p.setX(temp);
-		front = curArea->getGrid(p);
+		front = Field->getGrid(p);
 		return front;
-	} else if ((arahHadap == 3) && (p.getY() > 0)) {
+	} else if ((direction == 3) && (p.getY() > 0)) {
 		temp = p.getY();
 		temp--;
 		p.setY(temp);
-		front = curArea->getGrid(p);
+		front = Field->getGrid(p);
 		return front;
-	} else if ((arahHadap == 4) && (p.getX() > 0)) {
+	} else if ((direction == 4) && (p.getX() > 0)) {
 		temp = p.getX();
 		temp--;
 		p.setX(temp);
-		front = curArea->getGrid(p);
+		front = Field->getGrid(p);
 		return front;
 	} else {
 		return NULL;
 	}
+}
+
+
+ostream& operator<<(ostream& c, Dwarf* p){
+    if (p->getType()==0){
+        Utilities::getInstances().setFG(BLUE);
+    } else if (p->getType()==1){
+        Utilities::getInstances().setFG(GREEN);
+    } if (p->getType()==2){
+        Utilities::getInstances().setFG(RED);
+    }
+    int xUL = p->cGrid->getPosisi().getX()*4+11;
+    int yUL = p->cGrid->getPosisi().getY()*6+7;
+    Utilities::getInstances().gotoxy(yUL+2,xUL+1);
+    if (p->getDirection() == 1) {
+        c << (char) 16;
+    } else if (p->getDirection() == 2) {
+        c << (char) 31;
+    } else if (p->getDirection() == 3) {
+        c << (char) 17;
+    } else {
+        c << (char) 30;
+    }
+    Utilities::getInstances().resetFG();
+    return c;
+}
+
+map* Dwarf::getMap(){
+    return cmap;
 }

@@ -12,12 +12,16 @@
 #define GSELLINGBOX 7
 #define GINVBOX 8
 #define GUNSTEP 9
+#define WKURCACI 10
+#define HKURCACI 11
+#define SKURCACI 12
 #define BIBIT 0
 #define SBIBIT 1
 #define REMAJA 2
 #define SREMAJA 3
 #define DEWASA 4
 #define SDEWASA 5
+
 #define MATI 6
 #define DBIBIT 7
 #define PLOW 0
