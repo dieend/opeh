@@ -62,16 +62,9 @@ Area::Area(int tipe)
 		G(8,0,2);G(8,1,9);G(8,2,9);G(8,3,2);G(8,4,2);G(8,5,2);G(8,6,9);G(8,7,9);G(8,8,9);G(8,9,9);
 		G(9,0,2);G(9,1,9);G(9,2,9);G(9,3,2);G(9,4,2);G(9,5,2);G(9,6,9);G(9,7,9);G(9,8,9);G(9,9,9);
 	} else {
-            for (int i=0;i<3; i++) {
-                for (int j=0; j<MAXCOLUMN; j++) {
-                    Point P(i,j);
-                    if ((i==1 || i==2) && (j==8 || j==9)) {
-                        grid[i][j] = new Grid(P,GSELLINGBOX,0);
-                    } else {
-                        grid[i][j] = new Grid(P,2,0);
-                    }
-                }
-            }
+            G(0,0,2);G(0,1,9);G(0,2,9);G(0,3,9);G(0,4,9);G(0,5,9);G(0,6,9);G(0,7,2);G(0,8,GSELLINGBOX);G(0,9,GSELLINGBOX);
+            G(1,0,2);G(1,1,2);G(1,2,2);G(1,3,2);G(1,4,2);G(1,5,2);G(1,6,2);G(1,7,2);G(1,8,GSELLINGBOX);G(1,9,GSELLINGBOX);
+            G(2,0,2);G(2,1,2);G(2,2,2);G(2,3,2);G(2,4,2);G(2,5,2);G(2,6,2);G(2,7,2);G(2,8,2);G(2,9,2);
             for (int i=3; i<MAXROW; i++) {
                 for (int j=0; j<MAXCOLUMN; j++) {
                     Point P(i,j);
@@ -154,8 +147,6 @@ ostream& operator<<(ostream& c,Area* area) {
                         Grid_Lahan * L;
                         L = (Grid_Lahan *) grid;
                         c << L;
-                    } else {
-                        c << peta_lahan[i][j];
                     }
                 }
                 c << endl;
@@ -166,6 +157,9 @@ ostream& operator<<(ostream& c,Area* area) {
                 for (int j=0; j<10; j++) {
                     Grid* grid = area->getGrid(i,j);
                     if (grid->getType() == GPLAYER) { //player
+                        Grid_Lahan * L;
+                        L = (Grid_Lahan *) grid;
+                        c << L;
                         Player * p = area->getPlayer();
                         c << p;
                     } else if (grid->getType()== GTANAMAN){ //tanaman

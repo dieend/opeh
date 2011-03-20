@@ -103,6 +103,7 @@ void Utilities::resetFG(){
 
 void Utilities::printPeta(ostream& c)
 {
+    gotoxy(0,0);
 	c << char(201)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(187) << endl;
 	c << char(186)<<"                  OOO   PPPP   EEEE  HH HH                             "<< char(186) << endl;
 	c << char(186)<<"  _____          OO OO  PP PP  EE    HH HH                             "<< char(186) << endl;
