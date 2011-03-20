@@ -46,12 +46,12 @@ ostream& operator<<(ostream& c, Grid_Lahan* GL){
     if (GL->getFase()==PLOW) Utilities::getInstances().setBG(YELLOW);
     if (GL->getFase()==SPLOW) Utilities::getInstances().setBG(LYELLOW);
     if (GL->getFase()==LAND) Utilities::getInstances().setBG(GREEN);
-    int xUL = GL->getPosisi().getX()*4+11;
+    int xUL = GL->getPosisi().getX()*4+10;
     int yUL = GL->getPosisi().getY()*6+7;
     for (int i=xUL; i<xUL+3;i++){
         for (int j=yUL;j<yUL+5; j++) {
             Utilities::getInstances().gotoxy(j,i);
-            c << ".";
+            c << (char)176;
         }
     }
     Utilities::getInstances().resetBG();
