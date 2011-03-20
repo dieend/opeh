@@ -539,7 +539,7 @@ ostream& operator<<(ostream& c, Dwarf* p){
     if (p->getType()==0){
         Utilities::getInstances().setFG(BLUE);
     } else if (p->getType()==1){
-        Utilities::getInstances().setFG(GREEN);
+        Utilities::getInstances().setFG(YELLOW);
     } if (p->getType()==2){
         Utilities::getInstances().setFG(RED);
     }

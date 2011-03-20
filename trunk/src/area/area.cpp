@@ -168,6 +168,15 @@ ostream& operator<<(ostream& c,Area* area) {
                         c << L;
                         Player * p = area->getPlayer();
                         c << p;
+                    }else if (grid->getType()==WKURCACI){
+                        Dwarf* d = area->getDwarf(0);
+                        c << d;
+                    }else if (grid->getType()==HKURCACI){
+                        Dwarf* d = area->getDwarf(1);
+                        c << d;
+                    }else if (grid->getType()==SKURCACI){
+                        Dwarf* d = area->getDwarf(2);
+                        c << d;
                     } else if (grid->getType()== GTANAMAN){ //tanaman
                         Grid_Plant * plant;
                         plant = (Grid_Plant*) grid;

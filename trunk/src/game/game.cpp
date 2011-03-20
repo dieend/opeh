@@ -130,10 +130,10 @@ bool Game::doPerintah() {
             } else if (perintah == "harvest") {
                     world->getPlayer()->harvest();
             } else if (perintah == "wake_up") {
-                    world->getDwarf(paramInt[0]-1)->wakeUp();
+                    world->getDwarf(paramInt[0])->wakeUp();
             } else if (perintah == "sleep" ) {
                 if (0 < paramInt[0] && paramInt[0]<=3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
-                    world->getDwarf(paramInt[0]-1)->wakeUp();
+                    world->getDwarf(paramInt[0])->sleep();
                 } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
                     world->getTime()->nextDay();
 					world->getPlayer()->getCurGrid()->setType(GJALAN);
@@ -142,9 +142,9 @@ bool Game::doPerintah() {
 					world->getPlayer()->setArah(1);
                 }
             } else if (perintah == "status") {
-                    cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
-                    cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
-                    cout << 3 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 1 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 2 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
             } else if (perintah == "save") {
                     World::save("save.oph",*world);
             } else if (perintah == "exit") {
@@ -155,7 +155,7 @@ bool Game::doPerintah() {
                     system("cls");
                     Toko * toko = (Toko*) world->getPlayer()->getFrontGrid();
                     toko->listItem();
-                    getch();
+                    cin.get();
                 } else throw 2;
             } else if (perintah == "buy") {
 					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
@@ -208,9 +208,6 @@ bool Game::doPerintah() {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
                 world->getTime()->next10Minutes(world->getPlayer()->getStatus());
                 Dwarf::setmap();
-                Utilities::getInstances().gotoxy(0,75);
-                Dwarf::getMap()->performmap();
-                system("pause");
                 Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
                 if (world->getPlayer()->getStatus() == 2) {
                         world->getPlayer()->teleport(world->getArea(0));
