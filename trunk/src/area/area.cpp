@@ -122,13 +122,8 @@ ostream& operator<<(ostream& c,Area* area) {
                     if (area->getGrid(i,j)->getType() == 1) {
                         Player * p = area->getPlayer();
                         c << p;
-                    } else {
-                        Utilities::getInstances().setFG(YELLOW);
-                        c << peta_rumah[i][j];
-                        Utilities::getInstances().resetFG();
                     }
                 }
-                c << endl;
             }
             Utilities::getInstances().resetBG();
 	} else if (area->typeArea==LAHAN) {
