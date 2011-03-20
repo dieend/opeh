@@ -110,8 +110,17 @@ void Utilities::printPeta(ostream& c)
 	c << char(186)<<"////  "<<char(92) << char(92) << char(92) <<"        OO OO  PP     EE    HH HH                             "<< char(186) << endl;
 	c << char(186)<<"|___[]__|         OOO   PP     EEEE  HH HH                             "<< char(186) << endl;
 	c << char(204)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
 	c << char(186)<<"                                                            _____      "<< char(186) << endl;
 	c << char(186)<<"                                      " << char(31)  <<"     " << char(31)  <<"     " << char(31)  <<"        |_____|     "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
 	c << char(186)<<"                                                                       "<< char(186) << endl;
 	c << char(186)<<"      ----- ----- ----- ----- ----- ----- ----- ----- ----- -----      "<< char(186) << endl;
 	c << char(186)<<"     |     |     |     |     |     |     |     |     |     |     |     "<< char(186) << endl;
