@@ -17,12 +17,13 @@ public :
        void performStatus();
        void setPosition(Point);
        Point getPosition();
+       Point getFrontpoint();
        void setDirection(int);
        int getDirection();
-       int getsuccess();
-       void bfsdwarf();
-       static void setmap();
-       static void nextMove(Dwarf&,Dwarf&,Dwarf&);
+       static void setmap();//setting map agar mengikuti grid
+       void bfsdwarf();//setting gerakan terpendek
+       void oneMove();
+       static void nextMove(Dwarf&,Dwarf&,Dwarf&);//setting 1 gerakan ke depan masing-masing kurcaci
 private :
         //Grid *cGrid;
         //area[1] *field;
