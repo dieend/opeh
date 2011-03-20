@@ -1,7 +1,6 @@
 #ifndef map_H
 #define map_H
-#include <deque>
-#include <iostream>
+#include "point.h"
 using namespace std;
 
 class map
@@ -9,16 +8,28 @@ class map
 public :
        map();
        ~map();
-       //void setsizer(int nsr);
-       //void setsizec(int nsc);
+       map(const map &);
+       map& operator=(const map&);
        int getsizer();
        int getsizec();
-       void setmapij(int,int,int);
+       void setmapij(int,int,char);
+       char getvalij(int,int);
+       void setvalpoint(Point,char);
+       char getvalpoint(Point);
        void performmap();
+       void sett0(int);
+       void sett1(int);
+       void sett2(int);
+       int gett0();
+       int gett1();
+       int gett2();
 private :
-        int **arr;
-        const int sizer;
-        const int sizec;
+        char **arr;
+        int sizer;
+        int sizec;
+        int t0;//banyaknya 0/water di field
+        int t1;//banyaknya 1/harvest di field
+        int t2;//banyaknya 2/slash di field
 };
 
 
