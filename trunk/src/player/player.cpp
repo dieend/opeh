@@ -154,6 +154,14 @@ void Player::setFrontGrid(Grid * front) {
 	frontp = front;
 }
 
+void Player::setCurGrid(Grid * a) {
+	curGrid = a;
+}
+
+void Player::setArah(int a) {
+	arahHadap = a;
+}
+
 //metode umum untuk Player
 void Player::plow() {
 /*
@@ -417,13 +425,13 @@ void Player::teleport(Area * destination) {
 ostream& operator<<(ostream& c, Player* p){
     Utilities::getInstances().setFG(BLACK);
     if (p->arahHadap == 1) {
-		c << (char) 272;
+		c << (char) 16;
 	} else if (p->arahHadap == 2) {
-		c << (char) 287;
+		c << (char) 31;
 	} else if (p->arahHadap == 3) {
-		c << (char) 273;
+		c << (char) 17;
 	} else {
-		c << (char) 286;
+		c << (char) 30;
 	}
     Utilities::getInstances().resetFG();
     return c;

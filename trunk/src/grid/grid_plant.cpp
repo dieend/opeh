@@ -180,7 +180,6 @@ bool Grid_Plant::isWatered() const
 // mengeluarkan TRUE jika tanaman sudah disiram.
 {
 	if (getFase() % 2 == 1) {
-		cout << "tes2" << endl;
 		return true;
 	} else {
 		return false;
