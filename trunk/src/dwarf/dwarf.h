@@ -14,7 +14,7 @@ public :
        virtual ~Dwarf();
        static void setDefault(Dwarf&,Dwarf&,Dwarf&);
        int getType();
-       bool doJob();
+       int doJob();
        void wakeUp();
        void sleep();
        int getStatus();
