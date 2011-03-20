@@ -331,7 +331,7 @@ void Grid_Plant::setPanenBerulang(bool newPanenBerulang)
 
 ostream& operator<<(ostream& c, Grid_Plant* GP)
 {
-	int xUL = GP->getPosisi().getX()*4+10;
+	int xUL = GP->getPosisi().getX()*4+11;
 	int yUL = GP->getPosisi().getY()*6+7;
     if (GP->getFase() == BIBIT)
 		{

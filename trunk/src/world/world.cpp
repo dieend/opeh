@@ -111,17 +111,11 @@ void World::setWeather() {
 ostream& operator<<(ostream& c,World& world){
 	// belum diimplementasi
 	char tmp[100];
-	sprintf(tmp,"%10sDesa Opeh%10s\n","","");
+        c << (world.getPlayer()->getCurArea());
+/* UNCOMMENT FOR DEBUG
         Utilities::getInstances().setColor(AQUA,BLACK);
 	c << tmp;
         Utilities::getInstances().resetColor();
-	if (world.getPlayer()->getCurArea()->typeArea == 0) c << "Rumah:\n" ;
-	if (world.getPlayer()->getCurArea()->typeArea == 1) c << "Lahan Pertanian:\n" ;
-        if (world.getPlayer()->getCurArea()->typeArea == 2) c << "Toko:\n" ;
-	c << (world.getPlayer()->getCurArea());
-
-
-//* UNCOMMENT FOR DEBUG
         cout << "Player position : " << new Point(world.player->getCurGrid()->getPosisi())<< endl;
         cout << "Player area : " << world.player->getCurArea()->getType() << endl;
         cout << "Area masking: " << endl;
@@ -135,17 +129,18 @@ ostream& operator<<(ostream& c,World& world){
             }
             cout << endl;
         }
-        cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << endl;
-        cout << "Player has status " << world.getPlayer()->getStatus() << endl;
-        cout << "Player has money " << world.getPlayer()->getMoney() << endl;
-        cout << "Player Inventory: " << endl;
-        if (world.player->getInventory()->cekSlot(0)) {cout <<setw(15) <<left <<"slot 0 exist. "; cout <<"jumlah "<< world.player->getInventory()->getJumlah(0);}if (world.player->getInventory()->cekSlot(1)) {cout << setw(15) <<left <<"slot 1 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(1);}if (world.player->getInventory()->cekSlot(2)) {cout << setw(15) <<left <<"slot 2 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(2);} cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(0)->isBibit();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(1)->isBibit();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(2)->isBibit();cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(1)->getTipeBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(2)->getTipeBuah();cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(0)->getTipeTanaman();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(1)->getTipeTanaman();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(2)->getTipeTanaman();cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(0)->getCostBuy();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(1)->getCostBuy();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(2)->getCostBuy();cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(0)->getCostSell();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(1)->getCostSell();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(2)->getCostSell();cout << endl;
-        if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(1)->getEfekBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(2)->getEfekBuah();cout << endl;
+ */
+        Utilities::getInstances().gotoxy(74,0);cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << world.time->getSeason() << endl;
+        Utilities::getInstances().gotoxy(74,1);cout << "Player has status " << world.getPlayer()->getStatus() << endl;
+        Utilities::getInstances().gotoxy(74,2);cout << "Player has money " << world.getPlayer()->getMoney() << endl;
+        Utilities::getInstances().gotoxy(74,3);cout << "Player Inventory: " << endl;
+        Utilities::getInstances().gotoxy(74,4);if (world.player->getInventory()->cekSlot(0)) {cout <<setw(15) <<left <<"slot 0 exist. "; cout <<"jumlah "<< world.player->getInventory()->getJumlah(0);}if (world.player->getInventory()->cekSlot(1)) {cout << setw(15) <<left <<"slot 1 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(1);}if (world.player->getInventory()->cekSlot(2)) {cout << setw(15) <<left <<"slot 2 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(2);} cout << endl;
+        Utilities::getInstances().gotoxy(74,5);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(0)->isBibit();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(1)->isBibit();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(2)->isBibit();cout << endl;
+        Utilities::getInstances().gotoxy(74,6);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(1)->getTipeBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(2)->getTipeBuah();cout << endl;
+        Utilities::getInstances().gotoxy(74,7);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(0)->getTipeTanaman();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(1)->getTipeTanaman();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(2)->getTipeTanaman();cout << endl;
+        Utilities::getInstances().gotoxy(74,8);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(0)->getCostBuy();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(1)->getCostBuy();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(2)->getCostBuy();cout << endl;
+        Utilities::getInstances().gotoxy(74,9);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(0)->getCostSell();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(1)->getCostSell();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(2)->getCostSell();cout << endl;
+        Utilities::getInstances().gotoxy(74,10);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(1)->getEfekBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(2)->getEfekBuah();cout << endl;
         
 	return c;
 }
