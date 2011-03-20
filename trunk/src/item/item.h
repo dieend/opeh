@@ -10,10 +10,9 @@ class Item{
 	//Kamus Global
 	private:
         int efekBuah;//efek dari buah yang dimakan player
-        int efekTime;//lama nya efek dari buah yang dimakan player
         int costBuy;
         int costSell;
-	int costSellBibit;
+		int costSellBibit;
         int typeTanaman;
         int typeBuah;
         int IDitem;
@@ -30,12 +29,10 @@ class Item{
         int getTipeBuah() const;
         int getTipeTanaman() const;
         int getEfekBuah() const;
-        int getEfekTime() const;
         int getIDitem() const;
         string getNama() const;//untuk melakukan deskripsi tiap item
         bool isBibit();
         void setEfekBuah(int);
-        void setEfekTime(int);
         void setCostBuy(int);
         void setCostSell(int);
 	void setCostSellBibit(int);
