@@ -1,0 +1,7 @@
+1. Melengkapi weather dengan parameter tornado
+2. Item belum ada status player
+3. Save File
+4. Tampilan
+5. Kurcaci
+6. Cheat
+7. Efek weather
