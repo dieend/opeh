@@ -1,11 +1,11 @@
 #include "game.h"
 void Game::Run() {
     bool notExit = true;
+    system("cls");
     do {
-        system("cls");
         if (world != NULL) {
             cout << (*world);
-            Utilities::getInstances().gotoxy(0,59);
+            Utilities::getInstances().gotoxy(0,60);
             cout << "Perintah:\n";
         } else {
             Utilities::getInstances().gotoxy(0,0);
@@ -14,6 +14,15 @@ void Game::Run() {
             cout << "Perintah:\n";
         }
         try {
+            if (world==NULL) {
+                Utilities::getInstances().gotoxy(0,10);
+                cout<<"                                                                                ";
+                Utilities::getInstances().gotoxy(0,10);
+            } else {
+                Utilities::getInstances().gotoxy(0,61);
+                cout<<"                                                                                ";
+                Utilities::getInstances().gotoxy(0,61);
+            }
             getPerintah();
             notExit = doPerintah();
         } catch (int i) {
@@ -209,7 +218,6 @@ bool Game::doPerintah() {
 void Game::getPerintah(){
     //terima perintah user
     char * kata;
-    Utilities::getInstances().gotoxy(0,60);
     kata = parseLine();
     char stmp[100];
     int done = 0;

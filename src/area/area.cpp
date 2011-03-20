@@ -115,6 +115,7 @@ string peta_toko[MAXROW] = {
 		
 ostream& operator<<(ostream& c,Area* area) {
 	if (area->typeArea==RUMAH) {
+            Utilities::getInstances().printRumah(c);
             Utilities::getInstances().setBG(GRAY);
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {

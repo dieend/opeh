@@ -424,7 +424,7 @@ void Player::teleport(Area * destination) {
 
 ostream& operator<<(ostream& c, Player* p){
     Utilities::getInstances().setFG(BLACK);
-    int xUL = p->getCurGrid()->getPosisi().getX()*4+10;
+    int xUL = p->getCurGrid()->getPosisi().getX()*4+11;
     int yUL = p->getCurGrid()->getPosisi().getY()*6+7;
     Utilities::getInstances().gotoxy(yUL+2,xUL+1);
     if (p->arahHadap == 1) {
