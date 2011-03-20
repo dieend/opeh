@@ -31,6 +31,16 @@ class Point {
 	bool operator> (Point);
 
 	bool operator== (Point);
+	
+	void setLeft();
+	void setUp();
+	void setRight();
+	void setDown();
+	Point getLeft();
+	Point getUp();
+	Point getRight();
+	Point getDown();
+	
         friend ostream& operator<<(ostream&,Point*);
         friend ostream& operator<<(ostream&,Point&);
 	private:

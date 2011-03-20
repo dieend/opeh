@@ -68,6 +68,51 @@ bool Point::operator== (Point P) {
 		return false;
 	}
 }
+
+void Point::setLeft()
+{
+  --y;
+}
+
+void Point::setUp()
+{
+  --x;
+}
+
+void Point::setRight()
+{
+  ++y;
+}
+
+void Point::setDown()
+{
+  ++x;
+}
+
+Point Point::getLeft()
+{
+  Point p(x,y-1);
+  return p;
+}
+
+Point Point::getUp()
+{
+  Point p(x-1,y);
+  return p;
+}
+
+Point Point::getRight()
+{
+  Point p(x,y+1);
+  return p;
+}
+
+Point Point::getDown()
+{
+  Point p(x+1,y);
+  return p;
+}
+
 ostream& operator<<(ostream& c, Point* p){
     c << "("<<p->getX() << ","<<p->getY()<<")\n";
     return c;
