@@ -130,11 +130,18 @@ ostream& operator<<(ostream& c,World& world){
             cout << endl;
         }
  */
-        Utilities::getInstances().gotoxy(2,55);cout << (world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL");
-        Utilities::getInstances().gotoxy(74,0);cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << world.time->getSeason() << endl;
-        Utilities::getInstances().gotoxy(74,1);cout << "Player has status " << world.getPlayer()->getStatus() << endl;
+        Utilities::getInstances().gotoxy(3,55);cout << ((world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL"));
+        Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"st"));
+        Utilities::getInstances().gotoxy(3,59);cout << (world.time->getJam()<10?"0":"")<< world.time->getJam()<<":"<< (world.time->getMinutes()<10?"0":"")<<world.time->getMinutes();
+        Utilities::getInstances().gotoxy(16,55);cout << world.player->getName();
+        Utilities::getInstances().gotoxy(16,57); cout << (world.player->getStatus()==0?"NORMAL":(world.player->getStatus()==1?"PARALYZED":(world.player->getStatus()==2?"POISONED":(world.player->getStatus()==3?"FULLPOWER":"SICK"))));
         Utilities::getInstances().gotoxy(74,2);cout << "Player has money " << world.getPlayer()->getMoney() << endl;
-        Utilities::getInstances().gotoxy(74,3);cout << "Player Inventory: " << endl;
+        Utilities::getInstances().gotoxy(55,55); cout << (world.player->getInventory()->cekSlot(0)?world.getPlayer()->getInventory()->getSlot(0)->getNama():"EMPTY");
+        Utilities::getInstances().gotoxy(55,57); cout << (world.player->getInventory()->cekSlot(1)?world.getPlayer()->getInventory()->getSlot(1)->getNama():"EMPTY");
+        Utilities::getInstances().gotoxy(55,59); cout << (world.player->getInventory()->cekSlot(2)?world.getPlayer()->getInventory()->getSlot(2)->getNama():"EMPTY");
+        Utilities::getInstances().gotoxy(65,55); if (world.player->getInventory()->cekSlot(0)) cout << world.getPlayer()->getInventory()->getJumlah(0);
+        Utilities::getInstances().gotoxy(65,57); if (world.player->getInventory()->cekSlot(1)) cout << world.getPlayer()->getInventory()->getJumlah(1);
+        Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);
         Utilities::getInstances().gotoxy(74,4);if (world.player->getInventory()->cekSlot(0)) {cout <<setw(15) <<left <<"slot 0 exist. "; cout <<"jumlah "<< world.player->getInventory()->getJumlah(0);}if (world.player->getInventory()->cekSlot(1)) {cout << setw(15) <<left <<"slot 1 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(1);}if (world.player->getInventory()->cekSlot(2)) {cout << setw(15) <<left <<"slot 2 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(2);} cout << endl;
         Utilities::getInstances().gotoxy(74,5);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(0)->isBibit();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(1)->isBibit();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(2)->isBibit();cout << endl;
         Utilities::getInstances().gotoxy(74,6);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(1)->getTipeBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(2)->getTipeBuah();cout << endl;

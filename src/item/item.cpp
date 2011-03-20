@@ -127,4 +127,9 @@ bool Item::operator==(const Item& item){
 
 void Item::setNama(string newName){
     copy(newName.begin(),newName.end(),nama);
+    nama[newName.size() ]=0;
+}
+
+string Item::getNama() const{
+    return nama;
 }
