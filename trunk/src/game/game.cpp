@@ -5,8 +5,6 @@ void Game::Run() {
     do {
         if (world != NULL) {
             cout << (*world);
-            Utilities::getInstances().gotoxy(0,60);
-            cout << "Perintah:\n";
         } else {
             Utilities::getInstances().gotoxy(0,0);
             cout << "> New Game\n\n";
@@ -16,12 +14,12 @@ void Game::Run() {
         try {
             if (world==NULL) {
                 Utilities::getInstances().gotoxy(0,10);
-                cout<<"                                                                                ";
+                cout<<"                                                     ";
                 Utilities::getInstances().gotoxy(0,10);
             } else {
-                Utilities::getInstances().gotoxy(0,61);
-                cout<<"                                                                                ";
-                Utilities::getInstances().gotoxy(0,61);
+                Utilities::getInstances().gotoxy(3,52);
+                cout<<"                                                     ";
+                Utilities::getInstances().gotoxy(3,52);
             }
             getPerintah();
             notExit = doPerintah();
@@ -81,26 +79,43 @@ bool Game::doPerintah() {
             } else if (perintah == "right") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KANAN);
+                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
-							world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            Dwarf::setmap();
+                            Utilities::getInstances().gotoxy(0,75);
+                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            
                     }
             } else if (perintah == "left") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KIRI);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
-							world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            Dwarf::setmap();
+                            Utilities::getInstances().gotoxy(0,75);
+                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            
                     }
             } else if (perintah == "up") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(ATAS);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
-							world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            Dwarf::setmap();
+                            Utilities::getInstances().gotoxy(0,75);
+                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            
                     }
             } else if (perintah == "down") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(BAWAH);
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
-							world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            world->getPlayer()->setStatus(world->getTime()->getSTime());
+                            Dwarf::setmap();
+                            Utilities::getInstances().gotoxy(0,75);
+                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            
                     }
             } else if (perintah == "inventory") {
                     world->getPlayer()->getInventory()->listItem();
@@ -192,14 +207,19 @@ bool Game::doPerintah() {
         if (world != NULL) {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
                 world->getTime()->next10Minutes(world->getPlayer()->getStatus());
-				if (world->getPlayer()->getStatus() == 2) {
-					world->getPlayer()->teleport(world->getArea(0));
-					world->getPlayer()->getCurGrid()->setType(GJALAN);
-					world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
-					world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
-					world->getPlayer()->setArah(1);
-				}
-				world->getPlayer()->setStatus(world->getTime()->getSTime());
+                Dwarf::setmap();
+                Utilities::getInstances().gotoxy(0,75);
+                Dwarf::getMap()->performmap();
+                system("pause");
+                Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                if (world->getPlayer()->getStatus() == 2) {
+                        world->getPlayer()->teleport(world->getArea(0));
+                        world->getPlayer()->getCurGrid()->setType(GJALAN);
+                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
+                        world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
+                        world->getPlayer()->setArah(1);
+                }
+                world->getPlayer()->setStatus(world->getTime()->getSTime());
             }
             cout << world->getTime()->iscDay() << endl;
 

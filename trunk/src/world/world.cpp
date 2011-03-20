@@ -3,8 +3,8 @@
 #define RUMAH 0
 #define LAHAN 1
 #define TOKO 2
-#define HARVEST 0
-#define WATER 1
+#define WATER 0
+#define HARVEST 1
 #define SLASH 2
 
 // volatile unsigned long randomizer()
@@ -26,10 +26,16 @@ World::World(string nama){
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);
         area[TOKO ]->setPlayer(player);
+        Dwarf::Field = area[LAHAN];
 	dwarf[HARVEST]	= new Dwarf(HARVEST);
 	dwarf[WATER] 	= new Dwarf(WATER);
 	dwarf[SLASH]	= new Dwarf(SLASH);
+        area[LAHAN]->setDwarf(0,dwarf[0]);
+        area[LAHAN]->setDwarf(1,dwarf[1]);
+        area[LAHAN]->setDwarf(2,dwarf[2]);
 	time 		= new Time();
+        Dwarf::setDefault(*dwarf[WATER],*dwarf[HARVEST],*dwarf[SLASH]);
+
 }
 
 World::World(World& world) {
@@ -119,6 +125,8 @@ ostream& operator<<(ostream& c,World& world){
         cout << "Player position : " << new Point(world.player->getCurGrid()->getPosisi())<< endl;
         cout << "Player area : " << world.player->getCurArea()->getType() << endl;
         cout << "Area masking: " << endl;
+ */
+        Utilities::getInstances().gotoxy(100,0);
         for (int i=0; i<10; i++) {
             for (int j=0; j<10;j++){
                 cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getType();
@@ -129,27 +137,20 @@ ostream& operator<<(ostream& c,World& world){
             }
             cout << endl;
         }
- */
+ 
         Utilities::getInstances().gotoxy(3,55);cout << ((world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL"));
         Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"st"));
         Utilities::getInstances().gotoxy(3,59);cout << (world.time->getJam()<10?"0":"")<< world.time->getJam()<<":"<< (world.time->getMinutes()<10?"0":"")<<world.time->getMinutes();
         Utilities::getInstances().gotoxy(16,55);cout << world.player->getName();
         Utilities::getInstances().gotoxy(16,57); cout << (world.player->getStatus()==0?"NORMAL":(world.player->getStatus()==1?"PARALYZED":(world.player->getStatus()==2?"POISONED":(world.player->getStatus()==3?"FULLPOWER":"SICK"))));
-        Utilities::getInstances().gotoxy(74,2);cout << "Player has money " << world.getPlayer()->getMoney() << endl;
+        Utilities::getInstances().gotoxy(26,55);cout << world.getPlayer()->getMoney() << endl;
         Utilities::getInstances().gotoxy(55,55); cout << (world.player->getInventory()->cekSlot(0)?world.getPlayer()->getInventory()->getSlot(0)->getNama():"EMPTY");
         Utilities::getInstances().gotoxy(55,57); cout << (world.player->getInventory()->cekSlot(1)?world.getPlayer()->getInventory()->getSlot(1)->getNama():"EMPTY");
         Utilities::getInstances().gotoxy(55,59); cout << (world.player->getInventory()->cekSlot(2)?world.getPlayer()->getInventory()->getSlot(2)->getNama():"EMPTY");
         Utilities::getInstances().gotoxy(65,55); if (world.player->getInventory()->cekSlot(0)) cout << world.getPlayer()->getInventory()->getJumlah(0);
         Utilities::getInstances().gotoxy(65,57); if (world.player->getInventory()->cekSlot(1)) cout << world.getPlayer()->getInventory()->getJumlah(1);
-        Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);
-        Utilities::getInstances().gotoxy(74,4);if (world.player->getInventory()->cekSlot(0)) {cout <<setw(15) <<left <<"slot 0 exist. "; cout <<"jumlah "<< world.player->getInventory()->getJumlah(0);}if (world.player->getInventory()->cekSlot(1)) {cout << setw(15) <<left <<"slot 1 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(1);}if (world.player->getInventory()->cekSlot(2)) {cout << setw(15) <<left <<"slot 2 exist. "; cout<<"jumlah "<< world.player->getInventory()->getJumlah(2);} cout << endl;
-        Utilities::getInstances().gotoxy(74,5);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(0)->isBibit();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(1)->isBibit();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"BIBIT? "<< world.player->getInventory()->getSlot(2)->isBibit();cout << endl;
-        Utilities::getInstances().gotoxy(74,6);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(0)->getTipeBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(1)->getTipeBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item buah" << world.player->getInventory()->getSlot(2)->getTipeBuah();cout << endl;
-        Utilities::getInstances().gotoxy(74,7);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(0)->getTipeTanaman();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(1)->getTipeTanaman();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"tipe item tanaman" << world.player->getInventory()->getSlot(2)->getTipeTanaman();cout << endl;
-        Utilities::getInstances().gotoxy(74,8);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(0)->getCostBuy();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(1)->getCostBuy();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price beli" << world.player->getInventory()->getSlot(2)->getCostBuy();cout << endl;
-        Utilities::getInstances().gotoxy(74,9);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(0)->getCostSell();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(1)->getCostSell();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"price sell" << world.player->getInventory()->getSlot(2)->getCostSell();cout << endl;
-        Utilities::getInstances().gotoxy(74,10);if (world.player->getInventory()->cekSlot(0)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(0)->getEfekBuah();if (world.player->getInventory()->cekSlot(1)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(1)->getEfekBuah();if (world.player->getInventory()->cekSlot(2)) cout << setw(15) <<left <<"efek buah " << world.player->getInventory()->getSlot(2)->getEfekBuah();cout << endl;
-        
+        Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);        
+        Utilities::getInstances().gotoxy(3,51);cout << "Perintah:";
 	return c;
 }
 

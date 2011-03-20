@@ -136,6 +136,15 @@ ostream& operator<<(ostream& c,Area* area) {
                     if (grid->getType() == GPLAYER) { //player
                         Player * p = area->getPlayer();
                         c << p;
+                    }else if (grid->getType()==WKURCACI){
+                        Dwarf* d = area->getDwarf(0);
+                        c << d;
+                    }else if (grid->getType()==HKURCACI){
+                        Dwarf* d = area->getDwarf(1);
+                        c << d;
+                    }else if (grid->getType()==SKURCACI){
+                        Dwarf* d = area->getDwarf(2);
+                        c << d;
                     } else if (grid->getType()== GTANAMAN){ //tanaman
                         Grid_Plant * plant;
                         plant = (Grid_Plant*) grid;
@@ -144,7 +153,7 @@ ostream& operator<<(ostream& c,Area* area) {
                         Grid_Lahan * L;
                         L = (Grid_Lahan *) grid;
                         c << L;
-                    }
+                    } 
                 }
                 c << endl;
             }
@@ -203,4 +212,12 @@ void Area::setPlayer(Player* p){
 void Area::setGrid(Grid* g){
     Point p=g->getPosisi();
     grid[p.getX()][p.getY()] = g;
+}
+
+void Area::setDwarf(int si, Dwarf* d){
+    dwarf[si] = d;
+}
+
+Dwarf* Area::getDwarf(int si) {
+    return dwarf[si];
 }
