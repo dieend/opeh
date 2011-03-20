@@ -3,13 +3,17 @@ void Game::Run() {
     bool notExit = true;
     do {
         system("cls");
-        if (world != NULL) cout << (*world);
-        else {
+        if (world != NULL) {
+            cout << (*world);
+            Utilities::getInstances().gotoxy(0,59);
+            cout << "Perintah:\n";
+        } else {
+            Utilities::getInstances().gotoxy(0,0);
             cout << "> New Game\n\n";
             cout << "> Load Game\n\n";
+            cout << "Perintah:\n";
         }
         try {
-            cout << "Perintah:\n";
             getPerintah();
             notExit = doPerintah();
         } catch (int i) {
@@ -205,6 +209,7 @@ bool Game::doPerintah() {
 void Game::getPerintah(){
     //terima perintah user
     char * kata;
+    Utilities::getInstances().gotoxy(0,60);
     kata = parseLine();
     char stmp[100];
     int done = 0;
