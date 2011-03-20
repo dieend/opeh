@@ -48,7 +48,9 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
   {
     if (stime==normal)//normal
     {
-      nextMinutes();
+      for (int i = 1; i <= 4; i++) {
+		nextJam();
+	  }
     }
     else if (stime==fullpower)//full power
     {
