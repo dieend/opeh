@@ -43,6 +43,7 @@ public:
     int wherex();
     int wherey();
     void printPeta(ostream& c);
+	void printRumah (ostream& c);
 };
 
 #endif
