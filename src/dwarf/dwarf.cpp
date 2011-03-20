@@ -6,17 +6,17 @@ Dwarf::Dwarf(int ntype) : type(ntype),status(1),direction(4)
 {
   if (ntype==0)
   {
-    cpos.setX(1);
+    cpos.setX(2);
     cpos.setY(8);
   }
   else if (ntype==1)
   {
-    cpos.setX(1);
+    cpos.setX(2);
     cpos.setY(9);
   }
   else if (ntype==2)
   {
-    cpos.setX(1);
+    cpos.setX(2);
     cpos.setY(10);
   }
 }

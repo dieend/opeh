@@ -20,6 +20,7 @@
 #include <cstdio>
 #include <windows.h>
 #include <stack>
+#include <iostream>
 using namespace std;
 class Utilities{
 private:
@@ -41,6 +42,7 @@ public:
     void gotoxy(int,int);
     int wherex();
     int wherey();
+    void printPeta(ostream& c);
 };
 
 #endif

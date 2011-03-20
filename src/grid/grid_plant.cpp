@@ -261,7 +261,7 @@ void Grid_Plant::grow(int newCurrentSeason)
 		else
 			setFase(MATI);
 		}
-	else if (newCurrentSeason != season)
+            else if (newCurrentSeason != season)
 		{
 		if (isBibit())
 			setFase(DBIBIT);
