@@ -7,7 +7,7 @@
 #define sick 4
 
 using namespace std;
-Time::Time() : minutes(0),jam(6),day(1),season(1),cjam(false),cday(false),cseason(false),act(0),stime(0)//setting menit, jam season, dan counter menjadi 0
+Time::Time() : minutes(0),jam(6),day(1),season(0),cjam(false),cday(false),cseason(false),act(0),stime(0)//setting menit, jam season, dan counter menjadi 0
 {
 }
 
@@ -249,7 +249,7 @@ int Time::getDay(){
 
 //season dalam satu tahun, ada 3,rentangnya 1-3
 void Time::nextSeason(){
-	 cseason=true;
+    cseason=true;
      minutes=0;
      jam=6;
      day=1;

@@ -130,6 +130,7 @@ ostream& operator<<(ostream& c,World& world){
             cout << endl;
         }
  */
+        Utilities::getInstances().gotoxy(2,55);cout << (world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL");
         Utilities::getInstances().gotoxy(74,0);cout << "Time Day: " << world.time->getDay() << " Jam " << world.time->getJam() << " Menit " << world.time->getMinutes() << world.time->getSeason() << endl;
         Utilities::getInstances().gotoxy(74,1);cout << "Player has status " << world.getPlayer()->getStatus() << endl;
         Utilities::getInstances().gotoxy(74,2);cout << "Player has money " << world.getPlayer()->getMoney() << endl;
