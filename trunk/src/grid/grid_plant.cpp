@@ -348,7 +348,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
         }
 	else if (GP->getFase() == SBIBIT) 
 		{
-			Utilities::getInstances().setFG(LYELLOW);
+			Utilities::getInstances().setBG(LYELLOW);
             Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << " ... ";
@@ -357,7 +357,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
 			c << " ... ";
 			Utilities::getInstances().resetFG();
-			Utilities::getInstances().setFG(LYELLOW);
+			Utilities::getInstances().resetBG();
         }
 	else if (GP->getFase() == DBIBIT) 
 		{
