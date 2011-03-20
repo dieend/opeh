@@ -14,11 +14,15 @@ public :
        int getsizec();
        void setmapij(int,int,char);
        char getvalij(int,int);
+       void setvalpoint(Point,char);
        char getvalpoint(Point);
        void performmap();
        void sett0(int);
        void sett1(int);
        void sett2(int);
+       int gett0();
+       int gett1();
+       int gett2();
 private :
         char **arr;
         int sizer;

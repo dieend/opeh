@@ -3,6 +3,7 @@
 #include <iostream>
 #include <deque>
 #include <utility>
+#include <vector>
 #define chartoint(c) int(c)-int('0')
 using namespace std;
 
@@ -121,6 +122,18 @@ int Dwarf::getDirection()
   return direction;
 }
 
+Point Dwarf::getFrontpoint()
+{
+  if (direction==1)
+    return cpos.getLeft();
+  else if (direction==2)
+    return cpos.getUp();
+  else if (direction==3)
+    return cpos.getRight();
+  else if (direction==4)
+    return cpos.getDown();
+}
+
 //setting map dari grid
 void Dwarf::setmap()
 {
@@ -227,14 +240,82 @@ void Dwarf::bfsdwarf()
          sp=dqptemp1.back();
        }
      }
-     while (!dwarfdqp->empty())
+     /*for(i=0;i<dwarfdqp->size();++i)
      {
-       cout << dwarfdqp->front().getX() << ',' << dwarfdqp->front().getY() << endl;
-       dwarfdqp->pop_front();
-     }        
+       cout << (*dwarfdqp)[i].getX() << ',' << (*dwarfdqp)[i].getY() << endl;
+     }
          
-     cout << "tes\n" << endl << endl;
+     cout << "tes\n" << endl << endl;*/
+     
      //map tmap;
      //tmap=(*cmap);
 }
 
+void Dwarf::oneMove()
+{
+     if ((*dwarfdqp)[0]==getFrontpoint())
+     {
+       if (dwarfdqp->size()==1)
+       {
+         cout << "success\n";
+         //di sini ubah cpos, map dan grid, gunakan dojob(), tergantung pada type masing2 dwarf
+         if (type==0);
+       }
+       else
+       {
+         //disini ubah posisi dwarf, ubah grid dan map.
+         cmap->setvalpoint(cpos,' ');
+         cpos=getFrontpoint();
+         cmap->setvalpoint(cpos,'3');
+       }
+     }
+     else//kasus jika hanya mengubah arah saja
+     {
+       if ((*dwarfdqp)[0]==cpos.getLeft())
+       {
+         direction=1;
+       }
+       else if ((*dwarfdqp)[0]==cpos.getUp())
+       {
+         direction=2;
+       }
+       else if ((*dwarfdqp)[0]==cpos.getRight())
+       {
+         direction=3;
+       }
+       else if ((*dwarfdqp)[0]==cpos.getDown())
+       {
+         direction=4;
+       }
+     }
+}   
+         
+void Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
+{
+     cout << "tes\n";
+     deque<Dwarf> dqdwarf;
+     //Check masing-masing pekerjaan dwarf dan status dwarf, jika masih ada tujuan dan wake_up maka dimasukkan di deque
+     if ((cmap->gett0()!=0) && (d0.getStatus()==1))
+     {
+       dqdwarf.push_back(d0);
+       d0.bfsdwarf();
+     }
+     if ((cmap->gett1()!=0) && (d1.getStatus()==1))
+     {
+       dqdwarf.push_back(d1);
+       d1.bfsdwarf();
+     }
+     if ((cmap->gett2()!=0) && (d2.getStatus()==1))
+     {
+       dqdwarf.push_back(d2);
+       d2.bfsdwarf();
+     }
+     if (dqdwarf.size()==1)
+     {
+       //Lakukan perjalanan untuk satu dwarf
+       
+       cout << "tes\n";
+       d0.oneMove();
+       cmap->performmap();
+     }
+}

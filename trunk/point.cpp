@@ -69,6 +69,26 @@ bool Point::operator== (Point P) {
 	}
 }
 
+void Point::setLeft()
+{
+  --y;
+}
+
+void Point::setUp()
+{
+  --x;
+}
+
+void Point::setRight()
+{
+  ++y;
+}
+
+void Point::setDown()
+{
+  ++x;
+}
+
 Point Point::getLeft()
 {
   Point p(x,y-1);
@@ -83,13 +103,13 @@ Point Point::getUp()
 
 Point Point::getRight()
 {
-  Point p(x+1,y);
+  Point p(x,y+1);
   return p;
 }
 
 Point Point::getDown()
 {
-  Point p(x,y+1);
+  Point p(x+1,y);
   return p;
 }
 

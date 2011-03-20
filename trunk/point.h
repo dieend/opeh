@@ -32,6 +32,10 @@ class Point {
 
 	bool operator== (Point);
 	
+	void setLeft();
+	void setUp();
+	void setRight();
+	void setDown();
 	Point getLeft();
 	Point getUp();
 	Point getRight();

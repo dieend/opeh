@@ -40,6 +40,9 @@ map::map(): sizer(12),sizec(12)
   arr[7][7]='2';
   arr[8][6]='2';
   arr[8][7]='2';
+  t0=1;
+  t1=11;
+  t2=4;  
 }
 
 //dtor map
@@ -108,6 +111,11 @@ char map::getvalij(int i,int j)
   return arr[i][j];
 }
 
+void map::setvalpoint(Point p,char nc)
+{
+  setmapij(p.getX(),p.getY(),nc);
+}
+
 char map::getvalpoint(Point p)
 {
   return arr[p.getX()][p.getY()];
@@ -140,3 +148,17 @@ void map::sett2(int nt2)
   t2=nt2;
 }
 
+int map::gett0()
+{
+  return t0;
+}
+
+int map::gett1()
+{
+  return t1;
+}
+
+int map::gett2()
+{
+  return t2;
+}
