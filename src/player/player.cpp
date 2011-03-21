@@ -4,7 +4,7 @@
 Player::Player (ifstream& fin, Area* rumah) {
     fin.read((char*)(this),sizeof(Player));
     curArea = rumah;
-    curGrid = rumah->getGrid(4,3);
+    curGrid = rumah->getGrid(6,4);
     curGrid->setType(GPLAYER);
     cout << "inventory:" << fin.tellg() << endl;
     inventory = new Inventory(fin);
