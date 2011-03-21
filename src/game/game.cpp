@@ -46,19 +46,19 @@ bool Game::doPerintah() {
                 Utilities::getInstances().gotoxy(10,0);
                 Utilities::getInstances().scenario(paramStr[0]);
                 world = new World(paramStr[0]);
-//				PlaySound(NULL,0,0);
-//				PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+				PlaySound(NULL,0,0);
+				PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
             } else if (perintah == "load") {
                 world = World::load("save.oph");
 				if (world->getTime()->getSeason() == 0) {
-//					PlaySound(NULL,0,0);
-//					PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+					PlaySound(NULL,0,0);
+					PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				} else if (world->getTime()->getSeason() == 1) {
-//					PlaySound(NULL,0,0);
-//					PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+					PlaySound(NULL,0,0);
+					PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				} else if (world->getTime()->getSeason() == 2) {
-//					PlaySound(NULL,0,0);
-//					PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+					PlaySound(NULL,0,0);
+					PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				}
             } else if (perintah == "exit") {
                 system("cls");
