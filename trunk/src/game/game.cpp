@@ -7,16 +7,13 @@ void Game::Run() {
         if (world != NULL) {
             cout << (*world);
         } else {
-            Utilities::getInstances().gotoxy(0,0);
-            cout << "> New Game\n\n";
-            cout << "> Load Game\n\n";
-            cout << "Perintah:\n";
+            Utilities::getInstances().printAwal(cout);
         }
         try {
             if (world==NULL) {
-                Utilities::getInstances().gotoxy(0,10);
+                Utilities::getInstances().gotoxy(3,53);
                 cout<<"                                                     ";
-                Utilities::getInstances().gotoxy(0,10);
+                Utilities::getInstances().gotoxy(3,53);
             } else {
                 Utilities::getInstances().gotoxy(3,52);
                 cout<<"                                                     ";
@@ -139,8 +136,8 @@ bool Game::doPerintah() {
                 } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
                     world->getTime()->nextDay();
                     world->getPlayer()->getCurGrid()->setType(GJALAN);
-                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
-                    world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
+                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
+                    world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
                     world->getPlayer()->setArah(1);
                 }
             } else if (perintah == "status") {
@@ -214,8 +211,8 @@ bool Game::doPerintah() {
                 if (world->getPlayer()->getStatus() == 2) {
                         world->getPlayer()->teleport(world->getArea(0));
                         world->getPlayer()->getCurGrid()->setType(GJALAN);
-                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
-                        world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
+                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
+                        world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
                         world->getPlayer()->setArah(1);
                 }
                 world->getPlayer()->setStatus(world->getTime()->getSTime());
