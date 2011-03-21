@@ -1,4 +1,5 @@
 #include "game.h"
+#include <windows.h>
 void Game::Run() {
     bool notExit = true;
     system("cls");
@@ -267,6 +268,7 @@ void Game::getPerintah(){
 
 Game::Game() {
     world = NULL;
+	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC);
 }
 Game::~Game(){
     delete world;
