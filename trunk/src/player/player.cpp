@@ -397,7 +397,6 @@ void Player::buyItem(const string name,int Jumlah) {
 		if (Jumlah > 0) {
 			if (money >= (dummyItem->getCostBuy() * Jumlah)) {
 				money = money - dummyItem->getCostBuy()* Jumlah;
-						cout <<"OK";
 				inventory->addItem(name,Jumlah);
 			 } else throw "You do not have money enough to do this transaction. Please try again.";
 		} else throw "You can't buy negative number of item";
