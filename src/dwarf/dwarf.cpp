@@ -63,7 +63,10 @@ void Dwarf::setDefault()
     cGrid->setType(GLAHAN);
   }
   if (Field->getGrid(2,7+type)->getType()==GLAHAN)
+  {
+    setPosition(3,8+type);
     cGrid=Field->getGrid(2,7+type);
+  }
   else
   {
     bool found=false;
@@ -77,13 +80,17 @@ void Dwarf::setDefault()
 	}
 	if (found)
 	{
+	  setPosition(3,8+i);
 	  cGrid=Field->getGrid(2,7+i);
 	}
 	else
 	{
+	  setPosition(3,7);
 	  cGrid=Field->getGrid(2,6);
 	}
   }
+  cmap->setvalpoint(cpos,'3');
+  cGrid->setType(type+10);
 }
 
 void Dwarf::setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
@@ -492,7 +499,7 @@ void Dwarf::bfsdwarf()
      }
 }
 
-void Dwarf::oneMove()
+int Dwarf::oneMove()
 {
      if ( (((type==0) && (cmap->gett0()!=0)) || ((type==1) && (cmap->gett1()!=0)) || ((type==2) && (cmap->gett2()!=0))) && (status==1) )
      {
@@ -513,6 +520,7 @@ void Dwarf::oneMove()
            cmap->setvalpoint(getFrontpoint(),'4');
            cmap->sett0(cmap->gett0()-1);
 		   doJob();
+		   return 0;
          }
          else if (type==1)
          {
@@ -520,7 +528,7 @@ void Dwarf::oneMove()
            cmap->setvalpoint(getFrontpoint(),'2');
            cmap->sett1(cmap->gett1()-1);
            cmap->sett2(cmap->gett2()+1);
-		   doJob();
+		   return doJob();
          }
          else if (type==2)
          {
@@ -528,6 +536,7 @@ void Dwarf::oneMove()
            cmap->setvalpoint(getFrontpoint(),' ');
            cmap->sett2(cmap->gett2()-1);
 		   doJob();
+		   return 0;
          }
        }
        else
@@ -547,7 +556,9 @@ void Dwarf::oneMove()
          cGrid=Field->getGrid(cpos.getX()-1,cpos.getY()-1);
          cmap->setvalpoint(cpos,'3');
          cGrid->setType(type+10);
+		 return 0;
        }
+	   return 0;
      }
      else//kasus jika hanya mengubah arah saja
      {
@@ -571,6 +582,7 @@ void Dwarf::oneMove()
          //cout << "DOWN\n";
          direction=2;
        }
+	   return 0;
      }
      //cout << "cpos : " << cpos.getX() << ',' << cpos.getY() << endl;
      //cout << "front : " << getFrontpoint().getX() << ',' << getFrontpoint().getY() << endl;
@@ -578,6 +590,7 @@ void Dwarf::oneMove()
 	 else if ((status==0) || ( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
 	 {
 	   setDefault();
+	   return 0;
 	 }
 }   
          
