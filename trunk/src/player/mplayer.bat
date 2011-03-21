@@ -1,0 +1,1 @@
+g++ -o player player.cpp mplayer.cpp ../area/area.cpp ../inventory/inventory.cpp ../point/point.cpp ../item/item.cpp ../grid/grid_plant.cpp ../grid/grid_lahan.cpp ../grid/grid.cpp ../toko/toko.cpp ../helper/util.cpp ../dwarf/dwarf.cpp ../dwarf/map.cpp
