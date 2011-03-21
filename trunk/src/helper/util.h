@@ -49,6 +49,7 @@ public:
     void printAwal (ostream& c);
     void setError(const char*);
     void printError();
+    void scenario(string nama);
 };
 
 #endif
