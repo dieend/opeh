@@ -173,4 +173,3 @@ bool map::isAccess(int i,int j)
     return false;
 }
 	 
-    
