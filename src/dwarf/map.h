@@ -23,6 +23,7 @@ public :
        int gett0();
        int gett1();
        int gett2();
+	   bool isAccess(int,int);
 private :
         char **arr;
         int sizer;
