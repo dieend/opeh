@@ -37,7 +37,7 @@ void Game::Run() {
 }
 
 bool Game::doPerintah() {
-	PlaySound("windowsding.wav",NULL,SND_FILENAME|SND_ASYNC);
+	//PlaySound("windowsding.wav",NULL,SND_FILENAME|SND_ASYNC);
 	if (world == NULL) {
             if (perintah == "new") {
                 world = new World(paramStr[0]);
@@ -83,7 +83,7 @@ bool Game::doPerintah() {
                             world->getPlayer()->setStatus(world->getTime()->getSTime());
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
-                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                             
                     }
             } else if (perintah == "left") {
@@ -93,7 +93,7 @@ bool Game::doPerintah() {
                             world->getPlayer()->setStatus(world->getTime()->getSTime());
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
-                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                             
                     }
             } else if (perintah == "up") {
@@ -103,7 +103,7 @@ bool Game::doPerintah() {
                             world->getPlayer()->setStatus(world->getTime()->getSTime());
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
-                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                             
                     }
             } else if (perintah == "down") {
@@ -113,7 +113,7 @@ bool Game::doPerintah() {
                             world->getPlayer()->setStatus(world->getTime()->getSTime());
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
-                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                            world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                             
                     }
             } else if (perintah == "inventory") {
@@ -209,7 +209,7 @@ bool Game::doPerintah() {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
                 world->getTime()->next10Minutes(world->getPlayer()->getStatus());
                 Dwarf::setmap();
-                Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
+                world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                 if (world->getPlayer()->getStatus() == 2) {
                         world->getPlayer()->teleport(world->getArea(0));
                         world->getPlayer()->getCurGrid()->setType(GJALAN);

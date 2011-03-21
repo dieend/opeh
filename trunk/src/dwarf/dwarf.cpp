@@ -62,7 +62,7 @@ void Dwarf::setDefault()
   {
     cGrid->setType(GLAHAN);
   }
-  if (Field->getGrid(2,7+type)->getType()==GLAHAN)
+  if (Field->getGrid(2,7+type)->getType()==GLAHAN || Field->getGrid(2,7+type)->getType()==GJALAN)
   {
     setPosition(3,8+type);
     cGrid=Field->getGrid(2,7+type);
@@ -91,6 +91,7 @@ void Dwarf::setDefault()
   }
   cmap->setvalpoint(cpos,'3');
   cGrid->setType(type+10);
+  direction=2;
 }
 
 void Dwarf::setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)

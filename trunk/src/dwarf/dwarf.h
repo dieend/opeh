@@ -29,9 +29,8 @@ public :
        static void setmap();//setting map agar mengikuti grid
        void setField();
        void bfsdwarf();//setting gerakan terpendek
-       void oneMove();tMove(Dwarf&,Dwarf&,Dwarf&);//setting 1 gerakan ke depan masing-masing kurcaci
        int oneMove();
-       static void nextMove(Dwarf&,Dwarf&,Dwarf&);//setting 1 gerakan ke depan masing-masing kurcaci
+       static int nextMove(Dwarf&,Dwarf&,Dwarf&);//setting 1 gerakan ke depan masing-masing kurcaci
        Grid * getFrontGrid();
        friend ostream& operator<<(ostream& c, Dwarf* p);
        static map* getMap();
