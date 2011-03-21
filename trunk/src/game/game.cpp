@@ -142,7 +142,7 @@ bool Game::doPerintah() {
             } else if (perintah == "plow") {
                     world->getPlayer()->plow();
             } else if (perintah == "put") {
-                    world->getPlayer()->put(paramInt[0],paramInt[1]);
+                    world->getPlayer()->put(paramInt[0]-1,paramInt[1]);
             } else if (perintah == "slash") {
                     world->getPlayer()->slash();
             } else if (perintah == "water") {
@@ -150,11 +150,11 @@ bool Game::doPerintah() {
             } else if (perintah == "harvest") {
                     world->getPlayer()->harvest();
             } else if (perintah == "wake_up") {
-                    world->getDwarf(paramInt[0])->wakeUp();
+                    world->getDwarf(paramInt[0]-1)->wakeUp();
             } else if (perintah == "sleep" ) {
                 if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
-                    cout << world->getDwarf(paramInt[0])->getStatus();
-                    world->getDwarf(paramInt[0])->sleep();
+                    cout << world->getDwarf(paramInt[0]-1)->getStatus();
+                    world->getDwarf(paramInt[0]-1)->sleep();
                 } else if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()==GBED){
                     world->getTime()->nextDay();
                     world->getPlayer()->getCurGrid()->setType(GJALAN);
@@ -165,9 +165,11 @@ bool Game::doPerintah() {
                     throw "You can't do it here";
                 }
             } else if (perintah == "status") {
-                    cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
-                    cout << 1 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
-                    cout << 2 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
+					system("cls");
+                    cout << 1 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 2 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
+                    cout << 3 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
+					getch();
             } else if (perintah == "save") {
                 if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()== GSAVE){
                     World::save("save.oph",*world);
@@ -197,10 +199,10 @@ bool Game::doPerintah() {
                 } else throw "The command must be used in front of store";
             } else if (perintah == "sell") {
                 if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
-                        world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
+                        world->getPlayer()->sellItem(paramInt[0]-1,paramInt[1]);
                 } else throw "The command must be used in front of store";
             } else if (perintah == "eat") {
-                world->getPlayer()->eat(paramInt[0]);
+                world->getPlayer()->eat(paramInt[0]-1);
             } else if (perintah == "cheat") {
                 if (paramStr[0] == "nextday") {
                     world->getTime()->nextDay();
@@ -607,7 +609,7 @@ void Game::getStatus(char* kata, int done){
         done+=strlen(stmp)+1;
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
-    if (i>1){
+    if (i>2){
         throw "Input doesn't match any format";
     }
 }
