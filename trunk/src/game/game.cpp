@@ -395,7 +395,7 @@ void Game::getPerintah(){
 
 Game::Game() {
     world = NULL;
-//	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC|SND_NOSTOP);
+	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC|SND_NOSTOP);
 }
 Game::~Game(){
     delete world;
