@@ -21,14 +21,13 @@ public:
     Inventory& operator= (const Inventory&);//operator assignment
     virtual ~Inventory();//destructor
 
-    int listItem();
-    void addItem(const string& name, int jumlah);
-    void addItem(Grid_Plant* tanaman, int jumlah);
+    void addItem(const string& , int );
+    void addItem(Grid_Plant* , int );
     void deleteItem(int, int);//melakukan penghapusan item pada vector
     bool cekSlot(int); // ngecek apakah di slot tersebut ada item apa gak. Mengembaikan true jika kosong.
     Item* getSlot(int);
-    int getJumlah(int noslot);
+    int getJumlah(int);
     void listDescription();//me-list setiap barang yang ada di inventory
-	
+
 };
 #endif

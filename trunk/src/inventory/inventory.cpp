@@ -28,6 +28,7 @@ Inventory::Inventory(ifstream& fin)//konstruktor
         delete slot[2];
         slot[2] = NULL;
     }
+	maxslot = 3;
 }
 Inventory::Inventory(){
     slot[0] = NULL;
@@ -51,34 +52,31 @@ Inventory::~Inventory()//destructor
 {
 }
 
-int Inventory::listItem()
+/*int Inventory::listItem()
 {
-	cout << setw(10) << left << "Nama Item " <<endl; cout << setw(18)<< right << "Harga Beli item" <<endl;cout << setw(18)<< right << "Harga Jual item" <<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Kentang" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Lobak" <<endl; cout << setw(18)<< right <<"Rp 120"<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Timun" <<endl; cout << setw(18)<< right <<"Rp 200"<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Kubis" <<endl; cout << setw(18)<< right <<"Rp 500"<<endl; cout << setw(18)<< right <<"Rp 2.250"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Jagung" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Tomat" <<endl; cout << setw(18)<< right <<"Rp 200"<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Bawang" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Nanas" <<endl; cout << setw(18)<< right <<"Rp 1.000"<<endl; cout << setw(18)<< right <<"Rp 4.500"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Wortel" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 1080"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Terong" <<endl; cout << setw(18)<< right <<"Rp 120"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Ubi" <<endl; cout << setw(18)<< right <<"Rp 300"<<endl; cout << setw(18)<< right <<"Rp 1.080"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Paprika" <<endl; cout << setw(18)<< right <<"Rp 150"<<endl; cout << setw(18)<< right <<"Rp 360"<<endl;;
+	cout << setw(10) << left << "Nama Item " <<endl; cout << setw(18)<< right << "Effect Buah " <<endl;cout << setw(18)<< right << "Harga Jual item" <<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Kentang" <<endl; cout << setw(18)<< right <<"0"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Lobak" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Timun" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Kubis" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 2.250"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Jagung" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Tomat" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Bawang" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Nanas" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 4.500"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Wortel" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 1080"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Terong" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Ubi" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 1.080"<<endl;cout <<"\n"<<endl;
+	cout << setw(10) << left << "Paprika" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 360"<<endl;;
 return 0;
 }
-
+*/
 void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan item pada vector
 {
     int i = 2; //iterator diinisialisasi = 1
     int temp = -1;
     bool found = false;
-    cout << "ER";
     Item * dummyItem = Item::makeBibit(name);
-    cout <<"hmm";
     while ((i >= 0) && (!found)) {
-        cout << "LALA";	
         if (slot[i] != NULL) {
             if((*(slot[i])) == (*dummyItem)) {
                 total[i] = total[i]+jumlah;
@@ -100,14 +98,14 @@ void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan it
 }
 
 void Inventory::addItem(Grid_Plant* tanaman, int jumlah) {
-    int i = 2; 
+    int i = 2;
     int temp = -1;
     bool found = false;
-    
+
     Item * dummyItem = Item::makeBuah(tanaman);
-    
+
     while ((i >= 0) && (!found)) {
-        
+
         if (slot[i] != NULL) {
             if((*slot[i]) == (*dummyItem)) {
                 total[i] = total[i]+jumlah;
@@ -128,16 +126,17 @@ void Inventory::addItem(Grid_Plant* tanaman, int jumlah) {
     }
 }
 
-void Inventory::deleteItem(int item, int jumlah)//melakukan penghapusan item pada vector
+void Inventory::deleteItem(int noslot, int jumlah)//melakukan penghapusan item pada vector
 {
-	if (slot[item] != NULL) {
-		if (total[item] > jumlah) {
-			total[item] = total[item]-jumlah;
-		} else if (total[item] == jumlah) {
-			total[item] = 0;
-			delete slot[item];
-			slot[item] = NULL;
-		} else {
+	if (slot[noslot] != NULL) {
+		if (total[noslot] > jumlah) {
+			total[noslot] = total[noslot]-jumlah;
+		} else if (total[noslot] == jumlah) {
+			total[noslot] = 0;
+			delete slot[noslot];
+			slot[noslot] = NULL;
+		}
+		else {
 			throw 2;
 		}
 	}
@@ -161,7 +160,10 @@ int Inventory::getJumlah(int noslot){
 
 void Inventory::listDescription()//me-list setiap barang yang ada di inventory
 {
-	for (int i=0;i<=maxslot;i++){
-		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i] <<",sebanyak "<<total[i]<<endl;
+	
+    int i;
+	for (i=0;i<maxslot;i++){
+		Item* item = getSlot(i);
+		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i]->getNama() <<",sebanyak "<<total[i]<<".\nHarga Jual = "<<item->getCostSell()<<". Efek Item = "<<item->getEfekBuah()<<"\n"<<endl;
 	}
 }
