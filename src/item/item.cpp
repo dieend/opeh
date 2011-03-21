@@ -1,13 +1,16 @@
 #include "item.h"
-#include <iomanip>
-#include <iostream>
+
 using namespace std;
 
 
 using namespace std;
+Item::Item(ifstream& fin){
+    fin.read((char*)(this),sizeof(Item));
+}
 
 Item :: Item()
 {
+    IDitem = 25;
 }
 
 Item :: ~Item()
@@ -90,6 +93,7 @@ Item* Item::makeBuah(const Grid_Plant* GP){
     else if(GP->getTypeTanaman() == 10)	{item->setIDitem(21);item->setTypeTanaman(10);item->setTypeBuah(22);item->setEfekBuah(4);item->setCostBuy(120);item->setCostSell(720);item->setCostSellBibit(60);item->setBibit(false);item->setNama("terong");}
     else if(GP->getTypeTanaman() == 11)	{item->setIDitem(22);item->setTypeTanaman(11);item->setTypeBuah(23);item->setEfekBuah(0);item->setCostBuy(300);item->setCostSell(1080);item->setCostSellBibit(150);item->setBibit(false);item->setNama("ubi");}
     else if(GP->getTypeTanaman() == 12)	{item->setIDitem(23);item->setTypeTanaman(12);item->setTypeBuah(24);item->setEfekBuah(4);item->setCostBuy(150);item->setCostSell(360);item->setCostSellBibit(75);item->setBibit(false);item->setNama("paprika");}
+    else {return NULL;}
     return item;
 }
 

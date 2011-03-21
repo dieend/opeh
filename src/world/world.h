@@ -2,6 +2,7 @@
 #define WORLD_H
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <fstream>
 #include <cstdlib>
 #include "../time/time.h"
@@ -69,6 +70,7 @@ public:
 	Time* getTime();
 	Player* getPlayer();
 	void kurcaciWork();
+        World(ifstream&);
 	/* Membuat dwarf melakukan pekerjaan yang dilakukan setiap action player terjadi
 	*/
 };

@@ -11,6 +11,9 @@ Time::Time() : minutes(0),jam(6),day(1),season(0),cjam(false),cday(false),cseaso
 {
 }
 
+Time::Time(ifstream& fin){
+    fin.read((char*)(this),sizeof(Time));
+}
 Time::~Time(){
 }
 /*  pkoknya 10 menit 6 aksi

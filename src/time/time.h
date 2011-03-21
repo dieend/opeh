@@ -1,10 +1,13 @@
 #ifndef time_H
 #define time_H
 // kelas waktu untuk menentukan waktu di world
+#include <fstream>
+using namespace std;
 class Time
 {
 public :
        Time();//ctor time
+       Time(ifstream&);
        virtual ~Time();//dtor time
        void next10Minutes(int);
        void nextMinutes();//menenentukan menit berikutnya, menambah 10 ke menit, dan mengecek apapak mempengaruhi jam,day,season

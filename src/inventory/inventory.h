@@ -1,6 +1,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 #include <string>
+#include <fstream>
 #include "../item/item.h"
 using namespace std;
 
@@ -14,7 +15,8 @@ private:
     int total[3];//array berisi jumlah item berukuran maksimum 3
 
 public:
-    Inventory();//konstruktor
+    Inventory(ifstream&);//konstruktor
+    Inventory();
     Inventory(const Inventory&);//copy konstruktor
     Inventory& operator= (const Inventory&);//operator assignment
     virtual ~Inventory();//destructor

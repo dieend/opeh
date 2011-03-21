@@ -1,7 +1,9 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <iomanip>
 #include "../grid/grid_plant.h"
 using namespace std;
 
@@ -19,6 +21,7 @@ class Item{
         bool bibit;
 	char nama[32];
 	public :
+            Item(ifstream&);
         Item (); //konstruktor
         virtual ~Item (); //destructor
         static Item* makeBibit(const string&);

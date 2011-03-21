@@ -20,7 +20,7 @@ using namespace std;
 class Area;
 class Player {
 public :
-	Player();
+	Player(ifstream&,Area*);
         //ctor
 	Player(Area*,int,string);
 	//cctor

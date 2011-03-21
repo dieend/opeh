@@ -2,8 +2,12 @@
 #include "../helper/util.h"
 Grid_Lahan::Grid_Lahan()
 {
-
 }
+Grid_Lahan::Grid_Lahan(ifstream& fin)
+{
+    fin.read((char*)(this),sizeof(Grid_Lahan));
+}
+
 
 Grid_Lahan::Grid_Lahan(Point newPosisi,int newType,int newFase)
 {

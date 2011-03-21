@@ -43,6 +43,7 @@ bool Game::doPerintah() {
             if (perintah == "new") {
                 world = new World(paramStr[0]);
             } else if (perintah == "load") {
+                world = World::load("save.oph");
             } else if (perintah == "exit") {
                 return false;
             } else {
@@ -136,10 +137,10 @@ bool Game::doPerintah() {
                     world->getDwarf(paramInt[0])->sleep();
                 } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
                     world->getTime()->nextDay();
-					world->getPlayer()->getCurGrid()->setType(GJALAN);
-					world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
-					world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
-					world->getPlayer()->setArah(1);
+                    world->getPlayer()->getCurGrid()->setType(GJALAN);
+                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(4,3));
+                    world->getPlayer()->getCurArea()->getGrid(4,3)->setType(GPLAYER);
+                    world->getPlayer()->setArah(1);
                 }
             } else if (perintah == "status") {
                     cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;

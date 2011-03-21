@@ -7,6 +7,11 @@ Grid_Plant::Grid_Plant()
 {
 
 }
+Grid_Plant::Grid_Plant(ifstream& fin)
+{
+    fin.read((char*)this,sizeof(Grid_Plant));
+}
+
 Grid_Plant::Grid_Plant(Point p,int ntype,int nfase, int tanaman)
 {
     setType(ntype);
