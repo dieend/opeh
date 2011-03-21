@@ -598,7 +598,7 @@ int Dwarf::oneMove()
 	 //pergerakan ke rumah jika dwarf tidak punya pekerjaan
 	 else if (( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
 	 {
-	   if (((cmap->getvalij(3,8+type)==' ') && (cmap->isAccess(3,8+type))) || (cpos.isAround(3,8+type)))
+	   if (((cmap->getvalij(3,8+type)==' ') && (cmap->isAccess(3,8+type))) || (cpos.isAround(3,8+type)) || inDefaultGrid(3,8+type))
 	   {
 		  cmap->setmapij(3,8+type,type+'0');
 	   }
@@ -608,7 +608,7 @@ int Dwarf::oneMove()
 		 int i=0;
 		 while ((i<3) && (!found))
 		 {
-		   if (((cmap->getvalij(3,8+i)==' ') && (cmap->isAccess(3,8+i))) || (cpos.isAround(3,8+i)))
+		   if (((cmap->getvalij(3,8+i)==' ') && (cmap->isAccess(3,8+i))) || (cpos.isAround(3,8+i)) || inDefaultGrid(3,8+i))
 		     found=true;
 		   else 
 		     ++i;
@@ -622,7 +622,7 @@ int Dwarf::oneMove()
 		   i=7;
 		   while ((i>0) && (!found))
 		   {
-		     if (((cmap->getvalij(3,i)==' ') && (cmap->isAccess(3,i))) || (cpos.isAround(3,i)))
+		     if (((cmap->getvalij(3,i)==' ') && (cmap->isAccess(3,i))) || (cpos.isAround(3,i)) || inDefaultGrid(3,i))
 			   found=true;
 			 else
 			   --i;
@@ -793,4 +793,10 @@ ostream& operator<<(ostream& c, Dwarf* p){
 
 map* Dwarf::getMap(){
     return cmap;
+}
+
+bool inDefaultgrid(int i,int j)//true jika dwarf berada di default place, false jika tidak
+{
+  Point pt(i,j);
+  return ( (cpos==pt) || ( (!cpos.isAround(i,j)) && (!cmap->isAccess(i,j)) && (cpos.getX()==3) ) );
 }
