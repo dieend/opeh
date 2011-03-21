@@ -1,5 +1,6 @@
 #include "time.h"
 #include <iostream>
+#include <windows.h>
 #define NORMAL 0
 #define PARALYZED 1
 #define POISONED 2
@@ -243,6 +244,20 @@ void Time::nextDay(){
        nextSeason();
        day=1;
      }
+	 
+	 if (season == 0) {
+		PlaySound(NULL,0,0);
+		Sleep(1000);
+		PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+	} else if (season == 1) {
+		PlaySound(NULL,0,0);
+		Sleep(1000);
+		PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+	} else if (season == 2) {
+		PlaySound(NULL,0,0);
+		Sleep(1000);
+		PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+	}
 }
 
 //mengembalikan nilai dari current day

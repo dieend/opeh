@@ -14,7 +14,7 @@ Player::Player (ifstream& fin, Area* rumah) {
 
 Player::Player (Area* area, int uang, string name) {
 	curArea = area;
-	curGrid = area->getGrid(4,3);
+	curGrid = area->getGrid(6,4);
 	curGrid->setType(GPLAYER);
 	arahHadap = 1;
 	money = uang;
@@ -415,7 +415,7 @@ void Player::teleport(Area * destination) {
 	curArea = destination;
 	area = curArea->getType();
 	if (area == RUMAH) {
-		p.setX(8);
+		p.setX(9);
 		p.setY(4);
 		arahHadap = 4;
 	} else if (area == LAHAN) {
@@ -429,11 +429,6 @@ void Player::teleport(Area * destination) {
 	}
 	curGrid = curArea->getGrid(p);
 	curGrid->setType(1);
-        if (curArea->getType()==LAHAN) {
-            Utilities::getInstances().printPeta(cout);
-        } else if (curArea->getType()==RUMAH) {
-            Utilities::getInstances().printRumah(cout);
-        }
 }
 
 ostream& operator<<(ostream& c, Player* p){
@@ -477,6 +472,3 @@ Grid * Player::getCurGrid(){
     return curGrid;
 }
 
-int Player::getArah(){
-    return arahHadap;
-}

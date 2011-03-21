@@ -192,17 +192,17 @@ ostream& operator<<(ostream& c,Area* area) {
             }
             Utilities::getInstances().resetBG();
 	} else if (area->typeArea==TOKO) {
-            Utilities::getInstances().setBG(GRAY);
+			Utilities::getInstances().printToko(c);
+            Utilities::getInstances().setBG(YELLOW);
             for (int i=0; i<10; i++) {
                 for (int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
-                        c << (area->getPlayer()) ;
-                    } else {
-                        c << peta_toko[i][j];
-                    }
-                }
-                c << endl;
-            }
+                        Player * here = area->getPlayer();
+                        Point posisi(i,j);
+                        c << here;
+					}
+				}
+			}
             Utilities::getInstances().resetBG();
 	}
         
