@@ -34,6 +34,7 @@ Inventory::Inventory(){
     slot[0] = NULL;
     slot[1] = NULL;
     slot[2] = NULL;
+	maxslot = 3;
 }
 
 Inventory::Inventory(const Inventory& inventory)//copy konstruktor
@@ -160,9 +161,9 @@ int Inventory::getJumlah(int noslot){
 
 void Inventory::listDescription()//me-list setiap barang yang ada di inventory
 {
-	
     int i;
 	for (i=0;i<maxslot;i++){
+	
 		Item* item = getSlot(i);
 		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i]->getNama() <<",sebanyak "<<total[i]<<".\nHarga Jual = "<<item->getCostSell()<<". Efek Item = "<<item->getEfekBuah()<<"\n"<<endl;
 	}
