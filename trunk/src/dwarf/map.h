@@ -1,6 +1,7 @@
 #ifndef map_H
 #define map_H
 #include "../point/point.h"
+#include "../helper/util.h"
 using namespace std;
 
 class map
