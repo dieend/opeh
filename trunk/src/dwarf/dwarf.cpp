@@ -573,7 +573,6 @@ void Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
      d1.oneMove();
      d2.bfsdwarf();
      d2.oneMove();
-     cmap->performmap();
 }
 
 Grid *Dwarf::getFrontGrid()

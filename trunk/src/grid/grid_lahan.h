@@ -2,7 +2,7 @@
 #define	_GRID_LAHAN_H
 
 #include "grid.h"
-
+#include <fstream>
 	/* _GRID_LAHAN_H */
 
 
@@ -10,6 +10,7 @@ class Grid_Lahan : public Grid
 {
 	public :
 	Grid_Lahan();
+        Grid_Lahan(ifstream&);
 	Grid_Lahan(Point,int,int);
 	// constructor
 	Grid_Lahan(const Grid_Lahan&);

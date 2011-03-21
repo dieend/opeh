@@ -6,6 +6,7 @@
 #include "../player/player.h"
 #include "../dwarf/dwarf.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #define MAXROW 10
 #define MAXCOLUMN 10
@@ -35,6 +36,7 @@ public:
         void setPlayer(Player*);
         void setDwarf(int, Dwarf*);
         int getType();
+        Area(ifstream&,int);
 	Area(int tipe);
 	/*  Constructor Area dengan menginstansiasi typeArea dengan tipe.
 		0 rumah, 1 lahan, 2 toko

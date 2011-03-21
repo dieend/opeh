@@ -4,11 +4,23 @@
 #include <iomanip>
 using namespace std;
 
-Inventory::Inventory()//konstruktor
+Inventory::Inventory(ifstream& fin)//konstruktor
 {
-	slot[0] = NULL;
-	slot[1] = NULL;
-	slot[2] = NULL;
+    fin.read((char*)(this),sizeof(Inventory));
+    slot[0] = new Item(fin);
+    if (slot[0]->getIDitem()==25) delete slot[0];
+    slot[0] = NULL;
+    slot[1] = new Item(fin);
+    if (slot[1]->getIDitem()==25) delete slot[1];
+    slot[1] = NULL;
+    slot[2] = new Item(fin);
+    if (slot[2]->getIDitem()==25) delete slot[2];
+    slot[2] = NULL;
+}
+Inventory::Inventory(){
+    slot[0] = NULL;
+    slot[1] = NULL;
+    slot[2] = NULL;
 }
 
 Inventory::Inventory(const Inventory& inventory)//copy konstruktor

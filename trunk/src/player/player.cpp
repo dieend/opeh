@@ -1,8 +1,16 @@
 #include "player.h"
-#include <string.h>
+#include <string>
 
-Player::Player () {
-    
+Player::Player (ifstream& fin, Area* rumah) {
+    fin.read((char*)(this),sizeof(Player));
+    curArea = rumah;
+    curGrid = rumah->getGrid(4,3);
+    curGrid->setType(GPLAYER);
+    cout << fin.tellg() << "inventory" << endl;
+    inventory = new Inventory(fin);
+    Inventory* i = this->getInventory();
+    cout << "pass2";
+
 }
 
 Player::Player (Area* area, int uang, string name) {
@@ -12,6 +20,7 @@ Player::Player (Area* area, int uang, string name) {
 	arahHadap = 1;
 	money = uang;
         copy(name.begin(),name.end(),nama);
+        nama[name.size()]='\0';
 	inventory = new Inventory();
 	status = 0;
 	
@@ -123,6 +132,7 @@ void Player::setName(string as) {
 Mengisi nama dari player
 */
         copy(as.begin(),as.end(),nama);
+        nama[as.size()]=0;
 }
 	
 string Player::getName() {
@@ -443,3 +453,4 @@ ostream& operator<<(ostream& c, Player* p){
 Grid * Player::getCurGrid(){
     return curGrid;
 }
+

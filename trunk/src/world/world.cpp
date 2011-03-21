@@ -1,5 +1,5 @@
 #include "world.h"
-#include <iomanip>
+
 #define RUMAH 0
 #define LAHAN 1
 #define TOKO 2
@@ -7,14 +7,37 @@
 #define HARVEST 1
 #define SLASH 2
 
-// volatile unsigned long randomizer()
-// {
-	// unsigned long tsc;
-	// asm("rdtsc":"=A"(tsc));
-	// return tsc;
-// }
+World::World(ifstream& fin){
+    fin.read((char*)(this), sizeof(World));
+    area[RUMAH] = new Area(RUMAH);
+    area[LAHAN] = new Area(fin,LAHAN);
+    area[TOKO] = new Area(TOKO);
+    player = new Player(fin,area[RUMAH]);
+    
+    
+        area[RUMAH]->setPlayer(player);
+        area[LAHAN]->setPlayer(player);
+        area[TOKO ]->setPlayer(player);
+        Dwarf::Field = area[LAHAN];
+    	dwarf[HARVEST]	= new Dwarf(HARVEST);
+	dwarf[WATER] 	= new Dwarf(WATER);
+	dwarf[SLASH]	= new Dwarf(SLASH);
+        area[LAHAN]->setDwarf(0,dwarf[0]);
+        area[LAHAN]->setDwarf(1,dwarf[1]);
+        area[LAHAN]->setDwarf(2,dwarf[2]);
+    time = new Time(fin);
+
+}
 
 World::World() {
+    player = NULL;
+    dwarf[0] = NULL;
+    dwarf[1] = NULL;
+    dwarf[2] = NULL;
+    area[0] = NULL;
+    area[1] = NULL;
+    area[2] = NULL;
+    time = NULL;
 }
 World::World(string nama){
 	// ctor
@@ -79,22 +102,45 @@ World& World::operator=(World& world) {
 }
 
 void World::save(const string& pathFile,World& world){
-	// // menulis kondisi world ke file
-	// ofstream Opeh("opeh.txt", ios::out);
-	
-	// // masih salah
-	// fout.write((char*)(&world),sizeof(World));
-	// fout.close();
+	 // menulis kondisi world ke file
+	ofstream fout(pathFile.c_str(), ios::out | ios::binary);
+	 // masih salah
+        fout.seekp(0);
+        Item dummyItem;
+        fout.write((char*)(&world),sizeof(World));
+        for (int i=3; i<MAXROW; i++){
+            for (int j=0; j<MAXCOLUMN; j++){
+                int type = world.getArea(1)->getGrid(i,j)->getType();
+                if (type==GTANAMAN) {
+                    fout.write((char*)&type,sizeof(int));
+                    fout.write((char*)(world.getArea(1)->getGrid(i,j)),sizeof(Grid_Plant));
+                } else if (type==GLAHAN){
+                    fout.write((char*)&type,sizeof(int));
+                    fout.write((char*)(world.getArea(1)->getGrid(i,j)),sizeof(Grid_Lahan));
+                } else {
+                    world.getArea(1)->getGrid(i,j)->setType(GLAHAN);
+                    fout.write((char*)&type,sizeof(int));
+                    fout.write((char*)(world.getArea(1)->getGrid(i,j)),sizeof(Grid_Lahan));
+                    world.getArea(1)->getGrid(i,j)->setType(type);
+                }
+            }
+        }
+        fout.write((char*)(world.getPlayer()),sizeof(Player));
+        
+        fout.write((char*)(world.getPlayer()->getInventory()),sizeof(Inventory));
+        if (world.getPlayer()->getInventory()->cekSlot(0)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(0)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        if (world.getPlayer()->getInventory()->cekSlot(1)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(1)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        if (world.getPlayer()->getInventory()->cekSlot(2)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(2)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        fout.write((char*)(world.time),sizeof(Time));
+	fout.close();
 }
 
 World* World::load(const string& pathFile){
-	World* world = new World();
-	ifstream fin (pathFile.c_str(), ios::in | ios::binary);
-	fin.seekg(0);
-	// masih salah
-	fin.read((char*)(&world), sizeof(World));
-	fin.close();
-	return world;
+    ifstream fin (pathFile.c_str(), ios::in | ios::binary);
+    fin.seekg(0);
+    World* world = new World(fin);
+    fin.close();
+    return world;
 }
 
 void World::doWeather() {
@@ -125,7 +171,7 @@ ostream& operator<<(ostream& c,World& world){
         cout << "Player position : " << new Point(world.player->getCurGrid()->getPosisi())<< endl;
         cout << "Player area : " << world.player->getCurArea()->getType() << endl;
         cout << "Area masking: " << endl;
- */
+
         Utilities::getInstances().gotoxy(100,0);
         for (int i=0; i<10; i++) {
             for (int j=0; j<10;j++){
@@ -137,7 +183,7 @@ ostream& operator<<(ostream& c,World& world){
             }
             cout << endl;
         }
- 
+*/
         Utilities::getInstances().gotoxy(3,55);cout << ((world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL"));
         Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"st"));
         Utilities::getInstances().gotoxy(3,59);cout << (world.time->getJam()<10?"0":"")<< world.time->getJam()<<":"<< (world.time->getMinutes()<10?"0":"")<<world.time->getMinutes();
@@ -171,4 +217,3 @@ Time* World::getTime() {
 Player* World::getPlayer() {
     return player;
 }
-

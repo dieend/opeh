@@ -1,6 +1,25 @@
 #include "area.h"
 #include "../point/point.h"
 
+Area::Area(ifstream& fin,int type):typeArea(type){
+    if (type==LAHAN){
+        G(0,0,2);G(0,1,9);G(0,2,9);G(0,3,9);G(0,4,9);G(0,5,9);G(0,6,9);G(0,7,2);G(0,8,GSELLINGBOX);G(0,9,GSELLINGBOX);
+        G(1,0,2);G(1,1,2);G(1,2,2);G(1,3,2);G(1,4,2);G(1,5,2);G(1,6,2);G(1,7,2);G(1,8,GSELLINGBOX);G(1,9,GSELLINGBOX);
+        G(2,0,2);G(2,1,2);G(2,2,2);G(2,3,2);G(2,4,2);G(2,5,2);G(2,6,2);G(2,7,2);G(2,8,2);G(2,9,2);
+        for (int i=3; i<MAXROW; i++) {
+            for (int j=0; j<MAXCOLUMN; j++) {
+                int k;
+                fin.read((char*)&k,sizeof(int));
+                if (k==GTANAMAN){
+                    grid[i][j] = new Grid_Plant(fin);
+                } else {
+                    grid[i][j] = new Grid_Lahan(fin);
+                }
+            }
+        }
+    }
+}
+
 Grid * Area::getGrid(int x, int y) {
     return grid[x][y];
 }

@@ -3,6 +3,7 @@
 
 #include "grid.h"
 #include "../helper/util.h"
+#include <fstream>
 
 class Grid_Plant : public Grid
 // merupakan tanaman
@@ -27,6 +28,7 @@ class Grid_Plant : public Grid
 	
 	public :
 	Grid_Plant();
+        Grid_Plant(ifstream&);
         Grid_Plant(int);
         Grid_Plant(Point,int,int,int);
 	
