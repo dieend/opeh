@@ -15,7 +15,6 @@ Toko :: ~Toko() //destruktor
 {
 }
 
-
 void Toko::listItem()
 {
 	cout << char(201); for (int i = 1; i <= 10; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 16; i++) {cout << char(205);} cout << char(187) << endl;
