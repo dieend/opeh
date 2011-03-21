@@ -186,29 +186,7 @@ void World::setWeather() {
 }
 
 ostream& operator<<(ostream& c,World& world){
-	// belum diimplementasi
-	char tmp[100];
-        c << (world.getPlayer()->getCurArea());
-/* UNCOMMENT FOR DEBUG
-        Utilities::getInstances().setColor(AQUA,BLACK);
-	c << tmp;
-        Utilities::getInstances().resetColor();
-        cout << "Player position : " << new Point(world.player->getCurGrid()->getPosisi())<< endl;
-        cout << "Player area : " << world.player->getCurArea()->getType() << endl;
-        cout << "Area masking: " << endl;
-
-        Utilities::getInstances().gotoxy(100,0);
-        for (int i=0; i<10; i++) {
-            for (int j=0; j<10;j++){
-                cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getType();
-            }
-            cout << "|";
-            for (int j=0; j<10;j++){
-                cout << world.getArea(world.player->getCurArea()->getType())->getGrid(i,j)->getFase();
-            }
-            cout << endl;
-        }
-*/
+	    c << (world.getPlayer()->getCurArea());
         Utilities::getInstances().gotoxy(3,55);cout << ((world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL"));
         Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"th"));
         Utilities::getInstances().gotoxy(3,59);cout << (world.time->getJam()<10?"0":"")<< world.time->getJam()<<":"<< (world.time->getMinutes()<10?"0":"")<<world.time->getMinutes();
