@@ -259,14 +259,7 @@ void Grid_Plant::grow(int newCurrentSeason)
 		setHappyMeter(happyMeter+1);
 	else
 		setHappyMeter(happyMeter-1);
-	if (umur == 0)
-		{
-		if (isBibit())
-			setFase(DBIBIT);
-		else
-			setFase(MATI);
-		}
-            else if (newCurrentSeason != season)
+	if ((umur == 0) || (newCurrentSeason != season))
 		{
 		if (isBibit())
 			setFase(DBIBIT);
