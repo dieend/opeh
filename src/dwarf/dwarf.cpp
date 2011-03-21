@@ -326,14 +326,17 @@ void Dwarf::setmap()
       int tG=tGrid->getType();
       if ((tG==GSELLINGBOX) || (tG==GUNSTEP))
       {
+          cout << "sellbox";
         cmap->setmapij(i+1,j+1,'#');
       }
       else if (tG==GPLAYER || tG==HKURCACI || tG==WKURCACI || tG==SKURCACI)
       {
+          cout << "player";
           cmap->setmapij(i+1,j+1,'3');
       }
       else if (tG==GTANAMAN)
       {
+          cout << "tanaman";
         Grid_Plant * tGP=(Grid_Plant *)tGrid;
         int fase=tGP->getFase();
         
@@ -504,6 +507,7 @@ int Dwarf::oneMove()
      //cout << "isi dequedwarf " << (*dwarfdqp)[0].getX() << ',' << (*dwarfdqp)[0].getY() << endl;
      //cout << "cpos : " << cpos.getX() << ',' << cpos.getY() << endl;
      //cout << "front : " << getFrontpoint().getX() << ',' << getFrontpoint().getY() << endl;
+	 //kasus jika yang dihadapannya ada di rute terpendek :
      if ((*dwarfdqp)[0]==getFrontpoint())
      {
        if (  chartoint( cmap->getvalpoint(getFrontpoint()) )==type )
@@ -558,7 +562,7 @@ int Dwarf::oneMove()
        }
 	   return 0;
      }
-     else //kasus jika hanya mengubah arah saja
+     else//kasus jika hanya mengubah arah saja
      {
        if ((*dwarfdqp)[0]==cpos.getLeft())
        {
@@ -585,12 +589,104 @@ int Dwarf::oneMove()
      //cout << "cpos : " << cpos.getX() << ',' << cpos.getY() << endl;
      //cout << "front : " << getFrontpoint().getX() << ',' << getFrontpoint().getY() << endl;
      }
-	 else if ((status==0) || ( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
+	 else if ((status==0))// || ( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
 	 {
 	   setDefault();
 	   return 0;
 	 }
-}   
+	 //pergerakan ke rumah jika dwarf tidak punya pekerjaan
+	 else if (( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
+	 {
+	   if ((cmap->getvalij(3,8+type)==' ') && (cmap->isAccess(3,8+type)))
+	   {
+		  cmap->setmapij(3,8+type,type);
+	   }
+	   else 
+	   {
+	     bool found=false;
+		 int i=0;
+		 while ((i<3) && (!found))
+		 {
+		   if ((cmap->getvalij(3,8+i)==' ') && (cmap->isAccess(3,8+i)))
+		     found=true;
+		   else 
+		     ++i;
+		 }
+		 if (found)
+		 {
+		   cmap->setmapij(3,8+i,type);
+		 }
+		 else 
+		 {
+		   i=7;
+		   while ((i>0) && (!found))
+		   {
+		     if ((cmap->getvalij(3,i)==' ') && (cmap->isAccess(3,i)))
+			   found=true;
+			 else
+			   --i;
+		   }
+		   if (found)
+		   {
+		     cmap->setmapij(3,i,type);
+		   }
+		   else
+		   {
+		     setDefault();
+			 return 0;
+		   }
+		 }
+	   }
+	   //di sini tujuan akhir pasti sudah ditentukan, di cmap, sudah ada value tujuan akhir
+	   bfsdwarf();
+	   if (!dwarfdqp->empty())
+	   {
+	     //kasus jika rute Grid di depannya ada dalam rute terpendek
+	     if ((*dwarfdqp)[0]==getFrontpoint())
+		 {
+           //disini ubah posisi dwarf, ubah grid dan map
+           cmap->setvalpoint(cpos,' ');
+           if (cGrid->getPosisi().getX()<3)
+           {
+             cGrid->setType(GJALAN);
+           }
+           else 
+           {
+             cGrid->setType(GLAHAN);
+           }
+           cpos=getFrontpoint();
+           cGrid=Field->getGrid(cpos.getX()-1,cpos.getY()-1);
+           cmap->setvalpoint(cpos,'3');
+           cGrid->setType(type+10);
+		 }
+		 else//kasus jika hanya mengubah arah
+		 {
+		   if ((*dwarfdqp)[0]==cpos.getRight())
+		   {
+		     direction=1;
+		   }
+		   else if ((*dwarfdqp)[0]==cpos.getDown())
+		   {
+		     direction=2;
+		   }
+		   else if ((*dwarfdqp)[0]==cpos.getLeft())
+		   {
+		     direction=3;
+		   }
+		   else if ((*dwarfdqp)[0]==cpos.getUp())
+		   {
+		     direction=4;
+		   }
+		}
+		 return 0;
+	  }
+	  else
+	  {
+	    direction=2;
+	  }
+	}
+}
+   
          
 int Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
 {
