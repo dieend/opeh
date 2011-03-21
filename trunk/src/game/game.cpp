@@ -159,7 +159,7 @@ bool Game::doPerintah() {
                     world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
                     world->getPlayer()->setArah(1);
                 }else {
-                    throw "Unknown Command";
+                    throw "You can't do it here";
                 }
             } else if (perintah == "status") {
                     cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
