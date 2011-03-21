@@ -8,7 +8,6 @@ Player::Player (ifstream& fin, Area* rumah) {
     curGrid->setType(GPLAYER);
     cout << "inventory:" << fin.tellg() << endl;
     inventory = new Inventory(fin);
-    
 }
 
 Player::Player (Area* area, int uang, string name) {
@@ -256,7 +255,8 @@ void Player::water() {
 			}
 		}
 	} else {
-		throw "Front Grid can't be watered";
+            string kata = "Front Grid can't be watered";
+            throw kata.c_str();
 	}
 }
 
@@ -313,6 +313,7 @@ void Player::put(int noSlot,int jumlah) {
 		throw "Front Grid can't be used to put item";
 	} else {
 		throw "There is no item in slot";
+        }
 }
 
 void Player::move(int arah) {
@@ -401,13 +402,8 @@ void Player::buyItem(const string name,int Jumlah) {
 				money = money - dummyItem->getCostBuy()* Jumlah;
 						cout <<"OK";
 				inventory->addItem(name,Jumlah);
-<<<<<<< .mine
 			 } else throw "You do not have money enough to do this transaction. Please try again.";
-		}
-=======
-			 } else throw "You don't have enough money";
-		} else throw "You can buy negative number of item";
->>>>>>> .r251
+		} else throw "You can't buy negative number of item";
 	}
 	 delete dummyItem;
 }

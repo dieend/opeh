@@ -1,5 +1,5 @@
 #include "game.h"
-#include <windows.h>
+
 void Game::Run() {
     bool notExit = true;
     
@@ -43,25 +43,25 @@ bool Game::doPerintah() {
 	if (world == NULL) {
             if (perintah == "new") {
                 world = new World(paramStr[0]);
-				PlaySound(NULL,0,0);
-				PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+//				PlaySound(NULL,0,0);
+//				PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
             } else if (perintah == "load") {
                 world = World::load("save.oph");
 				if (world->getTime()->getSeason() == 0) {
-					PlaySound(NULL,0,0);
-					PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+//					PlaySound(NULL,0,0);
+//					PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				} else if (world->getTime()->getSeason() == 1) {
-					PlaySound(NULL,0,0);
-					PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+//					PlaySound(NULL,0,0);
+//					PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				} else if (world->getTime()->getSeason() == 2) {
-					PlaySound(NULL,0,0);
-					PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+//					PlaySound(NULL,0,0);
+//					PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				}
             } else if (perintah == "exit") {
                 system("cls");
                 return false;
             } else {
-                throw "The comment can't be done here";
+                throw "The command can't be done here";
             }
 
 	} else {
@@ -70,28 +70,28 @@ bool Game::doPerintah() {
                 int where = world->getPlayer()->getCurArea()->getType();
                 if (paramStr[0] == "-help") {
                         if (where ==0) {
-                                cout << "Anda bisa teleport ke `lahan`\n";
+                                cout << "You can teleport to `lahan`\n";
                         } else if (where == 1) {
-                                cout << "Anda bisa teleport ke `rumah` atau `toko` \n";
+                                cout << "You can teleport to `rumah` atau `toko` \n";
                         } else if (where == 2) {
-                                cout << "Anda bisa teleport ke `lahan`\n";
+                                cout << "You can teleport to `lahan`\n";
                         }
                         getch();
                 } else if (0>paramInt[0] || paramInt[0] >2){
-                    throw "The place can't be accessed";
+                    throw "It's nowhere";
                 } else if (world->getWeather() != STORM) {
                     if(where == 0) {
                         if (paramStr[0] == "lahan") world->getPlayer()->teleport(world->getArea(1));
-                        if (paramStr[0] == "toko") throw 2;
-                        if (paramStr[0] == "rumah") throw 2;
+                        if (paramStr[0] == "toko") throw "You can't go from here";
+                        if (paramStr[0] == "rumah") throw "You can't go from here";
                     } else if (where == 1) {
-                        if (paramStr[0] == "lahan") throw 2;
+                        if (paramStr[0] == "lahan") throw "You can't go from here";
                         if (paramStr[0] == "toko") world->getPlayer()->teleport(world->getArea(2));
                         if (paramStr[0] == "rumah") world->getPlayer()->teleport(world->getArea(0));
                     } else if (where == 2) {
                         if (paramStr[0] == "lahan") world->getPlayer()->teleport(world->getArea(1));
-                        if (paramStr[0] == "toko") throw 2;
-                        if (paramStr[0] == "rumah") throw 2;
+                        if (paramStr[0] == "toko") throw "You can't go from here";
+                        if (paramStr[0] == "rumah") throw "You can't go from here";
                     }
                 } else throw "The place can't be accessed";
             } else if (perintah == "right") {
@@ -149,19 +149,17 @@ bool Game::doPerintah() {
             } else if (perintah == "wake_up") {
                     world->getDwarf(paramInt[0])->wakeUp();
             } else if (perintah == "sleep" ) {
-                if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()==GBED) {
-                    if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
-                        cout << world->getDwarf(paramInt[0])->getStatus();
-                        world->getDwarf(paramInt[0])->sleep();
-                    } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
-                        world->getTime()->nextDay();
-                        world->getPlayer()->getCurGrid()->setType(GJALAN);
-                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
-                        world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
-                        world->getPlayer()->setArah(1);
-                    }
-                } else {
-                    throw 2;
+                if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
+                    cout << world->getDwarf(paramInt[0])->getStatus();
+                    world->getDwarf(paramInt[0])->sleep();
+                } else if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()==GBED){
+                    world->getTime()->nextDay();
+                    world->getPlayer()->getCurGrid()->setType(GJALAN);
+                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
+                    world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
+                    world->getPlayer()->setArah(1);
+                }else {
+                    throw "Unknown Command";
                 }
             } else if (perintah == "status") {
                     cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
@@ -171,28 +169,32 @@ bool Game::doPerintah() {
                 if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()== GSAVE){
                     World::save("save.oph",*world);
                 } else {
-                    throw 2;
+                    throw "You can't do it here";
                 }
             } else if (perintah == "exit") {
-                system("cls");
-                delete world;
-                world = NULL;
-                return false;
+                if (world->getPlayer()->getCurArea()==RUMAH){
+                    system("cls");
+                    delete world;
+                    world = NULL;
+                    return false;
+                } else {
+                    throw "You can't do it here";
+                }
             } else if (perintah == "store") {
                 if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
                     system("cls");
                     Toko * toko = (Toko*) world->getPlayer()->getFrontGrid();
                     toko->listItem();
                     cin.get();
-                } else throw "The comment must be used in front of store";
+                } else throw "The command must be used in front of store";
             } else if (perintah == "buy") {
                 if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
                         world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
-                } else throw 2;
+                } else throw "The command must be used in front of store";
             } else if (perintah == "sell") {
                 if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
                         world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
-                } else throw 2;
+                } else throw "The command must be used in front of store";
             } else if (perintah == "eat") {
                 world->getPlayer()->eat(paramInt[0]);
             } else if (perintah == "cheat") {
@@ -295,11 +297,7 @@ void Game::getPerintah(){
 
 Game::Game() {
     world = NULL;
-<<<<<<< .mine
-	PlaySound("title sound.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC);
-=======
 //	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC|SND_NOSTOP);
->>>>>>> .r251
 }
 Game::~Game(){
     delete world;
@@ -654,15 +652,15 @@ void Game::getBuy(char* kata, int done) {
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>3){
-        throw "Input doesn't match any format";
+        throw ("Input doesn't match any format");
     }
     if ('0' <= paramStr[1][0] && paramStr[1][0]<='9') {
         sscanf(paramStr[1].c_str(),"%d",&paramInt[0]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw ("Input doesn't match any format");
         }
     }else{
-        throw "Input doesn't match any format";
+        throw ("Input doesn't match any format");
     }
 }
 void Game::getSell(char* kata, int done){
@@ -674,7 +672,7 @@ void Game::getSell(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>3){
-        throw "Input doesn't match any format";
+        throw ("Input doesn't match any format");
     }
     if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
         sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
@@ -682,15 +680,15 @@ void Game::getSell(char* kata, int done){
             throw "Input doesn't match any format";
         }
     }else{
-        throw "Input doesn't match any format";
+        throw ("Input doesn't match any format");
     }
     if ('0' <= paramStr[1].c_str()[0] && paramStr[1][0]<='9') {
         sscanf(paramStr[1].c_str(),"%d",&paramInt[1]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw ("Input doesn't match any format");
         }
     }else{
-        throw "Input doesn't match any format";
+        throw ("Input doesn't match any format");
     }
 }
 
