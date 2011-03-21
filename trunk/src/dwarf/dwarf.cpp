@@ -768,11 +768,11 @@ Grid *Dwarf::getFrontGrid()
 
 ostream& operator<<(ostream& c, Dwarf* p){
     if (p->getType()==0){
-        Utilities::getInstances().setFG(BLUE);
+        Utilities::getInstances().setFG(LBLUE);
     } else if (p->getType()==1){
-        Utilities::getInstances().setFG(YELLOW);
+        Utilities::getInstances().setFG(LYELLOW);
     } if (p->getType()==2){
-        Utilities::getInstances().setFG(RED);
+        Utilities::getInstances().setFG(LRED);
     }
     int xUL = p->cGrid->getPosisi().getX()*4+11;
     int yUL = p->cGrid->getPosisi().getY()*6+7;
