@@ -38,11 +38,11 @@ class Item{
         void setEfekBuah(int);
         void setCostBuy(int);
         void setCostSell(int);
-	void setCostSellBibit(int);
+		void setCostSellBibit(int);
         void setTypeTanaman(int);
         void setTypeBuah(int);
         void setIDitem(int);
         void setBibit(bool);
-	void setNama(string);
+		void setNama(string);
 };
 #endif
