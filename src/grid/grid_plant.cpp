@@ -341,7 +341,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
     if (GP->getFase() == BIBIT)
 		{
 			Utilities::getInstances().setBG(YELLOW);
-			Utilities::getInstances().setFG(BLACK);
+			Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << " ... ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
@@ -366,7 +366,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
         }
 	else if (GP->getFase() == DBIBIT) 
 		{
-			Utilities::getInstances().setBG(BLACK);
+			Utilities::getInstances().setBG(YELLOW);
             Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << " ... ";
@@ -382,65 +382,91 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
         if (GP->getFase() == REMAJA)
 			{
 			Utilities::getInstances().setBG(YELLOW);
-			Utilities::getInstances().setFG(GREEN);
+			Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "  _  ";
+			c << " _";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(GREEN);
+			c << "1";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(WHITE);
+			c << "_ ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << " (o) ";
+			c << "(g"<< char(236) <<"p)";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == SREMAJA) 
 			{
 			Utilities::getInstances().setBG(LYELLOW);
-			Utilities::getInstances().setFG(GREEN);
+			Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "  _  ";
+			c << " _";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(GREEN);
+			c << "1";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(WHITE);
+			c << "_ ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << " (o) ";
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(YELLOW);
+			c << "(g"<< char(236) <<"p)";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == DEWASA) 
 			{
 			Utilities::getInstances().setBG(YELLOW);
-			Utilities::getInstances().setFG(GREEN);
+			Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "     ";
+            c << "//";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(GREEN);
+			c << char(193);
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(WHITE);
+			c <<"\\\\";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "sssss";
+			c << "(   )";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "((o))";
+			c << "\\\\_//";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == SDEWASA) 
 			{
-			Utilities::getInstances().setBG(LYELLOW);
-			Utilities::getInstances().setFG(GREEN);
+			Utilities::getInstances().setBG(YELLOW);
+			Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "     ";
+            c << "//";
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(GREEN);
+			c << char(193);
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().setFG(WHITE);
+			c <<"\\\\";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "sssss";
+			c << "(   )";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "((o))";
+			c << "\\\\_//";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == MATI) 
 			{
-			Utilities::getInstances().setBG(BLACK);
+			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "sssss";
+			c << " _1_ ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "((o))";
+			c << "(g"<< char(236) <<"p)";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}		
@@ -454,9 +480,9 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " |_| ";
+			c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << " \\ / ";
+			c << " \\|/ ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -467,9 +493,9 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " |_| ";
+			c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << " \\ / ";
+			c << " \\|/ ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -478,11 +504,26 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "|___|";
+            c << "\\\\_//";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " \\ / ";
+			c << " " ;
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(WHITE);
+			Utilities::getInstances().setFG(WHITE);			
+			c << char(186) << " "<< char(186) ;
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(YELLOW);
+			c <<" ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  -  ";
+			c << " ";
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(WHITE);
+			c << "\\_/";
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(YELLOW);
+			c << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -491,24 +532,39 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(LYELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "|___|";
+            c << "\\\\_//";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " \\ /";
+			c << " " ;
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(WHITE);
+			Utilities::getInstances().setFG(WHITE);			
+			c << char(186) << " "<< char(186) ;
+			Utilities::getInstances().resetFG();
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(LYELLOW);
+			c <<" ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  -  ";
+			c << " ";
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(WHITE);
+			c << "\\_/";
+			Utilities::getInstances().resetBG();
+			Utilities::getInstances().setBG(LYELLOW);
+			c << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == MATI) 
 			{
-			Utilities::getInstances().setBG(BLACK);
+			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "|___|";
+            c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " \\ / ";
+			c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  -  ";
+			c << " \\|/ ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}		
@@ -522,9 +578,9 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "     ";
+			c << "  _  ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -535,9 +591,9 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "     ";
+			c << "  _  ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -546,11 +602,11 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "__ __";
+            c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -559,24 +615,24 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(LYELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "__ __";
+            c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "II II";
+			c << " "<< char(179) << char(219) << char(179) << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == MATI) 
 			{
-			Utilities::getInstances().setBG(BLACK);
+			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "__ __";
+            c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << "II II";
+			c << "  _  ";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "II II";
+			c << " "<< char(179) << " " << char(179) << " ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}		
@@ -591,7 +647,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " dOb ";
+			c << "{{" << char(233) << "}}";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
 			c << "     ";
 			Utilities::getInstances().resetFG();
@@ -604,7 +660,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " dOb ";
+			c << "{{" << char(233) << "}}";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
 			c << "     ";
 			Utilities::getInstances().resetFG();
@@ -615,11 +671,11 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "  Q  ";
+            c << "{/ \\}";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " QOQ ";
+			c << "{{" << char(233) << "}}";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  Q  ";
+			c << "{\\ /}";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
@@ -628,24 +684,24 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 			Utilities::getInstances().setBG(LYELLOW);
 			Utilities::getInstances().setFG(GREEN);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "  Q  ";
+            c << "{/ \\}";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " QOQ ";
+			c << "{{" << char(233) << "}}";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  Q  ";
+			c << "{\\ /}";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}
 		else if (GP->getFase() == MATI) 
 			{
-			Utilities::getInstances().setBG(BLACK);
+			Utilities::getInstances().setBG(YELLOW);
 			Utilities::getInstances().setFG(BLACK);
 			Utilities::getInstances().gotoxy(yUL,xUL);
-            c << "  Q  ";
+            c << "     ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
-			c << " QOQ ";
+			c << "{{" << char(233) << "}}";
 			Utilities::getInstances().gotoxy(yUL,xUL+2);
-			c << "  Q  ";
+			c << "     ";
 			Utilities::getInstances().resetFG();
 			Utilities::getInstances().resetBG();
 			}		
