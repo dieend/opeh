@@ -22,7 +22,7 @@ World::World(ifstream& fin){
         cout << "time:"<<fin.tellg()<<endl;
     time = new Time(fin);
 //    Utilities::getInstances().printRumah(cout);
-    system("pause");
+//    system("pause");
 }
 
 World::World() {
@@ -210,7 +210,7 @@ ostream& operator<<(ostream& c,World& world){
         }
 */
         Utilities::getInstances().gotoxy(3,55);cout << ((world.time->getSeason()==0)?"SPRING":((world.time->getSeason()==1)?"SUMMER":"FALL"));
-        Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"st"));
+        Utilities::getInstances().gotoxy(5,57);cout << (world.time->getDay()) << ((world.time->getDay()==1 || world.time->getDay()==21)?"st":((world.time->getDay()==2 || world.time->getDay()==22)?"nd":"th"));
         Utilities::getInstances().gotoxy(3,59);cout << (world.time->getJam()<10?"0":"")<< world.time->getJam()<<":"<< (world.time->getMinutes()<10?"0":"")<<world.time->getMinutes();
         Utilities::getInstances().gotoxy(16,55);cout << world.player->getName();
         Utilities::getInstances().gotoxy(16,57); cout << (world.player->getStatus()==0?"NORMAL":(world.player->getStatus()==1?"PARALYZED":(world.player->getStatus()==2?"POISONED":(world.player->getStatus()==3?"FULLPOWER":"SICK"))));
