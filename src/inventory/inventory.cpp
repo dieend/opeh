@@ -2,6 +2,7 @@
 #include "../item/item.h"
 #include <iostream>
 #include <iomanip>
+#include <conio.h>
 using namespace std;
 
 Inventory::Inventory(ifstream& fin)//konstruktor
@@ -9,7 +10,7 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     fin.read((char*)(this),sizeof(Inventory));
     cout << "item0" << fin.tellg() << endl;
     slot[0] = new Item(fin);
-    if (slot[0]->getIDitem()==25) {
+    if (slot[0]->getIDitem()==15) {
         cout << slot[0]->getIDitem();
         if (slot[0] != NULL)
         //delete slot[0];
@@ -18,13 +19,13 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     }
     cout << "item1" << fin.tellg() << endl;
     slot[1] = new Item(fin);
-    if (slot[1]->getIDitem()==25) {
+    if (slot[1]->getIDitem()==15) {
         //delete slot[1];
         slot[1] = NULL;
     }
     cout << "item2" << fin.tellg() << endl;
     slot[2] = new Item(fin);
-    if (slot[2]->getIDitem()==25) {
+    if (slot[2]->getIDitem()==15) {
         //delete slot[2];
         slot[2] = NULL;
     }
@@ -162,9 +163,34 @@ int Inventory::getJumlah(int noslot){
 void Inventory::listDescription()//me-list setiap barang yang ada di inventory
 {
     int i;
+	system("cls");
+	cout << endl << "PLAYER INVENTORY: " << endl;
+	cout << char(201); for (int i = 1; i <= 11; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(203); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(187) << endl;
+	cout << char(186) << setw(11) << left << "Nomor Slot" << char(186) << "       1       " << char(186)<< "       2       " << char(186)<< "       3       " << char(186) << endl;
+	cout << char(204); for (int i = 1; i <= 11; i++) {cout << char(205);} cout << char(206); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(206); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(206); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(185) << endl;
+	cout << char(186) << setw(11) << left << "Nama" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(199); for (int i = 1; i <= 11; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(182) << endl;
+	cout << char(186) << setw(11) << left << "Jenis" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(199); for (int i = 1; i <= 11; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(182) << endl;
+	cout << char(186) << setw(11) << left << "Total" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(199); for (int i = 1; i <= 11; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(182) << endl;
+	cout << char(186) << setw(11) << left << "Musim" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(199); for (int i = 1; i <= 11; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(182) << endl;
+	cout << char(186) << setw(11) << left << "Harga Jual" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(199); for (int i = 1; i <= 11; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(215); for (int i = 1; i <= 15; i++) {cout << char(196);} cout << char(182) << endl;
+	cout << char(186) << setw(11) << left << "Efek Item" << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186); for (int i = 1; i <= 15; i++) {cout << " ";} cout << char(186) << endl;
+	cout << char(200); for (int i = 1; i <= 11; i++) {cout << char(205);} cout << char(202); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(202); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(202); for (int i = 1; i <= 15; i++) {cout << char(205);} cout << char(188) << endl;
 	for (i=0;i<maxslot;i++){
-	
-		Item* item = getSlot(i);
-		cout<<"Barang yang terdapat di slot ke- "<< i <<" adalah "<< slot[i]->getNama() <<",sebanyak "<<total[i]<<".\nHarga Jual = "<<item->getCostSell()<<". Efek Item = "<<item->getEfekBuah()<<"\n"<<endl;
+		if (cekSlot(i)) {
+			Item* item = getSlot(i);
+			Utilities::getInstances().gotoxy(14+i*16,5); cout << item->getNama();
+			Utilities::getInstances().gotoxy(14+i*16,7); if (item->isBibit()) {cout << "BIBIT";} else {cout << "BUAH";}
+			Utilities::getInstances().gotoxy(14+i*16,9); cout << total[i];
+			Utilities::getInstances().gotoxy(14+i*16,11); if ((item->getIDitem() >= 0) && (item->getIDitem() <= 3)) {cout << "SPRING";} else if ((item->getIDitem() >= 4) && (item->getIDitem() <= 7)) { cout << "SUMMER";} else {cout << "FALL";}
+			Utilities::getInstances().gotoxy(14+i*16,13); cout << item->getCostSell();
+			Utilities::getInstances().gotoxy(14+i*16,15); cout << item->getEfekBuah();
+		}
 	}
+	Utilities::getInstances().gotoxy(0,17);
+	getch();
 }
