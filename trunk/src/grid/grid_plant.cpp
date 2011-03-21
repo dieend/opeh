@@ -137,7 +137,7 @@ Grid_Plant::Grid_Plant(const Grid_Plant& GP)
 
 Grid_Plant::~Grid_Plant()
 {
-
+    cout << "~gp";
 }
 
 int	Grid_Plant::getTypeTanaman() const

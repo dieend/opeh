@@ -5,12 +5,13 @@ Utilities* Utilities::utilities = NULL;
 Utilities::Utilities(){
     color = 0x07;
 }
-void Utilities::setError(char* kata){
+void Utilities::setError(const char* kata){
     error = kata;
 }
 void Utilities::printError(){
     gotoxy(3,53);
     cout << error;
+    error = "                           ";
 }
 
 Utilities& Utilities::getInstances(){

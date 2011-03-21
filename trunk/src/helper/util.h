@@ -47,7 +47,7 @@ public:
     void printRumah (ostream& c);
     void printToko (ostream& c);
     void printAwal (ostream& c);
-    void setError(char*);
+    void setError(const char*);
     void printError();
 };
 

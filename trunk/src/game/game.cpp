@@ -33,7 +33,7 @@ void Game::Run() {
             }
             int x = getch();
             if (x==224) getch();
-        } catch (char * kata){
+        } catch (const char * kata){
             Utilities::getInstances().setError(kata);
         }
     }while(notExit);
@@ -169,10 +169,11 @@ bool Game::doPerintah() {
                 if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()== GSAVE){
                     World::save("save.oph",*world);
                 } else {
-                    throw "You can't do it here";
+                    string kata = "You can't do it here";
+                    throw kata.c_str();
                 }
             } else if (perintah == "exit") {
-                if (world->getPlayer()->getCurArea()==RUMAH){
+                if (world->getPlayer()->getCurArea()->getType()==RUMAH){
                     system("cls");
                     delete world;
                     world = NULL;
@@ -300,6 +301,7 @@ Game::Game() {
 //	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC|SND_NOSTOP);
 }
 Game::~Game(){
+    cout << "dtor game\n";
     delete world;
 }
 
@@ -726,4 +728,3 @@ void Game::getEat(char * kata, int done) {
 	}
 }
 		
-

@@ -21,6 +21,7 @@ Grid::Grid(const Grid& G)
 
 Grid::~Grid()
 {
+    cout << "ctor grid";
 }
 
 Point Grid::getPosisi() const

@@ -25,7 +25,7 @@ Grid_Lahan::Grid_Lahan(const Grid_Lahan& GL)
 
 Grid_Lahan::~Grid_Lahan()
 {
-
+    cout << "~gridlahan\n";
 }
 
 void Grid_Lahan::setCangkul()

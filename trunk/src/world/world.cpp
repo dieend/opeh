@@ -83,6 +83,7 @@ World::~World() {
 	delete dwarf[SLASH];
         Utilities::getInstances().destroy();
 	// dtor
+        cout << "~world";
 }
 World& World::operator=(World& world) {
 	weather 	= world.weather;
