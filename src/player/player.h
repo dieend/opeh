@@ -153,6 +153,7 @@ public :
 	lain dengan ketentuan Rumah -> Lahan -> Toko dan sebaliknya
 	Toko -> Lahan -> Rumah
 	*/
+        int getArah();
         friend ostream& operator<<(ostream&, Player*);
 	private :
 	Grid * curGrid; //grid player berada

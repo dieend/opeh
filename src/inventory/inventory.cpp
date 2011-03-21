@@ -10,7 +10,10 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     cout << "item0" << fin.tellg() << endl;
     slot[0] = new Item(fin);
     if (slot[0]->getIDitem()==25) {
+        cout << slot[0]->getIDitem();
+        if (slot[0] != NULL)
         delete slot[0];
+        cout << "pass1";
         slot[0] = NULL;
     }
     cout << "item1" << fin.tellg() << endl;

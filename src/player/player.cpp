@@ -429,6 +429,11 @@ void Player::teleport(Area * destination) {
 	}
 	curGrid = curArea->getGrid(p);
 	curGrid->setType(1);
+        if (curArea->getType()==LAHAN) {
+            Utilities::getInstances().printPeta(cout);
+        } else if (curArea->getType()==RUMAH) {
+            Utilities::getInstances().printRumah(cout);
+        }
 }
 
 ostream& operator<<(ostream& c, Player* p){
@@ -472,3 +477,6 @@ Grid * Player::getCurGrid(){
     return curGrid;
 }
 
+int Player::getArah(){
+    return arahHadap;
+}

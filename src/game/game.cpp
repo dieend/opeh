@@ -2,7 +2,7 @@
 #include <windows.h>
 void Game::Run() {
     bool notExit = true;
-    system("cls");
+    
     do {
         if (world != NULL) {
             cout << (*world);
@@ -79,7 +79,6 @@ bool Game::doPerintah() {
             } else if (perintah == "right") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KANAN);
-                            Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
                             world->getTime()->next10Minutes(world->getPlayer()->getStatus());
                             world->getPlayer()->setStatus(world->getTime()->getSTime());
                             Dwarf::setmap();
@@ -132,7 +131,8 @@ bool Game::doPerintah() {
             } else if (perintah == "wake_up") {
                     world->getDwarf(paramInt[0])->wakeUp();
             } else if (perintah == "sleep" ) {
-                if (0 < paramInt[0] && paramInt[0]<=3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
+                if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
+                    cout << world->getDwarf(paramInt[0])->getStatus();
                     world->getDwarf(paramInt[0])->sleep();
                 } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
                     world->getTime()->nextDay();
@@ -148,8 +148,9 @@ bool Game::doPerintah() {
             } else if (perintah == "save") {
                     World::save("save.oph",*world);
             } else if (perintah == "exit") {
-                    delete world;
-                    world = NULL;
+                system("cls");
+                delete world;
+                world = NULL;
             } else if (perintah == "store") {
                 if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
                     system("cls");
@@ -266,7 +267,7 @@ void Game::getPerintah(){
 
 Game::Game() {
     world = NULL;
-	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC);
+//    PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC);
 }
 Game::~Game(){
     delete world;
