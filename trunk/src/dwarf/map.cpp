@@ -162,3 +162,13 @@ int map::gett2()
 {
   return t2;
 }
+
+bool map::isAccess(int i,int j)
+{
+  if ( (getvalij(i,j+1)==' ') || (getvalij(i+1,j)==' ') || (getvalij(i,j-1)==' ') || (getvalij(i-1,j)==' ') )
+    return true;
+  else
+    return false;
+}
+	 
+    
