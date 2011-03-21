@@ -165,7 +165,7 @@ void Inventory::listDescription()//me-list setiap barang yang ada di inventory
 			Utilities::getInstances().gotoxy(14+i*16,5); cout << item->getNama();
 			Utilities::getInstances().gotoxy(14+i*16,7); if (item->isBibit()) {cout << "BIBIT";} else {cout << "BUAH";}
 			Utilities::getInstances().gotoxy(14+i*16,9); cout << total[i];
-			Utilities::getInstances().gotoxy(14+i*16,11); if ((item->getIDitem() >= 0) && (item->getIDitem() <= 3)) {cout << "SPRING";} else if ((item->getIDitem() >= 4) && (item->getIDitem() <= 7)) { cout << "SUMMER";} else {cout << "FALL";}
+			Utilities::getInstances().gotoxy(14+i*16,11); if ((item->getIDitem() % 12 >= 0) && (item->getIDitem() % 12 <= 3)) {cout << "SPRING";} else if ((item->getIDitem() % 12 >= 4) && (item->getIDitem() % 12 <= 7)) { cout << "SUMMER";} else {cout << "FALL";}
 			Utilities::getInstances().gotoxy(14+i*16,13); cout << item->getCostSell();
 			Utilities::getInstances().gotoxy(14+i*16,15); cout << item->getEfekBuah();
 		}
