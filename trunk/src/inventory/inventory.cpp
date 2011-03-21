@@ -12,20 +12,20 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     if (slot[0]->getIDitem()==25) {
         cout << slot[0]->getIDitem();
         if (slot[0] != NULL)
-        delete slot[0];
+        //delete slot[0];
         cout << "pass1";
         slot[0] = NULL;
     }
     cout << "item1" << fin.tellg() << endl;
     slot[1] = new Item(fin);
     if (slot[1]->getIDitem()==25) {
-        delete slot[1];
+        //delete slot[1];
         slot[1] = NULL;
     }
     cout << "item2" << fin.tellg() << endl;
     slot[2] = new Item(fin);
     if (slot[2]->getIDitem()==25) {
-        delete slot[2];
+        //delete slot[2];
         slot[2] = NULL;
     }
 	maxslot = 3;
