@@ -259,12 +259,25 @@ void Grid_Plant::grow(int newCurrentSeason)
 		setHappyMeter(happyMeter+1);
 	else
 		setHappyMeter(happyMeter-1);
-	if ((umur == 0) || (newCurrentSeason != season))
+	if (umur == 0)
 		{
 		if (isBibit())
 			setFase(DBIBIT);
 		else
 			setFase(MATI);
+		}
+	else if (newCurrentSeason != season)
+		{
+		if (isBibit())
+			{
+			setFase(DBIBIT);
+			setUmur(0);
+			}
+		else
+			{
+			setFase(MATI);
+			setUmur(0);
+			}
 		}
 	else
 		{
@@ -347,7 +360,7 @@ ostream& operator<<(ostream& c, Grid_Plant* GP)
 	else if (GP->getFase() == SBIBIT) 
 		{
 			Utilities::getInstances().setBG(LYELLOW);
-            Utilities::getInstances().setFG(BLACK);
+            Utilities::getInstances().setFG(WHITE);
 			Utilities::getInstances().gotoxy(yUL,xUL);
             c << " ... ";
 			Utilities::getInstances().gotoxy(yUL,xUL+1);
