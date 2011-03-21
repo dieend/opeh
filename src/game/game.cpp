@@ -219,11 +219,11 @@ bool Game::doPerintah() {
                 }
                 world->getPlayer()->setStatus(world->getTime()->getSTime());
             }
-            cout << world->getTime()->iscDay() << endl;
 
             if (world->getTime()->iscDay()) {
+                Dwarf::setDefault(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)));
                 world->setWeather();
-				world->getPlayer()->setStatus(0);
+		world->getPlayer()->setStatus(0);
                 for (int i=0; i<MAXROW; i++){
                     for (int j=0; j<MAXCOLUMN; j++){
                         world->getArea(1)->getGrid(i,j)->grow(world->getTime()->getSeason());

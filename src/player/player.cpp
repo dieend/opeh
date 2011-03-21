@@ -6,10 +6,9 @@ Player::Player (ifstream& fin, Area* rumah) {
     curArea = rumah;
     curGrid = rumah->getGrid(4,3);
     curGrid->setType(GPLAYER);
-    cout << fin.tellg() << "inventory" << endl;
+    cout << "inventory:" << fin.tellg() << endl;
     inventory = new Inventory(fin);
     Inventory* i = this->getInventory();
-    cout << "pass2";
 
 }
 

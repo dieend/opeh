@@ -8,13 +8,14 @@
 #define SLASH 2
 
 World::World(ifstream& fin){
+    cout << "world:"<<fin.tellg()<<endl;
     fin.read((char*)(this), sizeof(World));
     area[RUMAH] = new Area(RUMAH);
+    cout << "lahan:"<<fin.tellg()<<endl;
     area[LAHAN] = new Area(fin,LAHAN);
     area[TOKO] = new Area(TOKO);
-    player = new Player(fin,area[RUMAH]);
-    
-    
+    cout << "player:"<<fin.tellg()<<endl;
+    player = new Player(fin,area[RUMAH]);    
         area[RUMAH]->setPlayer(player);
         area[LAHAN]->setPlayer(player);
         area[TOKO ]->setPlayer(player);
@@ -25,8 +26,9 @@ World::World(ifstream& fin){
         area[LAHAN]->setDwarf(0,dwarf[0]);
         area[LAHAN]->setDwarf(1,dwarf[1]);
         area[LAHAN]->setDwarf(2,dwarf[2]);
+        cout << "time:"<<fin.tellg()<<endl;
     time = new Time(fin);
-
+    system("pause");
 }
 
 World::World() {
@@ -107,7 +109,9 @@ void World::save(const string& pathFile,World& world){
 	 // masih salah
         fout.seekp(0);
         Item dummyItem;
+        cout << "world" << fout.tellp() << endl;
         fout.write((char*)(&world),sizeof(World));
+        cout << "area" << fout.tellp() << endl;
         for (int i=3; i<MAXROW; i++){
             for (int j=0; j<MAXCOLUMN; j++){
                 int type = world.getArea(1)->getGrid(i,j)->getType();
@@ -125,14 +129,20 @@ void World::save(const string& pathFile,World& world){
                 }
             }
         }
+        cout << "player" << fout.tellp() << endl;
         fout.write((char*)(world.getPlayer()),sizeof(Player));
-        
+        cout << "inventory" << fout.tellp() << endl;
         fout.write((char*)(world.getPlayer()->getInventory()),sizeof(Inventory));
+        cout << "item0" << fout.tellp() << endl;
         if (world.getPlayer()->getInventory()->cekSlot(0)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(0)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        cout << "item1" << fout.tellp() << endl;
         if (world.getPlayer()->getInventory()->cekSlot(1)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(1)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        cout << "item2" << fout.tellp() << endl;
         if (world.getPlayer()->getInventory()->cekSlot(2)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(2)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        cout << "time" << fout.tellp() << endl;
         fout.write((char*)(world.time),sizeof(Time));
 	fout.close();
+        system("pause");
 }
 
 World* World::load(const string& pathFile){
