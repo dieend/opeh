@@ -164,7 +164,18 @@ void World::doWeather() {
             }
 	}else if (weather == STORM) {
             if (time->iscDay()){
-//                for
+                for(int i=0;i<MAXROW; i++){
+                    for (int j=0; j<MAXCOLUMN; j++) {
+                        int chance = rand()%100;
+                        Grid * g = getArea(1)->getGrid(i,j);
+                        if (g->getType()== GTANAMAN && chance<25){
+                            delete g;
+                            Point p(i,j);
+                            g = new Grid_Lahan(p,GLAHAN,2);
+                            getArea(1)->setGrid(g);
+                        }
+                    }
+                }
             }
 	}
 }
