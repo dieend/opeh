@@ -7,15 +7,24 @@ using namespace std;
 Inventory::Inventory(ifstream& fin)//konstruktor
 {
     fin.read((char*)(this),sizeof(Inventory));
+    cout << "item0" << fin.tellg() << endl;
     slot[0] = new Item(fin);
-    if (slot[0]->getIDitem()==25) delete slot[0];
-    slot[0] = NULL;
+    if (slot[0]->getIDitem()==25) {
+        delete slot[0];
+        slot[0] = NULL;
+    }
+    cout << "item1" << fin.tellg() << endl;
     slot[1] = new Item(fin);
-    if (slot[1]->getIDitem()==25) delete slot[1];
-    slot[1] = NULL;
+    if (slot[1]->getIDitem()==25) {
+        delete slot[1];
+        slot[1] = NULL;
+    }
+    cout << "item2" << fin.tellg() << endl;
     slot[2] = new Item(fin);
-    if (slot[2]->getIDitem()==25) delete slot[2];
-    slot[2] = NULL;
+    if (slot[2]->getIDitem()==25) {
+        delete slot[2];
+        slot[2] = NULL;
+    }
 }
 Inventory::Inventory(){
     slot[0] = NULL;
