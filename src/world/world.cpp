@@ -246,6 +246,7 @@ ostream& operator<<(ostream& c,World& world){
         Utilities::getInstances().gotoxy(65,57); if (world.player->getInventory()->cekSlot(1)) cout << world.getPlayer()->getInventory()->getJumlah(1);
         Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);        
         Utilities::getInstances().gotoxy(3,51);cout << "Perintah:";
+        Utilities::getInstances().printError();
         Utilities::getInstances().gotoxy(62,9);
         if (world.weather==SUNNY){
             c << "SUNNY";
@@ -253,6 +254,31 @@ ostream& operator<<(ostream& c,World& world){
             c << "RAIN";
         } else {
             c << "STORM";
+        }
+        Utilities::getInstances().gotoxy(28,59);
+        Grid* depan = world.getPlayer()->getFrontGrid();
+        if (depan != NULL){
+            int type = depan->getType();
+            if (type==HKURCACI){
+                cout<< "Freedom";
+            } else if (type == WKURCACI){
+                cout << "Justice";
+            } else if (type == SKURCACI){
+                cout << "Destiny";
+            } else if (type == GTANAMAN){
+                Grid_Plant* gp = (Grid_Plant*) depan;
+                Item* brg = Item::makeBuah(gp);
+                cout << brg->getNama();
+                cout << " (" << gp->getUmur() <<")";
+            } else if (type == GSTORE){
+                cout << "Store";
+            } else if (type == GSAVE){
+                cout << "Diary";
+            } else if (type == GBED){
+                cout << "Bed";
+            }
+        } else {
+                cout << "                               ";
         }
 	return c;
 }

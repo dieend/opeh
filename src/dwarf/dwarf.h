@@ -34,7 +34,7 @@ public :
        Grid * getFrontGrid();
        friend ostream& operator<<(ostream& c, Dwarf* p);
        static map* getMap();
-	   bool inDefaultgrid(int,int);//true jika dwarf berada di default place, false jika tidak
+	   bool inDefaultGrid(int,int);//true jika dwarf berada di default place, false jika tidak
 private :
         //Grid *cGrid;
         const int type;//dwarf type, 0 for water,1 for harvest,2 for slash,3,for moving object,4 for watered plant,not harvest yet

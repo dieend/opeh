@@ -22,16 +22,19 @@ void Game::Run() {
             getPerintah();
             notExit = doPerintah();
         } catch (int i) {
-                if (i==0) {
-                        cerr << "input tidak sesuai format!\n";
-                } else if (i==1) {
-                        cerr << "tidak ada perintah yang dimaksud\n";
-                } else if (i==2) {
-                        cerr << "perintah ini tidak bisa dilakukan disini\n";
-                } else {
-                }
-                int x = getch();
-                if (x==224) getch();
+            Utilities::getInstances().gotoxy(3,53);
+            if (i==0) {
+                    cerr << "input tidak sesuai format!\n";
+            } else if (i==1) {
+                    cerr << "tidak ada perintah yang dimaksud\n";
+            } else if (i==2) {
+                    cerr << "perintah ini tidak bisa dilakukan disini\n";
+            } else {
+            }
+            int x = getch();
+            if (x==224) getch();
+        } catch (char * kata){
+            Utilities::getInstances().setError(kata);
         }
     }while(notExit);
 }
@@ -55,6 +58,7 @@ bool Game::doPerintah() {
 					PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 				}
             } else if (perintah == "exit") {
+                system("cls");
                 return false;
             } else {
                 throw 2;
@@ -145,26 +149,35 @@ bool Game::doPerintah() {
             } else if (perintah == "wake_up") {
                     world->getDwarf(paramInt[0])->wakeUp();
             } else if (perintah == "sleep" ) {
-                if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
-                    cout << world->getDwarf(paramInt[0])->getStatus();
-                    world->getDwarf(paramInt[0])->sleep();
-                } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
-                    world->getTime()->nextDay();
-                    world->getPlayer()->getCurGrid()->setType(GJALAN);
-                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
-                    world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
-                    world->getPlayer()->setArah(1);
+                if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()==GBED) {
+                    if (0 <= paramInt[0] && paramInt[0]<3 && world->getPlayer()->getCurArea()->getType()==LAHAN){
+                        cout << world->getDwarf(paramInt[0])->getStatus();
+                        world->getDwarf(paramInt[0])->sleep();
+                    } else if (0==paramInt[0] && world->getPlayer()-> getCurArea()->getType()==RUMAH){
+                        world->getTime()->nextDay();
+                        world->getPlayer()->getCurGrid()->setType(GJALAN);
+                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
+                        world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
+                        world->getPlayer()->setArah(1);
+                    }
+                } else {
+                    throw 2;
                 }
             } else if (perintah == "status") {
                     cout << 0 << " " << ((world->getDwarf(0)->getStatus())?"wake_up":"sleep") << endl;
                     cout << 1 << " " << ((world->getDwarf(1)->getStatus())?"wake_up":"sleep") << endl;
                     cout << 2 << " " << ((world->getDwarf(2)->getStatus())?"wake_up":"sleep") << endl;
             } else if (perintah == "save") {
+                if (world->getPlayer()->getFrontGrid()!=NULL && world->getPlayer()->getFrontGrid()->getType()== GSAVE){
                     World::save("save.oph",*world);
+                } else {
+                    throw 2;
+                }
             } else if (perintah == "exit") {
                 system("cls");
                 delete world;
                 world = NULL;
+                return false;
             } else if (perintah == "store") {
                 if (world->getPlayer()->getFrontGrid()->getType()==GSTORE){
                     system("cls");
@@ -173,13 +186,13 @@ bool Game::doPerintah() {
                     cin.get();
                 } else throw 2;
             } else if (perintah == "buy") {
-					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
-						world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
-					} else throw 2;
+                if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
+                        world->getPlayer()->buyItem(paramStr[0],paramInt[0]);
+                } else throw 2;
             } else if (perintah == "sell") {
-					if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
-						world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
-					} else throw 2;
+                if (world->getPlayer()->getFrontGrid()->getType() == GSTORE) {
+                        world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
+                } else throw 2;
             } else if (perintah == "eat") {
                 world->getPlayer()->eat(paramInt[0]);
             } else if (perintah == "cheat") {
