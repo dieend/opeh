@@ -42,7 +42,7 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
   {
       if (act+1<=6)
         act++;
-      else 
+      else
       {
         nextMinutes();
         act=1;
@@ -65,8 +65,8 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
           nextMinutes();
         }
         act+=6;
-      }        
-      else 
+      }
+      else
       {
         act=(act+6)%72;
         stime=NORMAL;//setting status time jadi normal
@@ -81,7 +81,7 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         nextMinutes();
         act+=6;
       }
-      else 
+      else
       {
         stime=NORMAL;
         act=(act+6)%162;//setting aksi
@@ -133,7 +133,7 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
           stime=NORMAL;
         }
       }
-      else 
+      else
       {
         nextDay();
         stime=NORMAL;
@@ -181,7 +181,7 @@ void Time::next10Minutes(int stp)//Fungsi ini dipanggil per aksi
         stime=NORMAL;
       }
     }
-  }       
+  }
 }
 
 //setting nilai minutes, rentang minutes 0-59
@@ -208,7 +208,7 @@ int Time::getMinutes(){
 void Time::nextJam(){
 	 cjam=true;
      minutes=0;
-     { 
+     {
        if (jam<18)
        {
          ++jam;
@@ -218,7 +218,7 @@ void Time::nextJam(){
        {
          nextDay();
          jam=6;
-       }       
+       }
      }
 }
 
@@ -233,7 +233,7 @@ void Time::nextDay(){
 	 cday=true;
      minutes=0;
      jam=6;
-	 
+
      if (day<30)
      {
        ++day;
@@ -244,19 +244,19 @@ void Time::nextDay(){
        nextSeason();
        day=1;
      }
-	 
+
 	 if (season == 0) {
-		PlaySound(NULL,0,0);
+		//PlaySound(NULL,0,0);
 		Sleep(1000);
-		PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+		//PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 	} else if (season == 1) {
-		PlaySound(NULL,0,0);
+		//PlaySound(NULL,0,0);
 		Sleep(1000);
-		PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+		//PlaySound("03-summer.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 	} else if (season == 2) {
-		PlaySound(NULL,0,0);
+		//PlaySound(NULL,0,0);
 		Sleep(1000);
-		PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
+		//PlaySound("04-fall.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);
 	}
 }
 
