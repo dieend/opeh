@@ -24,7 +24,6 @@ Item :: Item()
 
 Item :: ~Item()
 {
-    cout << "ctor item";
 }
 
 int Item :: getCostBuy() const

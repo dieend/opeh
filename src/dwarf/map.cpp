@@ -48,7 +48,6 @@ map::map(): sizer(12),sizec(12)
 //dtor map
 map::~map()
 {
-  cout << "dtor\n";
   for(int i=0;i<sizec;i++)
     delete [] *arr;
   delete [] arr;

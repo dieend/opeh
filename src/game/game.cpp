@@ -304,7 +304,6 @@ Game::Game() {
 //	PlaySound("01-title.wav",NULL,SND_FILENAME|SND_LOOP|SND_ASYNC|SND_NOSTOP);
 }
 Game::~Game(){
-    cout << "dtor game\n";
     delete world;
 }
 
