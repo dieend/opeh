@@ -32,8 +32,8 @@ class Game {
                 void getStore(char* kata, int done);
                 void getBuy(char* kata,int done);
                 void getSell(char* kata,int done);
-				void getCheat(char * kata, int done);
-				void getEat(char * kata, int done);
+                void getCheat(char * kata, int done);
+                void getEat(char * kata, int done);
                 char* parseLine();
 
 

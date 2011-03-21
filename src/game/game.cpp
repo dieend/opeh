@@ -63,19 +63,21 @@ bool Game::doPerintah() {
 
 	} else {
             if (perintah == "teleport") {
-                    int where = world->getPlayer()->getCurArea()->getType();
-                    if (paramStr[0] == "-help") {
-                            if (where ==0) {
-                                    cout << "Anda bisa teleport ke `lahan`\n";
-                            } else if (where == 1) {
-                                    cout << "Anda bisa teleport ke `rumah` atau `toko` \n";
-                            } else if (where == 2) {
-                                    cout << "Anda bisa teleport ke `lahan`\n";
-                            }
-                            getch();
-                    } else if (0>paramInt[0] || paramInt[0] >2){
-                        throw 2;
-                    } else if (where == 0) {
+
+                int where = world->getPlayer()->getCurArea()->getType();
+                if (paramStr[0] == "-help") {
+                        if (where ==0) {
+                                cout << "Anda bisa teleport ke `lahan`\n";
+                        } else if (where == 1) {
+                                cout << "Anda bisa teleport ke `rumah` atau `toko` \n";
+                        } else if (where == 2) {
+                                cout << "Anda bisa teleport ke `lahan`\n";
+                        }
+                        getch();
+                } else if (0>paramInt[0] || paramInt[0] >2){
+                    throw 2;
+                } else if (world->getWeather() != STORM) {
+                    if(where == 0) {
                         if (paramStr[0] == "lahan") world->getPlayer()->teleport(world->getArea(1));
                         if (paramStr[0] == "toko") throw 2;
                         if (paramStr[0] == "rumah") throw 2;
@@ -88,6 +90,7 @@ bool Game::doPerintah() {
                         if (paramStr[0] == "toko") throw 2;
                         if (paramStr[0] == "rumah") throw 2;
                     }
+                } else throw 2;
             } else if (perintah == "right") {
                     for (int i=0; i<paramInt[0]; i++) {
                             world->getPlayer()->move(KANAN);
@@ -96,7 +99,7 @@ bool Game::doPerintah() {
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
                             world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
-                            
+                            world->doWeather();
                     }
             } else if (perintah == "left") {
                     for (int i=0; i<paramInt[0]; i++) {
@@ -106,7 +109,7 @@ bool Game::doPerintah() {
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
                             world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
-                            
+                            world->doWeather();
                     }
             } else if (perintah == "up") {
                     for (int i=0; i<paramInt[0]; i++) {
@@ -116,7 +119,7 @@ bool Game::doPerintah() {
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
                             world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
-                            
+                            world->doWeather();
                     }
             } else if (perintah == "down") {
                     for (int i=0; i<paramInt[0]; i++) {
@@ -126,10 +129,10 @@ bool Game::doPerintah() {
                             Dwarf::setmap();
                             Utilities::getInstances().gotoxy(0,75);
                             world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
-                            
+                            world->doWeather();
                     }
             } else if (perintah == "inventory") {
-                    world->getPlayer()->getInventory()->listItem();
+                    world->getPlayer()->getInventory()->listDescription();
             } else if (perintah == "plow") {
                     world->getPlayer()->plow();
             } else if (perintah == "put") {
@@ -179,43 +182,43 @@ bool Game::doPerintah() {
 						world->getPlayer()->sellItem(paramInt[0],paramInt[1]);
 					} else throw 2;
             } else if (perintah == "eat") {
-					world->getPlayer()->eat(paramInt[0]);
-			} else if (perintah == "cheat") {
-					if (paramStr[0] == "nextday") {
-						world->getTime()->nextDay();
-					} else if (paramStr[0] == "nextseason") {
-						world->getTime()->nextSeason();
-					} else if (paramStr[0] == "teleport") {
-						if (paramStr[1] == "lahan") world->getPlayer()->teleport(world->getArea(1));
-                        if (paramStr[1] == "toko") world->getPlayer()->teleport(world->getArea(2));
-                        if (paramStr[1] == "rumah") world->getPlayer()->teleport(world->getArea(0));
-					} else if (paramStr[0] == "randomize") {
-						world->setWeather();
-					} else if (paramStr[0] == "status") {
-						world->getPlayer()->setStatus(paramInt[0]);
-					} else if (paramStr[0] == "grow") {
-						for (int i = 1; i <= paramInt[0]; i++) {
-							cout << paramInt[0] << endl;
-							for (int j = 3; j < MAXROW; j++) {
-								for (int k = 0; k < MAXCOLUMN; k++) {
-									if (world->getArea(1)->getGrid(j,k)->getType() == GTANAMAN) {
-										Grid_Plant * tanam = (Grid_Plant*) world->getArea(1)->getGrid(j,k);
-										tanam->setSiram();
-									}
-								}
-							}
-							for (int j=0; j<MAXROW; j++){
-								for (int k=0; k<MAXCOLUMN; k++) {
-									world->getArea(1)->getGrid(j,k)->grow(world->getTime()->getSeason());
-								}
-							}
-						}
-					} else if (paramStr[0] == "money") {
-						world->getPlayer()->setMoney(99999999);
-					} else if (paramStr[0] == "buy") {
-						world->getPlayer()->buyItem(paramStr[1],paramInt[0]);
-					}
-			}
+                world->getPlayer()->eat(paramInt[0]);
+            } else if (perintah == "cheat") {
+                if (paramStr[0] == "nextday") {
+                    world->getTime()->nextDay();
+                } else if (paramStr[0] == "nextseason") {
+                    world->getTime()->nextSeason();
+                } else if (paramStr[0] == "teleport") {
+                    if (paramStr[1] == "lahan") world->getPlayer()->teleport(world->getArea(1));
+                    if (paramStr[1] == "toko") world->getPlayer()->teleport(world->getArea(2));
+                    if (paramStr[1] == "rumah") world->getPlayer()->teleport(world->getArea(0));
+                } else if (paramStr[0] == "randomize") {
+                    world->setWeather();
+                } else if (paramStr[0] == "status") {
+                    world->getPlayer()->setStatus(paramInt[0]);
+                } else if (paramStr[0] == "grow") {
+                    for (int i = 1; i <= paramInt[0]; i++) {
+                        cout << paramInt[0] << endl;
+                        for (int j = 3; j < MAXROW; j++) {
+                            for (int k = 0; k < MAXCOLUMN; k++) {
+                                    if (world->getArea(1)->getGrid(j,k)->getType() == GTANAMAN) {
+                                            Grid_Plant * tanam = (Grid_Plant*) world->getArea(1)->getGrid(j,k);
+                                            tanam->setSiram();
+                                    }
+                            }
+                        }
+                        for (int j=0; j<MAXROW; j++){
+                                for (int k=0; k<MAXCOLUMN; k++) {
+                                        world->getArea(1)->getGrid(j,k)->grow(world->getTime()->getSeason());
+                                }
+                        }
+                    }
+                } else if (paramStr[0] == "money") {
+                    world->getPlayer()->setMoney(99999999);
+                } else if (paramStr[0] == "buy") {
+                    world->getPlayer()->buyItem(paramStr[1],paramInt[0]);
+                }
+            }
 	}
         if (world != NULL) {
             if (!(perintah == "up" || perintah=="down" || perintah=="left" || perintah=="right" || perintah=="sleep")) {
@@ -223,13 +226,14 @@ bool Game::doPerintah() {
                 Dwarf::setmap();
                 world->getPlayer()->setMoney(Dwarf::nextMove(*(world->getDwarf(0)),*(world->getDwarf(1)),*(world->getDwarf(2)))+world->getPlayer()->getMoney());
                 if (world->getPlayer()->getStatus() == 2) {
-                        world->getPlayer()->teleport(world->getArea(0));
-                        world->getPlayer()->getCurGrid()->setType(GJALAN);
-                        world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
-                        world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
-                        world->getPlayer()->setArah(1);
+                    world->getPlayer()->teleport(world->getArea(0));
+                    world->getPlayer()->getCurGrid()->setType(GJALAN);
+                    world->getPlayer()->setCurGrid(world->getPlayer()->getCurArea()->getGrid(6,4));
+                    world->getPlayer()->getCurArea()->getGrid(6,4)->setType(GPLAYER);
+                    world->getPlayer()->setArah(1);
                 }
                 world->getPlayer()->setStatus(world->getTime()->getSTime());
+                world->doWeather();
             }
 
             if (world->getTime()->iscDay()) {

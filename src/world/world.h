@@ -11,6 +11,15 @@
 #include "../dwarf/dwarf.h"
 using namespace std;
 
+#define RUMAH 0
+#define LAHAN 1
+#define TOKO 2
+#define WATER 0
+#define HARVEST 1
+#define SLASH 2
+#define SUNNY 0
+#define RAIN 1
+#define STORM 2
 class World{
 private:
 	Time* time;
@@ -33,11 +42,6 @@ private:
 	/*
 		Merupakan jenis cuaca yang ada pada hari itu. Diupdate setiap nextday()
 	*/
-	void doWeather();
-	/*
-		melakukan efek cuaca pada hari itu. dilakukan saat setWeather dilakukan dan berdasarkan
-		tipe cuaca yang ditentukan attribute weather.
-	*/
 	
 public:
 	World(); // ctor
@@ -59,6 +63,7 @@ public:
 	void setWeather();
 	/* Merandom cuaca untuk hari itu. Kemudian melakukan efeknya dengan method doWeather()
 	*/
+        int getWeather();
 	Area* getArea(int);
 	/* Mengembalikan pointer yang menunjuk ke area sesuai parameter. 
 		0 untuk rumah, 1 untuk lahan, 2 untuk toko
@@ -69,9 +74,13 @@ public:
 	*/
 	Time* getTime();
 	Player* getPlayer();
-	void kurcaciWork();
+
         World(ifstream&);
-	/* Membuat dwarf melakukan pekerjaan yang dilakukan setiap action player terjadi
+
+        void doWeather();
+	/*
+		melakukan efek cuaca pada hari itu. dilakukan saat setWeather dilakukan dan berdasarkan
+		tipe cuaca yang ditentukan attribute weather.
 	*/
 };
 

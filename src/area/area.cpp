@@ -110,13 +110,15 @@ ostream& operator<<(ostream& c,Area* area) {
 	if (area->typeArea==RUMAH) {
             system("cls");
             Utilities::getInstances().printRumah(c);
-            Utilities::getInstances().setBG(GRAY);
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
                         Player * here = area->getPlayer();
+                        
                         Point posisi(i,j);
+                        Utilities::getInstances().setBG(YELLOW);
                         c << here;
+                        Utilities::getInstances().resetBG();
 //                        if (here->getArah()==ATAS) posisi.setDown();
 //                        if (here->getArah()==KIRI) posisi.setRight();
 //                        if (here->getArah()==KANAN) posisi.setLeft();
@@ -126,7 +128,6 @@ ostream& operator<<(ostream& c,Area* area) {
                     }
                 }
             }
-            Utilities::getInstances().resetBG();
 	} else if (area->typeArea==LAHAN) {
             system("cls");
             Utilities::getInstances().printPeta(c);

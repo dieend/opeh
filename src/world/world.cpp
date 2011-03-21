@@ -1,12 +1,5 @@
 #include "world.h"
 
-#define RUMAH 0
-#define LAHAN 1
-#define TOKO 2
-#define WATER 0
-#define HARVEST 1
-#define SLASH 2
-
 World::World(ifstream& fin){
     cout << "world:"<<fin.tellg()<<endl;
     fin.read((char*)(this), sizeof(World));
@@ -156,19 +149,40 @@ World* World::load(const string& pathFile){
 
 void World::doWeather() {
 	// belum diimplementasi
-	if (weather < 50) {
-		cout << "normal\n";
+	if (weather == SUNNY) {
 	}else 
-	if (50<= weather && weather <=80) {
-		cout << "raining\n";
-	}else {
-		cout << "tornado";
+	if (weather==RAIN) {
+            for (int i=0; i<MAXROW; i++){
+                for (int j=0; j<MAXCOLUMN; j++){
+                    Grid* front = area[1]->getGrid(i,j);
+                    int tipe = front->getType();
+                     if (tipe == GLAHAN) {
+                            Grid_Lahan* lahan = (Grid_Lahan*)front;
+                            lahan->setSiram();
+                    } else if (tipe == GTANAMAN) {
+                            Grid_Plant* tanaman = (Grid_Plant*)front;
+                            if (!(tanaman->isWatered())) {
+                                    tanaman->setSiram();
+                            }
+                    }
+                }
+            }
+	}else if (weather == STORM) {
+            if (time->iscDay()){
+//                for
+            }
 	}
-        system("pause");
 }
 void World::setWeather() {
 	weather = rand()*rand()%100;
-	doWeather();
+        if (weather < 60) {
+            weather = SUNNY;
+	}else
+	if (60<= weather && weather <90) {
+            weather = RAIN;
+	}else {
+            weather = STORM;
+	}
 }
 
 ostream& operator<<(ostream& c,World& world){
@@ -206,8 +220,8 @@ ostream& operator<<(ostream& c,World& world){
         Utilities::getInstances().gotoxy(53,59);cout <<"             ";
         Utilities::getInstances().gotoxy(53,55);
         if (world.player->getInventory()->cekSlot(0)) {
-            if (world.player->getInventory()->getSlot(0)->getIDitem()<12) cout << "o ";
-            else cout <<"B ";
+            if (world.player->getInventory()->getSlot(0)->getIDitem()<12) cout << char(231) << " ";
+            else cout <<char(235) << " ";
             cout << world.getPlayer()->getInventory()->getSlot(0)->getNama();
         } else {
             cout << "EMPTY";
@@ -232,6 +246,14 @@ ostream& operator<<(ostream& c,World& world){
         Utilities::getInstances().gotoxy(65,57); if (world.player->getInventory()->cekSlot(1)) cout << world.getPlayer()->getInventory()->getJumlah(1);
         Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);        
         Utilities::getInstances().gotoxy(3,51);cout << "Perintah:";
+        Utilities::getInstances().gotoxy(62,9);
+        if (world.weather==SUNNY){
+            c << "SUNNY";
+        } else if (world.weather==RAIN) {
+            c << "RAIN";
+        } else {
+            c << "STORM";
+        }
 	return c;
 }
 
@@ -242,13 +264,13 @@ Area* World::getArea(int n) {
 Dwarf* World::getDwarf(int n) {
 	return (dwarf[n]);
 }
-
-void World::kurcaciWork(){
-}
-
 Time* World::getTime() {
     return time;
 }
 Player* World::getPlayer() {
     return player;
+}
+
+int World::getWeather(){
+    return weather;
 }
