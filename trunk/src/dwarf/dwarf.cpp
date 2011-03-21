@@ -326,19 +326,16 @@ void Dwarf::setmap()
       int tG=tGrid->getType();
       if ((tG==GSELLINGBOX) || (tG==GUNSTEP))
       {
-          cout << "sellbox";
         cmap->setmapij(i+1,j+1,'#');
       }
       else if (tG==GPLAYER || tG==HKURCACI || tG==WKURCACI || tG==SKURCACI)
       {
-          cout << "player";
           cmap->setmapij(i+1,j+1,'3');
       }
       else if (tG==GTANAMAN)
       {
-          cout << "tanaman";
-        Grid_Plant * tGP=(Grid_Plant *)tGrid;
-        int fase=tGP->getFase();
+          Grid_Plant * tGP=(Grid_Plant *)tGrid;
+          int fase=tGP->getFase();
         
         if ((fase==DEWASA) || (fase==SDEWASA))
         {
@@ -725,7 +722,6 @@ int Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
      money=d1.oneMove();
      d2.bfsdwarf();
      d2.oneMove();
-     cmap->performmap();
 	 return money;
 }
 
@@ -795,7 +791,7 @@ map* Dwarf::getMap(){
     return cmap;
 }
 
-bool inDefaultgrid(int i,int j)//true jika dwarf berada di default place, false jika tidak
+bool Dwarf::inDefaultGrid(int i,int j)//true jika dwarf berada di default place, false jika tidak
 {
   Point pt(i,j);
   return ( (cpos==pt) || ( (!cpos.isAround(i,j)) && (!cmap->isAccess(i,j)) && (cpos.getX()==3) ) );

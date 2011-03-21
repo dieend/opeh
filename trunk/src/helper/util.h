@@ -28,6 +28,7 @@ private:
     int color;
     stack<int> oldFG;
     stack<int> oldBG;
+    string error;
     void draw();
     static Utilities* utilities;
 public:
@@ -43,9 +44,11 @@ public:
     int wherex();
     int wherey();
     void printPeta(ostream& c);
-	void printRumah (ostream& c);
-	void printToko (ostream& c);
-	void printAwal (ostream& c);
+    void printRumah (ostream& c);
+    void printToko (ostream& c);
+    void printAwal (ostream& c);
+    void setError(char*);
+    void printError();
 };
 
 #endif
