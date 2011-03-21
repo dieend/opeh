@@ -25,7 +25,7 @@ private:
         Player* player;
         Dwarf* dwarf[3];
 //        Player* player();
-	/* Merupakan array dari Grid yang berukuran 10x10.
+	/* Merupakan array dari Grid yang berukuran 10x10
 	*/
 public:
 	const int typeArea;
