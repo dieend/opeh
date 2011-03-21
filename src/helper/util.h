@@ -44,6 +44,7 @@ public:
     int wherey();
     void printPeta(ostream& c);
 	void printRumah (ostream& c);
+	void printToko (ostream& c);
 	void printAwal (ostream& c);
 };
 
