@@ -40,7 +40,7 @@ class Point {
 	Point getUp();
 	Point getRight();
 	Point getDown();
-	
+	bool isAround(int,int);//mengembalikan true jika Point berada di sekitar(R,D,L,U) int,int
         friend ostream& operator<<(ostream&,Point*);
         friend ostream& operator<<(ostream&,Point&);
 	private:
