@@ -21,8 +21,6 @@ World::World(ifstream& fin){
         area[LAHAN]->setDwarf(2,dwarf[2]);
         cout << "time:"<<fin.tellg()<<endl;
     time = new Time(fin);
-//    Utilities::getInstances().printRumah(cout);
-//    system("pause");
 }
 
 World::World() {
@@ -36,7 +34,6 @@ World::World() {
     time = NULL;
 }
 World::World(string nama){
-	// ctor
 	weather 	= 0;
 	area[RUMAH] 	= new Area(RUMAH);
 	area[LAHAN] 	= new Area(LAHAN);
@@ -58,7 +55,6 @@ World::World(string nama){
 }
 
 World::World(World& world) {
-	// cctor
 	weather 	= world.weather;
 	time 		= new Time(*(world.getTime()));
 	player 		= new Player(*(world.getPlayer()));
@@ -82,8 +78,6 @@ World::~World() {
 	delete dwarf[WATER];
 	delete dwarf[SLASH];
         Utilities::getInstances().destroy();
-	// dtor
-        cout << "~world";
 }
 World& World::operator=(World& world) {
 	weather 	= world.weather;
