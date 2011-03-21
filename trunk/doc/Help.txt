@@ -84,7 +84,5 @@ Perintah untuk tidur.
 exit #
 Perintah untuk keluar dari permainan.
 
-BONUS
-
 eat <nomor_slot> #
 Perintah untuk memakan item sesai nomor slot.

@@ -203,6 +203,97 @@ bool Game::doPerintah() {
                 } else throw "The command must be used in front of store";
             } else if (perintah == "eat") {
                 world->getPlayer()->eat(paramInt[0]-1);
+			} else if (perintah == "help") {
+				system("cls");
+				cout << "CATATAN PAMAN McDonall" << endl; 
+				cout << endl;
+				cout << "MEMULAI PERMAINAN" << endl;
+				cout << endl;
+				cout << "new <nama_pemain> #" << endl;
+				cout << "Perintah untuk memulai permainan." << endl;
+				cout << endl;
+				cout << "load #" << endl;
+				cout << "Perintah untuk memuat kembali simpanan permainan." << endl;
+				cout << endl;
+				cout << "AREA DAN PERGERAKAN" << endl;
+				cout << endl;
+				cout << "teleport <nama-area> #" << endl;
+				cout << "Perintah untuk melakukan perpindahan area." << endl;
+				cout << endl;
+				cout << "teleport -help #" << endl;
+				cout << "Perintah untuk mengetahui daftar area yang dapat dituju dengan menggunakan perintah teleport." << endl;
+				cout << endl;
+				cout << "tombol panah atas, bawah, kanan, dan kiri" << endl;
+				cout << "Pergerakan pemain dalam satu langkah." << endl;
+				cout << endl;
+				cout << "<right/left/up/down> <jumlah_langkah> #" << endl;
+				cout << "Pergerakan pemain dalam jumlah langkah bisa lebih dari satu." << endl;
+				cout << endl;
+				cout << "LAHAN" << endl;
+				cout << endl;
+				cout << "plow #" << endl;
+				cout << "Perintah untuk mencangkul." << endl;
+				cout << endl;
+				cout << "harvest #" << endl;
+				cout << "Perintah untuk memanen tanaman panen." << endl;
+				cout << endl;
+				cout << "put <nomor_slot> <jumlah> #" << endl;
+				cout << "Perintah untuk menanam bibit sesuai nomor slot." << endl;
+				cout << "Perintah untuk menjual item sesuai nomor slot di selling box." << endl;
+				cout << "// untuk menanam bibit, jumlah yang harus dimasukkan adalah 1," << endl;
+				cout << "// untuk menjual boleh lebih dari 1." << endl;
+				cout << endl;
+				cout << "slash #" << endl;
+				cout << "Perintah untuk menyabit tanaman." << endl;
+				cout << endl;
+				cout << "water #" << endl;
+				cout << "Perintah untuk menyiram tanaman." << endl;
+				cout << endl;
+				cout << "KURCACI" << endl;
+				cout << endl;
+				cout << "wake_up <nomor_kurcaci> #" << endl;
+				cout << "Perintah untuk membangunkan dan menyuruh kurcaci bekerja sesuai dengan spesialisasinya masing-masing." << endl;
+				cout << endl;
+				cout << "sleep <nomor_kurcaci> #" << endl;
+				cout << "Perintah untuk menidurkan kurcaci." << endl;
+				cout << endl;
+				cout << "status kurcaci #" << endl;
+				cout << "Perintah untuk menampilkan status masing-masing kurcaci." << endl;
+				cout << endl;
+				cout << "INVENTORY" << endl;
+				cout << endl;
+				cout << "inventory #" << endl;
+				cout << "Perintah untuk menampilkan daftar isi ketiga slot ransel." << endl;
+				cout << endl;
+				cout << "TOKO" << endl;
+				cout << endl;
+				cout << "store #" << endl;
+				cout << "Perintah untuk menampilkan daftar bibit yang dijual." << endl;
+				cout << endl;
+				cout << "buy <nama_item> <jumlah> #" << endl;
+				cout << "Perintah untuk membeli bibit." << endl;
+				cout << endl;
+				cout << "sell <nomor_slot> <jumlah> #" << endl;
+				cout << "Perintah untuk menjual item sesuai nomor slot." << endl;
+				cout << endl;
+				cout << "// semua perintah TOKO harus dilakukan di depan meja penjual." << endl;
+				cout << endl;
+				cout << "RUMAH" << endl;
+				cout << endl;
+				cout << "save #" << endl;
+				cout << "Perintah untuk melakukan penyimpanan permainan." << endl;
+				cout << "// Harus dilakukan di depan Diary." << endl;
+				cout << endl;
+				cout << "sleep #" << endl;
+				cout << "Perintah untuk tidur." << endl;
+				cout << "// Harus dilakukan di samping kasur." << endl;
+				cout << endl;
+				cout << "exit #" << endl;
+				cout << "Perintah untuk keluar dari permainan." << endl;
+				cout << endl;
+				cout << "eat <nomor_slot> #" << endl;
+				cout << "Perintah untuk memakan item sesai nomor slot." << endl;
+				getch();
             } else if (perintah == "cheat") {
                 if (paramStr[0] == "nextday") {
                     world->getTime()->nextDay();
@@ -298,6 +389,7 @@ void Game::getPerintah(){
     else if (perintah == "sell")getSell(kata,done);
 	else if (perintah == "cheat") getCheat(kata,done);
 	else if (perintah == "eat") getEat(kata,done);
+	else if (perintah == "help") getHelp(kata,done);
     delete kata;
 }
 
@@ -382,7 +474,7 @@ void Game::getNew(char* kata, int done) {
         done+=strlen(stmp)+1;
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
-    if (i>2) throw "Input doesn't match any format";
+    if (i>2) throw "Input doesn't match any format(see help for more information)";
 }
 void Game::getLoad(char* kata, int done) {
     char stmp[100];
@@ -392,7 +484,7 @@ void Game::getLoad(char* kata, int done) {
         done+=strlen(stmp)+1;
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
-    if (i>2) throw "Input doesn't match any format";
+    if (i>2) throw "Input doesn't match any format(see help for more information)";
 }
 void Game::getTeleport(char* kata, int done) {
     char stmp[100];
@@ -402,7 +494,7 @@ void Game::getTeleport(char* kata, int done) {
         done+=strlen(stmp)+1;
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
-    if (i>2) throw "Input doesn't match any format";
+    if (i>2) throw "Input doesn't match any format(see help for more information)";
 }
 void Game::getArah (char* kata, int done) {
     char stmp[100];
@@ -417,10 +509,10 @@ void Game::getArah (char* kata, int done) {
         if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
             sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
             if (paramInt[0]>1000){
-                throw "Input doesn't match any format";
+                throw "Input doesn't match any format(see help for more information)";
             }
         }else{
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }else if (perintah == "left") {
         do {
@@ -432,10 +524,10 @@ void Game::getArah (char* kata, int done) {
         if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
             sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
             if (paramInt[0]>1000){
-                throw "Input doesn't match any format";
+                throw "Input doesn't match any format(see help for more information)";
             }
         }else{
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     } else if (perintah == "up") {
         do {
@@ -443,14 +535,14 @@ void Game::getArah (char* kata, int done) {
             done+=strlen(stmp)+1;
             paramStr[i] = stmp;
         } while (paramStr[i++][0] != '#');
-        if (i>2) throw "Input doesn't match any format";
+        if (i>2) throw "Input doesn't match any format(see help for more information)";
         if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
             sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
             if (paramInt[0]>1000){
-                throw "Input doesn't match any format";
+                throw "Input doesn't match any format(see help for more information)";
             }
         }else{
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     } else if (perintah == "down") {
         do {
@@ -458,14 +550,14 @@ void Game::getArah (char* kata, int done) {
             done+=strlen(stmp)+1;
             paramStr[i] = stmp;
         } while (paramStr[i++][0] != '#');
-        if (i>2) throw "Input doesn't match any format";
+        if (i>2) throw "Input doesn't match any format(see help for more information)";
         if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
             sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
             if (paramInt[0]>1000){
-                throw "Input doesn't match any format";
+                throw "Input doesn't match any format(see help for more information)";
             }
         }else{
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }
 }
@@ -478,7 +570,7 @@ void Game::getInventory (char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getPlow(char* kata, int done){
@@ -490,7 +582,7 @@ void Game::getPlow(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getPut(char* kata, int done){
@@ -502,23 +594,23 @@ void Game::getPut(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>3){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
     if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
         sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }else{
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
     if ('0' <= paramStr[1][0] && paramStr[1][0]<='9') {
         sscanf(paramStr[1].c_str(),"%d",&paramInt[1]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }else{
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getSlash(char* kata, int done){
@@ -530,7 +622,7 @@ void Game::getSlash(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getWater(char* kata, int done){
@@ -542,7 +634,7 @@ void Game::getWater(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getHarvest(char* kata, int done){
@@ -554,7 +646,7 @@ void Game::getHarvest(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getWakeUp(char* kata, int done){
@@ -566,15 +658,15 @@ void Game::getWakeUp(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>2){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
     if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
         sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }else{
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getSleep(char* kata, int done){
@@ -586,16 +678,16 @@ void Game::getSleep(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>2){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
     if (i>1){
         if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
             sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
             if (paramInt[0]>1000){
-                throw "Input doesn't match any format";
+                throw "Input doesn't match any format(see help for more information)";
             }
         }else{
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     } else {
         paramInt[0] = 0;
@@ -610,7 +702,7 @@ void Game::getStatus(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>2){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getSave(char* kata, int done){
@@ -622,7 +714,7 @@ void Game::getSave(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getExit(char* kata, int done){
@@ -634,7 +726,7 @@ void Game::getExit(char* kata, int done){
             paramStr[i] = stmp;
         } while (paramStr[i++][0] != '#');
         if (i>1){
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }
 void Game::getStore(char* kata, int done){
@@ -646,7 +738,7 @@ void Game::getStore(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>1){
-        throw "Input doesn't match any format";
+        throw "Input doesn't match any format(see help for more information)";
     }
 }
 void Game::getBuy(char* kata, int done) {
@@ -658,15 +750,15 @@ void Game::getBuy(char* kata, int done) {
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>3){
-        throw ("Input doesn't match any format");
+        throw ("Input doesn't match any format(see help for more information)");
     }
     if ('0' <= paramStr[1][0] && paramStr[1][0]<='9') {
         sscanf(paramStr[1].c_str(),"%d",&paramInt[0]);
         if (paramInt[0]>1000){
-            throw ("Input doesn't match any format");
+            throw ("Input doesn't match any format(see help for more information)");
         }
     }else{
-        throw ("Input doesn't match any format");
+        throw ("Input doesn't match any format(see help for more information)");
     }
 }
 void Game::getSell(char* kata, int done){
@@ -678,15 +770,15 @@ void Game::getSell(char* kata, int done){
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
     if (i>3){
-        throw ("Input doesn't match any format");
+        throw ("Input doesn't match any format(see help for more information)");
     }
     if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
         sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
         if (paramInt[0]>1000){
-            throw "Input doesn't match any format";
+            throw "Input doesn't match any format(see help for more information)";
         }
     }else{
-        throw ("Input doesn't match any format");
+        throw ("Input doesn't match any format(see help for more information)");
     }
     if ('0' <= paramStr[1].c_str()[0] && paramStr[1][0]<='9') {
         sscanf(paramStr[1].c_str(),"%d",&paramInt[1]);
@@ -694,7 +786,7 @@ void Game::getSell(char* kata, int done){
             throw ("Input doesn't match any format");
         }
     }else{
-        throw ("Input doesn't match any format");
+        throw ("Input doesn't match any format(see help for more information)");
     }
 }
 
@@ -723,12 +815,25 @@ void Game::getEat(char * kata, int done) {
         paramStr[i] = stmp;
     } while (paramStr[i++][0] != '#');
 	if (i > 2) {
-		throw "Input doesn't match any format";
+		throw "Input doesn't match any format(see help for more information)";
 	}
 	if ('0' <= paramStr[0][0] && paramStr[0][0]<='9') {
 		sscanf(paramStr[0].c_str(),"%d",&paramInt[0]);
 	} else {
-		throw "Input doesn't match any format";
+		throw "Input doesn't match any format(see help for more information)";
 	}
+}
+
+void Game::getHelp (char * kata, int done) {
+	char stmp[100];
+    int i = 0;
+    do {
+        sscanf(kata+done,"%s",stmp);
+        done+=strlen(stmp)+1;
+        paramStr[i] = stmp;
+    } while (paramStr[i++][0] != '#');
+    if (i>1){
+        throw "Input doesn't match any format(see help for more information)";
+    }
 }
 		
