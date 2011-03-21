@@ -58,16 +58,16 @@ Area::~Area(){
 Area::Area(int tipe)
 	: typeArea(tipe) {
 	if (tipe == RUMAH) {
-		G(0,0,2);G(0,1,9);G(0,2,6);G(0,3,9);G(0,4,2);G(0,5,2);G(0,6,2);G(0,7,2);G(0,8,2);G(0,9,2);
-		G(1,0,9);G(1,1,2);G(1,2,2);G(1,3,2);G(1,4,2);G(1,5,2);G(1,6,2);G(1,7,2);G(1,8,2);G(1,9,2);
-		G(2,0,9);G(2,1,2);G(2,2,2);G(2,3,2);G(2,4,2);G(2,5,2);G(2,6,2);G(2,7,2);G(2,8,2);G(2,9,2);
-		G(3,0,2);G(3,1,2);G(3,2,2);G(3,3,2);G(3,4,9);G(3,5,9);G(3,6,2);G(3,7,2);G(3,8,2);G(3,9,9);
-		G(4,0,2);G(4,1,2);G(4,2,2);G(4,3,2);G(4,4,9);G(4,5,9);G(4,6,2);G(4,7,2);G(4,8,2);G(4,9,9);
-		G(5,0,2);G(5,1,2);G(5,2,2);G(5,3,2);G(5,4,2);G(5,5,2);G(5,6,2);G(5,7,2);G(5,8,2);G(5,9,2);
-		G(6,0,5);G(6,1,5);G(6,2,5);G(6,3,2);G(6,4,2);G(6,5,2);G(6,6,2);G(6,7,2);G(6,8,2);G(6,9,2);
-		G(7,0,5);G(7,1,5);G(7,2,5);G(7,3,2);G(7,4,2);G(7,5,2);G(7,6,2);G(7,7,2);G(7,8,2);G(7,9,2);
-		G(8,0,5);G(8,1,5);G(8,2,5);G(8,3,2);G(8,4,2);G(8,5,2);G(8,6,8);G(8,7,8);G(8,8,8);G(8,9,2);
-		G(9,0,5);G(9,1,5);G(9,2,5);G(9,3,2);G(9,4,2);G(9,5,2);G(9,6,8);G(9,7,8);G(9,8,8);G(9,9,2);
+		G(0,0,GBED);G(0,1,GBED);G(0,2,GBED);G(0,3,GSAVE);G(0,4,GSAVE);G(0,5,2);G(0,6,2);G(0,7,GUNSTEP);G(0,8,GUNSTEP);G(0,9,GUNSTEP);
+		G(1,0,GBED);G(1,1,GBED);G(1,2,GBED);G(1,3,GJALAN);G(1,4,GJALAN);G(1,5,GJALAN);G(1,6,GJALAN);G(1,7,GJALAN);G(1,8,GJALAN);G(1,9,GJALAN);
+		G(2,0,GBED);G(2,1,GBED);G(2,2,GBED);G(2,3,GJALAN);G(2,4,GJALAN);G(2,5,GJALAN);G(2,6,GJALAN);G(2,7,GJALAN);G(2,8,GJALAN);G(2,9,GJALAN);
+		G(3,0,GBED);G(3,1,GBED);G(3,2,GBED);G(3,3,GJALAN);G(3,4,GJALAN);G(3,5,GUNSTEP);G(3,6,GUNSTEP);G(3,7,GUNSTEP);G(3,8,GUNSTEP);G(3,9,GJALAN);
+		G(4,0,2);G(4,1,2);G(4,2,2);G(4,3,2);G(4,4,2);G(4,5,9);G(4,6,9);G(4,7,9);G(4,8,9);G(4,9,2);
+		G(5,0,2);G(5,1,2);G(5,2,2);G(5,3,2);G(5,4,2);G(5,5,9);G(5,6,9);G(5,7,9);G(5,8,9);G(5,9,2);
+		G(6,0,2);G(6,1,2);G(6,2,2);G(6,3,2);G(6,4,2);G(6,5,9);G(6,6,9);G(6,7,9);G(6,8,9);G(6,9,2);
+		G(7,0,2);G(7,1,2);G(7,2,2);G(7,3,2);G(7,4,2);G(7,5,2);G(7,6,2);G(7,7,2);G(7,8,2);G(7,9,2);
+		G(8,0,9);G(8,1,9);G(8,2,2);G(8,3,2);G(8,4,2);G(8,5,2);G(8,6,2);G(8,7,2);G(8,8,8);G(8,9,8);
+		G(9,0,9);G(9,1,9);G(9,2,2);G(9,3,2);G(9,4,2);G(9,5,2);G(9,6,2);G(9,7,2);G(9,8,8);G(9,9,8);
 	}else 
 	if(tipe == TOKO) {
 		G(0,0,9);G(0,1,9);G(0,2,9);G(0,3,9);G(0,4,9);G(0,5,9);G(0,6,9);G(0,7,9);G(0,8,9);G(0,9,9);
@@ -92,33 +92,6 @@ Area::Area(int tipe)
             }
 	}
 }
-
-string peta_rumah[MAXROW] = {
-		" [-]      ",
-		"*         ",
-		"*         ",
-		"    /\\n  ]",
-		".  n\\/   ]",
-		"          ",
-		"BBB       ",
-		"BBB       ",
-		"BBB   III ",
-		"BBB   III "
-		};
-		
-string peta_lahan[MAXROW] = {
-		"..........",
-		"........xx",
-		"........xx",
-		"tttttttttt",
-		"tttttttttt",
-		"tttttttttt",
-		"tttttttttt",
-		"tttttttttt",
-		"tttttttttt",
-		"tttttttttt",
-		};
-		
 string peta_toko[MAXROW] = {
 		"&..%%.#[-]",
 		"%&....#..*",
@@ -133,20 +106,29 @@ string peta_toko[MAXROW] = {
 };
 		
 ostream& operator<<(ostream& c,Area* area) {
-	system("CLS");
+	
 	if (area->typeArea==RUMAH) {
+            system("cls");
             Utilities::getInstances().printRumah(c);
             Utilities::getInstances().setBG(GRAY);
             for (int i=0; i<10; i++) {
                 for(int j=0; j<10; j++) {
                     if (area->getGrid(i,j)->getType() == 1) {
-                        Player * p = area->getPlayer();
-                        c << p;
+                        Player * here = area->getPlayer();
+                        Point posisi(i,j);
+                        c << here;
+//                        if (here->getArah()==ATAS) posisi.setDown();
+//                        if (here->getArah()==KIRI) posisi.setRight();
+//                        if (here->getArah()==KANAN) posisi.setLeft();
+//                        if (here->getArah()==BAWAH) posisi.setUp();
+//                        here = area->getGrid(posisi);
+
                     }
                 }
             }
             Utilities::getInstances().resetBG();
 	} else if (area->typeArea==LAHAN) {
+            system("cls");
             Utilities::getInstances().printPeta(c);
             Utilities::getInstances().setBG(GRAY);
             for (int i=0; i<3; i++) {
@@ -204,8 +186,6 @@ ostream& operator<<(ostream& c,Area* area) {
                         Grid_Lahan * L;
                         L = (Grid_Lahan *) grid;
                         c << L;
-                    } else {
-                        c << peta_lahan[i][j];
                     }
                 }
                 c << endl;

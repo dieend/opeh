@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <windows.h>
 #include <cstdio>
 #include "../world/world.h"
 

@@ -325,17 +325,14 @@ void Dwarf::setmap()
       int tG=tGrid->getType();
       if ((tG==GSELLINGBOX) || (tG==GUNSTEP))
       {
-          cout << "sellbox";
         cmap->setmapij(i+1,j+1,'#');
       }
       else if (tG==GPLAYER || tG==HKURCACI || tG==WKURCACI || tG==SKURCACI)
       {
-          cout << "player";
           cmap->setmapij(i+1,j+1,'3');
       }
       else if (tG==GTANAMAN)
       {
-          cout << "tanaman";
         Grid_Plant * tGP=(Grid_Plant *)tGrid;
         int fase=tGP->getFase();
         
@@ -560,7 +557,7 @@ int Dwarf::oneMove()
        }
 	   return 0;
      }
-     else//kasus jika hanya mengubah arah saja
+     else //kasus jika hanya mengubah arah saja
      {
        if ((*dwarfdqp)[0]==cpos.getLeft())
        {

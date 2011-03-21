@@ -6,11 +6,20 @@ using namespace std;
 using namespace std;
 Item::Item(ifstream& fin){
     fin.read((char*)(this),sizeof(Item));
+    cout << IDitem;
 }
 
 Item :: Item()
 {
-    IDitem = 25;
+    IDitem = 25; 
+    bibit= 0;
+    costBuy=0;
+    costSell=0;
+    costSellBibit=0;
+    efekBuah=0;
+    nama[0]='\0';
+    typeBuah=0;
+    typeTanaman=0;
 }
 
 Item :: ~Item()

@@ -28,6 +28,7 @@ World::World(ifstream& fin){
         area[LAHAN]->setDwarf(2,dwarf[2]);
         cout << "time:"<<fin.tellg()<<endl;
     time = new Time(fin);
+//    Utilities::getInstances().printRumah(cout);
     system("pause");
 }
 
@@ -60,7 +61,7 @@ World::World(string nama){
         area[LAHAN]->setDwarf(2,dwarf[2]);
 	time 		= new Time();
         Dwarf::setDefault(*dwarf[WATER],*dwarf[HARVEST],*dwarf[SLASH]);
-
+        Utilities::getInstances().printRumah(cout);
 }
 
 World::World(World& world) {
@@ -108,7 +109,7 @@ void World::save(const string& pathFile,World& world){
 	ofstream fout(pathFile.c_str(), ios::out | ios::binary);
 	 // masih salah
         fout.seekp(0);
-        Item dummyItem;
+        Item* dummyItem = new Item();
         cout << "world" << fout.tellp() << endl;
         fout.write((char*)(&world),sizeof(World));
         cout << "area" << fout.tellp() << endl;
@@ -134,11 +135,11 @@ void World::save(const string& pathFile,World& world){
         cout << "inventory" << fout.tellp() << endl;
         fout.write((char*)(world.getPlayer()->getInventory()),sizeof(Inventory));
         cout << "item0" << fout.tellp() << endl;
-        if (world.getPlayer()->getInventory()->cekSlot(0)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(0)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        if (world.getPlayer()->getInventory()->cekSlot(0)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(0)),sizeof(Item)); else fout.write((char*)(dummyItem),sizeof(Item));
         cout << "item1" << fout.tellp() << endl;
-        if (world.getPlayer()->getInventory()->cekSlot(1)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(1)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        if (world.getPlayer()->getInventory()->cekSlot(1)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(1)),sizeof(Item)); else fout.write((char*)(dummyItem),sizeof(Item));
         cout << "item2" << fout.tellp() << endl;
-        if (world.getPlayer()->getInventory()->cekSlot(2)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(2)),sizeof(Item)); else fout.write((char*)(&dummyItem),sizeof(Item));
+        if (world.getPlayer()->getInventory()->cekSlot(2)) fout.write((char*)(world.getPlayer()->getInventory()->getSlot(2)),sizeof(Item)); else fout.write((char*)(dummyItem),sizeof(Item));
         cout << "time" << fout.tellp() << endl;
         fout.write((char*)(world.time),sizeof(Time));
 	fout.close();
@@ -200,9 +201,33 @@ ostream& operator<<(ostream& c,World& world){
         Utilities::getInstances().gotoxy(16,55);cout << world.player->getName();
         Utilities::getInstances().gotoxy(16,57); cout << (world.player->getStatus()==0?"NORMAL":(world.player->getStatus()==1?"PARALYZED":(world.player->getStatus()==2?"POISONED":(world.player->getStatus()==3?"FULLPOWER":"SICK"))));
         Utilities::getInstances().gotoxy(26,55);cout << world.getPlayer()->getMoney() << endl;
-        Utilities::getInstances().gotoxy(55,55); cout << (world.player->getInventory()->cekSlot(0)?world.getPlayer()->getInventory()->getSlot(0)->getNama():"EMPTY");
-        Utilities::getInstances().gotoxy(55,57); cout << (world.player->getInventory()->cekSlot(1)?world.getPlayer()->getInventory()->getSlot(1)->getNama():"EMPTY");
-        Utilities::getInstances().gotoxy(55,59); cout << (world.player->getInventory()->cekSlot(2)?world.getPlayer()->getInventory()->getSlot(2)->getNama():"EMPTY");
+        Utilities::getInstances().gotoxy(53,55);cout <<"             ";
+        Utilities::getInstances().gotoxy(53,57);cout <<"             ";
+        Utilities::getInstances().gotoxy(53,59);cout <<"             ";
+        Utilities::getInstances().gotoxy(53,55);
+        if (world.player->getInventory()->cekSlot(0)) {
+            if (world.player->getInventory()->getSlot(0)->getIDitem()<12) cout << "o ";
+            else cout <<"B ";
+            cout << world.getPlayer()->getInventory()->getSlot(0)->getNama();
+        } else {
+            cout << "EMPTY";
+        }
+        Utilities::getInstances().gotoxy(53,57);
+        if (world.player->getInventory()->cekSlot(1)) {
+            if (world.player->getInventory()->getSlot(1)->getIDitem()<12) cout << "o ";
+            else cout <<"B ";
+            cout << world.getPlayer()->getInventory()->getSlot(1)->getNama();
+        } else {
+            cout << "EMPTY";
+        }
+        Utilities::getInstances().gotoxy(53,59);
+        if (world.player->getInventory()->cekSlot(2)) {
+            if (world.player->getInventory()->getSlot(2)->getIDitem()<12) cout << "o ";
+            else cout <<"B ";
+            cout << world.getPlayer()->getInventory()->getSlot(2)->getNama();
+        } else {
+            cout << "EMPTY";
+        }
         Utilities::getInstances().gotoxy(65,55); if (world.player->getInventory()->cekSlot(0)) cout << world.getPlayer()->getInventory()->getJumlah(0);
         Utilities::getInstances().gotoxy(65,57); if (world.player->getInventory()->cekSlot(1)) cout << world.getPlayer()->getInventory()->getJumlah(1);
         Utilities::getInstances().gotoxy(65,59); if (world.player->getInventory()->cekSlot(2)) cout << world.getPlayer()->getInventory()->getJumlah(2);        
