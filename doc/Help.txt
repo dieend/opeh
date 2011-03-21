@@ -1,0 +1,90 @@
+CATATAN PAMAN McDonall
+
+MEMULAI PERMAINAN
+
+new <nama_pemain> #
+Perintah untuk memulai permainan.
+
+load #
+Perintah untuk memuat kembali simpanan permainan.
+
+AREA DAN PERGERAKAN
+
+teleport <nama-area> #
+Perintah untuk melakukan perpindahan area.
+
+teleport -help #
+Perintah untuk mengetahui daftar area yang dapat dituju dengan menggunakan perintah teleport.
+
+tombol panah atas, bawah, kanan, dan kiri
+Pergerakan pemain dalam satu langkah.
+
+<right/left/up/down> <jumlah_langkah> #
+Pergerakan pemain dalam jumlah langkah bisa lebih dari satu.
+
+LAHAN
+
+plow #
+Perintah untuk mencangkul.
+
+harvest #
+Perintah untuk memanen tanaman panen.
+
+put <nomor_slot> <jumlah> #
+Perintah untuk menanam bibit sesuai nomor slot.
+Perintah untuk menjual item sesuai nomor slot di selling box.
+// untuk menanam bibit, jumlah yang harus dimasukkan adalah 1,
+// untuk menjual boleh lebih dari 1.
+
+slash #
+Perintah untuk menyabit tanaman.
+
+water #
+Perintah untuk menyiram tanaman.
+
+KURCACI
+
+wake_up <nomor_kurcaci> #
+Perintah untuk membangunkan dan menyuruh kurcaci bekerja sesuai dengan spesialisasinya masing-masing.
+
+sleep <nomor_kurcaci> #
+Perintah untuk menidurkan kurcaci.
+
+status kurcaci #
+Perintah untuk menampilkan status masing-masing kurcaci.
+
+INVENTORY
+
+inventory #
+Perintah untuk menampilkan daftar isi ketiga slot ransel.
+
+TOKO
+
+store #
+Perintah untuk menampilkan daftar bibit yang dijual.
+
+buy <nama_item> <jumlah> #
+Perintah untuk membeli bibit.
+
+sell <nomor_slot> <jumlah> #
+Perintah untuk menjual item sesuai nomor slot.
+
+// semua perintah TOKO harus dilakukan di depan meja penjual.
+
+RUMAH
+
+save #
+Perintah untuk melakukan penyimpanan permainan.
+// Harus dilakukan di depan Diary.
+
+sleep #
+Perintah untuk tidur.
+// Harus dilakukan di samping kasur.
+
+exit #
+Perintah untuk keluar dari permainan.
+
+BONUS
+
+eat <nomor_slot> #
+Perintah untuk memakan item sesai nomor slot.
