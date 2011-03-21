@@ -35,12 +35,8 @@ Player::Player(const Player & chara) {
 }
 
 Player::~Player () {
-//	delete curGrid;
-//	delete curArea;
-    cout << "~player\n";
 }
 
-//operator=
 Player& Player::operator= (const Player& chara) {
         copy(chara.nama,chara.nama+32,nama);
 	money = chara.money;

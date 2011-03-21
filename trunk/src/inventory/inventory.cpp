@@ -49,27 +49,8 @@ Inventory& Inventory::operator= (const Inventory& inventory) {
 
 Inventory::~Inventory()//destructor
 {
-    cout << "~inventory\n";
 }
 
-/*int Inventory::listItem()
-{
-	cout << setw(10) << left << "Nama Item " <<endl; cout << setw(18)<< right << "Effect Buah " <<endl;cout << setw(18)<< right << "Harga Jual item" <<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Kentang" <<endl; cout << setw(18)<< right <<"0"<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Lobak" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Timun" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Kubis" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 2.250"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Jagung" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 900"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Tomat" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 540"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Bawang" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Nanas" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 4.500"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Wortel" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 1080"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Terong" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 720"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Ubi" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 1.080"<<endl;cout <<"\n"<<endl;
-	cout << setw(10) << left << "Paprika" <<endl; cout << setw(18)<< right <<""<<endl; cout << setw(18)<< right <<"Rp 360"<<endl;;
-return 0;
-}
-*/
 void Inventory::addItem(const string& name, int jumlah)//melakukan penambahan item pada vector
 {
     int i = 2; //iterator diinisialisasi = 1

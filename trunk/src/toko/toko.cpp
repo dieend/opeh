@@ -13,7 +13,6 @@ Toko :: Toko(const Toko&)//copy konstruktor
 
 Toko :: ~Toko() //destruktor
 {
-    cout << "~toko";
 }
 
 void Toko::listItem()
