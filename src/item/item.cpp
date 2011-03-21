@@ -6,7 +6,7 @@ using namespace std;
 using namespace std;
 Item::Item(ifstream& fin){
     fin.read((char*)(this),sizeof(Item));
-    cout << IDitem;
+    if (IDitem==25) delete this;
 }
 
 Item :: Item()
@@ -24,6 +24,7 @@ Item :: Item()
 
 Item :: ~Item()
 {
+    cout << "ctor item";
 }
 
 int Item :: getCostBuy() const

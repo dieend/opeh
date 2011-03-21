@@ -16,6 +16,7 @@ Time::Time(ifstream& fin){
     fin.read((char*)(this),sizeof(Time));
 }
 Time::~Time(){
+    cout << "~time\n";
 }
 /*  pkoknya 10 menit 6 aksi
 septu_jamasoka: 1 = paralyzed

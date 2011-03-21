@@ -10,7 +10,7 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     fin.read((char*)(this),sizeof(Inventory));
     cout << "item0" << fin.tellg() << endl;
     slot[0] = new Item(fin);
-    if (slot[0]->getIDitem()==15) {
+    if (slot[0]->getIDitem()==25) {
         cout << slot[0]->getIDitem();
         if (slot[0] != NULL)
         //delete slot[0];
@@ -19,13 +19,13 @@ Inventory::Inventory(ifstream& fin)//konstruktor
     }
     cout << "item1" << fin.tellg() << endl;
     slot[1] = new Item(fin);
-    if (slot[1]->getIDitem()==15) {
+    if (slot[1]->getIDitem()==25) {
         //delete slot[1];
         slot[1] = NULL;
     }
     cout << "item2" << fin.tellg() << endl;
     slot[2] = new Item(fin);
-    if (slot[2]->getIDitem()==15) {
+    if (slot[2]->getIDitem()==25) {
         //delete slot[2];
         slot[2] = NULL;
     }
@@ -52,6 +52,7 @@ Inventory& Inventory::operator= (const Inventory& inventory) {
 
 Inventory::~Inventory()//destructor
 {
+    cout << "~inventory\n";
 }
 
 /*int Inventory::listItem()

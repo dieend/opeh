@@ -50,6 +50,7 @@ Dwarf::Dwarf(int ntype) : type(ntype),status(0),direction(2)
 //destruktor dwarf
 Dwarf::~Dwarf()
 {
+    cout << "dwarf destruct\n";
 }
 
 void Dwarf::setDefault()

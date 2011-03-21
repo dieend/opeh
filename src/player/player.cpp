@@ -37,6 +37,7 @@ Player::Player(const Player & chara) {
 Player::~Player () {
 //	delete curGrid;
 //	delete curArea;
+    cout << "~player\n";
 }
 
 //operator=
