@@ -42,6 +42,9 @@ void Game::Run() {
 bool Game::doPerintah() {
 	if (world == NULL) {
             if (perintah == "new") {
+                system("cls");
+                Utilities::getInstances().gotoxy(10,0);
+                Utilities::getInstances().scenario(paramStr[0]);
                 world = new World(paramStr[0]);
 //				PlaySound(NULL,0,0);
 //				PlaySound("02-spring.wav",NULL,SND_LOOP|SND_FILENAME|SND_ASYNC|SND_NOSTOP);

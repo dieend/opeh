@@ -371,3 +371,23 @@ void Utilities::printAwal(ostream& c) {
 	c << char(186)<<"                                                                       "<< char(186) << endl;
 	c << char(200)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188);
 }
+
+void Utilities::scenario(string nama){
+    string kata ="Dear " + nama +",\n \n \n" +
+            "Paman sudah melihat program Simulasi Petani di Desa Opeh buatanmu\n" +
+            "dan Paman merasa sangat puas atas kerja kerasmu meyakinkan Paman bahwa \n" +
+            "kamu mampu mengurusi sebuah perkebunan.\n" +
+            "\n"+
+            "Sekarang Paman yakin untuk menitipkan perkebunan Paman untuk kamu \n" +
+            "urus selama Paman mengikuti Konferensi Petani Internasional.\n" +
+            "\n"+
+            "Selamat bersenang-senang dan selalulah bekerja keras,"+
+            "\n\n"+
+            "Pamanmu,\n\nMcDonall";
+    int line = 1;
+    for (int i=0; i<kata.size();i++) {
+        Sleep(50);
+        cout << kata[i];
+        if (kata[i] == '\n') gotoxy(10,line++);
+    }
+}
