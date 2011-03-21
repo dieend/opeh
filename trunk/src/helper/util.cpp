@@ -105,11 +105,11 @@ void Utilities::printPeta(ostream& c)
 {
     gotoxy(0,0);
 	c << char(201)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(187) << endl;
-	c << char(186)<<"                  OOO   PPPP   EEEE  HH HH                             "<< char(186) << endl;
-	c << char(186)<<"  _____          OO OO  PP PP  EE    HH HH                             "<< char(186) << endl;
-	c << char(186)<<" ////"<<char(92) << char(92) << char(92)<<"         OO OO  PPPP   EEEE  HHHHH                             "<< char(186) << endl;
-	c << char(186)<<"////  "<<char(92) << char(92) << char(92) <<"        OO OO  PP     EE    HH HH                             "<< char(186) << endl;
-	c << char(186)<<"|___[]__|         OOO   PP     EEEE  HH HH                             "<< char(186) << endl;
+	c << char(186); setBG(LAQUA);setFG(BLACK); c <<"                  OOO   PPPP   EEEE  HH HH                             "; resetBG();resetFG(); c << char(186) << endl;
+	c << char(186); setBG(LAQUA); c <<"  ";setFG(RED); c << "_____"; resetFG();setFG(BLACK); c << "          OO OO  PP PP  EE    HH HH                             "; resetBG();resetFG(); c << char(186) << endl;
+	c << char(186); setBG(LAQUA); c <<" ";setFG(RED); c << "////"<<char(92) << char(92) << char(92); resetFG();setFG(BLACK); c <<"         OO OO  PPPP   EEEE  HHHHH                             "; resetBG();resetFG(); c << char(186) << endl;
+	c << char(186); setBG(LGREEN);setFG(RED); c <<"////  "<<char(92) << char(92) << char(92) ; resetFG();setFG(BLACK); c <<"        OO OO  PP     EE    HH HH                             "; resetBG();resetFG(); c << char(186) << endl;
+	c << char(186); setBG(LGREEN);setFG(YELLOW); c <<"|___[]__|";resetFG();setFG(BLACK); c << "         OOO   PP     EEEE  HH HH                             "; resetBG();resetFG(); c << char(186) << endl;
 	c << char(204)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
 	c << char(186)<<"                                                                       "<< char(186) << endl;
 	c << char(186)<<"                                                                       "<< char(186) << endl;	
@@ -232,4 +232,69 @@ void Utilities::printRumah(ostream& c) {
 	c << char(186)<<"           "<<char(186)<<"                                   "<<char(186)<<"                       "<< char(186) << endl;
 	c << char(200)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188) << endl;
 
+}
+
+void Utilities::printAwal(ostream& c) {
+	gotoxy(0,0);
+	c << char(201)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(187) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"             ,-----.    .-------.     .-''-.  .---.  .---.             "<< char(186) << endl;
+	c << char(186)<<"           .'  .-,  '.  \  _(`)_ \  .'_ _   \ |   |  |_ _|             "<< char(186) << endl;
+	c << char(186)<<"          / ,-.|  \ _ \ | (_ o._)| / ( ` )   '|   |  ( ' )             "<< char(186) << endl;
+	c << char(186)<<"         ;  \  '_ /  | :|  (_,_) /. (_ o _)  ||   '-(_{;}_)            "<< char(186) << endl;
+	c << char(186)<<"         |  _`,/ \ _/  ||   '-.-' |  (_,_)___||      (_,_)             "<< char(186) << endl;
+	c << char(186)<<"         : (  '\_/ \   ;|   |     '  \   .---.| _ _--.   |             "<< char(186) << endl;
+	c << char(186)<<"          \ `\"/  \  ) / |   |      \  `-'    /|( ' ) |   |            "<< char(186) << endl;
+	c << char(186)<<"           '. \_/``\".'  /   )       \       / (_{;}_)|   |            "<< char(186) << endl;
+	c << char(186)<<"             '-----'    `---'        `'-..-'  '(_,_) '---'             "<< char(186) << endl;	
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"|¯¯¯|     /¯x¯¯\          |¯¯¯¯¯¯|°|¯¯¯|¯¯¯|  /¯x¯¯\                   "<< char(186) << endl;
+	c << char(186)<<"|    ¯¯\'| (\__/|         |      | |       |°| (\__/|                  "<< char(186) << endl;
+	c << char(186)<<"|__x__/°  \____\           ¯|__|¯  |___|___|  \____\                   "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                   .-') _   ('-.  ) (`-.      .-') _    				"<< char(186) << endl;
+	c << char(186)<<"                 ( OO ) )_(  OO)  ( OO ).   (  OO) )   	            "<< char(186) << endl;
+	c << char(186)<<"             ,--./ ,--,'(,------.(_/.  \_)-./     '._  				"<< char(186) << endl;
+	c << char(186)<<"             |   \ |  |\ |  .---' \  `.'  / |'--...__) 				"<< char(186) << endl;
+	c << char(186)<<"             |    \|  | )|  |      \     /\ '--.  .--' 		     	"<< char(186) << endl;
+	c << char(186)<<"             |  .     |/(|  '--.    \   \ |    |  |    				"<< char(186) << endl;
+	c << char(186)<<"             |  |\    |  |  .--'   .'    \_)   |  |    				"<< char(186) << endl;
+	c << char(186)<<"             |  | \   |  |  `---. /  .'.  \    |  |    				"<< char(186) << endl;
+	c << char(186)<<"             `--'  `--'  `------''--'   '--'   `--'                    "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                      ('-.     _  .-')  _   .-')       ('-.  _  .-')   "<< char(186) << endl;
+	c << char(186)<<"                     ( OO ).-.( \( -O )( '.( OO )_   _(  OO)( \( -O )  "<< char(186) << endl;
+	c << char(186)<<"             ,------./ . --. / ,------. ,--.   ,--.)(,------.,------.  "<< char(186) << endl;
+	c << char(186)<<"          ('-| _.---'| \-.  \  |   /`. '|   `.'   |  |  .---'|   /`. ' "<< char(186) << endl;
+	c << char(186)<<"          (OO|(_\  .-'-'  |  | |  /  | ||         |  |  |    |  /  | | "<< char(186) << endl;
+	c << char(186)<<"          /  |  '--.\| |_.'  | |  |_.' ||  |'.'|  | (|  '--. |  |_.' | "<< char(186) << endl;
+	c << char(186)<<"          \_)|  .--' |  .-.  | |  .  '.'|  |   |  |  |  .--' |  .  '.' "<< char(186) << endl;
+	c << char(186)<<"            \|  |_)  |  | |  | |  |\  \ |  |   |  |  |  `---.|  |\  \  "<< char(186) << endl;
+	c << char(186)<<"             `--'    `--' `--' `--' '--'`--'   `--'  `------'`--' '--' "<< char(186) << endl;                                                    
+	c << char(186)<<"                          (    )										"<< char(186) << endl;
+	c << char(186)<<"                            )  )										"<< char(186) << endl;
+	c << char(186)<<"                           (  (                  /\					"<< char(186) << endl;
+	c << char(186)<<"                            (_)                 /  \  /\				"<< char(186) << endl;
+	c << char(186)<<"                    ________[_]________      /\/    \/  \				"<< char(186) << endl;
+	c << char(186)<<"           /\      /\        ______    \    /   /\/\  /\/\				"<< char(186) << endl;
+	c << char(186)<<"          /  \    //_\       \    /\    \  /\/\/    \/    \			"<< char(186) << endl;
+	c << char(186)<<"   /\    / /\/\  //___\       \__/  \    \/							"<< char(186) << endl;
+	c << char(186)<<"  /  \  /\/    \//_____\       \ |[]|     \							"<< char(186) << endl;
+	c << char(186)<<" /\/\/\/       //_______\       \|__|      \							"<< char(186) << endl;
+	c << char(186)<<"/      \      /XXXXXXXXXX\                  \							"<< char(186) << endl;
+	c << char(186)<<"        \    /_I_II  I__I_\__________________\							"<< char(186) << endl;
+	c << char(186)<<"               I_I|  I__I_____[]_|_[]_____I							"<< char(186) << endl;
+	c << char(186)<<"               I_II  I__I_____[]_|_[]_____I							"<< char(186) << endl;
+	c << char(186)<<"               I II__I  I     XXXXXXX     I							"<< char(186) << endl;
+	c << char(186)<<"            ~~~~~\"   \"~~~~~~~~~~~~~~~~~~~~~~~~							"<< char(186) << endl;                                                               
+	c << char(204)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(203) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(203) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(185) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                             >>>New Game<<<                            "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(186)<<"                             >>>Load Game<<<                           "<< char(186) << endl;
+	c << char(186)<<"                                                                       "<< char(186) << endl;
+	c << char(200)<< char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(202) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188) << endl;
 }
