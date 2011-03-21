@@ -181,7 +181,6 @@ void Player::plow() {
 	if (front != NULL) {
 		tipe = front->getType();
 		p = front->getPosisi();
-		cout << p << endl;
 		if (tipe == GLAHAN) {
 			lahan = (Grid_Lahan*)front;
 			lahan->setCangkul();
