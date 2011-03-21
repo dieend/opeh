@@ -369,7 +369,8 @@ void Dwarf::setmap()
 
 void Dwarf::bfsdwarf()
 {
-     if ( (((type==0) && (cmap->gett0()!=0)) || ((type==1) && (cmap->gett1()!=0)) || ((type==2) && (cmap->gett2()!=0))) && (status==1) )
+    //(((type==0) && (cmap->gett0()!=0)) || ((type==1) && (cmap->gett1()!=0)) || ((type==2) && (cmap->gett2()!=0))) &&
+     if (  (status==1) )
      {
      delete dwarfdqp;
      dwarfdqp=new deque<Point>;
@@ -599,7 +600,7 @@ int Dwarf::oneMove()
 	 {
 	   if ((cmap->getvalij(3,8+type)==' ') && (cmap->isAccess(3,8+type)))
 	   {
-		  cmap->setmapij(3,8+type,type);
+		  cmap->setmapij(3,8+type,type+'0');
 	   }
 	   else 
 	   {
@@ -614,7 +615,7 @@ int Dwarf::oneMove()
 		 }
 		 if (found)
 		 {
-		   cmap->setmapij(3,8+i,type);
+		   cmap->setmapij(3,8+i,type+'0');
 		 }
 		 else 
 		 {
@@ -628,7 +629,7 @@ int Dwarf::oneMove()
 		   }
 		   if (found)
 		   {
-		     cmap->setmapij(3,i,type);
+		     cmap->setmapij(3,i,'0'+type);
 		   }
 		   else
 		   {
@@ -723,6 +724,7 @@ int Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
      money=d1.oneMove();
      d2.bfsdwarf();
      d2.oneMove();
+     cmap->performmap();
 	 return money;
 }
 

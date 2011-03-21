@@ -2,7 +2,7 @@
 #include <iostream>
 #include "dwarf.h"
 #include "map.h"
-#include "point.h"
+#include "../point/point.h"
 #include <deque>
 #include <conio.h>
 using namespace std;

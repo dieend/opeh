@@ -127,10 +127,12 @@ void map::performmap()
   int i,j;
   for(i=0;i<sizer;i++)
   {
+      Utilities::getInstances().gotoxy(100,i);
     for(j=0;j<sizec;j++)
       cout << arr[i][j];
     cout << endl;
   }
+  system("pause");
 }
 
 void map::sett0(int nt0)
