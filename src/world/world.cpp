@@ -207,16 +207,16 @@ ostream& operator<<(ostream& c,World& world){
         }
         Utilities::getInstances().gotoxy(53,57);
         if (world.player->getInventory()->cekSlot(1)) {
-            if (world.player->getInventory()->getSlot(1)->getIDitem()<12) cout << "o ";
-            else cout <<"B ";
+            if (world.player->getInventory()->getSlot(1)->getIDitem()<12) cout << char(231) << " ";
+            else cout <<char(235) << " ";
             cout << world.getPlayer()->getInventory()->getSlot(1)->getNama();
         } else {
             cout << "EMPTY";
         }
         Utilities::getInstances().gotoxy(53,59);
         if (world.player->getInventory()->cekSlot(2)) {
-            if (world.player->getInventory()->getSlot(2)->getIDitem()<12) cout << "o ";
-            else cout <<"B ";
+            if (world.player->getInventory()->getSlot(2)->getIDitem()<12) cout << char(231) << " ";
+            else cout <<char(235) << " ";
             cout << world.getPlayer()->getInventory()->getSlot(2)->getNama();
         } else {
             cout << "EMPTY";
