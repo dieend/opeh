@@ -203,6 +203,8 @@ void Player::plow() {
 				curArea->setGrid(front);
 			}
 		}
+	} else {
+		throw "Front Grid can't be plowed";
 	}
 }
 
@@ -226,6 +228,8 @@ void Player::slash() {
 				curArea->setGrid(front);
 			}
 		}
+	} else {
+		throw "Front Grid can't be slashed";
 	}
 }
 	
@@ -252,6 +256,8 @@ void Player::water() {
 				tanaman->setSiram();
 			}
 		}
+	} else {
+		throw "Front Grid can't be watered";
 	}
 }
 
@@ -266,7 +272,7 @@ void Player::eat(int numInv) {
             setStatus (*item);
 			inventory->deleteItem(numInv,1);
 	} else {
-		throw 0;
+		throw "There is no item in slot ";
 	}
 }
 
@@ -304,7 +310,10 @@ void Player::put(int noSlot,int jumlah) {
 		} else {
 			inventory->deleteItem(noSlot,jumlah);
 		}
-	}
+	} else if (front == NULL) {
+		throw "Front Grid can't be used to put item";
+	} else {
+		throw "There is no item in slot";
 }
 
 void Player::move(int arah) {
@@ -333,7 +342,7 @@ void Player::move(int arah) {
                 }
                 curGrid = front;
                 curGrid->setType(GPLAYER);
-            }
+            } else throw "You can't go through it";
 	} else {
             arahHadap = arah;
 	}
@@ -360,7 +369,11 @@ void Player::harvest() {
 					// curArea->setGrid(front);
 				// }
 			}
+		} else {
+			throw "Front Grid can't be harvested";
 		}
+	} else {
+		throw "Front Grid can't be harvested";
 	}
 }
 
@@ -371,9 +384,9 @@ void Player::sellItem(int NoSlot, int Jumlah) {
 			item = inventory->getSlot(NoSlot);
 			money = money + item->getCostSell() * Jumlah;
 			inventory->deleteItem(NoSlot,Jumlah);
-		} else {
-			throw 2;
-		}
+		} else throw "You don't have any item in slot ";
+	} else {
+		throw "You don't have enough item in the slot";
 	}
 }
 
@@ -389,8 +402,8 @@ void Player::buyItem(const string name,int Jumlah) {
 				money = money - dummyItem->getCostBuy()* Jumlah;
 						cout <<"OK";
 				inventory->addItem(name,Jumlah);
-			 } //else throw "Uang Tidak Mencukupi"
-		}
+			 } else throw "You don't have enough money";
+		} else throw "You can buy negative number of item";
 	}
 	 delete dummyItem;
 }
