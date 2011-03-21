@@ -45,11 +45,8 @@ int Area::getType(){
 // }
 
 Area::~Area(){
-    cout << "Area destruct";
     for (int i=0; i<MAXROW; i++) {
-        cout << i;
         for (int j=0; j<MAXCOLUMN; j++) {
-            cout << j;
             delete grid[i][j];
         }
     }
