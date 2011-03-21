@@ -619,7 +619,7 @@ int Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
        d0.oneMove();
        cmap->performmap();
      }*/
-	 int val;
+	 int money=0;
      d0.bfsdwarf();
      d0.oneMove();
      d1.bfsdwarf();
