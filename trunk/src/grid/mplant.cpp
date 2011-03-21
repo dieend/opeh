@@ -5,7 +5,7 @@
 int main() {
 	Point P(0,0);
 	Utilities::getInstances().setColor(GREEN,GRAY);
-	Grid_Plant* GL = new Grid_Plant(P,GTANAMAN, DEWASA,5);
+	Grid_Plant* GL = new Grid_Plant(P,GTANAMAN, REMAJA,3);
 	cout << GL;
 	delete GL;
 	Utilities::getInstances().resetColor();
