@@ -12,6 +12,7 @@ public :
        Dwarf(int);
        static Area *Field;
        virtual ~Dwarf();
+	   void setDefault();
        static void setDefault(Dwarf&,Dwarf&,Dwarf&);
        int getType();
        int doJob();

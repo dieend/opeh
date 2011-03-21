@@ -52,6 +52,40 @@ Dwarf::~Dwarf()
 {
 }
 
+void Dwarf::setDefault()
+{
+  if  (cGrid->getPosisi().getX()<3)
+  {
+    cGrid->setType(GJALAN);
+  }
+  else 
+  {
+    cGrid->setType(GLAHAN);
+  }
+  if (Field->getGrid(2,7+type)->getType()==GLAHAN)
+    cGrid=Field->getGrid(2,7+type);
+  else
+  {
+    bool found=false;
+	int i=0;
+	while ((i<3) && (!found))
+	{
+	  if (Field->getGrid(2,7+i)->getType()==GLAHAN)
+	    found=true;
+	  else
+	    ++i;
+	}
+	if (found)
+	{
+	  cGrid=Field->getGrid(2,7+i);
+	}
+	else
+	{
+	  cGrid=Field->getGrid(2,6);
+	}
+  }
+}
+
 void Dwarf::setDefault(Dwarf& d0,Dwarf& d1,Dwarf& d2)
 {
 //setting status
@@ -164,6 +198,10 @@ int Dwarf::doJob()
 					// front = new Grid_Lahan(p,0,0);
 					// curArea->setGrid(front);
 				// }
+				}
+				else
+				{
+					retval=0;
 				}
 			}
 		}
@@ -537,6 +575,10 @@ void Dwarf::oneMove()
      //cout << "cpos : " << cpos.getX() << ',' << cpos.getY() << endl;
      //cout << "front : " << getFrontpoint().getX() << ',' << getFrontpoint().getY() << endl;
      }
+	 else if ((status==0) || ( (type==0) && (cmap->gett0()==0) ) || ((type==1) && (cmap->gett1()==0)) || ((type==2) && (cmap->gett2()==0)))
+	 {
+	   setDefault();
+	 }
 }   
          
 void Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
