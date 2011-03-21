@@ -37,7 +37,7 @@ void Game::Run() {
 }
 
 bool Game::doPerintah() {
-	PlaySound("windowsding.wav",NULL,SND_FILENAME|0 SND_ASYNC);
+	PlaySound("windowsding.wav",NULL,SND_FILENAME|SND_ASYNC);
 	if (world == NULL) {
             if (perintah == "new") {
                 world = new World(paramStr[0]);
