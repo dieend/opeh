@@ -435,15 +435,34 @@ ostream& operator<<(ostream& c, Player* p){
     Utilities::getInstances().setFG(BLACK);
     int xUL = p->getCurGrid()->getPosisi().getX()*4+11;
     int yUL = p->getCurGrid()->getPosisi().getY()*6+7;
-    Utilities::getInstances().gotoxy(yUL+2,xUL+1);
     if (p->arahHadap == 1) {
-        c << (char) 16;
+			Utilities::getInstances().gotoxy(yUL,xUL);
+            c << " |\\  ";
+			Utilities::getInstances().gotoxy(yUL,xUL+1);
+			c << " | > ";
+			Utilities::getInstances().gotoxy(yUL,xUL+2);
+			c << " |/  ";	
     } else if (p->arahHadap == 2) {
-        c << (char) 31;
+			Utilities::getInstances().gotoxy(yUL,xUL);
+            c << " ___ ";
+			Utilities::getInstances().gotoxy(yUL,xUL+1);
+			c << " \\ / ";
+			Utilities::getInstances().gotoxy(yUL,xUL+2);
+			c << "  v  ";
     } else if (p->arahHadap == 3) {
-        c << (char) 17;
+			Utilities::getInstances().gotoxy(yUL,xUL);
+            c << "  /| ";
+			Utilities::getInstances().gotoxy(yUL,xUL+1);
+			c << " < | ";
+			Utilities::getInstances().gotoxy(yUL,xUL+2);
+			c << "  \\| ";
     } else {
-        c << (char) 30;
+			Utilities::getInstances().gotoxy(yUL,xUL);
+            c << "  ^  ";
+			Utilities::getInstances().gotoxy(yUL,xUL+1);
+			c << " / \\ ";
+			Utilities::getInstances().gotoxy(yUL,xUL+2);
+			c << " --- ";
     }
     Utilities::getInstances().resetFG();
     return c;
