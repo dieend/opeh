@@ -122,3 +122,9 @@ ostream& operator<<(ostream& c, Point& p){
     c << "("<<p.getX() << ","<<p.getY()<<")\n";
     return c;
 }
+
+bool Point::isAround(int i,int j)//mengembalikan true jika Point berada di sekitar(R,D,L,U) int,int(center)
+{
+  Point pc(i,j);
+  return (((*this)==pc.getRight()) || ((*this)==pc.getDown()) || ((*this)==pc.getLeft()) || ((*this)==pc.getUp()));
+}
