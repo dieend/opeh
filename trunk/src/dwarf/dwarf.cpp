@@ -594,7 +594,7 @@ int Dwarf::oneMove()
 	 }
 }   
          
-void Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
+int Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
 {
      /*cout << "tes\n";
      deque<Dwarf> dqdwarf;
@@ -622,12 +622,14 @@ void Dwarf::nextMove(Dwarf& d0,Dwarf& d1,Dwarf &d2)
        d0.oneMove();
        cmap->performmap();
      }*/
+	 int val;
      d0.bfsdwarf();
      d0.oneMove();
      d1.bfsdwarf();
-     d1.oneMove();
+     money=d1.oneMove();
      d2.bfsdwarf();
      d2.oneMove();
+	 return money;
 }
 
 Grid *Dwarf::getFrontGrid()
