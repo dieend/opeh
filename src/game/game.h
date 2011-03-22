@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <cstdio>
 #include "../world/world.h"
-
+#pragma comment(lib,"Winmm.lib")
 using namespace std;
 
 class Game {
@@ -35,10 +35,10 @@ class Game {
                 void getCheat(char * kata, int done);
                 void getEat(char * kata, int done);
 				void getHelp(char * kata, int done);
-                char* parseLine();
 
 
 	public:
+                char* parseLine();
 		World* world;
 		Game();
 		void Run();
