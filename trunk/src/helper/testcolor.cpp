@@ -35,5 +35,14 @@ int main()
 	Utilities::getInstances().resetColor();			cout << "LYELLOW" << endl;	
 	Utilities::getInstances().setBG(LWHITE); cout << "   ";
 	Utilities::getInstances().resetColor();			cout << "LWHITE" << endl;	
+	Utilities::getInstances().printAwal(cout);
+	system("pause");
+	Utilities::getInstances().printPeta(cout);
+	system("pause");
+	Utilities::getInstances().printRumah(cout);
+	system("pause");
+	Utilities::getInstances().printToko(cout);
+	system("pause");
+	Utilities::getInstances().scenario("Adin");
 	Utilities::getInstances().destroy();
 }
