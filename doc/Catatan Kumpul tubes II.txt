@@ -1,0 +1,50 @@
+/*----------------------------------------------------------*/
+
+Kumpul 1
+Hari/Tanggal : 31 Maret 2011
+Waktu : 20.00
+Tempat : Via Yahoo Massanger
+
+
+Catatan : 
+1. Membicarakan Game
+
+/*----------------------------------------------------------*/
+
+Kumpul 2
+Hari/Tanggal : 1 April 2011
+Waktu : 15.00
+Tempat : Selasar Programming
+
+
+Catatan : 
+1. Membicarakan Game
+
+
+/*----------------------------------------------------------*/
+
+Kumpul 3 dengan Asisten
+Hari/Tanggal : 1 April 2011
+Waktu : 16.00
+Tempat : Lab RPL
+
+
+Catatan : 
+1. MultiTrheading : AI gerak tanpa sekuensial
+2. Game ini berupa Harvetmoon + Game lain
+3. Format Proposal bebas
+4. Yang harus ada Fitur dan Deskripsi
+
+/*----------------------------------------------------------*/
+
+Kumpul 4 dengan Asisten
+Hari/Tanggal : 5 April 2011
+Waktu : 10.00
+Tempat : Selasar Basdat
+
+
+Catatan : 
+1. Bonus 1 berupa effek dari serangan terhadap musuh
+2. Bonus 2 berupa  
+
+/*----------------------------------------------------------*/
